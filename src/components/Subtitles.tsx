@@ -60,7 +60,7 @@ const PhraseView: React.FC<{p: Phrase; next?: Phrase}> = ({p, next}) => {
         columnGap: isArabic ? '0.28em' : '0.4em',
         fontFamily: isArabic ? FONTS.arabic : FONTS.latin,
         fontWeight: 900,
-        fontSize: isArabic ? size : size * 0.9,
+        fontSize: isArabic ? size : size * 0.76,
         lineHeight: 1.35,
         color: COLORS.white,
         textShadow: OUTLINE,
