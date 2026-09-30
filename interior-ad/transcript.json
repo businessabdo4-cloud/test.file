@@ -1,0 +1,225 @@
+{
+ "language": "fr",
+ "source": "voiceover.wav",
+ "timebase": "source audio seconds",
+ "asr": "whisper-turbo (sherpa-onnx) text + zipformer-fr timestamps, pinned to energy dips",
+ "corrections": [
+  "Designer -> Designers",
+  "dévies -> devis",
+  "site -> « SITE »",
+  ". -> !"
+ ],
+ "text": "Designers d’intérieur au Maroc, vous voulez attirer plus de clients ? Je crée votre site web pour mettre vos réalisations en valeur et faciliter les demandes de devis. Vous ne payez que si le résultat vous plaît. Envoyez-moi « SITE » en message pour commencer !",
+ "words": [
+  {
+   "word": "Designers",
+   "start": 0.24,
+   "end": 0.81
+  },
+  {
+   "word": "d’intérieur",
+   "start": 0.82,
+   "end": 1.24
+  },
+  {
+   "word": "au",
+   "start": 1.24,
+   "end": 1.36
+  },
+  {
+   "word": "Maroc,",
+   "start": 1.36,
+   "end": 1.96
+  },
+  {
+   "word": "vous",
+   "start": 2.05,
+   "end": 2.16
+  },
+  {
+   "word": "voulez",
+   "start": 2.16,
+   "end": 2.54
+  },
+  {
+   "word": "attirer",
+   "start": 2.54,
+   "end": 2.87
+  },
+  {
+   "word": "plus",
+   "start": 2.87,
+   "end": 3.11
+  },
+  {
+   "word": "de",
+   "start": 3.11,
+   "end": 3.31
+  },
+  {
+   "word": "clients ?",
+   "start": 3.31,
+   "end": 3.59
+  },
+  {
+   "word": "Je",
+   "start": 3.96,
+   "end": 4.22
+  },
+  {
+   "word": "crée",
+   "start": 4.22,
+   "end": 4.52
+  },
+  {
+   "word": "votre",
+   "start": 4.52,
+   "end": 4.86
+  },
+  {
+   "word": "site",
+   "start": 4.88,
+   "end": 5.17
+  },
+  {
+   "word": "web",
+   "start": 5.17,
+   "end": 5.35
+  },
+  {
+   "word": "pour",
+   "start": 5.35,
+   "end": 5.55
+  },
+  {
+   "word": "mettre",
+   "start": 5.55,
+   "end": 5.89
+  },
+  {
+   "word": "vos",
+   "start": 5.89,
+   "end": 6.08
+  },
+  {
+   "word": "réalisations",
+   "start": 6.08,
+   "end": 6.65
+  },
+  {
+   "word": "en",
+   "start": 6.65,
+   "end": 6.78
+  },
+  {
+   "word": "valeur",
+   "start": 6.78,
+   "end": 7.43
+  },
+  {
+   "word": "et",
+   "start": 7.45,
+   "end": 7.6
+  },
+  {
+   "word": "faciliter",
+   "start": 7.6,
+   "end": 8.4
+  },
+  {
+   "word": "les",
+   "start": 8.4,
+   "end": 8.52
+  },
+  {
+   "word": "demandes",
+   "start": 8.52,
+   "end": 8.89
+  },
+  {
+   "word": "de",
+   "start": 8.89,
+   "end": 9.03
+  },
+  {
+   "word": "devis.",
+   "start": 9.03,
+   "end": 9.29
+  },
+  {
+   "word": "Vous",
+   "start": 9.67,
+   "end": 9.98
+  },
+  {
+   "word": "ne",
+   "start": 9.98,
+   "end": 10.1
+  },
+  {
+   "word": "payez",
+   "start": 10.1,
+   "end": 10.36
+  },
+  {
+   "word": "que",
+   "start": 10.36,
+   "end": 10.55
+  },
+  {
+   "word": "si",
+   "start": 10.55,
+   "end": 10.66
+  },
+  {
+   "word": "le",
+   "start": 10.66,
+   "end": 10.8
+  },
+  {
+   "word": "résultat",
+   "start": 10.8,
+   "end": 11.27
+  },
+  {
+   "word": "vous",
+   "start": 11.27,
+   "end": 11.5
+  },
+  {
+   "word": "plaît.",
+   "start": 11.5,
+   "end": 11.7
+  },
+  {
+   "word": "Envoyez-moi",
+   "start": 12.2,
+   "end": 12.9
+  },
+  {
+   "word": "« SITE »",
+   "start": 12.9,
+   "end": 13.26
+  },
+  {
+   "word": "en",
+   "start": 13.28,
+   "end": 13.44
+  },
+  {
+   "word": "message",
+   "start": 13.46,
+   "end": 14.15
+  },
+  {
+   "word": "pour",
+   "start": 14.19,
+   "end": 14.35
+  },
+  {
+   "word": "commencer !",
+   "start": 14.35,
+   "end": 14.76
+  }
+ ]
+}

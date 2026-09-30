@@ -1,0 +1,429 @@
+{
+ "fps": 30,
+ "durationInFrames": 456,
+ "videoDuration": 15.2,
+ "voiceDuration": 14.74,
+ "trimStart": 0.18,
+ "words": [
+  {
+   "text": "Designers",
+   "start": 0.06,
+   "end": 0.63
+  },
+  {
+   "text": "d’intérieur",
+   "start": 0.64,
+   "end": 1.06
+  },
+  {
+   "text": "au",
+   "start": 1.06,
+   "end": 1.18
+  },
+  {
+   "text": "Maroc,",
+   "start": 1.18,
+   "end": 1.78
+  },
+  {
+   "text": "vous",
+   "start": 1.87,
+   "end": 1.98
+  },
+  {
+   "text": "voulez",
+   "start": 1.98,
+   "end": 2.36
+  },
+  {
+   "text": "attirer",
+   "start": 2.36,
+   "end": 2.69
+  },
+  {
+   "text": "plus",
+   "start": 2.69,
+   "end": 2.93
+  },
+  {
+   "text": "de",
+   "start": 2.93,
+   "end": 3.13
+  },
+  {
+   "text": "clients ?",
+   "start": 3.13,
+   "end": 3.41
+  },
+  {
+   "text": "Je",
+   "start": 3.78,
+   "end": 4.04
+  },
+  {
+   "text": "crée",
+   "start": 4.04,
+   "end": 4.34
+  },
+  {
+   "text": "votre",
+   "start": 4.34,
+   "end": 4.68
+  },
+  {
+   "text": "site",
+   "start": 4.7,
+   "end": 4.99
+  },
+  {
+   "text": "web",
+   "start": 4.99,
+   "end": 5.17
+  },
+  {
+   "text": "pour",
+   "start": 5.17,
+   "end": 5.37
+  },
+  {
+   "text": "mettre",
+   "start": 5.37,
+   "end": 5.71
+  },
+  {
+   "text": "vos",
+   "start": 5.71,
+   "end": 5.9
+  },
+  {
+   "text": "réalisations",
+   "start": 5.9,
+   "end": 6.47
+  },
+  {
+   "text": "en",
+   "start": 6.47,
+   "end": 6.6
+  },
+  {
+   "text": "valeur",
+   "start": 6.6,
+   "end": 7.25
+  },
+  {
+   "text": "et",
+   "start": 7.27,
+   "end": 7.42
+  },
+  {
+   "text": "faciliter",
+   "start": 7.42,
+   "end": 8.22
+  },
+  {
+   "text": "les",
+   "start": 8.22,
+   "end": 8.34
+  },
+  {
+   "text": "demandes",
+   "start": 8.34,
+   "end": 8.71
+  },
+  {
+   "text": "de",
+   "start": 8.71,
+   "end": 8.85
+  },
+  {
+   "text": "devis.",
+   "start": 8.85,
+   "end": 9.11
+  },
+  {
+   "text": "Vous",
+   "start": 9.49,
+   "end": 9.8
+  },
+  {
+   "text": "ne",
+   "start": 9.8,
+   "end": 9.92
+  },
+  {
+   "text": "payez",
+   "start": 9.92,
+   "end": 10.18
+  },
+  {
+   "text": "que",
+   "start": 10.18,
+   "end": 10.37
+  },
+  {
+   "text": "si",
+   "start": 10.37,
+   "end": 10.48
+  },
+  {
+   "text": "le",
+   "start": 10.48,
+   "end": 10.62
+  },
+  {
+   "text": "résultat",
+   "start": 10.62,
+   "end": 11.09
+  },
+  {
+   "text": "vous",
+   "start": 11.09,
+   "end": 11.32
+  },
+  {
+   "text": "plaît.",
+   "start": 11.32,
+   "end": 11.52
+  },
+  {
+   "text": "Envoyez-moi",
+   "start": 12.02,
+   "end": 12.72
+  },
+  {
+   "text": "« SITE »",
+   "start": 12.72,
+   "end": 13.08
+  },
+  {
+   "text": "en",
+   "start": 13.1,
+   "end": 13.26
+  },
+  {
+   "text": "message",
+   "start": 13.28,
+   "end": 13.97
+  },
+  {
+   "text": "pour",
+   "start": 14.01,
+   "end": 14.17
+  },
+  {
+   "text": "commencer !",
+   "start": 14.17,
+   "end": 14.58
+  }
+ ],
+ "beats": [
+  {
+   "beat": 1,
+   "start": 0.06,
+   "end": 3.41,
+   "text": "Designers d’intérieur au Maroc, vous voulez attirer plus de clients ?"
+  },
+  {
+   "beat": 2,
+   "start": 3.78,
+   "end": 9.11,
+   "text": "Je crée votre site web pour mettre vos réalisations en valeur et faciliter les demandes de devis."
+  },
+  {
+   "beat": 3,
+   "start": 9.49,
+   "end": 11.52,
+   "text": "Vous ne payez que si le résultat vous plaît."
+  },
+  {
+   "beat": 4,
+   "start": 12.02,
+   "end": 14.58,
+   "text": "Envoyez-moi « SITE » en message pour commencer !"
+  }
+ ],
+ "groups": [
+  {
+   "words": [
+    0,
+    1
+   ],
+   "start": 0.06,
+   "end": 1.06
+  },
+  {
+   "words": [
+    2,
+    3
+   ],
+   "start": 1.06,
+   "end": 1.87
+  },
+  {
+   "words": [
+    4,
+    5,
+    6
+   ],
+   "start": 1.87,
+   "end": 2.69
+  },
+  {
+   "words": [
+    7,
+    8,
+    9
+   ],
+   "start": 2.69,
+   "end": 3.76
+  },
+  {
+   "words": [
+    10,
+    11,
+    12
+   ],
+   "start": 3.78,
+   "end": 4.7
+  },
+  {
+   "words": [
+    13,
+    14
+   ],
+   "start": 4.7,
+   "end": 5.17
+  },
+  {
+   "words": [
+    15,
+    16,
+    17
+   ],
+   "start": 5.17,
+   "end": 5.9
+  },
+  {
+   "words": [
+    18,
+    19,
+    20
+   ],
+   "start": 5.9,
+   "end": 7.27
+  },
+  {
+   "words": [
+    21,
+    22
+   ],
+   "start": 7.27,
+   "end": 8.22
+  },
+  {
+   "words": [
+    23,
+    24,
+    25,
+    26
+   ],
+   "start": 8.22,
+   "end": 9.46
+  },
+  {
+   "words": [
+    27,
+    28,
+    29
+   ],
+   "start": 9.49,
+   "end": 10.18
+  },
+  {
+   "words": [
+    30,
+    31
+   ],
+   "start": 10.18,
+   "end": 10.48
+  },
+  {
+   "words": [
+    32,
+    33
+   ],
+   "start": 10.48,
+   "end": 11.09
+  },
+  {
+   "words": [
+    34,
+    35
+   ],
+   "start": 11.09,
+   "end": 11.87
+  },
+  {
+   "words": [
+    36
+   ],
+   "start": 12.02,
+   "end": 12.72
+  },
+  {
+   "words": [
+    37
+   ],
+   "start": 12.72,
+   "end": 13.1
+  },
+  {
+   "words": [
+    38,
+    39
+   ],
+   "start": 13.1,
+   "end": 14.01
+  },
+  {
+   "words": [
+    40,
+    41
+   ],
+   "start": 14.01,
+   "end": 14.93
+  }
+ ],
+ "events": {
+  "t1": [
+   3.42,
+   3.78
+  ],
+  "t2": [
+   9.12,
+   9.49
+  ],
+  "t3": [
+   11.53,
+   12.02
+  ],
+  "notif": [
+   2.36,
+   2.69,
+   3.0100000000000002
+  ],
+  "realisations": 5.9,
+  "devisButton": 8.34,
+  "devisPulse": 8.64,
+  "devisForm": 8.75,
+  "check": 11.09,
+  "typing": [
+   12.72,
+   12.805,
+   12.89,
+   12.975
+  ],
+  "send": 13.11,
+  "commencer": 14.01
+ }
+}
