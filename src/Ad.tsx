@@ -1,6 +1,7 @@
 import React from 'react';
 import {AbsoluteFill, Audio, Sequence, continueRender, delayRender, interpolate, staticFile} from 'remotion';
 import {Subtitles} from './components/Subtitles';
+import {Watermark} from './components/Watermark';
 import {SceneEnter, Wipe} from './components/Motion';
 import {AUDIO, COLORS} from './config';
 import {fontsLoaded} from './fonts';
@@ -94,6 +95,8 @@ export const Ad: React.FC = () => {
       <Wipe at={scene('features').from - 7} color={COLORS.white} />
       <Wipe at={scene('offer').from - 7} color={COLORS.price} direction={-1} />
       <Wipe at={scene('cta').from - 7} color={COLORS.whatsapp} />
+
+      <Watermark />
 
       <Subtitles />
 

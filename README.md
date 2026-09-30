@@ -40,6 +40,10 @@ accent words (a plain string = yellow, or `{"word": "...", "color": "#..."}`).
 Timing was aligned to the exact script from pauses in the audio (Whisper's model host was blocked
 in this environment); run `python3 scripts/align_subtitles.py --whisper` if Whisper is available.
 
+**Logo on screen** — the WATER MAROC logo stays top-left for the whole ad and hands over to the
+big logo on the trust + end-card scenes. Size/position (or `handOffToBigLogo: false` to keep the
+small one there too) in `src/config.ts` → `LOGO_WATERMARK`.
+
 **Colors** — `src/config.ts` → `COLORS` (red/teal product colors, price yellow, WhatsApp green,
 subtitle accent). Background gradients per scene: `src/components/Background.tsx` → `GRADIENTS`.
 Stock-footage grades: `src/components/Media.tsx` → `GRADES`.

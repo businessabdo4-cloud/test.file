@@ -48,6 +48,15 @@ export const COLORS = {
   danger: '#FF3B3B',
 };
 
+// Small WATER MAROC logo shown throughout the ad (src/components/Watermark.tsx).
+export const LOGO_WATERMARK = {
+  width: 200, // px
+  top: 38,
+  left: 50,
+  // true: fades out where the big logo is already on screen (trust + end card)
+  handOffToBigLogo: true,
+};
+
 export const FONTS = {
   arabic: 'Cairo',
   latin: 'Montserrat',
