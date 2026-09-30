@@ -1,0 +1,10 @@
+.env
+node_modules/
+out/stills/
+out/*.png
+out/*.raw.mp4
+out/draft-*.mp4
+assets/stock/raw/
+.cache/
+__pycache__/
+*.pyc

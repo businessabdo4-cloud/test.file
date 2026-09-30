@@ -1,0 +1,312 @@
+{
+  "_help": "Edit start/end (seconds) to fine-tune. 'text' is shown verbatim. 'highlight' words get the accent color (or their own 'color').",
+  "timingSource": "energy",
+  "audioDuration": 28.571,
+  "speechStart": 0.05,
+  "speechEnd": 28.47,
+  "phrases": [
+    {
+      "id": 1,
+      "line": 1,
+      "text": "واش باقي كتشرب",
+      "start": 0.05,
+      "end": 0.76,
+      "highlight": [
+        "كتشرب"
+      ]
+    },
+    {
+      "id": 2,
+      "line": 1,
+      "text": "هاد الما",
+      "start": 0.78,
+      "end": 1.28,
+      "highlight": [
+        "الما"
+      ]
+    },
+    {
+      "id": 3,
+      "line": 1,
+      "text": "وانت ماواثقش فيه؟",
+      "start": 1.3,
+      "end": 2.07,
+      "highlight": [
+        "ماواثقش"
+      ]
+    },
+    {
+      "id": 4,
+      "line": 2,
+      "text": "ولا باقي كتخلص",
+      "start": 2.32,
+      "end": 2.91,
+      "highlight": [
+        "كتخلص"
+      ]
+    },
+    {
+      "id": 5,
+      "line": 2,
+      "text": "على القراعي",
+      "start": 2.93,
+      "end": 3.75,
+      "highlight": [
+        "القراعي"
+      ]
+    },
+    {
+      "id": 6,
+      "line": 2,
+      "text": "كل سيمانة؟",
+      "start": 3.84,
+      "end": 4.41,
+      "highlight": [
+        "سيمانة؟"
+      ]
+    },
+    {
+      "id": 7,
+      "line": 3,
+      "text": "جاك الحل:",
+      "start": 4.64,
+      "end": 5.22,
+      "highlight": [
+        "الحل:"
+      ]
+    },
+    {
+      "id": 8,
+      "line": 3,
+      "text": "GLASSE POWER!",
+      "start": 5.51,
+      "end": 6.18,
+      "highlight": [
+        "GLASSE",
+        "POWER!"
+      ]
+    },
+    {
+      "id": 9,
+      "line": 4,
+      "text": "6 ديال المراحل",
+      "start": 6.56,
+      "end": 7.37,
+      "highlight": [
+        "6"
+      ]
+    },
+    {
+      "id": 10,
+      "line": 4,
+      "text": "ديال التصفية بالأوسموز،",
+      "start": 7.39,
+      "end": 8.47,
+      "highlight": [
+        "بالأوسموز،"
+      ]
+    },
+    {
+      "id": 11,
+      "line": 5,
+      "text": "كيحيد الكلور،",
+      "start": 8.93,
+      "end": 9.72,
+      "highlight": [
+        "الكلور،"
+      ]
+    },
+    {
+      "id": 12,
+      "line": 5,
+      "text": "الجير",
+      "start": 9.95,
+      "end": 10.36,
+      "highlight": [
+        "الجير"
+      ]
+    },
+    {
+      "id": 13,
+      "line": 5,
+      "text": "والشوائب،",
+      "start": 10.57,
+      "end": 11.19,
+      "highlight": [
+        "والشوائب،"
+      ]
+    },
+    {
+      "id": 14,
+      "line": 6,
+      "text": "وكيعطيك أكثر من",
+      "start": 11.52,
+      "end": 11.94,
+      "highlight": [
+        "أكثر"
+      ]
+    },
+    {
+      "id": 15,
+      "line": 6,
+      "text": "300 لتر",
+      "start": 12.11,
+      "end": 12.85,
+      "highlight": [
+        "300",
+        "لتر"
+      ]
+    },
+    {
+      "id": 16,
+      "line": 6,
+      "text": "ديال الما الصافي",
+      "start": 12.87,
+      "end": 13.72,
+      "highlight": [
+        "الصافي"
+      ]
+    },
+    {
+      "id": 17,
+      "line": 6,
+      "text": "فالنهار.",
+      "start": 13.74,
+      "end": 14.23,
+      "highlight": [
+        "فالنهار."
+      ]
+    },
+    {
+      "id": 18,
+      "line": 7,
+      "text": "ما صافي",
+      "start": 14.63,
+      "end": 15.26,
+      "highlight": [
+        "صافي"
+      ]
+    },
+    {
+      "id": 19,
+      "line": 7,
+      "text": "لأتاي",
+      "start": 15.47,
+      "end": 16.08,
+      "highlight": [
+        "لأتاي"
+      ]
+    },
+    {
+      "id": 20,
+      "line": 7,
+      "text": "لقهوة",
+      "start": 16.29,
+      "end": 16.8,
+      "highlight": [
+        "لقهوة"
+      ]
+    },
+    {
+      "id": 21,
+      "line": 7,
+      "text": "ولصحة ولادك،",
+      "start": 17.05,
+      "end": 17.91,
+      "highlight": [
+        "ولادك،"
+      ]
+    },
+    {
+      "id": 22,
+      "line": 8,
+      "text": "وكاين في جوج ألوان",
+      "start": 18.24,
+      "end": 19.22,
+      "highlight": [
+        "جوج"
+      ]
+    },
+    {
+      "id": 23,
+      "line": 8,
+      "text": "الأحمر و الزرق",
+      "start": 19.38,
+      "end": 20.12,
+      "highlight": [
+        {
+          "word": "الأحمر",
+          "color": "#FF3B3B"
+        },
+        {
+          "word": "الزرق",
+          "color": "#1FB8CC"
+        }
+      ]
+    },
+    {
+      "id": 24,
+      "line": 9,
+      "text": "دابا برومو",
+      "start": 20.52,
+      "end": 20.9,
+      "highlight": [
+        "برومو"
+      ]
+    },
+    {
+      "id": 25,
+      "line": 9,
+      "text": "غير بـ 2049 درهم،",
+      "start": 21.23,
+      "end": 23.36,
+      "highlight": [
+        "2049",
+        "درهم،"
+      ]
+    },
+    {
+      "id": 26,
+      "line": 10,
+      "text": "التوصيل فابور",
+      "start": 23.75,
+      "end": 24.53,
+      "highlight": [
+        "فابور"
+      ]
+    },
+    {
+      "id": 27,
+      "line": 10,
+      "text": "الخلاص عند الاستلام",
+      "start": 24.71,
+      "end": 25.8,
+      "highlight": [
+        "الاستلام"
+      ]
+    },
+    {
+      "id": 28,
+      "line": 11,
+      "text": "العرض محدود،",
+      "start": 25.98,
+      "end": 26.8,
+      "highlight": [
+        "محدود،"
+      ]
+    },
+    {
+      "id": 29,
+      "line": 11,
+      "text": "صيفط لينا دابا فالواتساب",
+      "start": 27.11,
+      "end": 28.47,
+      "highlight": [
+        {
+          "word": "فالواتساب",
+          "color": "#25D366"
+        }
+      ]
+    }
+  ]
+}

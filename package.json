@@ -1,0 +1,30 @@
+{
+  "name": "glasse-power-ad",
+  "version": "1.0.0",
+  "private": true,
+  "description": "GLASSE POWER 6ST vertical ad (Remotion)",
+  "scripts": {
+    "studio": "remotion studio",
+    "render": "remotion render GlassePowerAd out/glasse-power-ad.raw.mp4 && npm run master",
+    "master": "ffmpeg -v error -y -i out/glasse-power-ad.raw.mp4 -c:v copy -af loudnorm=I=-14:TP=-1.5:LRA=11 -ar 48000 -c:a aac -b:a 192k -movflags +faststart out/glasse-power-ad.mp4 && echo 'wrote out/glasse-power-ad.mp4'",
+    "stills": "node scripts/render_stills.mjs",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@remotion/cli": "^4.0.531",
+    "@remotion/fonts": "^4.0.531",
+    "@remotion/google-fonts": "^4.0.531",
+    "@remotion/media-utils": "^4.0.531",
+    "@remotion/paths": "^4.0.531",
+    "@remotion/shapes": "^4.0.531",
+    "@remotion/transitions": "^4.0.531",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "remotion": "^4.0.531"
+  },
+  "devDependencies": {
+    "@types/react": "^19.3.0",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  }
+}
