@@ -1,0 +1,368 @@
+{
+ "language": "fr",
+ "source": "voiceover.wav",
+ "timebase": "source audio seconds",
+ "asr": "whisper-turbo (sherpa-onnx) text + zipformer-fr timestamps, pinned to energy dips, crop-verified",
+ "corrections": [
+  "Eroya Media -> ROIA MEDIA",
+  "voit -> voie",
+  "Designer -> Designers",
+  "réponse -> réponses",
+  "intérieurs ? -> intérieurs.",
+  "CM -> « CM »",
+  ". -> !"
+ ],
+ "text": "Arrêtez de poster vos projets sur les réseaux sociaux… si c’est pour que personne ne les voie. Designers d’intérieur, vos futurs clients vous cherchent en ligne avant même de vous appeler. Chez ROIA MEDIA, on gère vos réseaux sociaux de A à Z : stratégie, création de contenu, publication, et réponses à votre communauté. Vous créez de beaux intérieurs. Nous, on les fait voir. Envoyez-nous « CM » en message pour en parler !",
+ "words": [
+  {
+   "word": "Arrêtez",
+   "start": 0.27,
+   "end": 0.72
+  },
+  {
+   "word": "de",
+   "start": 0.72,
+   "end": 0.83
+  },
+  {
+   "word": "poster",
+   "start": 0.83,
+   "end": 1.18
+  },
+  {
+   "word": "vos",
+   "start": 1.18,
+   "end": 1.3
+  },
+  {
+   "word": "projets",
+   "start": 1.3,
+   "end": 1.62
+  },
+  {
+   "word": "sur",
+   "start": 1.62,
+   "end": 1.74
+  },
+  {
+   "word": "les",
+   "start": 1.74,
+   "end": 1.86
+  },
+  {
+   "word": "réseaux",
+   "start": 1.86,
+   "end": 2.2
+  },
+  {
+   "word": "sociaux…",
+   "start": 2.2,
+   "end": 2.49
+  },
+  {
+   "word": "si",
+   "start": 2.69,
+   "end": 2.84
+  },
+  {
+   "word": "c’est",
+   "start": 2.84,
+   "end": 3.01
+  },
+  {
+   "word": "pour",
+   "start": 3.01,
+   "end": 3.17
+  },
+  {
+   "word": "que",
+   "start": 3.17,
+   "end": 3.3
+  },
+  {
+   "word": "personne",
+   "start": 3.3,
+   "end": 3.62
+  },
+  {
+   "word": "ne",
+   "start": 3.62,
+   "end": 3.75
+  },
+  {
+   "word": "les",
+   "start": 3.75,
+   "end": 3.88
+  },
+  {
+   "word": "voie.",
+   "start": 3.88,
+   "end": 4.12
+  },
+  {
+   "word": "Designers",
+   "start": 4.92,
+   "end": 5.58
+  },
+  {
+   "word": "d’intérieur,",
+   "start": 5.58,
+   "end": 6.04
+  },
+  {
+   "word": "vos",
+   "start": 6.35,
+   "end": 6.55
+  },
+  {
+   "word": "futurs",
+   "start": 6.55,
+   "end": 6.87
+  },
+  {
+   "word": "clients",
+   "start": 6.87,
+   "end": 7.23
+  },
+  {
+   "word": "vous",
+   "start": 7.23,
+   "end": 7.4
+  },
+  {
+   "word": "cherchent",
+   "start": 7.4,
+   "end": 7.72
+  },
+  {
+   "word": "en",
+   "start": 7.72,
+   "end": 7.82
+  },
+  {
+   "word": "ligne",
+   "start": 7.82,
+   "end": 8.02
+  },
+  {
+   "word": "avant",
+   "start": 8.09,
+   "end": 8.38
+  },
+  {
+   "word": "même",
+   "start": 8.38,
+   "end": 8.58
+  },
+  {
+   "word": "de",
+   "start": 8.58,
+   "end": 8.7
+  },
+  {
+   "word": "vous",
+   "start": 8.7,
+   "end": 8.9
+  },
+  {
+   "word": "appeler.",
+   "start": 8.9,
+   "end": 9.2
+  },
+  {
+   "word": "Chez",
+   "start": 9.87,
+   "end": 10.05
+  },
+  {
+   "word": "ROIA",
+   "start": 10.05,
+   "end": 10.4
+  },
+  {
+   "word": "MEDIA,",
+   "start": 10.4,
+   "end": 10.85
+  },
+  {
+   "word": "on",
+   "start": 10.95,
+   "end": 11.1
+  },
+  {
+   "word": "gère",
+   "start": 11.1,
+   "end": 11.34
+  },
+  {
+   "word": "vos",
+   "start": 11.34,
+   "end": 11.5
+  },
+  {
+   "word": "réseaux",
+   "start": 11.5,
+   "end": 11.8
+  },
+  {
+   "word": "sociaux",
+   "start": 11.8,
+   "end": 12.05
+  },
+  {
+   "word": "de",
+   "start": 12.05,
+   "end": 12.3
+  },
+  {
+   "word": "A",
+   "start": 12.3,
+   "end": 12.58
+  },
+  {
+   "word": "à",
+   "start": 12.58,
+   "end": 12.78
+  },
+  {
+   "word": "Z :",
+   "start": 12.78,
+   "end": 13.15
+  },
+  {
+   "word": "stratégie,",
+   "start": 13.46,
+   "end": 14.23
+  },
+  {
+   "word": "création",
+   "start": 14.28,
+   "end": 14.74
+  },
+  {
+   "word": "de",
+   "start": 14.74,
+   "end": 14.89
+  },
+  {
+   "word": "contenu,",
+   "start": 14.89,
+   "end": 15.15
+  },
+  {
+   "word": "publication,",
+   "start": 15.37,
+   "end": 16.1
+  },
+  {
+   "word": "et",
+   "start": 16.12,
+   "end": 16.3
+  },
+  {
+   "word": "réponses",
+   "start": 16.3,
+   "end": 16.66
+  },
+  {
+   "word": "à",
+   "start": 16.66,
+   "end": 16.78
+  },
+  {
+   "word": "votre",
+   "start": 16.78,
+   "end": 17.05
+  },
+  {
+   "word": "communauté.",
+   "start": 17.05,
+   "end": 17.47
+  },
+  {
+   "word": "Vous",
+   "start": 18.27,
+   "end": 18.42
+  },
+  {
+   "word": "créez",
+   "start": 18.42,
+   "end": 18.62
+  },
+  {
+   "word": "de",
+   "start": 18.62,
+   "end": 18.74
+  },
+  {
+   "word": "beaux",
+   "start": 18.74,
+   "end": 19.02
+  },
+  {
+   "word": "intérieurs.",
+   "start": 19.04,
+   "end": 19.58
+  },
+  {
+   "word": "Nous,",
+   "start": 19.93,
+   "end": 20.24
+  },
+  {
+   "word": "on",
+   "start": 20.28,
+   "end": 20.4
+  },
+  {
+   "word": "les",
+   "start": 20.4,
+   "end": 20.55
+  },
+  {
+   "word": "fait",
+   "start": 20.55,
+   "end": 20.74
+  },
+  {
+   "word": "voir.",
+   "start": 20.74,
+   "end": 21.11
+  },
+  {
+   "word": "Envoyez-nous",
+   "start": 21.67,
+   "end": 22.27
+  },
+  {
+   "word": "« CM »",
+   "start": 22.3,
+   "end": 22.85
+  },
+  {
+   "word": "en",
+   "start": 22.85,
+   "end": 23.0
+  },
+  {
+   "word": "message",
+   "start": 23.0,
+   "end": 23.62
+  },
+  {
+   "word": "pour",
+   "start": 23.65,
+   "end": 23.82
+  },
+  {
+   "word": "en",
+   "start": 23.82,
+   "end": 23.9
+  },
+  {
+   "word": "parler !",
+   "start": 23.9,
+   "end": 24.11
+  }
+ ]
+}

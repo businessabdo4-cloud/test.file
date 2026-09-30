@@ -1,0 +1,21 @@
+{
+  "name": "cm-ad",
+  "version": "1.0.0",
+  "private": true,
+  "description": "9:16 French ROIA MEDIA ad for community management (interior designers), built with Remotion.",
+  "scripts": {
+    "studio": "remotion studio",
+    "render": "remotion render src/index.ts Ad work/video.mp4 --browser-executable=/opt/pw-browsers/chromium_headless_shell-1194/chrome-linux/headless_shell",
+    "still": "remotion still src/index.ts Ad"
+  },
+  "dependencies": {
+    "@remotion/cli": "^4.0.530",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "remotion": "^4.0.530"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.31",
+    "typescript": "^7.0.2"
+  }
+}
