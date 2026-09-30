@@ -6,7 +6,8 @@ import {CallToAction} from './scenes/CallToAction';
 import {Guarantee} from './scenes/Guarantee';
 import {Hook} from './scenes/Hook';
 import {Offer} from './scenes/Offer';
-import {archPath, color, ease, FPS, prog, TR} from './theme';
+import {Logo} from './components/Brand';
+import {archPath, beat, brand, ease, FPS, prog, TR} from './theme';
 
 loadFonts();
 
@@ -33,7 +34,7 @@ export const Ad: React.FC = () => {
   const band = 26;
 
   return (
-    <AbsoluteFill style={{background: color.sand}}>
+    <AbsoluteFill style={{background: brand.navy}}>
       {t < b1 && (
         <AbsoluteFill style={{transform: `scale(${1 + 0.06 * p1})`}}>
           <Hook />
@@ -42,7 +43,7 @@ export const Ad: React.FC = () => {
       {t >= a1 && t < b2 && (
         <AbsoluteFill style={{transform: `translateX(${-1080 * p2}px)`}}>
           {p1 < 1 && (
-            <AbsoluteFill style={{background: color.accent, clipPath: `path('${archPath(aw + 2 * band, ah + band, ax - band, ay - band)}')`}} />
+            <AbsoluteFill style={{background: brand.yellow, clipPath: `path('${archPath(aw + 2 * band, ah + band, ax - band, ay - band)}')`}} />
           )}
           <AbsoluteFill style={{clipPath: p1 < 1 ? `path('${archPath(aw, ah, ax, ay)}')` : undefined}}>
             <Offer />
@@ -60,12 +61,16 @@ export const Ad: React.FC = () => {
           style={{
             transform: `translateX(${1080 * (1 - p2)}px) scale(${1 + 0.3 * p3})`,
             opacity: 1 - p3,
-            filter: p3 > 0 ? `blur(${10 * p3}px)` : undefined,
+            filter: p3 > 0 ? `brightness(${1 + 0.35 * p3})` : undefined,
           }}
         >
           <Guarantee />
         </AbsoluteFill>
       )}
+      {/* brand watermark through the offer + guarantee */}
+      <div style={{position: 'absolute', left: 44, top: 196, opacity: 0.92 * prog(t, beat(2).start + 0.3, 0.5) * (1 - prog(t, beat(3).end, 0.3))}}>
+        <Logo width={190} />
+      </div>
       <Captions />
     </AbsoluteFill>
   );

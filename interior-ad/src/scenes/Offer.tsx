@@ -2,7 +2,7 @@ import React from 'react';
 import {AbsoluteFill, interpolate, useCurrentFrame} from 'remotion';
 import {Background} from '../components/Background';
 import {InteriorArt} from '../components/InteriorArt';
-import {archPath, beat, color, ease, ev, font, FPS, pop, prog, shadow} from '../theme';
+import {archPath, beat, brand, color, ease, ev, font, FPS, pop, prog, shadow} from '../theme';
 
 // Phone geometry (kept above the caption box: bottom ≤ ~1331 px even at max zoom)
 const PH = {x: (1080 - 574) / 2, y: 230, w: 574, h: 1080, bezel: 14};
@@ -220,7 +220,7 @@ export const Offer: React.FC = () => {
       <Background t={t} />
       {/* decorative arch behind the phone (parallax: moves less than the phone) */}
       <svg width={1080} height={1920} style={{position: 'absolute', inset: 0, transform: `translateY(${(1 - rise) * 260}px) scale(${1 + 0.02 * (zoom - 1) * 25})`, transformOrigin: '50% 45%'}}>
-        <path d={archPath(820, 1150, 130, 250)} fill={`${color.accent}14`} stroke={color.brass} strokeWidth={2.5} strokeOpacity={0.55}
+        <path d={archPath(820, 1150, 130, 250)} fill={`${brand.yellow}10`} stroke={brand.yellow} strokeWidth={3} strokeOpacity={0.75}
           strokeDasharray={4200} strokeDashoffset={4200 * (1 - archDraw)} />
       </svg>
       <div
@@ -234,7 +234,7 @@ export const Offer: React.FC = () => {
           transformOrigin: '50% 50%',
           borderRadius: 78,
           background: '#171411',
-          boxShadow: `${shadow.lift}, inset 0 0 0 2px #3A332D`,
+          boxShadow: `0 30px 80px rgba(0,6,20,0.6), 0 0 0 3px ${brand.yellow}55, inset 0 0 0 2px #3A332D`,
         }}
       >
         <div style={{position: 'absolute', left: PH.bezel, top: PH.bezel, width: SCREEN.w, height: SCREEN.h, borderRadius: 64, overflow: 'hidden', background: color.paper}}>

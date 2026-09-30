@@ -74,7 +74,12 @@ ev = {
     "typing": [round(w_at("«")["start"] + i * 0.085, 3) for i in range(4)],
     "send": round(w_at("«")["end"] + 0.03, 3),
     "commencer": w_at("pour", 1)["start"],
+    # attention hits (visual slam/flash/shake + impact SFX share these)
+    "impact": 0.24,                                   # "DESIGNERS" slams in
+    "marocHit": round(w_at("Maroc")["start"] + 0.06, 3),
+    "bigSite": round(w_at("«")["end"] + 0.03 + 0.75, 3),  # big « SITE » lands on the end card
 }
+ev["musicStart"] = ev["impact"]                        # song downbeat = hook impact
 
 os.makedirs("src/data", exist_ok=True); os.makedirs("out", exist_ok=True)
 json.dump({"fps": FPS, "durationInFrames": frames, "videoDuration": round(video_dur, 3), "voiceDuration": voice_dur,

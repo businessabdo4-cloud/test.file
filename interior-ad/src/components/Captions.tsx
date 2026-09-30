@@ -1,6 +1,6 @@
 import React from 'react';
 import {useCurrentFrame} from 'remotion';
-import {color, ease, font, FPS, pop, prog, SAFE, TL} from '../theme';
+import {brand, ease, font, FPS, pop, prog, SAFE, TL} from '../theme';
 
 export const CAPTION_CENTER_Y = 1440; // box centre; a two-line box stays above SAFE.bottom (1536)
 const MAX_W = 900;
@@ -39,14 +39,15 @@ export const Captions: React.FC = () => {
           maxWidth: MAX_W,
           padding: '20px 36px 24px',
           borderRadius: 30,
-          background: 'rgba(31,27,24,0.84)',
-          boxShadow: '0 14px 34px rgba(31,27,24,0.25)',
+          background: 'rgba(0,12,34,0.88)',
+          border: `2px solid ${brand.line}`,
+          boxShadow: '0 14px 34px rgba(0,6,20,0.45)',
           fontFamily: font.sans,
           fontWeight: 800,
           fontSize: 62,
           lineHeight: 1.18,
           letterSpacing: -0.5,
-          color: color.paper,
+          color: brand.white,
           textAlign: 'center',
           display: 'flex',
           flexWrap: 'wrap',
@@ -65,7 +66,7 @@ export const Captions: React.FC = () => {
                 key={wi}
                 style={{
                   display: 'inline-block',
-                  color: active ? color.accentOnDark : color.paper,
+                  color: active ? brand.yellow : brand.white,
                   transform: `scale(${1 + 0.06 * p})`,
                   transformOrigin: '50% 60%',
                   whiteSpace: 'nowrap',

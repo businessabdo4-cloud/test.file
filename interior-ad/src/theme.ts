@@ -7,6 +7,20 @@ export const FPS = timeline.fps;
 export const W = 1080;
 export const H = 1920;
 
+// ROIA MEDIA brand (sampled from the logo) — the video's own palette
+export const brand = {
+  navy: '#001638', // logo background
+  navyDeep: '#000C22',
+  navySoft: '#0B2A5C',
+  yellow: '#E4C037', // logo stripes
+  yellowBright: '#F3D250',
+  white: '#F4FBFD', // logo type
+  royal: '#0B3AA8', // lifted from the logo asterisk (#023199) for a full-screen field
+  royalDeep: '#052777',
+  line: 'rgba(244,251,253,0.14)',
+};
+
+// Warm neutral palette of the *client's* portfolio site shown inside the phone mockup
 export const color = {
   sand: '#F4EFE8',
   sandDeep: '#EAE1D4',
