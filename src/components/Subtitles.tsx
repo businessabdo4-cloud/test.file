@@ -57,7 +57,7 @@ const PhraseView: React.FC<{p: Phrase; next?: Phrase}> = ({p, next}) => {
         display: 'flex',
         flexWrap: 'wrap',
         justifyContent: 'center',
-        columnGap: isArabic ? '0.28em' : '0.4em',
+        columnGap: isArabic ? '0.4em' : '0.45em',
         fontFamily: isArabic ? FONTS.arabic : FONTS.latin,
         fontWeight: 900,
         fontSize: isArabic ? size : size * 0.76,
@@ -73,7 +73,7 @@ const PhraseView: React.FC<{p: Phrase; next?: Phrase}> = ({p, next}) => {
         const pop = color
           ? spring({frame: t - 3 - i, fps, config: {damping: 8, stiffness: 260, mass: 0.5}})
           : 1;
-        const wScale = color ? interpolate(pop, [0, 1], [1.45, 1.04]) : 1;
+        const wScale = color ? interpolate(pop, [0, 1], [1.22, 1.04]) : 1;
         return (
           <span
             key={i}

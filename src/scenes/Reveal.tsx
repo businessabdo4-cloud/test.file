@@ -1,7 +1,6 @@
 import React from 'react';
 import {AbsoluteFill, interpolate, spring, useCurrentFrame, useVideoConfig} from 'remotion';
 import {Background} from '../components/Background';
-import {Logo} from '../components/Logo';
 import {GRADES, StockVideo} from '../components/Media';
 import {Product} from '../components/Product';
 import {COLORS} from '../config';
@@ -117,10 +116,6 @@ export const Reveal: React.FC = () => {
         <Product src={product} width={product === PRODUCTS.pairCutout ? 900 : 680} shine={24} />
       </div>
       <Title start={titleAt} />
-      {/* little brand tag */}
-      <div style={{position: 'absolute', top: 330, width: '100%', display: 'flex', justifyContent: 'center', opacity: interpolate(frame, [titleAt + 10, titleAt + 18], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'})}}>
-        <Logo width={250} />
-      </div>
     </AbsoluteFill>
   );
 };

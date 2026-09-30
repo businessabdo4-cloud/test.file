@@ -1,0 +1,41 @@
+[
+  {
+    "file": "glasse-power-bleu-sous-evier.png",
+    "size": "1000x1000",
+    "mode": "RGB",
+    "transparent": false,
+    "plainBackground": false,
+    "borderMean": [
+      175,
+      176,
+      180
+    ],
+    "borderStd": 64.5
+  },
+  {
+    "file": "glasse-power-pair.png",
+    "size": "1000x1000",
+    "mode": "RGB",
+    "transparent": false,
+    "plainBackground": true,
+    "borderMean": [
+      255,
+      255,
+      255
+    ],
+    "borderStd": 0.0
+  },
+  {
+    "file": "glasse-power-rouge-sous-evier.png",
+    "size": "1000x1000",
+    "mode": "RGB",
+    "transparent": false,
+    "plainBackground": false,
+    "borderMean": [
+      188,
+      190,
+      195
+    ],
+    "borderStd": 63.7
+  }
+]

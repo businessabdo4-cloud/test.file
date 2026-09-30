@@ -30,7 +30,8 @@ W, H = 1080, 1920
 DEFAULT_CROPS = {
     "_help": "Boxes are [left, top, right, bottom] as fractions of the source image.",
     "faucet": {"role": "red_composite", "box": [0.75, 0.55, 0.99, 0.79]},
-    "filters": {"role": "blue_undersink", "box": [0.44, 0.42, 0.80, 0.70]},
+    "filters": {"role": "blue_undersink", "box": [0.46, 0.38, 0.79, 0.68]},
+    "filters_red": {"role": "red_undersink", "box": [0.45, 0.37, 0.80, 0.68]},
     "connectors": {"role": "blue_back", "box": [0.47, 0.35, 0.78, 0.66]},
     "glass_red": {"role": "red_composite", "box": [0.0, 0.0, 0.5625, 1.0]},
     "glass_blue": {"role": "blue_composite", "box": [0.0, 0.0, 0.5625, 1.0]},
@@ -78,8 +79,8 @@ def side_by_side():
     made = json.loads((PROD / "cutout/made.json").read_text())
     if "red_front" not in made or "blue_front" not in made:
         return
-    left = pp.compose_vertical(np.array(Image.open(PROD / "cutout" / made["blue_front"])), "blue", width_frac=0.5)
-    right = pp.compose_vertical(np.array(Image.open(PROD / "cutout" / made["red_front"])), "red", width_frac=0.5, seed=5)
+    left = pp.compose_vertical(np.array(Image.open(PROD / "cutout" / made["blue_front"])), "blue", width_frac=0.4)
+    right = pp.compose_vertical(np.array(Image.open(PROD / "cutout" / made["red_front"])), "red", width_frac=0.4, seed=5)
     out = Image.new("RGB", (W, H))
     out.paste(left.crop((W // 4, 0, W // 4 + W // 2, H)), (0, 0))
     out.paste(right.crop((W // 4, 0, W // 4 + W // 2, H)), (W // 2, 0))
@@ -109,7 +110,7 @@ def main():
             fg, a = pp.defringe(rgb, pp.remove_bg(rgb))
             cut = Image.fromarray(pp.crop_rgba(np.dstack([fg, a])))
             up2(cut).save(GEN / "faucet_cutout.png")
-        elif name in ("filters", "connectors"):
+        elif name in ("filters", "filters_red", "connectors"):
             circle_closeup(up2(img)).save(GEN / f"closeup_{name}.png")
         elif name.startswith("glass_"):
             fit_cover(up2(img).convert("RGB"), (W, H)).save(GEN / f"product_with_{name}.png")

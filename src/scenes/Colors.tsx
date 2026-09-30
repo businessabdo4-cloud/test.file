@@ -36,11 +36,11 @@ export const Colors: React.FC = () => {
   const sRed = spring({frame: frame - tRed, fps, config: {damping: 16, stiffness: 160}});
   const sBlue = spring({frame: frame - tBlue, fps, config: {damping: 16, stiffness: 160}});
   // share of the screen taken by the red half (red is on the right: read first in RTL)
-  const redShare = 0.5 + 0.2 * sRed - 0.2 * sBlue;
+  const redShare = 0.5 + 0.2 * sRed - 0.4 * sBlue;
   const split = 1080 * (1 - redShare);
   const intro = spring({frame, fps, config: {damping: 14, stiffness: 140}});
-  const redScale = 1 + 0.12 * sRed - 0.12 * sBlue;
-  const blueScale = 1 + 0.12 * sBlue - 0.06 * sRed;
+  const redScale = 1 + 0.12 * sRed - 0.44 * sBlue;
+  const blueScale = 1 - 0.32 * sRed + 0.44 * sBlue;
 
   return (
     <AbsoluteFill>
@@ -69,10 +69,10 @@ export const Colors: React.FC = () => {
         </Pop>
       </div>
       {/* labels */}
-      <div style={{position: 'absolute', top: 1190, left: split + (1080 - split) / 2, transform: 'translateX(-50%)'}}>
+      <div style={{position: 'absolute', top: 1190, left: split + (1080 - split) / 2, transform: `translateX(-50%) scale(${Math.min(1, redScale)})`}}>
         <Label text="الأحمر" color={COLORS.red} at={tRed} />
       </div>
-      <div style={{position: 'absolute', top: 1190, left: split / 2, transform: 'translateX(-50%)'}}>
+      <div style={{position: 'absolute', top: 1190, left: split / 2, transform: `translateX(-50%) scale(${Math.min(1, blueScale)})`}}>
         <Label text="الزرق" color={COLORS.teal} at={tBlue} />
       </div>
       {/* subtle vignette so subtitles pop on light backgrounds */}

@@ -18,6 +18,7 @@ npm run studio            # live preview / scrubbing in the browser
 | 3 | `python3 scripts/process_products.py vertical` | 1080×1920 designed plates (clean + "GLASSE POWER" title) → `assets/products/vertical/` |
 | 4 | `python3 scripts/make_generated.py` | close-ups / faucet cut-out / product-with-glass / red+blue split → `assets/generated/` |
 | 5 | `python3 scripts/fetch_stock.py --apply` | Pixabay search + download + 9:16 crop + trim → `assets/stock/`, `credits.txt` |
+| 5b | `python3 scripts/make_music.py` | background music bed → `assets/music.wav` |
 | 6 | `python3 scripts/build_media_manifest.py` | wires whatever exists into `src/data/media.json` |
 | 7 | `python3 scripts/align_subtitles.py` | re-times subtitles from the audio (only if the voice-over changes) |
 | 8 | `node scripts/render_stills.mjs 20 185 600 700 900` | review stills in `out/stills/` |
@@ -51,7 +52,11 @@ Logo: drop the original at `assets/logo.png` and run step 6 (otherwise a vector 
 scene's clip for the 2nd-ranked candidate (see `assets/stock/candidates.json`). Search terms are in
 `SCENES` at the top of `scripts/fetch_stock.py`. Set a clip to `null` in `media.json` to drop it.
 
-**Audio mix** — `src/config.ts` → `AUDIO` (voice, music and SFX volumes). Put a track at
-`assets/music.mp3` and run step 6; it ducks under the voice and swells on the end card.
+**Audio mix** — `src/config.ts` → `AUDIO` (voice, music and SFX volumes).
+The background music `assets/music.wav` is an original track composed in code
+(`python3 scripts/make_music.py`, royalty-free): tense intro, drop on the GLASSE POWER reveal,
+busier on the price, final chord on the end card. It follows the subtitle timing, so re-run it
+after editing `subtitles.json`. To use your own track instead, delete `assets/music.wav`, put
+yours at `assets/music.mp3` and run step 6; it sits under the voice and swells on the end card.
 Sound effects are synthesized locally (`scripts/make_sfx.py`, royalty-free) and cued in
 `src/Ad.tsx` → `sfxCues` (set `AUDIO.sfx = false` to mute them all).

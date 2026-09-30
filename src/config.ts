@@ -12,7 +12,7 @@ export const OFFER = {
 };
 
 export const CONTACT = {
-  phone: '06 33 33 34 46',
+  phone: '06 63 70 03 08',
   address: 'حي المحمدي، آسفي',
 };
 
@@ -57,8 +57,8 @@ export const AUDIO = {
   voiceVolume: 1,
   // Music: drop a file at assets/music.mp3 and run `python3 scripts/build_media_manifest.py`
   // (or set "music" in src/data/media.json).
-  musicVolume: 0.14, // under the voice
-  musicVolumeEnd: 0.3, // swells a bit on the end card
+  musicVolume: 0.1, // under the voice (music.wav is mastered at about -10.5 LUFS)
+  musicVolumeEnd: 0.22, // swells a bit on the end card
   sfx: true, // whoosh/pop/impact effects (generated locally, assets/sfx/)
   sfxVolume: 0.35,
 };

@@ -117,6 +117,37 @@ def split_components(alpha, min_frac=0.08):
     return lab, [(i, stats[i]) for i in comps]
 
 
+def split_pair(rgba):
+    """Separate two touching products: watershed on the image edges, seeded left and right."""
+    a = rgba[..., 3]
+    h, w = a.shape
+    markers = np.zeros((h, w), np.int32)
+    markers[a < 20] = 1  # background
+    markers[int(h * 0.3):int(h * 0.7), int(w * 0.12):int(w * 0.3)] = 2  # left product
+    markers[int(h * 0.3):int(h * 0.7), int(w * 0.7):int(w * 0.88)] = 3  # right product
+    # composite on black so the white bodies have a real edge against the background
+    k = a[..., None].astype(np.float32) / 255
+    dark = (rgba[..., :3].astype(np.float32) * k).astype(np.uint8)
+    cv2.watershed(cv2.cvtColor(dark, cv2.COLOR_RGB2BGR), markers)
+    # every opaque pixel belongs to whichever product region is nearest
+    fg = a >= 20
+    d2 = cv2.distanceTransform((markers != 2).astype(np.uint8), cv2.DIST_L2, 5)
+    d3 = cv2.distanceTransform((markers != 3).astype(np.uint8), cv2.DIST_L2, 5)
+    left = fg & (d2 <= d3)
+    right = fg & (d3 < d2)
+    out = []
+    for idx, mask in enumerate((left, right)):
+        other = right if idx == 0 else left
+        # opening with a wide kernel strips thin slivers of the neighbouring unit
+        mask = cv2.morphologyEx(mask.astype(np.uint8), cv2.MORPH_OPEN, np.ones((1, 9), np.uint8))
+        n, lab, st, _ = cv2.connectedComponentsWithStats(mask)
+        keep = 1 + int(np.argmax(st[1:, cv2.CC_STAT_AREA]))  # drop specks
+        # keep the soft edge: include low-alpha pixels bordering this product
+        m = cv2.dilate((lab == keep).astype(np.uint8), np.ones((5, 5), np.uint8)) > 0
+        out.append(m & ~(other & (a > 120)))
+    return out
+
+
 def crop_rgba(rgba, pad=12):
     ys, xs = np.where(rgba[..., 3] > 8)
     y0, y1, x0, x1 = max(ys.min() - pad, 0), min(ys.max() + pad, rgba.shape[0]), max(xs.min() - pad, 0), min(xs.max() + pad, rgba.shape[1])
@@ -152,15 +183,13 @@ def cutout(roles=None):
         fg, alpha = defringe(rgb, alpha)
         rgba = np.dstack([fg, alpha])
         if role == "pair":
-            lab, comps = split_components(alpha)
-            big = [c for c in comps if c[1][cv2.CC_STAT_AREA] > 0.05 * alpha.size]
             pair = crop_rgba(rgba)
             Image.fromarray(pair).save(CUT / "pair.png")
             Image.fromarray(upscale_rgba(pair)).save(CUT / "pair@2x.png")
             made["pair"] = "pair@2x.png"
-            for i, st in big:
-                single = rgba.copy()
-                single[..., 3] = np.where(lab == i, single[..., 3], 0)
+            for mask in split_pair(pair):
+                single = pair.copy()
+                single[..., 3] = np.where(mask, single[..., 3], 0)
                 single = crop_rgba(single)
                 col = color_of(single)
                 Image.fromarray(single).save(CUT / f"{col}_front.png")

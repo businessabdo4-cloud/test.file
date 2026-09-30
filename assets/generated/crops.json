@@ -1,0 +1,57 @@
+{
+  "_help": "Boxes are [left, top, right, bottom] as fractions of the source image.",
+  "faucet": {
+    "role": "red_composite",
+    "box": [
+      0.75,
+      0.55,
+      0.99,
+      0.79
+    ]
+  },
+  "filters": {
+    "role": "blue_undersink",
+    "box": [
+      0.46,
+      0.38,
+      0.79,
+      0.68
+    ]
+  },
+  "filters_red": {
+    "role": "red_undersink",
+    "box": [
+      0.45,
+      0.37,
+      0.8,
+      0.68
+    ]
+  },
+  "connectors": {
+    "role": "blue_back",
+    "box": [
+      0.47,
+      0.35,
+      0.78,
+      0.66
+    ]
+  },
+  "glass_red": {
+    "role": "red_composite",
+    "box": [
+      0.0,
+      0.0,
+      0.5625,
+      1.0
+    ]
+  },
+  "glass_blue": {
+    "role": "blue_composite",
+    "box": [
+      0.0,
+      0.0,
+      0.5625,
+      1.0
+    ]
+  }
+}

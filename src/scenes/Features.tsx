@@ -67,6 +67,11 @@ export const Features: React.FC = () => {
   const stages = countUp(frame, tStages + 4, 20, FEATURE_BADGES.stages.value);
   const liters = countUp(frame, tLiters + 18, 28, FEATURE_BADGES.liters.value);
   const product = PRODUCTS.blueCutout ?? PRODUCTS.pairCutout;
+  const install = PRODUCTS.underSinkBlue;
+  // product steps aside for the chips (beat 2) and further for the installation photo (beat 3)
+  const aside2 = spring({frame: frame - tRemove, fps, config: {damping: 16, stiffness: 140}});
+  const aside3 = install ? spring({frame: frame - tLiters - 4, fps, config: {damping: 16, stiffness: 140}}) : 0;
+  const aside = frame < tLiters ? 0.65 * aside2 : 0.65 + 0.35 * aside3 - (install ? 0 : 0.65 * aside3);
 
   return (
     <AbsoluteFill>
@@ -77,10 +82,44 @@ export const Features: React.FC = () => {
           <AbsoluteFill style={{background: 'rgba(234,247,255,0.55)'}} />
         </>
       )}
-      {/* product, slow push-in */}
-      <div style={{position: 'absolute', left: '50%', top: 430, transform: `translateX(-50%) scale(${zoom})`, transformOrigin: '50% 40%'}}>
+      {/* product, slow push-in; steps aside for the real installation photo in beat 3 */}
+      <div
+        style={{
+          position: 'absolute',
+          left: '50%',
+          top: 430,
+          transform: `translateX(calc(-50% + ${-230 * aside}px)) scale(${zoom * (1 - 0.18 * aside)})`,
+          transformOrigin: '50% 40%',
+        }}
+      >
         <Product src={product} width={600} shine={tLiters + 6} />
       </div>
+      {install && frame >= tLiters + 8 && (
+        <Pop at={tLiters + 8} from={0.4} x={400} rotate={12} bouncy={false} style={{position: 'absolute', right: 50, top: 520}}>
+          <div
+            style={{
+              width: 470,
+              height: 700,
+              borderRadius: 36,
+              overflow: 'hidden',
+              border: `10px solid ${COLORS.white}`,
+              boxShadow: '0 30px 60px rgba(6,26,58,0.35)',
+              transform: 'rotate(3deg)',
+            }}
+          >
+            <Img
+              src={staticFile(install)}
+              style={{
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                objectPosition: '66% 60%',
+                transform: `scale(${interpolate(frame, [tLiters, durationInFrames], [1.15, 1.3])})`,
+              }}
+            />
+          </div>
+        </Pop>
+      )}
 
       {/* Beat 1 — 6 stages */}
       <Headline from={tStages} to={tRemove}>
@@ -117,7 +156,7 @@ export const Features: React.FC = () => {
           })}
         </div>
       )}
-      {PRODUCTS.filtersCloseup && frame < tRemove && <Inset src={PRODUCTS.filtersCloseup} at={tStages + 14} x={690} y={930} size={300} />}
+      {PRODUCTS.filtersCloseup && frame < tRemove && <Inset src={PRODUCTS.filtersCloseup} at={tStages + 14} x={670} y={880} size={360} />}
 
       {/* Beat 2 — removes chlorine / limescale / impurities */}
       <Headline from={tRemove} to={tLiters}>
@@ -156,7 +195,7 @@ export const Features: React.FC = () => {
           <span style={{fontFamily: FONTS.arabic, fontWeight: 900, fontSize: 64, lineHeight: 1.1}}>{FEATURE_BADGES.liters.label}</span>
         </div>
       </Headline>
-      {PRODUCTS.faucetCutout && frame >= tLiters && (
+      {PRODUCTS.faucetCutout && !install && frame >= tLiters && (
         <Pop at={tLiters + 10} from={0.3} x={200} style={{position: 'absolute', right: 40, top: 560}}>
           <Img src={staticFile(PRODUCTS.faucetCutout)} style={{height: 560, filter: 'drop-shadow(0 18px 24px rgba(6,26,58,0.35))'}} />
         </Pop>
