@@ -1,0 +1,24 @@
+{
+  "_help": "Paths are relative to ./assets. null = motion-graphics fallback. Regenerate with: python3 scripts/build_media_manifest.py",
+  "voiceover": "vo/voiceover-clean.wav",
+  "logo": "logo.png",
+  "logoDrops": "logo-drops.png",
+  "music": "music/elevenlabs-bed.wav",
+  "products": {
+    "trioCutout": null,
+    "tealCutout": null,
+    "blackCutout": null,
+    "whiteCutout": null,
+    "tealFaucetCutout": null,
+    "backPortsCutout": null,
+    "underSinkTeal": null,
+    "underSinkBlack": null,
+    "underSinkWhite": null,
+    "kitchenTeal": null,
+    "kitchenBlack": null,
+    "kitchenWhite": null
+  },
+  "generated": {
+    "splashGlass": "generated/splash_glass.png"
+  }
+}

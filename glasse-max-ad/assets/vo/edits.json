@@ -1,0 +1,14 @@
+{
+  "source": "voiceover-raw.wav",
+  "originalSeconds": 31.051,
+  "cleanSeconds": 31.021,
+  "removedSeconds": 0.03,
+  "maxPause": 0.28,
+  "cuts": [
+    {
+      "from": 0.0,
+      "to": 0.03,
+      "why": "leading silence"
+    }
+  ]
+}

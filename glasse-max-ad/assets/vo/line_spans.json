@@ -1,0 +1,2 @@
+{"_help": "Start/end (seconds, raw take) of each script line, read off the pauses in the audio. Phrases are aligned inside these.",
+ "spans": [[0.10, 2.62], [2.73, 4.82], [4.92, 7.43], [7.55, 9.45], [9.60, 13.40], [13.49, 15.81], [15.91, 19.30], [19.40, 25.35], [25.44, 28.57], [28.66, 30.88]]}
