@@ -26,14 +26,47 @@ const Stars: React.FC<{start: number}> = ({start}) => {
   );
 };
 
+/** Square photo on a blurred copy of itself: framed card that punches in, slow push inside. */
+const PhotoCard: React.FC<{src: string; tilt: number}> = ({src, tilt}) => {
+  const frame = useCurrentFrame();
+  const {fps} = useVideoConfig();
+  const pop = spring({frame, fps, config: {damping: 13, stiffness: 200, mass: 0.6}});
+  return (
+    <AbsoluteFill>
+      <KenBurns src={src} from={[1.9, 0, 0]} to={[2.0, 0, 0]} grade="blur(28px) brightness(0.8) saturate(1.1)" />
+      <AbsoluteFill style={{background: 'rgba(6,26,58,0.25)'}} />
+      <div
+        style={{
+          position: 'absolute',
+          left: 70,
+          top: 360,
+          width: 940,
+          height: 940,
+          borderRadius: 44,
+          overflow: 'hidden',
+          border: '12px solid white',
+          boxShadow: '0 40px 80px rgba(0,0,0,0.45)',
+          transform: `scale(${0.8 + 0.2 * pop}) rotate(${tilt * pop}deg)`,
+        }}
+      >
+        <KenBurns src={src} from={[1.06, 0, 0]} to={[1.16, -2, -1]} />
+      </div>
+    </AbsoluteFill>
+  );
+};
+
 /** "وهادشي كامل باش تحصل على ماء ذو جودة عالية" — the clean-water splash shot. */
 export const Quality: React.FC = () => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const tBadge = at('quality', 21);
   const slide = spring({frame: frame - tBadge - 4, fps, config: {damping: 14, stiffness: 130}});
-  // beat 1: the real kitchen photos (all three colours), quick cuts; beat 2: the splash shot
-  const kitchens = [PRODUCTS.kitchenTeal, PRODUCTS.kitchenBlack, PRODUCTS.kitchenWhite].filter(Boolean) as string[];
+  // beat 1: the real installation photos (all three colours), quick cuts; beat 2: the splash shot
+  const kitchens = (
+    [PRODUCTS.kitchenTeal, PRODUCTS.kitchenBlack, PRODUCTS.kitchenWhite].some(Boolean)
+      ? [PRODUCTS.kitchenTeal, PRODUCTS.kitchenBlack, PRODUCTS.kitchenWhite]
+      : [PRODUCTS.underSinkTeal, PRODUCTS.underSinkBlack, PRODUCTS.underSinkWhite]
+  ).filter(Boolean) as string[];
   const cutLen = kitchens.length ? Math.max(8, Math.floor((tBadge - 2) / kitchens.length)) : 0;
   const kIdx = Math.min(kitchens.length - 1, Math.floor(frame / Math.max(1, cutLen)));
   const showKitchen = kitchens.length > 0 && frame < tBadge - 2;
@@ -47,7 +80,7 @@ export const Quality: React.FC = () => {
       )}
       {showKitchen && (
         <Sequence key={kIdx} from={kIdx * cutLen} layout="none">
-          <KenBurns src={kitchens[kIdx]} from={[1.35, 0, 6]} to={[1.2, 0, 2]} grade="saturate(1.08) brightness(1.04)" />
+          <PhotoCard src={kitchens[kIdx]} tilt={[-3, 2.5, -2][kIdx % 3]} />
           <Flash at={0} duration={5} opacity={0.5} />
         </Sequence>
       )}

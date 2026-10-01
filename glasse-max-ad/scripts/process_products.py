@@ -112,30 +112,40 @@ def upscale_rgba(rgba):
     return np.dstack([rgb, a])
 
 
-def color_of(rgba):
-    """teal, black or white unit?"""
-    px = rgba[..., :3][rgba[..., 3] > 200].astype(int)
-    lum = px.mean(1)
-    sat = px.max(1) - px.min(1)
-    if (sat > 60).mean() > 0.3:
-        return "teal"
-    return "black" if np.median(lum) < 90 else "white"
+def _largest_filled(mask):
+    """Largest connected component of `mask`, with its holes (labels, logos) filled."""
+    n, lab, st, _ = cv2.connectedComponentsWithStats(mask.astype(np.uint8), 8)
+    if n < 2:
+        return np.zeros_like(mask, bool)
+    keep = (lab == 1 + int(np.argmax(st[1:, cv2.CC_STAT_AREA]))).astype(np.uint8)
+    keep = cv2.morphologyEx(keep, cv2.MORPH_CLOSE, np.ones((9, 9), np.uint8))
+    cnts, _ = cv2.findContours(keep, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
+    filled = np.zeros_like(keep)
+    cv2.drawContours(filled, cnts, -1, 1, cv2.FILLED)
+    return filled > 0
 
 
 def split_trio(rgba):
-    """Cut the 3-unit shot at the two emptiest columns (the gaps between units)."""
-    a = rgba[..., 3] > 40
+    """The white unit (front-right, fully visible), separated by colour.
+
+    In the supplied trio photo the black unit hides the teal one's right side and is itself
+    partly hidden, so only the white unit makes a clean single cut-out.
+    """
+    rgb = rgba[..., :3].astype(int)
+    a = rgba[..., 3]
     h, w = a.shape
-    body = a[: int(h * 0.8)]  # ignore the floor reflection
-    prof = np.convolve(body.sum(0).astype(float), np.ones(15) / 15, "same")
-    c1 = int(w * 0.2) + int(np.argmin(prof[int(w * 0.2):int(w * 0.5)]))
-    c2 = int(w * 0.5) + int(np.argmin(prof[int(w * 0.5):int(w * 0.8)]))
-    out = []
-    for x0, x1 in ((0, c1), (c1, c2), (c2, w)):
+    body = np.zeros_like(a, bool)
+    body[: int(h * 0.97)] = True  # drop any floor reflection
+    sat = rgb.max(2) - rgb.min(2)
+    lum = rgb.mean(2)
+    white = (a > 40) & body & (lum > 150) & (sat < 45)
+    out = {}
+    for name, m in (("white_front", white),):
+        unit = _largest_filled(m)
+        unit = cv2.dilate(unit.astype(np.uint8), np.ones((3, 3), np.uint8)) > 0
         one = rgba.copy()
-        one[:, :x0, 3] = 0
-        one[:, x1:, 3] = 0
-        out.append(crop_rgba(one))
+        one[..., 3] = np.where(unit, a, 0)
+        out[name] = crop_rgba(one)
     return out
 
 
@@ -161,10 +171,9 @@ def cutout(roles=None, upscale=True):
         rgba = crop_rgba(np.dstack([fg, alpha]))
         if role == "trio":
             save("trio", rgba)
-            for single in split_trio(rgba):
-                col = color_of(single)
-                if f"{col}_front" not in made:
-                    save(f"{col}_front", single)
+            for name, single in split_trio(rgba).items():
+                if name not in made:
+                    save(name, single)
         else:
             save(role, rgba)
         print("cut", fname, "->", role)

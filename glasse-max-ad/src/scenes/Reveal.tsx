@@ -98,7 +98,7 @@ export const Reveal: React.FC = () => {
         style={{
           position: 'absolute',
           left: '50%',
-          top: interpolate(up, [0, 1], [700, 175]),
+          top: interpolate(up, [0, 1], [700, 165]),
           transform: `translate(-50%, -50%) scale(${interpolate(logo, [0, 1], [0.3, 1]) * interpolate(up, [0, 1], [1, 0.55])}) rotate(${(1 - logo) * -12}deg)`,
           opacity: Math.min(1, logo * 2),
         }}
@@ -134,7 +134,7 @@ export const Reveal: React.FC = () => {
           style={{
             position: 'absolute',
             left: '50%',
-            top: trio ? 360 : 300,
+            top: trio ? 420 : 320,
             transform: `translateX(-50%) translateY(${(1 - fly) * 1100}px) rotate(${(1 - fly) * -18}deg) scale(${0.7 + fly * 0.3})`,
           }}
         >

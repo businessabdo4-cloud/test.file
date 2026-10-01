@@ -1,0 +1,54 @@
+[
+  {
+    "file": "glasse-max-blanc-sous-evier.png",
+    "size": "1000x1000",
+    "mode": "RGB",
+    "transparent": false,
+    "plainBackground": false,
+    "borderMean": [
+      185,
+      185,
+      189
+    ],
+    "borderStd": 60.3
+  },
+  {
+    "file": "glasse-max-noir-sous-evier.png",
+    "size": "1000x1000",
+    "mode": "RGB",
+    "transparent": false,
+    "plainBackground": false,
+    "borderMean": [
+      178,
+      178,
+      183
+    ],
+    "borderStd": 63.2
+  },
+  {
+    "file": "glasse-max-trio.png",
+    "size": "1000x1000",
+    "mode": "RGB",
+    "transparent": false,
+    "plainBackground": true,
+    "borderMean": [
+      244,
+      245,
+      247
+    ],
+    "borderStd": 7.2
+  },
+  {
+    "file": "glasse-max-turquoise-sous-evier.png",
+    "size": "1000x1000",
+    "mode": "RGB",
+    "transparent": false,
+    "plainBackground": false,
+    "borderMean": [
+      184,
+      185,
+      189
+    ],
+    "borderStd": 63.7
+  }
+]
