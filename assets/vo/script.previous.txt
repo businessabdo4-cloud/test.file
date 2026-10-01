@@ -1,0 +1,16 @@
+# Previous script (first voice-over). To align a new take: copy this to script.txt, replace with the
+# exact words of the new recording, keep one sentence per line, split on-screen phrases with |,
+# mark highlighted words with *stars*. Then:
+#   python3 scripts/clean_vo.py
+#   python3 scripts/align_subtitles.py --audio assets/vo/voiceover-raw.wav --edits assets/vo/edits.json --final-audio assets/vo/voiceover-clean.wav
+واش باقي *كتشرب* | هاد *الما* | وانت *ماواثقش* فيه؟
+ولا باقي *كتخلص* | على *القراعي* | كل *سيمانة؟*
+جاك *الحل:* | *GLASSE* *POWER!*
+*6* ديال المراحل | ديال التصفية *بالأوسموز،*
+كيحيد *الكلور،* | *الجير* | *والشوائب،*
+وكيعطيك *أكثر* من | *300* *لتر* | ديال الما *الصافي* | *فالنهار.*
+ما *صافي* | *لأتاي* | *لقهوة* | ولصحة *ولادك،*
+وكاين في *جوج* ألوان | *الأحمر* و *الزرق*
+دابا *برومو* | غير بـ *2049* *درهم،*
+التوصيل *فابور* | الخلاص عند *الاستلام*
+العرض *محدود،* | صيفط لينا دابا *فالواتساب*

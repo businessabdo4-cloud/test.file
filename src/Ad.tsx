@@ -1,11 +1,11 @@
 import React from 'react';
-import {AbsoluteFill, Audio, Sequence, continueRender, delayRender, interpolate, staticFile} from 'remotion';
+import {AbsoluteFill, Audio, Sequence, continueRender, delayRender, interpolate, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
 import {Subtitles} from './components/Subtitles';
 import {Watermark} from './components/Watermark';
 import {SceneEnter, Wipe} from './components/Motion';
-import {AUDIO, COLORS} from './config';
+import {AUDIO, COLORS, PUNCH_IN} from './config';
 import {fontsLoaded} from './fonts';
-import {MUSIC} from './media';
+import {MUSIC, VOICEOVER} from './media';
 import {Benefits} from './scenes/Benefits';
 import {Colors} from './scenes/Colors';
 import {Cta} from './scenes/Cta';
@@ -15,7 +15,7 @@ import {Offer} from './scenes/Offer';
 import {Problem} from './scenes/Problem';
 import {Reveal} from './scenes/Reveal';
 import {Trust} from './scenes/Trust';
-import {SceneId, TOTAL_FRAMES, at, phrase, scene, sec} from './timeline';
+import {PHRASES, SceneId, TOTAL_FRAMES, at, phrase, scene, sec} from './timeline';
 
 const SCENE_VIEW: Record<SceneId, {C: React.FC; enter: 'zoom' | 'swipeLeft' | 'swipeUp' | 'none'}> = {
   hook: {C: Hook, enter: 'zoom'},
@@ -65,6 +65,32 @@ const sfxCues = (): [string, number][] => {
   ];
 };
 
+/** Quick 100% → ~106% "camera" punch-ins on key words (keeps energy up); decays back smoothly. */
+const PunchZoom: React.FC<{children: React.ReactNode}> = ({children}) => {
+  const frame = useCurrentFrame();
+  const {fps} = useVideoConfig();
+  const hits = PUNCH_IN.phrases.filter((id) => PHRASES.some((p) => p.id === id)).map((id) => sec(phrase(id).start + 0.05));
+  let z = 0;
+  for (const h of hits) {
+    const t = (frame - h) / fps;
+    if (t >= 0 && t < 0.9) z = Math.max(z, Math.min(1, t / 0.08) * Math.exp(-t / 0.35));
+  }
+  return <AbsoluteFill style={{transform: `scale(${1 + PUNCH_IN.amount * z})`}}>{children}</AbsoluteFill>;
+};
+
+// Music ducking: lower under speech, lifts in the gaps, swells on the end card.
+const speechMask = (() => {
+  const m = new Float32Array(TOTAL_FRAMES).fill(0);
+  for (const p of PHRASES) for (let f = sec(p.start - 0.05); f < sec(p.end + 0.08); f++) if (f >= 0 && f < TOTAL_FRAMES) m[f] = 1;
+  const smooth = new Float32Array(TOTAL_FRAMES);
+  for (let f = 0; f < TOTAL_FRAMES; f++) {
+    let s = 0;
+    for (let k = -4; k <= 4; k++) s += m[Math.min(TOTAL_FRAMES - 1, Math.max(0, f + k))];
+    smooth[f] = s / 9;
+  }
+  return smooth;
+})();
+
 export const Ad: React.FC = () => {
   const [handle] = React.useState(() => delayRender('fonts'));
   React.useEffect(() => {
@@ -74,11 +100,11 @@ export const Ad: React.FC = () => {
     });
   }, [handle]);
 
-  const ctaFrom = scene('cta').from;
   const speechEnd = sec(phrase(29).end);
 
   return (
     <AbsoluteFill style={{background: COLORS.navy}}>
+      <PunchZoom>
       {(Object.keys(SCENE_VIEW) as SceneId[]).map((id) => {
         const s = scene(id);
         const {C, enter} = SCENE_VIEW[id];
@@ -95,22 +121,24 @@ export const Ad: React.FC = () => {
       <Wipe at={scene('features').from - 7} color={COLORS.white} />
       <Wipe at={scene('offer').from - 7} color={COLORS.price} direction={-1} />
       <Wipe at={scene('cta').from - 7} color={COLORS.whatsapp} />
+      </PunchZoom>
 
       <Watermark />
 
       <Subtitles />
 
       {/* ── audio ── */}
-      <Audio src={staticFile('voiceover.mp3')} volume={AUDIO.voiceVolume} />
+      <Audio src={staticFile(VOICEOVER)} volume={AUDIO.voiceVolume} />
       {MUSIC && (
         <Audio
           src={staticFile(MUSIC)}
           loop
-          volume={(f) =>
-            interpolate(f, [0, 10, ctaFrom, speechEnd + 10, TOTAL_FRAMES - 20, TOTAL_FRAMES], [0, AUDIO.musicVolume, AUDIO.musicVolume, AUDIO.musicVolumeEnd, AUDIO.musicVolumeEnd, 0], {
-              extrapolateRight: 'clamp',
-            })
-          }
+          volume={(f) => {
+            const ducked = AUDIO.musicVolumeGap + (AUDIO.musicVolume - AUDIO.musicVolumeGap) * speechMask[Math.min(f, TOTAL_FRAMES - 1)];
+            const end = interpolate(f, [speechEnd, speechEnd + 10], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
+            const fade = interpolate(f, [0, 6, TOTAL_FRAMES - 20, TOTAL_FRAMES], [0, 1, 1, 0], {extrapolateRight: 'clamp'});
+            return (ducked * (1 - end) + AUDIO.musicVolumeEnd * end) * fade;
+          }}
         />
       )}
       {AUDIO.sfx &&

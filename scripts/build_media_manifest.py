@@ -32,8 +32,10 @@ def main():
     cut = lambda role: f"products/cutout/{made[role]}" if role in made else None  # noqa: E731
     photo = lambda role: f"products/png/{roles[role]}" if role in roles else None  # noqa: E731
 
+    media["voiceover"] = first("vo/voiceover-clean.wav", "voiceover.mp3")
     media["logo"] = first("logo.png", "logo.webp", "logo.svg", "logo.jpg")
-    media["music"] = first("music.mp3", "music.m4a", "music.wav")
+    choice = A / "music/choice.json"
+    media["music"] = json.loads(choice.read_text())["file"] if choice.exists() else first("music.mp3", "music.m4a", "music.wav")
     media["products"] = {
         "blueCutout": cut("blue_front"),
         "redCutout": cut("red_front"),
@@ -53,6 +55,8 @@ def main():
         "underSinkRed": photo("red_undersink"),
     }
     media["stock"] = {k: (v if v and (A / v["file"]).exists() else None) for k, v in media["stock"].items()}
+    order = ["_help", "voiceover", "logo", "music", "products", "stock"]
+    media = {k: media.get(k) for k in order}
     MEDIA.write_text(json.dumps(media, indent=2, ensure_ascii=False) + "\n")
     print(json.dumps({k: v for k, v in media.items() if k != "_help"}, indent=2, ensure_ascii=False))
 

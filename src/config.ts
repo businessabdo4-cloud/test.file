@@ -57,6 +57,12 @@ export const LOGO_WATERMARK = {
   handOffToBigLogo: true,
 };
 
+// "Camera" punch-ins (100% → 100%+amount) when these subtitle phrases start (ids in subtitles.json).
+export const PUNCH_IN = {
+  amount: 0.06,
+  phrases: [1, 8, 9, 15, 23, 25, 26, 29],
+};
+
 export const FONTS = {
   arabic: 'Cairo',
   latin: 'Montserrat',
@@ -67,6 +73,7 @@ export const AUDIO = {
   // Music: drop a file at assets/music.mp3 and run `python3 scripts/build_media_manifest.py`
   // (or set "music" in src/data/media.json).
   musicVolume: 0.1, // under the voice (music.wav is mastered at about -10.5 LUFS)
+  musicVolumeGap: 0.16, // lifts in the gaps between lines (ducking)
   musicVolumeEnd: 0.22, // swells a bit on the end card
   sfx: true, // whoosh/pop/impact effects (generated locally, assets/sfx/)
   sfxVolume: 0.35,

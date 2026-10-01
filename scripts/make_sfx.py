@@ -65,6 +65,10 @@ def main():
     ding = sum(np.sin(2 * np.pi * fr * tt) * a for fr, a in [(1318.5, 1), (2637, 0.35), (1975.5, 0.25)])
     save("ding", ding * env(n, 0.004, 6), 0.6)
 
+    n = int(0.05 * SR)
+    tt = np.arange(n) / SR
+    save("click", bandpass_noise(n, 3000, 1800) * np.exp(-tt * 160) + 0.4 * np.sin(2 * np.pi * 1800 * tt) * np.exp(-tt * 120), 0.5)
+
     n = int(0.7 * SR)
     t = np.linspace(0, 1, n)
     save("riser", bandpass_noise(n, 200, 6000) * t ** 2, 0.6)

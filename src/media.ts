@@ -10,6 +10,7 @@ export type StockClip = {
 type Products = Record<keyof typeof media.products, string | null>;
 type Stock = Record<keyof typeof media.stock, StockClip | null>;
 
+export const VOICEOVER: string = (media as {voiceover?: string | null}).voiceover ?? 'voiceover.mp3';
 export const LOGO: string | null = media.logo;
 export const MUSIC: string | null = media.music;
 export const PRODUCTS = media.products as Products;

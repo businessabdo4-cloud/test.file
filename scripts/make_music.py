@@ -7,7 +7,7 @@ The arrangement follows the video's scene timing (read from src/data/subtitles.j
   * features..trust : bright, upbeat D-major groove (I–V–vi–IV), extra hats on the price
   * CTA             : keeps going under the last line, then a final chord rings out
 
-Writes assets/music.wav (the video mixes it under the voice; volume in src/config.ts → AUDIO).
+Writes assets/music/glasse-groove-generated.wav (the video mixes it under the voice; volume in src/config.ts → AUDIO).
 Swap in any other track by replacing assets/music.* and running build_media_manifest.py.
 """
 import json
@@ -212,5 +212,7 @@ mix = np.stack([L, R], 1)[: int(DUR * SR)]
 fade = int(1.2 * SR)
 mix[-fade:] *= np.linspace(1, 0, fade)[:, None] ** 2
 mix = np.tanh(mix / (np.abs(mix).max() + 1e-9) * 1.4) * 0.89
-sf.write(ROOT / "assets/music.wav", mix, SR, subtype="PCM_16")
-print(f"wrote assets/music.wav ({DUR:.2f}s)  drop at {T_REVEAL:.2f}s, groove ends {end_groove:.2f}s")
+OUT = ROOT / "assets/music/glasse-groove-generated.wav"
+OUT.parent.mkdir(parents=True, exist_ok=True)
+sf.write(OUT, mix, SR, subtype="PCM_16")
+print(f"wrote {OUT.relative_to(ROOT)} ({DUR:.2f}s)  drop at {T_REVEAL:.2f}s, groove ends {end_groove:.2f}s")

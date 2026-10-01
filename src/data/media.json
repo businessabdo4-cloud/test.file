@@ -1,7 +1,8 @@
 {
   "_help": "Paths are relative to ./assets. Set a value to null to use the motion-graphics fallback. Regenerate with: python3 scripts/build_media_manifest.py",
-  "logo": null,
-  "music": "music.wav",
+  "voiceover": "voiceover.mp3",
+  "logo": "logo.png",
+  "music": "music/glasse-groove-generated.wav",
   "products": {
     "blueCutout": "products/cutout/blue_front@2x.png",
     "redCutout": "products/cutout/red_front@2x.png",

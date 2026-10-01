@@ -25,6 +25,7 @@ import numpy as np
 
 ROOT = Path(__file__).resolve().parent.parent
 
+# Built-in copy of the first script (used when assets/vo/script.txt does not exist).
 # (script line, phrase text shown on screen, highlighted words, approx. syllables)
 SCRIPT = [
     (1, "واش باقي كتشرب", ["كتشرب"], 5),
@@ -57,6 +58,45 @@ SCRIPT = [
     (11, "العرض محدود،", ["محدود،"], 4),
     (11, "صيفط لينا دابا فالواتساب", ["فالواتساب"], 9),
 ]
+
+SCRIPT_FILE = ROOT / "assets/vo/script.txt"
+NUM_SYL = {"6": 2, "300": 4, "2049": 10}  # how numbers are spoken (Darija)
+
+
+def estimate_syllables(text):
+    """Rough syllable count: Arabic ~ half the letters, Latin = vowel groups, numbers from NUM_SYL."""
+    import re
+    n = 0
+    for w in text.split():
+        w = w.strip("،,.!?؟:*")
+        if not w:
+            continue
+        if w.isdigit():
+            n += NUM_SYL.get(w, round(len(w) * 2.5))
+        elif re.search(r"[\u0600-\u06FF]", w):
+            letters = len(re.sub(r"[^\u0621-\u064A]", "", w))
+            n += max(1, round(letters * 0.55))
+        else:
+            n += max(1, len(re.findall(r"[aeiouy]+", w.lower())))
+    return n
+
+
+def load_script():
+    """assets/vo/script.txt: one sentence per line, '|' splits on-screen phrases, *word* = highlight."""
+    if not SCRIPT_FILE.exists():
+        return SCRIPT
+    out = []
+    lines = [l.strip() for l in SCRIPT_FILE.read_text(encoding="utf-8").splitlines() if l.strip() and not l.startswith("#")]
+    for li, line in enumerate(lines, 1):
+        for chunk in line.split("|"):
+            chunk = " ".join(chunk.split())
+            hl = [w.strip("*") for w in chunk.split() if w.startswith("*") and w.endswith("*")]
+            text = chunk.replace("*", "")
+            out.append((li, text, hl, estimate_syllables(text)))
+    return out
+
+
+SCRIPT_ACTIVE = SCRIPT
 
 # Per-word accent colors (anything not listed uses the default accent).
 HIGHLIGHT_COLORS = {"الأحمر": "#FF3B3B", "الزرق": "#1FB8CC", "فالواتساب": "#25D366"}
@@ -151,17 +191,17 @@ def align(s0, s1, dips):
     """Two passes: script lines onto long pauses, then phrases inside each line."""
     cuts = sorted(dips)
     major = [(a, b) for a, b in cuts if b - a >= 0.15]
-    syl = [s[3] for s in SCRIPT]
+    syl = [s[3] for s in SCRIPT_ACTIVE]
     t_syl = ((s1 - s0) - sum(b - a for a, b in major)) / sum(syl)
 
-    lines = sorted(set(s[0] for s in SCRIPT))
-    line_syl = [sum(s[3] for s in SCRIPT if s[0] == ln) for ln in lines]
+    lines = sorted(set(s[0] for s in SCRIPT_ACTIVE))
+    line_syl = [sum(s[3] for s in SCRIPT_ACTIVE if s[0] == ln) for ln in lines]
     # script lines contain commas, so a pause inside a line is only mildly penalised
     line_spans = _dp(line_syl, s0, s1, major, major, t_syl, pause_bonus=1.0, inside_penalty=0.5)
 
     out = []
     for ln, (a, b) in zip(lines, line_spans):
-        items = [s[3] for s in SCRIPT if s[0] == ln]
+        items = [s[3] for s in SCRIPT_ACTIVE if s[0] == ln]
         inner = [c for c in cuts if c[0] > a and c[1] < b]
         seg_major = [c for c in major if c[0] > a and c[1] < b]
         t_line = ((b - a) - sum(q - p for p, q in seg_major)) / sum(items)
@@ -174,7 +214,11 @@ def main():
     ap.add_argument("--audio", default=str(ROOT / "assets/voiceover.mp3"))
     ap.add_argument("--whisper", action="store_true", help="use Whisper word timestamps as cut points")
     ap.add_argument("--out", default=str(ROOT / "src/data/subtitles.json"))
+    ap.add_argument("--edits", help="edits.json from clean_vo.py: align on the raw take, then map times onto the cleaned file")
+    ap.add_argument("--final-audio", help="the audio the video actually plays (for duration); default = --audio")
     args = ap.parse_args()
+    global SCRIPT_ACTIVE
+    SCRIPT_ACTIVE = load_script()
 
     x, sr = load_audio(args.audio)
     s0, s1, dips = energy_dips(x, sr)
@@ -187,8 +231,23 @@ def main():
             print(f"Whisper unavailable ({e}); using energy dips only")
 
     times = align(s0, s1, dips)
+    if args.edits:
+        cuts = json.loads(Path(args.edits).read_text())["cuts"]
+
+        def remap(t):
+            shift = 0.0
+            for c in cuts:
+                if t >= c["to"]:
+                    shift += c["to"] - c["from"]
+                elif t > c["from"]:
+                    return c["from"] - shift
+            return t - shift
+
+        times = [(remap(a), remap(b)) for a, b in times]
+        s0, s1 = remap(s0), remap(s1)
+        x, sr = load_audio(args.final_audio or args.audio)
     phrases = []
-    for idx, ((line, text, hl, _), (a, b)) in enumerate(zip(SCRIPT, times)):
+    for idx, ((line, text, hl, _), (a, b)) in enumerate(zip(SCRIPT_ACTIVE, times)):
         phrases.append({
             "id": idx + 1,
             "line": line,

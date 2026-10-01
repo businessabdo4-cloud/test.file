@@ -1,0 +1,49 @@
+{
+  "source": "voiceover-raw.wav",
+  "originalSeconds": 21.131,
+  "cleanSeconds": 19.096,
+  "removedSeconds": 2.035,
+  "maxPause": 0.28,
+  "cuts": [
+    {
+      "from": 0.0,
+      "to": 0.19,
+      "why": "leading silence"
+    },
+    {
+      "from": 3.618,
+      "to": 3.942,
+      "why": "pause 0.58s -> 0.26s"
+    },
+    {
+      "from": 7.593,
+      "to": 7.987,
+      "why": "pause 0.66s -> 0.27s"
+    },
+    {
+      "from": 11.475,
+      "to": 11.755,
+      "why": "pause 0.53s -> 0.25s"
+    },
+    {
+      "from": 13.659,
+      "to": 14.001,
+      "why": "pause 0.60s -> 0.26s"
+    },
+    {
+      "from": 18.331,
+      "to": 18.549,
+      "why": "pause 0.46s -> 0.24s"
+    },
+    {
+      "from": 19.433,
+      "to": 19.537,
+      "why": "pause 0.33s -> 0.23s"
+    },
+    {
+      "from": 21.02,
+      "to": 21.131,
+      "why": "trailing silence"
+    }
+  ]
+}
