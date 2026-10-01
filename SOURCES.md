@@ -2,34 +2,23 @@
 
 ## Product images (`assets/products/`)
 
-**No product images have been downloaded yet.** This session's network policy blocks
-every image source the brief allows. The connection was refused (`403` on CONNECT) for:
+Official Apple product images **supplied by City Store** on 2026-10-01 (apple.com is blocked from
+this session, so they couldn't be downloaded here). Originals are kept untouched in
+`assets/products/src/`. Backgrounds were removed by `scripts/cutout_products.py`, a border
+flood-fill matte on the flat studio backgrounds; rembg's model download is blocked here.
 
-- `www.apple.com` (Newsroom + product pages), `images.apple.com`, `nr.apple.com`,
-  `store.storeimages.cdn-apple.com`
-- brand sites tried: `www.samsung.com`, `news.samsung.com`, `www.sony.com`
+| File | Shows | Source URL |
+|---|---|---|
+| `src/apple_iphone18pro_lineup.png` → `iphone-18-pro_lineup.png` | iPhone 18 Pro, back, Black / Silver / Glacier / Burgundy | _supplied by City Store, add URL_ |
+| `src/apple_iphone18promax_burgundy_pair.png` → `iphone-18-pro-max_burgundy_pair.png` | iPhone 18 Pro Max, Burgundy, back + front | _supplied by City Store, add URL_ |
 
-Per the brief, no substitute images (Google Images, fan renders, leaks) were used.
-Until official images are added, the reel uses the animated brand line-icons for the
-ecosystem categories and a labelled placeholder slot for the iPhones.
+Silver, Glacier and Black Pro Max pairs were shared in chat but not received as files. Save them as
+`assets/products/src/apple_iphone18promax_<silver|glacier|black>_pair.png` and run
+`python3 scripts/cutout_products.py && npm run build`; the hero then cycles through every colour.
 
-### To fill them in
-Either allow these hosts in the environment's network settings, or download them yourself and drop them
-into `assets/products/` with these names (transparent PNG preferred; backgrounds are removed
-with `rembg` otherwise):
-
-| File | Source to use |
-|---|---|
-| `iphone-18-pro_<colour>_front.png` / `_back.png` | Apple Newsroom: "Apple debuts iPhone 18 Pro and iPhone 18 Pro Max" (Download images) |
-| `iphone-18-pro-max_<colour>_front.png` / `_back.png` | same release |
-| `<colour>` = `black`, `silver`, `glacier`, `burgundy` | |
-| `laptop.png`, `smartwatch.png`, `headphones.png`, `console.png`, `camera.png` | each brand's own newsroom/site |
-
-Then add each URL to the table below.
-
-| Image | URL |
-|---|---|
-| _(none yet)_ | |
+Product categories (laptops, watches, headphones, consoles, cameras) still use the animated
+brand line-icons. Drop `laptop.png`, `smartwatch.png`, `headphones.png`, `console.png` and `camera.png`
+(official brand images) into `assets/products/` to morph the icons into photos.
 
 ## Specs verified on screen
 Checked against apple.com via search-engine results. `www.apple.com` itself is blocked from this

@@ -58,8 +58,10 @@ ev["hero.drop"] = 4.0
 ev["hero.swatches"] = q(word_t(1, "design"))
 ev["hero.camera"] = q(word_t(1, "photo"))
 ev["hero.chip"] = q(word_t(1, "performances"))
-ev["hero.display"] = q(word_t(1, "hors"))
-ev["hero.colourCycle"] = [4.5, 5.5, 6.5, 7.5, 8.5]
+ev["hero.display"] = 6.0  # held long enough to read before the lineup lands
+ev["hero.colourCycle"] = [4.5, 5.5, 6.5]  # Pro Max pair colour changes (one per bar)
+ev["hero.lineup"] = 7.0  # iPhone 18 Pro four-colour lineup
+ev["hero.spot"] = [7.5, 8.0, 8.5, 9.0]  # spotlight Black, Silver, Glacier, Burgundy
 # ECOSYSTEM - one card per spoken category, on the beat
 cards, prev = [], 9.5
 for needle in ["laptops", "montres", "casques", "consoles", "caméras"]:
@@ -97,7 +99,9 @@ sfx = [("impact", 0.0, -3), ("riser_short", ev["hook.title"] - 0.25, -14), ("hit
 for name, _, end in SCENES[:-1]:
     sfx.append(("whoosh", end - 0.3, -9))
 sfx += [("impact", ev["hero.drop"], -8), ("pop", ev["hero.swatches"], -14), ("shutter", ev["hero.camera"], -10),
-        ("pop", ev["hero.chip"], -12), ("pop", ev["hero.display"], -12), ("blip", ev["hero.camera"] - 0.25, -14)]
+        ("pop", ev["hero.chip"], -12), ("pop", ev["hero.display"], -12), ("blip", ev["hero.camera"] - 0.25, -14),
+        ("hit_small", ev["hero.lineup"], -9), ("shine", ev["hero.lineup"] + 0.1, -14)]
+sfx += [("pop", t, -13) for t in ev["hero.spot"]]
 sfx += [("pop_big", t, -10) for t in ev["eco.cards"]] + [("shine", ev["eco.recap"], -14)]
 sfx += [("hit", ev["trust.badge"], -6), ("ding", ev["trust.check"] + 0.25, -10), ("blip_up", ev["trust.thumb"], -11),
         ("shine", ev["trust.sparkle"], -13)]

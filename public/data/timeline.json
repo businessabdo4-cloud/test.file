@@ -49,13 +49,18 @@
   "hero.swatches": 128,
   "hero.camera": 135,
   "hero.chip": 165,
-  "hero.display": 195,
+  "hero.display": 180,
   "hero.colourCycle": [
    135,
    165,
-   195,
+   195
+  ],
+  "hero.lineup": 210,
+  "hero.spot": [
    225,
-   255
+   240,
+   255,
+   270
   ],
   "eco.cards": [
    300,
@@ -97,13 +102,18 @@
   "hero.swatches": 4.25,
   "hero.camera": 4.5,
   "hero.chip": 5.5,
-  "hero.display": 6.5,
+  "hero.display": 6.0,
   "hero.colourCycle": [
    4.5,
    5.5,
-   6.5,
+   6.5
+  ],
+  "hero.lineup": 7.0,
+  "hero.spot": [
    7.5,
-   8.5
+   8.0,
+   8.5,
+   9.0
   ],
   "eco.cards": [
    10.0,
@@ -205,8 +215,38 @@
   },
   {
    "name": "pop",
-   "t": 6.5,
+   "t": 6.0,
    "gainDb": -12
+  },
+  {
+   "name": "hit_small",
+   "t": 7.0,
+   "gainDb": -9
+  },
+  {
+   "name": "shine",
+   "t": 7.1,
+   "gainDb": -14
+  },
+  {
+   "name": "pop",
+   "t": 7.5,
+   "gainDb": -13
+  },
+  {
+   "name": "pop",
+   "t": 8.0,
+   "gainDb": -13
+  },
+  {
+   "name": "pop",
+   "t": 8.5,
+   "gainDb": -13
+  },
+  {
+   "name": "pop",
+   "t": 9.0,
+   "gainDb": -13
   },
   {
    "name": "whoosh",
