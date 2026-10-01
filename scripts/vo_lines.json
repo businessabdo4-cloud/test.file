@@ -1,0 +1,8 @@
+[
+  {"id": "line_01", "slot": [0.0, 3.0],  "subtitle": "Les iPhone 18 Pro et Pro Max sont chez City Store !", "tts": "Les aïe-phone dix-huit Pro et Pro Max sont chez City Store !"},
+  {"id": "line_02", "slot": [3.0, 9.0],  "subtitle": "Nouveau design, photo bluffante, performances hors normes.", "tts": "Nouveau design, photo bluffante, performances hors normes."},
+  {"id": "line_03", "slot": [9.0, 15.0], "subtitle": "Et aussi : laptops, montres, casques, consoles et caméras.", "tts": "Et aussi : laptops, montres, casques, consoles et caméras."},
+  {"id": "line_04", "slot": [15.0, 20.0],"subtitle": "Tout est 100 % original !", "tts": "Tout est cent pour cent original !"},
+  {"id": "line_05", "slot": [20.0, 26.0],"subtitle": "Commandez sur citystore.ma ou écrivez-nous sur Instagram et Facebook.", "tts": "Commandez sur City Store point M A, ou écrivez-nous sur Instagram et Facebook."},
+  {"id": "line_06", "slot": [26.0, 30.0],"subtitle": "City Store… la tech originale.", "tts": "City Store... la tech originale."}
+]

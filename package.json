@@ -1,0 +1,32 @@
+{
+  "name": "citystore-reel",
+  "version": "1.0.0",
+  "private": true,
+  "description": "City Store (citystore.ma) vertical promo reel - Remotion",
+  "scripts": {
+    "studio": "remotion studio",
+    "colors": "python3 scripts/sample_colors.py",
+    "vo": "python3 scripts/process_vo.py",
+    "sfx": "python3 scripts/make_sfx.py",
+    "srt": "node scripts/make_srt.mjs",
+    "render:9x16": "remotion render Reel9x16 out/reel_9x16.mp4 --codec=h264 --crf=18",
+    "render:1x1": "remotion render Reel1x1 out/reel_1x1.mp4 --codec=h264 --crf=18",
+    "render:cover": "remotion still Cover out/cover_1080x1920.png",
+    "verify": "bash scripts/verify.sh",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.532",
+    "@remotion/fonts": "^4.0.532",
+    "@remotion/google-fonts": "4.0.532",
+    "@remotion/media-utils": "4.0.532",
+    "@remotion/paths": "4.0.532",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "remotion": "4.0.532"
+  },
+  "devDependencies": {
+    "@types/react": "19.1.8",
+    "typescript": "5.8.3"
+  }
+}
