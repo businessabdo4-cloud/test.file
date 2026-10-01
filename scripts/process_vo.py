@@ -34,7 +34,7 @@ TMP = ROOT / ".cache" / "vo"
 
 SR = 48000
 LEAD_IN = 0.12      # s of breathing room after the slot starts
-TAIL_GAP = 0.15     # s that must remain before the next slot
+TAIL_GAP = 0.10     # s that must remain before the next slot
 MAX_PAUSE = 0.18    # s, inner pauses are shortened to this
 MAX_SPEED = 1.10
 TARGET_LUFS = -14.0
@@ -109,6 +109,18 @@ def stretch(x, speed, name):
     return y
 
 
+SPOKEN = {"18": "dix-huit", "100": "cent pour cent", "%": "", "citystore.ma": "city store point em a",
+          "iphone": "aille faune", "city": "si ti", "store": "store", "laptops": "lap tops"}
+
+
+def syllables(word):
+    """Rough French syllable count of the spoken form (vowel groups), min 1."""
+    import re
+    spoken = " ".join(SPOKEN.get(t, t) for t in re.split(r"\s+", word.lower().strip(".,!?:…")))
+    spoken = re.sub(r"e\b", "", spoken)  # mute final e
+    return max(1, len(re.findall(r"[aeiouyéèêàâîïôûù]+", spoken)))
+
+
 def word_timings(x, text):
     """Distribute words across voiced regions proportional to character count.
     No forced aligner is available offline, so this is an estimate that is
@@ -124,7 +136,7 @@ def word_timings(x, text):
     t_voiced = np.flatnonzero(voiced) * n / SR
     if len(t_voiced) == 0:
         return []
-    weights = np.array([max(1, len(w.strip(".,!?:…"))) for w in words], dtype=float)
+    weights = np.array([syllables(w) for w in words], dtype=float)
     cum = np.concatenate([[0], np.cumsum(weights)]) / weights.sum()
     idx = (cum * (len(t_voiced) - 1)).astype(int)
     return [
@@ -153,7 +165,8 @@ def main():
         raw = load_mono(src)
         raw_dur = len(raw) / SR
         slot_start, slot_end = line["slot"]
-        budget = (slot_end - slot_start) - LEAD_IN - (TAIL_GAP if i < len(LINES) - 1 else 0.05)
+        lead = line.get("lead", LEAD_IN)
+        budget = (slot_end - slot_start) - lead - (TAIL_GAP if i < len(LINES) - 1 else 0.05)
         x = tighten(raw, compress_pauses=False)       # a. edges only
         if len(x) / SR > budget:
             x = tighten(raw, compress_pauses=True)    # a. + inner pauses
@@ -190,7 +203,7 @@ def main():
             "subtitle": line["subtitle"],
             "source": kind,
             "sourceFile": str(src.relative_to(ROOT)),
-            "start": round(slot_start + LEAD_IN, 3),
+            "start": round(slot_start + lead, 3),
             "duration": round(dur, 3),
             "slot": line["slot"],
             "speed": round(speed, 3),

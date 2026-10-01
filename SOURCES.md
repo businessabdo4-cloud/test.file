@@ -52,5 +52,10 @@ The swatch hex values in `src/config.ts` are visual approximations, not official
   build was taken from the npm mirror package `rhubarb-lip-sync@0.0.1-alfa-3`
   (binary sha256 `03e82c9c76c4e691a058f38a9cf7e75331e2f3c31a9c1fab90c00944b3ef7dc2`).
   Install it with `scripts/setup_rhubarb.sh`.
-- Mascot (Citybot), icons, SFX: original, created for this project.
-- Music: none supplied. `assets/music/` is empty (placeholder slot).
+- Voice-over: supplied by City Store (single take `assets/vo/vo_full_take.wav`, split into
+  `line_01..06.wav` by `scripts/split_vo.py`).
+- Mascot (Citybot), icons: original, created for this project.
+- Music: original track synthesised in code by `scripts/make_music.py` (120 BPM, royalty-free).
+  To use a licensed track instead, drop it in `assets/music/`, set `MUSIC.bpm` in `src/config.ts`
+  and `BPM` in `scripts/build_timeline.py`, then run `npm run audio`.
+- SFX: original, synthesised by `scripts/make_sfx.py`.

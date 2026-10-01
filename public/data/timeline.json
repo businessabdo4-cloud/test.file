@@ -1,0 +1,1484 @@
+{
+ "fps": 30,
+ "bpm": 120,
+ "beatFrames": 15.0,
+ "totalFrames": 900,
+ "holdFrom": 870,
+ "scenes": [
+  {
+   "id": "hook",
+   "from": 0,
+   "to": 105
+  },
+  {
+   "id": "hero",
+   "from": 105,
+   "to": 285
+  },
+  {
+   "id": "ecosystem",
+   "from": 285,
+   "to": 465
+  },
+  {
+   "id": "trust",
+   "from": 465,
+   "to": 600
+  },
+  {
+   "id": "cta",
+   "from": 600,
+   "to": 780
+  },
+  {
+   "id": "end",
+   "from": 780,
+   "to": 900
+  }
+ ],
+ "events": {
+  "hook.botPop": 0,
+  "hook.botLand": 12,
+  "hook.title": 8,
+  "hook.sweep": 22,
+  "hook.proMax": 52,
+  "hook.stamp": 75,
+  "hook.hop": 82,
+  "hero.phones": 105,
+  "hero.drop": 120,
+  "hero.swatches": 128,
+  "hero.camera": 135,
+  "hero.chip": 165,
+  "hero.display": 195,
+  "hero.colourCycle": [
+   135,
+   165,
+   195,
+   225,
+   255
+  ],
+  "eco.cards": [
+   300,
+   315,
+   330,
+   345,
+   375
+  ],
+  "eco.recap": 405,
+  "trust.badge": 480,
+  "trust.check": 488,
+  "trust.original": 495,
+  "trust.thumb": 495,
+  "trust.sparkle": 510,
+  "cta.phone": 600,
+  "cta.url": 622,
+  "cta.wave": 660,
+  "cta.instagram": 690,
+  "cta.facebook": 712,
+  "cta.tap": 735,
+  "end.city": 780,
+  "end.typeStart": 795,
+  "end.typeStep": 0.125,
+  "end.icons": 825,
+  "end.iconStep": 0.125,
+  "end.wink": 855,
+  "end.hold": 870
+ },
+ "eventsSec": {
+  "hook.botPop": 0.0,
+  "hook.botLand": 0.4,
+  "hook.title": 0.25,
+  "hook.sweep": 0.75,
+  "hook.proMax": 1.75,
+  "hook.stamp": 2.5,
+  "hook.hop": 2.75,
+  "hero.phones": 3.5,
+  "hero.drop": 4.0,
+  "hero.swatches": 4.25,
+  "hero.camera": 4.5,
+  "hero.chip": 5.5,
+  "hero.display": 6.5,
+  "hero.colourCycle": [
+   4.5,
+   5.5,
+   6.5,
+   7.5,
+   8.5
+  ],
+  "eco.cards": [
+   10.0,
+   10.5,
+   11.0,
+   11.5,
+   12.5
+  ],
+  "eco.recap": 13.5,
+  "trust.badge": 16.0,
+  "trust.check": 16.25,
+  "trust.original": 16.5,
+  "trust.thumb": 16.5,
+  "trust.sparkle": 17.0,
+  "cta.phone": 20.0,
+  "cta.url": 20.75,
+  "cta.wave": 22.0,
+  "cta.instagram": 23.0,
+  "cta.facebook": 23.75,
+  "cta.tap": 24.5,
+  "end.city": 26.0,
+  "end.typeStart": 26.5,
+  "end.typeStep": 0.125,
+  "end.icons": 27.5,
+  "end.iconStep": 0.125,
+  "end.wink": 28.5,
+  "end.hold": 29.0
+ },
+ "sfx": [
+  {
+   "name": "impact",
+   "t": 0.0,
+   "gainDb": -3
+  },
+  {
+   "name": "riser_short",
+   "t": 0.0,
+   "gainDb": -14
+  },
+  {
+   "name": "hit",
+   "t": 0.25,
+   "gainDb": -6
+  },
+  {
+   "name": "blip_jump",
+   "t": 0.4,
+   "gainDb": -12
+  },
+  {
+   "name": "shine",
+   "t": 0.75,
+   "gainDb": -14
+  },
+  {
+   "name": "hit_small",
+   "t": 1.75,
+   "gainDb": -10
+  },
+  {
+   "name": "stamp",
+   "t": 2.5,
+   "gainDb": -8
+  },
+  {
+   "name": "blip_jump",
+   "t": 2.75,
+   "gainDb": -12
+  },
+  {
+   "name": "whoosh",
+   "t": 3.2,
+   "gainDb": -9
+  },
+  {
+   "name": "impact",
+   "t": 4.0,
+   "gainDb": -8
+  },
+  {
+   "name": "pop",
+   "t": 4.25,
+   "gainDb": -14
+  },
+  {
+   "name": "blip",
+   "t": 4.25,
+   "gainDb": -14
+  },
+  {
+   "name": "shutter",
+   "t": 4.5,
+   "gainDb": -10
+  },
+  {
+   "name": "pop",
+   "t": 5.5,
+   "gainDb": -12
+  },
+  {
+   "name": "pop",
+   "t": 6.5,
+   "gainDb": -12
+  },
+  {
+   "name": "whoosh",
+   "t": 9.2,
+   "gainDb": -9
+  },
+  {
+   "name": "pop_big",
+   "t": 10.0,
+   "gainDb": -10
+  },
+  {
+   "name": "pop_big",
+   "t": 10.5,
+   "gainDb": -10
+  },
+  {
+   "name": "pop_big",
+   "t": 11.0,
+   "gainDb": -10
+  },
+  {
+   "name": "pop_big",
+   "t": 11.5,
+   "gainDb": -10
+  },
+  {
+   "name": "pop_big",
+   "t": 12.5,
+   "gainDb": -10
+  },
+  {
+   "name": "shine",
+   "t": 13.5,
+   "gainDb": -14
+  },
+  {
+   "name": "whoosh",
+   "t": 15.2,
+   "gainDb": -9
+  },
+  {
+   "name": "hit",
+   "t": 16.0,
+   "gainDb": -6
+  },
+  {
+   "name": "ding",
+   "t": 16.5,
+   "gainDb": -10
+  },
+  {
+   "name": "blip_up",
+   "t": 16.5,
+   "gainDb": -11
+  },
+  {
+   "name": "shine",
+   "t": 17.0,
+   "gainDb": -13
+  },
+  {
+   "name": "whoosh",
+   "t": 19.7,
+   "gainDb": -9
+  },
+  {
+   "name": "pop",
+   "t": 20.75,
+   "gainDb": -12
+  },
+  {
+   "name": "blip",
+   "t": 22.0,
+   "gainDb": -12
+  },
+  {
+   "name": "pop_big",
+   "t": 23.0,
+   "gainDb": -11
+  },
+  {
+   "name": "pop_big",
+   "t": 23.75,
+   "gainDb": -11
+  },
+  {
+   "name": "tap",
+   "t": 24.5,
+   "gainDb": -8
+  },
+  {
+   "name": "whoosh",
+   "t": 25.7,
+   "gainDb": -9
+  },
+  {
+   "name": "impact",
+   "t": 26.0,
+   "gainDb": -5
+  },
+  {
+   "name": "tick",
+   "t": 26.5,
+   "gainDb": -12
+  },
+  {
+   "name": "tick",
+   "t": 26.625,
+   "gainDb": -12
+  },
+  {
+   "name": "tick",
+   "t": 26.75,
+   "gainDb": -12
+  },
+  {
+   "name": "tick",
+   "t": 26.875,
+   "gainDb": -12
+  },
+  {
+   "name": "tick",
+   "t": 27.0,
+   "gainDb": -12
+  },
+  {
+   "name": "tick",
+   "t": 27.125,
+   "gainDb": -12
+  },
+  {
+   "name": "tick",
+   "t": 27.25,
+   "gainDb": -12
+  },
+  {
+   "name": "tick",
+   "t": 27.375,
+   "gainDb": -12
+  },
+  {
+   "name": "pop",
+   "t": 27.5,
+   "gainDb": -15
+  },
+  {
+   "name": "pop",
+   "t": 27.625,
+   "gainDb": -15
+  },
+  {
+   "name": "pop",
+   "t": 27.75,
+   "gainDb": -15
+  },
+  {
+   "name": "pop",
+   "t": 27.875,
+   "gainDb": -15
+  },
+  {
+   "name": "pop",
+   "t": 28.0,
+   "gainDb": -15
+  },
+  {
+   "name": "pop",
+   "t": 28.125,
+   "gainDb": -15
+  },
+  {
+   "name": "blip_wink",
+   "t": 28.5,
+   "gainDb": -11
+  }
+ ],
+ "subtitles": [
+  {
+   "text": "Les iPhone 18 Pro et Pro Max",
+   "start": 0.1,
+   "end": 2.14,
+   "words": [
+    {
+     "word": "Les",
+     "start": 0.1,
+     "frame": 3
+    },
+    {
+     "word": "iPhone",
+     "start": 0.32,
+     "frame": 10
+    },
+    {
+     "word": "18",
+     "start": 0.72,
+     "frame": 22
+    },
+    {
+     "word": "Pro",
+     "start": 1.2,
+     "frame": 36
+    },
+    {
+     "word": "et",
+     "start": 1.44,
+     "frame": 43
+    },
+    {
+     "word": "Pro",
+     "start": 1.72,
+     "frame": 52
+    },
+    {
+     "word": "Max",
+     "start": 1.9,
+     "frame": 57
+    }
+   ],
+   "line": 0,
+   "from": 3,
+   "to": 64
+  },
+  {
+   "text": "sont chez City Store !",
+   "start": 2.14,
+   "end": 3.45,
+   "words": [
+    {
+     "word": "sont",
+     "start": 2.14,
+     "frame": 64
+    },
+    {
+     "word": "chez",
+     "start": 2.44,
+     "frame": 73
+    },
+    {
+     "word": "City",
+     "start": 2.64,
+     "frame": 79
+    },
+    {
+     "word": "Store !",
+     "start": 3.12,
+     "frame": 94
+    }
+   ],
+   "line": 0,
+   "from": 64,
+   "to": 104
+  },
+  {
+   "text": "Nouveau design,",
+   "start": 3.79,
+   "end": 4.53,
+   "words": [
+    {
+     "word": "Nouveau",
+     "start": 3.79,
+     "frame": 114
+    },
+    {
+     "word": "design,",
+     "start": 4.15,
+     "frame": 125
+    }
+   ],
+   "line": 1,
+   "from": 114,
+   "to": 136
+  },
+  {
+   "text": "photo bluffante,",
+   "start": 4.53,
+   "end": 5.47,
+   "words": [
+    {
+     "word": "photo",
+     "start": 4.53,
+     "frame": 136
+    },
+    {
+     "word": "bluffante,",
+     "start": 5.09,
+     "frame": 153
+    }
+   ],
+   "line": 1,
+   "from": 136,
+   "to": 164
+  },
+  {
+   "text": "performances hors normes.",
+   "start": 5.47,
+   "end": 7.57,
+   "words": [
+    {
+     "word": "performances",
+     "start": 5.47,
+     "frame": 164
+    },
+    {
+     "word": "hors",
+     "start": 6.45,
+     "frame": 194
+    },
+    {
+     "word": "normes.",
+     "start": 6.79,
+     "frame": 204
+    }
+   ],
+   "line": 1,
+   "from": 164,
+   "to": 227
+  },
+  {
+   "text": "Et aussi : laptops, montres,",
+   "start": 9.66,
+   "end": 10.92,
+   "words": [
+    {
+     "word": "Et",
+     "start": 9.66,
+     "frame": 290
+    },
+    {
+     "word": "aussi :",
+     "start": 9.8,
+     "frame": 294
+    },
+    {
+     "word": "laptops,",
+     "start": 10.1,
+     "frame": 303
+    },
+    {
+     "word": "montres,",
+     "start": 10.56,
+     "frame": 317
+    }
+   ],
+   "line": 2,
+   "from": 290,
+   "to": 328
+  },
+  {
+   "text": "casques, consoles et caméras.",
+   "start": 10.92,
+   "end": 13.28,
+   "words": [
+    {
+     "word": "casques,",
+     "start": 10.92,
+     "frame": 328
+    },
+    {
+     "word": "consoles",
+     "start": 11.48,
+     "frame": 344
+    },
+    {
+     "word": "et",
+     "start": 12.12,
+     "frame": 364
+    },
+    {
+     "word": "caméras.",
+     "start": 12.36,
+     "frame": 371
+    }
+   ],
+   "line": 2,
+   "from": 328,
+   "to": 398
+  },
+  {
+   "text": "Tout est 100 % original !",
+   "start": 15.74,
+   "end": 17.78,
+   "words": [
+    {
+     "word": "Tout",
+     "start": 15.74,
+     "frame": 472
+    },
+    {
+     "word": "est",
+     "start": 15.94,
+     "frame": 478
+    },
+    {
+     "word": "100 %",
+     "start": 16.1,
+     "frame": 483
+    },
+    {
+     "word": "original !",
+     "start": 16.6,
+     "frame": 498
+    }
+   ],
+   "line": 3,
+   "from": 472,
+   "to": 533
+  },
+  {
+   "text": "Commandez sur citystore.ma",
+   "start": 20.19,
+   "end": 21.83,
+   "words": [
+    {
+     "word": "Commandez",
+     "start": 20.19,
+     "frame": 606
+    },
+    {
+     "word": "sur",
+     "start": 20.65,
+     "frame": 620
+    },
+    {
+     "word": "citystore.ma",
+     "start": 20.81,
+     "frame": 624
+    }
+   ],
+   "line": 4,
+   "from": 606,
+   "to": 655
+  },
+  {
+   "text": "ou écrivez-nous",
+   "start": 21.83,
+   "end": 22.75,
+   "words": [
+    {
+     "word": "ou",
+     "start": 21.83,
+     "frame": 655
+    },
+    {
+     "word": "écrivez-nous",
+     "start": 22.11,
+     "frame": 663
+    }
+   ],
+   "line": 4,
+   "from": 655,
+   "to": 682
+  },
+  {
+   "text": "sur Instagram et Facebook.",
+   "start": 22.75,
+   "end": 24.67,
+   "words": [
+    {
+     "word": "sur",
+     "start": 22.75,
+     "frame": 682
+    },
+    {
+     "word": "Instagram",
+     "start": 22.97,
+     "frame": 689
+    },
+    {
+     "word": "et",
+     "start": 23.47,
+     "frame": 704
+    },
+    {
+     "word": "Facebook.",
+     "start": 23.69,
+     "frame": 711
+    }
+   ],
+   "line": 4,
+   "from": 682,
+   "to": 740
+  },
+  {
+   "text": "City Store…",
+   "start": 26.39,
+   "end": 26.99,
+   "words": [
+    {
+     "word": "City",
+     "start": 26.39,
+     "frame": 792
+    },
+    {
+     "word": "Store…",
+     "start": 26.81,
+     "frame": 804
+    }
+   ],
+   "line": 5,
+   "from": 792,
+   "to": 810
+  },
+  {
+   "text": "la tech originale.",
+   "start": 26.99,
+   "end": 29.01,
+   "words": [
+    {
+     "word": "la",
+     "start": 26.99,
+     "frame": 810
+    },
+    {
+     "word": "tech",
+     "start": 27.43,
+     "frame": 823
+    },
+    {
+     "word": "originale.",
+     "start": 27.69,
+     "frame": 831
+    }
+   ],
+   "line": 5,
+   "from": 810,
+   "to": 870
+  }
+ ],
+ "vo": [
+  {
+   "id": "line_01",
+   "from": 2,
+   "start": 0.06,
+   "duration": 3.32,
+   "mouthCues": [
+    {
+     "start": 0.0,
+     "end": 0.18,
+     "value": "B"
+    },
+    {
+     "start": 0.18,
+     "end": 0.32,
+     "value": "C"
+    },
+    {
+     "start": 0.32,
+     "end": 0.39,
+     "value": "B"
+    },
+    {
+     "start": 0.39,
+     "end": 0.53,
+     "value": "G"
+    },
+    {
+     "start": 0.53,
+     "end": 0.6,
+     "value": "F"
+    },
+    {
+     "start": 0.6,
+     "end": 0.95,
+     "value": "B"
+    },
+    {
+     "start": 0.95,
+     "end": 1.07,
+     "value": "A"
+    },
+    {
+     "start": 1.07,
+     "end": 1.27,
+     "value": "E"
+    },
+    {
+     "start": 1.27,
+     "end": 1.41,
+     "value": "B"
+    },
+    {
+     "start": 1.41,
+     "end": 1.49,
+     "value": "A"
+    },
+    {
+     "start": 1.49,
+     "end": 1.64,
+     "value": "E"
+    },
+    {
+     "start": 1.64,
+     "end": 1.71,
+     "value": "B"
+    },
+    {
+     "start": 1.71,
+     "end": 1.83,
+     "value": "A"
+    },
+    {
+     "start": 1.83,
+     "end": 1.9,
+     "value": "C"
+    },
+    {
+     "start": 1.9,
+     "end": 2.1,
+     "value": "B"
+    },
+    {
+     "start": 2.1,
+     "end": 2.17,
+     "value": "C"
+    },
+    {
+     "start": 2.17,
+     "end": 2.24,
+     "value": "B"
+    },
+    {
+     "start": 2.24,
+     "end": 2.52,
+     "value": "F"
+    },
+    {
+     "start": 2.52,
+     "end": 2.66,
+     "value": "B"
+    },
+    {
+     "start": 2.66,
+     "end": 2.73,
+     "value": "C"
+    },
+    {
+     "start": 2.73,
+     "end": 3.01,
+     "value": "B"
+    },
+    {
+     "start": 3.01,
+     "end": 3.08,
+     "value": "E"
+    },
+    {
+     "start": 3.08,
+     "end": 3.22,
+     "value": "F"
+    },
+    {
+     "start": 3.22,
+     "end": 3.31,
+     "value": "A"
+    },
+    {
+     "start": 3.31,
+     "end": 3.32,
+     "value": "X"
+    }
+   ]
+  },
+  {
+   "id": "line_02",
+   "from": 112,
+   "start": 3.75,
+   "duration": 3.48,
+   "mouthCues": [
+    {
+     "start": 0.0,
+     "end": 0.02,
+     "value": "X"
+    },
+    {
+     "start": 0.02,
+     "end": 0.08,
+     "value": "B"
+    },
+    {
+     "start": 0.08,
+     "end": 0.2,
+     "value": "F"
+    },
+    {
+     "start": 0.2,
+     "end": 0.27,
+     "value": "G"
+    },
+    {
+     "start": 0.27,
+     "end": 0.48,
+     "value": "F"
+    },
+    {
+     "start": 0.48,
+     "end": 0.55,
+     "value": "B"
+    },
+    {
+     "start": 0.55,
+     "end": 0.69,
+     "value": "C"
+    },
+    {
+     "start": 0.69,
+     "end": 0.98,
+     "value": "B"
+    },
+    {
+     "start": 0.98,
+     "end": 1.05,
+     "value": "G"
+    },
+    {
+     "start": 1.05,
+     "end": 1.19,
+     "value": "F"
+    },
+    {
+     "start": 1.19,
+     "end": 1.27,
+     "value": "A"
+    },
+    {
+     "start": 1.27,
+     "end": 1.48,
+     "value": "F"
+    },
+    {
+     "start": 1.48,
+     "end": 1.62,
+     "value": "G"
+    },
+    {
+     "start": 1.62,
+     "end": 1.76,
+     "value": "E"
+    },
+    {
+     "start": 1.76,
+     "end": 2.19,
+     "value": "B"
+    },
+    {
+     "start": 2.19,
+     "end": 2.33,
+     "value": "G"
+    },
+    {
+     "start": 2.33,
+     "end": 2.4,
+     "value": "F"
+    },
+    {
+     "start": 2.4,
+     "end": 2.49,
+     "value": "A"
+    },
+    {
+     "start": 2.49,
+     "end": 2.62,
+     "value": "E"
+    },
+    {
+     "start": 2.62,
+     "end": 2.84,
+     "value": "B"
+    },
+    {
+     "start": 2.84,
+     "end": 2.98,
+     "value": "C"
+    },
+    {
+     "start": 2.98,
+     "end": 3.12,
+     "value": "B"
+    },
+    {
+     "start": 3.12,
+     "end": 3.19,
+     "value": "D"
+    },
+    {
+     "start": 3.19,
+     "end": 3.26,
+     "value": "G"
+    },
+    {
+     "start": 3.26,
+     "end": 3.39,
+     "value": "A"
+    },
+    {
+     "start": 3.39,
+     "end": 3.47,
+     "value": "B"
+    },
+    {
+     "start": 3.47,
+     "end": 3.48,
+     "value": "X"
+    }
+   ]
+  },
+  {
+   "id": "line_03",
+   "from": 289,
+   "start": 9.62,
+   "duration": 3.32,
+   "mouthCues": [
+    {
+     "start": 0.0,
+     "end": 0.02,
+     "value": "X"
+    },
+    {
+     "start": 0.02,
+     "end": 0.07,
+     "value": "B"
+    },
+    {
+     "start": 0.07,
+     "end": 0.25,
+     "value": "F"
+    },
+    {
+     "start": 0.25,
+     "end": 0.39,
+     "value": "B"
+    },
+    {
+     "start": 0.39,
+     "end": 0.68,
+     "value": "C"
+    },
+    {
+     "start": 0.68,
+     "end": 0.74,
+     "value": "B"
+    },
+    {
+     "start": 0.74,
+     "end": 0.79,
+     "value": "F"
+    },
+    {
+     "start": 0.79,
+     "end": 1.19,
+     "value": "A"
+    },
+    {
+     "start": 1.19,
+     "end": 1.24,
+     "value": "F"
+    },
+    {
+     "start": 1.24,
+     "end": 1.29,
+     "value": "C"
+    },
+    {
+     "start": 1.29,
+     "end": 1.5,
+     "value": "B"
+    },
+    {
+     "start": 1.5,
+     "end": 1.63,
+     "value": "X"
+    },
+    {
+     "start": 1.63,
+     "end": 1.68,
+     "value": "B"
+    },
+    {
+     "start": 1.68,
+     "end": 1.8,
+     "value": "C"
+    },
+    {
+     "start": 1.8,
+     "end": 2.09,
+     "value": "B"
+    },
+    {
+     "start": 2.09,
+     "end": 2.24,
+     "value": "E"
+    },
+    {
+     "start": 2.24,
+     "end": 2.52,
+     "value": "F"
+    },
+    {
+     "start": 2.52,
+     "end": 2.87,
+     "value": "B"
+    },
+    {
+     "start": 2.87,
+     "end": 2.94,
+     "value": "C"
+    },
+    {
+     "start": 2.94,
+     "end": 3.02,
+     "value": "A"
+    },
+    {
+     "start": 3.02,
+     "end": 3.06,
+     "value": "C"
+    },
+    {
+     "start": 3.06,
+     "end": 3.1,
+     "value": "B"
+    },
+    {
+     "start": 3.1,
+     "end": 3.17,
+     "value": "C"
+    },
+    {
+     "start": 3.17,
+     "end": 3.24,
+     "value": "E"
+    },
+    {
+     "start": 3.24,
+     "end": 3.31,
+     "value": "B"
+    },
+    {
+     "start": 3.31,
+     "end": 3.32,
+     "value": "X"
+    }
+   ]
+  },
+  {
+   "id": "line_04",
+   "from": 471,
+   "start": 15.7,
+   "duration": 1.74,
+   "mouthCues": [
+    {
+     "start": 0.0,
+     "end": 0.02,
+     "value": "X"
+    },
+    {
+     "start": 0.02,
+     "end": 0.07,
+     "value": "B"
+    },
+    {
+     "start": 0.07,
+     "end": 0.11,
+     "value": "F"
+    },
+    {
+     "start": 0.11,
+     "end": 0.46,
+     "value": "B"
+    },
+    {
+     "start": 0.46,
+     "end": 0.59,
+     "value": "A"
+    },
+    {
+     "start": 0.59,
+     "end": 0.75,
+     "value": "B"
+    },
+    {
+     "start": 0.75,
+     "end": 1.1,
+     "value": "E"
+    },
+    {
+     "start": 1.1,
+     "end": 1.17,
+     "value": "F"
+    },
+    {
+     "start": 1.17,
+     "end": 1.31,
+     "value": "B"
+    },
+    {
+     "start": 1.31,
+     "end": 1.66,
+     "value": "C"
+    },
+    {
+     "start": 1.66,
+     "end": 1.73,
+     "value": "B"
+    },
+    {
+     "start": 1.73,
+     "end": 1.74,
+     "value": "X"
+    }
+   ]
+  },
+  {
+   "id": "line_05",
+   "from": 604,
+   "start": 20.15,
+   "duration": 4.18,
+   "mouthCues": [
+    {
+     "start": 0.0,
+     "end": 0.04,
+     "value": "X"
+    },
+    {
+     "start": 0.04,
+     "end": 0.06,
+     "value": "F"
+    },
+    {
+     "start": 0.06,
+     "end": 0.14,
+     "value": "A"
+    },
+    {
+     "start": 0.14,
+     "end": 0.21,
+     "value": "E"
+    },
+    {
+     "start": 0.21,
+     "end": 0.28,
+     "value": "A"
+    },
+    {
+     "start": 0.28,
+     "end": 0.38,
+     "value": "B"
+    },
+    {
+     "start": 0.38,
+     "end": 0.73,
+     "value": "F"
+    },
+    {
+     "start": 0.73,
+     "end": 1.01,
+     "value": "B"
+    },
+    {
+     "start": 1.01,
+     "end": 1.08,
+     "value": "F"
+    },
+    {
+     "start": 1.08,
+     "end": 1.16,
+     "value": "A"
+    },
+    {
+     "start": 1.16,
+     "end": 1.31,
+     "value": "E"
+    },
+    {
+     "start": 1.31,
+     "end": 1.45,
+     "value": "B"
+    },
+    {
+     "start": 1.45,
+     "end": 1.54,
+     "value": "A"
+    },
+    {
+     "start": 1.54,
+     "end": 1.62,
+     "value": "C"
+    },
+    {
+     "start": 1.62,
+     "end": 1.8,
+     "value": "A"
+    },
+    {
+     "start": 1.8,
+     "end": 1.93,
+     "value": "F"
+    },
+    {
+     "start": 1.93,
+     "end": 2.14,
+     "value": "B"
+    },
+    {
+     "start": 2.14,
+     "end": 2.22,
+     "value": "A"
+    },
+    {
+     "start": 2.22,
+     "end": 2.3,
+     "value": "B"
+    },
+    {
+     "start": 2.3,
+     "end": 2.65,
+     "value": "F"
+    },
+    {
+     "start": 2.65,
+     "end": 2.73,
+     "value": "A"
+    },
+    {
+     "start": 2.73,
+     "end": 2.85,
+     "value": "D"
+    },
+    {
+     "start": 2.85,
+     "end": 3.06,
+     "value": "B"
+    },
+    {
+     "start": 3.06,
+     "end": 3.27,
+     "value": "C"
+    },
+    {
+     "start": 3.27,
+     "end": 3.62,
+     "value": "B"
+    },
+    {
+     "start": 3.62,
+     "end": 3.69,
+     "value": "C"
+    },
+    {
+     "start": 3.69,
+     "end": 3.76,
+     "value": "B"
+    },
+    {
+     "start": 3.76,
+     "end": 3.94,
+     "value": "A"
+    },
+    {
+     "start": 3.94,
+     "end": 4.17,
+     "value": "B"
+    },
+    {
+     "start": 4.17,
+     "end": 4.18,
+     "value": "X"
+    }
+   ]
+  },
+  {
+   "id": "line_06",
+   "from": 790,
+   "start": 26.35,
+   "duration": 2.31,
+   "mouthCues": [
+    {
+     "start": 0.0,
+     "end": 0.01,
+     "value": "X"
+    },
+    {
+     "start": 0.01,
+     "end": 0.47,
+     "value": "B"
+    },
+    {
+     "start": 0.47,
+     "end": 0.54,
+     "value": "E"
+    },
+    {
+     "start": 0.54,
+     "end": 0.61,
+     "value": "F"
+    },
+    {
+     "start": 0.61,
+     "end": 0.75,
+     "value": "C"
+    },
+    {
+     "start": 0.75,
+     "end": 0.82,
+     "value": "E"
+    },
+    {
+     "start": 0.82,
+     "end": 0.94,
+     "value": "C"
+    },
+    {
+     "start": 0.94,
+     "end": 1.01,
+     "value": "B"
+    },
+    {
+     "start": 1.01,
+     "end": 1.07,
+     "value": "A"
+    },
+    {
+     "start": 1.07,
+     "end": 1.13,
+     "value": "C"
+    },
+    {
+     "start": 1.13,
+     "end": 1.25,
+     "value": "B"
+    },
+    {
+     "start": 1.25,
+     "end": 1.39,
+     "value": "C"
+    },
+    {
+     "start": 1.39,
+     "end": 1.46,
+     "value": "B"
+    },
+    {
+     "start": 1.46,
+     "end": 1.67,
+     "value": "E"
+    },
+    {
+     "start": 1.67,
+     "end": 1.81,
+     "value": "F"
+    },
+    {
+     "start": 1.81,
+     "end": 1.95,
+     "value": "B"
+    },
+    {
+     "start": 1.95,
+     "end": 2.23,
+     "value": "C"
+    },
+    {
+     "start": 2.23,
+     "end": 2.3,
+     "value": "B"
+    },
+    {
+     "start": 2.3,
+     "end": 2.31,
+     "value": "X"
+    }
+   ]
+  }
+ ]
+}

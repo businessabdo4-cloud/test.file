@@ -12,16 +12,10 @@ export const SOCIAL = {
   facebookUrl: "https://web.facebook.com/profile.php?id=61581215721905",
 };
 
-// Music: drop a track in assets/music/ and set its file name + BPM here.
-// Cuts and text hits snap to this beat grid.
-export const MUSIC = {
-  file: null as string | null, // e.g. "music/track.mp3" (copied to public/)
-  bpm: 120, // PLACEHOLDER until a track is supplied (detect with scripts/detect_bpm.py)
-  firstBeatSec: 0,
-  volumeDb: -16,
-  duckDb: -10,
-  duckRampMs: 150,
-};
+// Music: the generated track (scripts/make_music.py) is 120 BPM. To swap in a licensed track,
+// drop it in assets/music/ and keep BPM in sync with scripts/build_timeline.py (cuts snap to it).
+// Mix levels live in scripts/mix_audio.py (VO -14 LUFS, music ducked 10 dB with 150 ms ramps).
+export const MUSIC = { bpm: 120 };
 
 // Verified via apple.com (see SOURCES.md). Drop any callout that can't be confirmed.
 export const IPHONE = {
@@ -36,7 +30,14 @@ export const IPHONE = {
     { name: "Glacier", hex: "#C9DDEA" },
     { name: "Burgundy", hex: "#5E1F2B" },
   ],
-  specs: ["Puce A20 Pro", 'Écran 6,3" et 6,9" ProMotion', "Caméra Fusion 48 Mpx"],
+  // Callouts (in VO order: "photo bluffante" -> camera, "performances" -> chip, "hors normes" -> display)
+  callouts: [
+    { icon: "lens", value: "48 Mpx", label: "Caméra Fusion" },
+    { icon: "chip", value: "A20 Pro", label: "Puce" },
+    { icon: "display", value: '6,3" · 6,9"', label: "ProMotion 120 Hz" },
+  ] as const,
+  // colour shown first, then the cycle (one change per bar of music)
+  colourOrder: ["Burgundy", "Black", "Silver", "Glacier", "Burgundy", "Black"],
 };
 
 export const PLACEHOLDERS = {
