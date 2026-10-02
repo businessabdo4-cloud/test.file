@@ -26,6 +26,7 @@
 ```
 cd source && python3 -m http.server 8765 &
 node render.js video          # frames -> build/video.mp4  (needs build/timing.json)
-python3 build/mix.py          # needs build/vo_fast.wav from align.py + the original voiceover as vo.wav
+python3 build/mix.py          # needs build/vo_fast.wav (align.py output, sped up 1.15x)
 ```
+The original voiceover is `source/vo.wav` (mono, 24 kHz, 31 s). `build/align.py` reads it, cuts the pauses using the segment times in that script, and writes `build/vo_cut.wav` and `build/timing.json`.
 Text, colours and timings are all in `reel.html`, one block per scene.
