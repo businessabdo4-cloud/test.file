@@ -1,6 +1,6 @@
 // ─────────────────────────────────────────────────────────────────────────────
 //  EASY EDITS: price, specs, colors, audio mix.
-//  Subtitle text/timing lives in src/data/subtitles.json.
+//  Subtitle text/timing lives in src/data/subtitles-<city>.json (city versions: src/variant.ts).
 //  Which image files are used lives in src/data/media.json.
 // ─────────────────────────────────────────────────────────────────────────────
 
@@ -58,7 +58,7 @@ export const LOGO_WATERMARK = {
   handOffToBigLogo: true,
 };
 
-// "Camera" punch-ins (100% → 100%+amount) when these subtitle phrases start (ids in subtitles.json).
+// "Camera" punch-ins (100% → 100%+amount) when these subtitle phrases start (ids in subtitles-<city>.json).
 export const PUNCH_IN = {
   amount: 0.06,
   phrases: [3, 5, 10, 13, 16, 18, 21, 23, 26],
@@ -86,7 +86,7 @@ export const VIDEO = {
   endHoldSeconds: 1.9, // end card stays on after the voice-over ends
 };
 
-// Which subtitle phrase (id in subtitles.json) starts each scene.
+// Which subtitle phrase (id in subtitles-<city>.json) starts each scene.
 export const SCENE_STARTS = {
   hook: 1,
   reveal: 4,

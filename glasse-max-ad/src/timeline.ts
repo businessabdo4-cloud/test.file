@@ -44,7 +44,7 @@ export const SCENE_ORDER: SceneId[] = [
 
 const LEAD = 0.12; // cut a little before the words land
 
-// Scene boundaries follow the subtitle timing, so editing subtitles.json re-times the video.
+// Scene boundaries follow the subtitle timing, so editing subtitles-<city>.json re-times the video.
 export const SCENES = SCENE_ORDER.map((id, i) => {
   const first = phrase(SCENE_STARTS[id]);
   const prevPhrase = PHRASES.find((p) => p.id === SCENE_STARTS[id] - 1);
