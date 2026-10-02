@@ -124,7 +124,8 @@ export const Cta: React.FC = () => {
               gap: 22,
               fontFamily: FONTS.arabic,
               fontWeight: 900,
-              fontSize: 52,
+              // shrink for long city names so the recap always fits the 1080 px frame
+              fontSize: OFFER.city.length > 6 ? 42 : 52,
               color: COLORS.navy,
               background: 'rgba(255,255,255,0.92)',
               padding: '8px 34px 14px',

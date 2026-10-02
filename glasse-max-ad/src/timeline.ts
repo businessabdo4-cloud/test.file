@@ -1,4 +1,4 @@
-import subtitles from './data/subtitles.json';
+import {VARIANT} from './variant';
 import {SCENE_STARTS, VIDEO} from './config';
 
 export type Highlight = string | {word: string; color: string};
@@ -11,7 +11,7 @@ export type Phrase = {
   highlight: Highlight[];
 };
 
-export const PHRASES: Phrase[] = subtitles.phrases as Phrase[];
+export const PHRASES: Phrase[] = VARIANT.subtitles.phrases as Phrase[];
 export const FPS = VIDEO.fps;
 
 export const sec = (s: number) => Math.round(s * FPS);
@@ -22,9 +22,9 @@ export const phrase = (id: number): Phrase => {
   return p;
 };
 
-export const SPEECH_END = subtitles.speechEnd;
+export const SPEECH_END = VARIANT.subtitles.speechEnd;
 export const TOTAL_FRAMES = Math.ceil(
-  Math.max(SPEECH_END + VIDEO.endHoldSeconds, subtitles.audioDuration + 0.5) * FPS,
+  Math.max(SPEECH_END + VIDEO.endHoldSeconds, VARIANT.subtitles.audioDuration + 0.5) * FPS,
 );
 
 export type SceneId = keyof typeof SCENE_STARTS;

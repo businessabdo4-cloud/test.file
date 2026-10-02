@@ -62,7 +62,7 @@ SCRIPT = [
 SCRIPT_FILE = ROOT / "assets/vo/script.txt"
 NUM_SYL = {"6": 2, "2": 2, "80": 3, "1799": 11}  # how numbers are spoken (Darija)
 # Latin words spelled out letter by letter
-WORD_SYL = {"GPD": 3, "LG": 2, "HK": 2, "MAX": 2, "GLASSE": 2, "Water": 2, "Maroc": 2}
+WORD_SYL = {"فاليوسفية": 5, "GPD": 3, "LG": 2, "HK": 2, "MAX": 2, "GLASSE": 2, "Water": 2, "Maroc": 2}
 
 
 def estimate_syllables(text):
@@ -85,12 +85,13 @@ def estimate_syllables(text):
     return n
 
 
-def load_script():
+def load_script(script_file=None):
     """assets/vo/script.txt: one sentence per line, '|' splits on-screen phrases, *word* = highlight."""
-    if not SCRIPT_FILE.exists():
+    script_file = Path(script_file) if script_file else SCRIPT_FILE
+    if not script_file.exists():
         return SCRIPT
     out = []
-    lines = [l.strip() for l in SCRIPT_FILE.read_text(encoding="utf-8").splitlines() if l.strip() and not l.startswith("#")]
+    lines = [l.strip() for l in script_file.read_text(encoding="utf-8").splitlines() if l.strip() and not l.startswith("#")]
     for li, line in enumerate(lines, 1):
         for chunk in line.split("|"):
             chunk = " ".join(chunk.split())
@@ -101,10 +102,12 @@ def load_script():
 
 
 SCRIPT_ACTIVE = SCRIPT
+SPANS_FILE = ROOT / "assets/vo/line_spans.json"
 
 # Per-word accent colors (anything not listed uses the default accent).
 HIGHLIGHT_COLORS = {"الروبيني؟": "#FF4B4B", "الروبيني": "#FF4B4B", "الشوائب": "#FF4B4B", "الكلور": "#FF4B4B", "والأملاح": "#FF4B4B",
                     "Water": "#2EC5FF", "GLASSE": "#2EC5FF", "MAX": "#2EC5FF", "ميساج": "#25D366", "علينا": "#25D366"}
+HIGHLIGHT_COLORS["فاليوسفية"] = HIGHLIGHT_COLORS.get("فاليوسفية", "#FFD60A")
 
 
 def load_audio(path, sr=16000):
@@ -202,7 +205,7 @@ def align(s0, s1, dips):
     lines = sorted(set(s[0] for s in SCRIPT_ACTIVE))
     line_syl = [sum(s[3] for s in SCRIPT_ACTIVE if s[0] == ln) for ln in lines]
     # script lines contain commas, so a pause inside a line is only mildly penalised
-    spans_file = ROOT / "assets/vo/line_spans.json"
+    spans_file = SPANS_FILE
     if spans_file.exists():
         line_spans = [tuple(x) for x in json.loads(spans_file.read_text())["spans"]]
         assert len(line_spans) == len(lines), f"line_spans.json has {len(line_spans)} spans for {len(lines)} script lines"
@@ -223,12 +226,16 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--audio", default=str(ROOT / "assets/voiceover.mp3"))
     ap.add_argument("--whisper", action="store_true", help="use Whisper word timestamps as cut points")
-    ap.add_argument("--out", default=str(ROOT / "src/data/subtitles.json"))
+    ap.add_argument("--out", default=str(ROOT / "src/data/subtitles-safi.json"))
     ap.add_argument("--edits", help="edits.json from clean_vo.py: align on the raw take, then map times onto the cleaned file")
     ap.add_argument("--final-audio", help="the audio the video actually plays (for duration); default = --audio")
+    ap.add_argument("--script", help="script.txt to align (default: assets/vo/script.txt)")
+    ap.add_argument("--spans", help="line_spans.json (default: assets/vo/line_spans.json)")
     args = ap.parse_args()
-    global SCRIPT_ACTIVE
-    SCRIPT_ACTIVE = load_script()
+    global SCRIPT_ACTIVE, SPANS_FILE
+    SCRIPT_ACTIVE = load_script(args.script)
+    if args.spans:
+        SPANS_FILE = Path(args.spans)
 
     x, sr = load_audio(args.audio)
     s0, s1, dips = energy_dips(x, sr)

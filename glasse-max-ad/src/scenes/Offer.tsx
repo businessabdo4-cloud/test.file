@@ -100,10 +100,10 @@ export const Offer: React.FC = () => {
           <span style={{fontFamily: FONTS.arabic, fontWeight: 900, fontSize: 110}}>{OFFER.currency}</span>
         </div>
       )}
-      {/* free delivery in Safi */}
+      {/* free delivery in <city> */}
       {frame >= tTruck && (
         <div style={{position: 'absolute', top: 1180, width: '100%', display: 'flex', justifyContent: 'center', transform: `translateX(${(1 - truck) * 1100}px)`}}>
-          <Badge fontSize={66} icon={<TruckIcon size={110} />} style={{paddingLeft: 40}}>
+          <Badge fontSize={OFFER.city.length > 6 ? 58 : 66} icon={<TruckIcon size={OFFER.city.length > 6 ? 96 : 110} />} style={{paddingLeft: 40}}>
             {OFFER.delivery}{' '}
             {frame >= tPin && (
               <span style={{color: COLORS.danger, display: 'inline-flex', alignItems: 'center', gap: 6}}>

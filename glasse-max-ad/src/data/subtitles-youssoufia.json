@@ -1,0 +1,316 @@
+{
+  "_help": "Edit start/end (seconds) to fine-tune. 'text' is shown verbatim. 'highlight' words get the accent color (or their own 'color').",
+  "timingSource": "energy",
+  "audioDuration": 32.16,
+  "speechStart": 0.06,
+  "speechEnd": 32.04,
+  "phrases": [
+    {
+      "id": 1,
+      "line": 1,
+      "text": "كتسكن فاليوسفية",
+      "start": 0.06,
+      "end": 0.89,
+      "highlight": [
+        {
+          "word": "فاليوسفية",
+          "color": "#FFD60A"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "line": 1,
+      "text": "ومازال كتشرب",
+      "start": 0.95,
+      "end": 1.69,
+      "highlight": []
+    },
+    {
+      "id": 3,
+      "line": 1,
+      "text": "ماء ديال الروبيني؟",
+      "start": 1.71,
+      "end": 2.89,
+      "highlight": [
+        {
+          "word": "الروبيني؟",
+          "color": "#FF4B4B"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "line": 2,
+      "text": "Water Maroc جابت ليك",
+      "start": 3.15,
+      "end": 4.32,
+      "highlight": [
+        {
+          "word": "Water",
+          "color": "#2EC5FF"
+        },
+        "Maroc"
+      ]
+    },
+    {
+      "id": 5,
+      "line": 2,
+      "text": "GLASSE MAX",
+      "start": 4.42,
+      "end": 4.87,
+      "highlight": [
+        {
+          "word": "GLASSE",
+          "color": "#2EC5FF"
+        },
+        {
+          "word": "MAX",
+          "color": "#2EC5FF"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "line": 2,
+      "text": "باش توفر على راسك",
+      "start": 4.96,
+      "end": 6.13,
+      "highlight": [
+        "توفر"
+      ]
+    },
+    {
+      "id": 7,
+      "line": 2,
+      "text": "مصاريف القراعي ديال الماء",
+      "start": 6.15,
+      "end": 7.5,
+      "highlight": [
+        "القراعي"
+      ]
+    },
+    {
+      "id": 8,
+      "line": 3,
+      "text": "وتحمي عائلتك",
+      "start": 7.61,
+      "end": 8.46,
+      "highlight": [
+        "عائلتك"
+      ]
+    },
+    {
+      "id": 9,
+      "line": 3,
+      "text": "من ماء الروبيني",
+      "start": 8.48,
+      "end": 9.51,
+      "highlight": [
+        {
+          "word": "الروبيني",
+          "color": "#FF4B4B"
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "line": 4,
+      "text": "هاد السيستيم فيه 6 ديال المراحل",
+      "start": 9.73,
+      "end": 11.52,
+      "highlight": [
+        "6"
+      ]
+    },
+    {
+      "id": 11,
+      "line": 4,
+      "text": "ديال التصفية",
+      "start": 11.54,
+      "end": 12.3,
+      "highlight": [
+        "التصفية"
+      ]
+    },
+    {
+      "id": 12,
+      "line": 5,
+      "text": "باش ينقص من الشوائب",
+      "start": 12.47,
+      "end": 13.71,
+      "highlight": [
+        {
+          "word": "الشوائب",
+          "color": "#FF4B4B"
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "line": 5,
+      "text": "الكلور والأملاح",
+      "start": 13.73,
+      "end": 14.64,
+      "highlight": [
+        {
+          "word": "الكلور",
+          "color": "#FF4B4B"
+        },
+        {
+          "word": "والأملاح",
+          "color": "#FF4B4B"
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "line": 5,
+      "text": "اللي كتأثر على الجودة",
+      "start": 14.66,
+      "end": 15.8,
+      "highlight": [
+        "الجودة"
+      ]
+    },
+    {
+      "id": 15,
+      "line": 5,
+      "text": "والطعم ديال الماء",
+      "start": 15.82,
+      "end": 16.67,
+      "highlight": [
+        "والطعم"
+      ]
+    },
+    {
+      "id": 16,
+      "line": 6,
+      "text": "وفيه ممبران 80 GPD",
+      "start": 16.93,
+      "end": 18.83,
+      "highlight": [
+        "80",
+        "GPD"
+      ]
+    },
+    {
+      "id": 17,
+      "line": 6,
+      "text": "من LG",
+      "start": 18.85,
+      "end": 19.2,
+      "highlight": [
+        "LG"
+      ]
+    },
+    {
+      "id": 18,
+      "line": 7,
+      "text": "وزايد فيه بومبا HK 2",
+      "start": 19.35,
+      "end": 20.93,
+      "highlight": [
+        "HK",
+        "2"
+      ]
+    },
+    {
+      "id": 19,
+      "line": 7,
+      "text": "باش مايضيعش ليك الماء",
+      "start": 21.1,
+      "end": 22.07,
+      "highlight": [
+        "الماء"
+      ]
+    },
+    {
+      "id": 20,
+      "line": 8,
+      "text": "وهادشي كامل باش تحصل",
+      "start": 22.35,
+      "end": 23.22,
+      "highlight": []
+    },
+    {
+      "id": 21,
+      "line": 8,
+      "text": "على ماء ذو جودة عالية",
+      "start": 23.24,
+      "end": 25.0,
+      "highlight": [
+        "جودة",
+        "عالية"
+      ]
+    },
+    {
+      "id": 22,
+      "line": 9,
+      "text": "وكيبقى غير بـ",
+      "start": 25.13,
+      "end": 25.9,
+      "highlight": []
+    },
+    {
+      "id": 23,
+      "line": 9,
+      "text": "1799 درهم",
+      "start": 26.0,
+      "end": 27.67,
+      "highlight": [
+        "1799",
+        "درهم"
+      ]
+    },
+    {
+      "id": 24,
+      "line": 10,
+      "text": "والتوصيل فابور",
+      "start": 27.91,
+      "end": 28.91,
+      "highlight": [
+        "فابور"
+      ]
+    },
+    {
+      "id": 25,
+      "line": 10,
+      "text": "فاليوسفية",
+      "start": 28.98,
+      "end": 29.55,
+      "highlight": [
+        {
+          "word": "فاليوسفية",
+          "color": "#FFD60A"
+        }
+      ]
+    },
+    {
+      "id": 26,
+      "line": 11,
+      "text": "صيفط لينا دابا ميساج",
+      "start": 29.83,
+      "end": 30.98,
+      "highlight": [
+        {
+          "word": "ميساج",
+          "color": "#25D366"
+        }
+      ]
+    },
+    {
+      "id": 27,
+      "line": 11,
+      "text": "وخلي الباقي علينا",
+      "start": 31.05,
+      "end": 32.04,
+      "highlight": [
+        {
+          "word": "علينا",
+          "color": "#25D366"
+        }
+      ]
+    }
+  ]
+}

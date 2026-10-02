@@ -1,0 +1,24 @@
+{
+  "source": "voiceover-raw.wav",
+  "originalSeconds": 32.491,
+  "cleanSeconds": 32.16,
+  "removedSeconds": 0.331,
+  "maxPause": 0.28,
+  "cuts": [
+    {
+      "from": 0.0,
+      "to": 0.21,
+      "why": "leading silence"
+    },
+    {
+      "from": 9.831,
+      "to": 9.909,
+      "why": "pause 0.30s -> 0.22s"
+    },
+    {
+      "from": 32.46,
+      "to": 32.491,
+      "why": "trailing silence"
+    }
+  ]
+}

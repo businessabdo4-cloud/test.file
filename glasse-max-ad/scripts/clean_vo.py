@@ -62,7 +62,11 @@ def main():
     ap.add_argument("--max-pause", type=float, default=0.28, help="pauses longer than this get shortened")
     ap.add_argument("--min-keep", type=float, default=0.22, help="never leave a pause shorter than this")
     ap.add_argument("--lead", type=float, default=0.06, help="silence kept before the first word")
+    ap.add_argument("--out-dir", help="where voiceover-clean.wav + edits.json go (default: assets/vo/)")
     args = ap.parse_args()
+    global VO
+    if args.out_dir:
+        VO = Path(args.out_dir)
 
     src = Path(args.inp) if args.inp else find_input()
     x = load(src)

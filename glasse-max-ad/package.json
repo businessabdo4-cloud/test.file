@@ -5,8 +5,9 @@
   "description": "GLASSE MAX vertical ad (Remotion)",
   "scripts": {
     "studio": "remotion studio",
-    "render": "remotion render GlasseMaxAd out/glasse-max-ad.raw.mp4 && npm run master",
-    "master": "ffmpeg -v error -y -i out/glasse-max-ad.raw.mp4 -c:v copy -af loudnorm=I=-14:TP=-1.5:LRA=11 -ar 48000 -c:a aac -b:a 192k -movflags +faststart out/glasse-max-ad.mp4 && echo 'wrote out/glasse-max-ad.mp4'",
+    "render": "npm run render:safi && npm run render:youssoufia",
+    "render:safi": "remotion render GlasseMaxAd out/glasse-max-ad.raw.mp4 --props='{\"city\":\"safi\"}' && ffmpeg -v error -y -i out/glasse-max-ad.raw.mp4 -c:v copy -af loudnorm=I=-14:TP=-1.5:LRA=11 -ar 48000 -c:a aac -b:a 192k -movflags +faststart out/glasse-max-ad.mp4 && echo 'wrote out/glasse-max-ad.mp4'",
+    "render:youssoufia": "remotion render GlasseMaxAd out/glasse-max-ad-youssoufia.raw.mp4 --props='{\"city\":\"youssoufia\"}' && ffmpeg -v error -y -i out/glasse-max-ad-youssoufia.raw.mp4 -c:v copy -af loudnorm=I=-14:TP=-1.5:LRA=11 -ar 48000 -c:a aac -b:a 192k -movflags +faststart out/glasse-max-ad-youssoufia.mp4 && echo 'wrote out/glasse-max-ad-youssoufia.mp4'",
     "stills": "node scripts/render_stills.mjs",
     "typecheck": "tsc --noEmit"
   },

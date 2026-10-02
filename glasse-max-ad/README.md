@@ -1,15 +1,34 @@
 # GLASSE MAX — Water Maroc vertical ad (Remotion)
 
 A 9:16 (1080×1920, 30 fps, H.264) ad for Instagram Reels / TikTok / Facebook / WhatsApp Status,
-cut to the Darija voice-over in `assets/vo/voiceover-raw.wav` (Safi, 1799 DH, free delivery).
+cut to a Darija voice-over (1799 DH, free delivery). Two city versions share every scene:
+
+| Version | Voice-over | Subtitles | Output |
+|---|---|---|---|
+| Safi (default) | `assets/vo/voiceover-raw.wav` | `src/data/subtitles-safi.json` | `out/glasse-max-ad.mp4` (32.9 s) |
+| Youssoufia | `assets/vo/youssoufia/voiceover-raw.wav` | `src/data/subtitles-youssoufia.json` | `out/glasse-max-ad-youssoufia.mp4` (34.0 s) |
 
 ```
 npm install
-npm run render            # -> out/glasse-max-ad.mp4
-npm run studio            # live preview / scrubbing in the browser
+npm run render:safi        # -> out/glasse-max-ad.mp4
+npm run render:youssoufia  # -> out/glasse-max-ad-youssoufia.mp4
+npm run render             # both
+npm run studio             # live preview (set the "city" input prop to switch)
 ```
 
-## Edit structure (≈32.8 s)
+The city name on screen (hook pin badge, delivery badge, end-card recap) and which voice-over /
+subtitle file is used come from `src/variant.ts`; the render picks one with `--props '{"city":"youssoufia"}'`.
+
+### Adding another city
+
+1. Put the take in `assets/vo/<city>/voiceover-raw.wav` and its exact words in `assets/vo/<city>/script.txt`
+   (same 27 on-screen phrases, same line format as `assets/vo/script.txt`).
+2. `python3 scripts/clean_vo.py --in assets/vo/<city>/voiceover-raw.wav --out-dir assets/vo/<city>`
+3. Write `assets/vo/<city>/line_spans.json` (start/end of each script line, read off the pauses), then
+   `python3 scripts/align_subtitles.py --audio assets/vo/<city>/voiceover-raw.wav --edits assets/vo/<city>/edits.json --final-audio assets/vo/<city>/voiceover-clean.wav --script assets/vo/<city>/script.txt --spans assets/vo/<city>/line_spans.json --out src/data/subtitles-<city>.json`
+4. Add the city to `VARIANTS` in `src/variant.ts` and a `render:<city>` script in `package.json`.
+
+## Edit structure (Safi timings; Youssoufia is ~1 s longer)
 
 | Time | Scene | Voice-over | Visual |
 |---|---|---|---|
@@ -33,7 +52,7 @@ swipe/zoom transitions with colour wipes, ducked background music.
 | What | Where | Source |
 |---|---|---|
 | Voice-over | `assets/vo/voiceover-raw.wav` → `voiceover-clean.wav` | supplied; cleaned with `scripts/clean_vo.py` (EQ, de-ess, compression, -16 LUFS) |
-| Script + timing | `assets/vo/script.txt`, `assets/vo/line_spans.json` → `src/data/subtitles.json` | `scripts/align_subtitles.py` |
+| Script + timing | `assets/vo/[<city>/]script.txt`, `line_spans.json` → `src/data/subtitles-<city>.json` | `scripts/align_subtitles.py` |
 | Logo | `assets/logo.png` (+ `logo-drops.png`) | supplied logo, background removed |
 | Music | `assets/music/elevenlabs-bed.wav` | ElevenLabs Music (instrumental, -14 LUFS), ducked under the voice |
 | SFX | `assets/sfx/*.wav` | ElevenLabs Sound Effects (impact, whoosh, splash, riser, sparkle, pop, click, glitch, cash, message) |
@@ -55,10 +74,10 @@ Anything missing falls back to a labelled placeholder (product) or motion graphi
 ## Most likely tweaks
 
 - **Price / delivery text / specs** — `src/config.ts` → `OFFER`, `SPECS`.
-- **Subtitle wording or timing** — `src/data/subtitles.json` (`start`/`end` in seconds, `highlight` words).
+- **Subtitle wording or timing** — `src/data/subtitles-<city>.json` (`start`/`end` in seconds, `highlight` words).
   Scenes are cut from these times (`SCENE_STARTS` in `src/config.ts`), so nudging a phrase moves its scene.
   The voice-over was aligned from its pauses (Whisper's model host is blocked here); per-line spans are in
-  `assets/vo/line_spans.json`.
+  `assets/vo/line_spans.json` (Safi) and `assets/vo/youssoufia/line_spans.json`.
 - **Audio mix** — `src/config.ts` → `AUDIO` (voice, music bed under speech / between lines / end card, SFX).
   SFX cues (file, frame, volume) are listed in `src/Ad.tsx` → `sfxCues`.
 - **Punch-ins** — `PUNCH_IN` in `src/config.ts`.

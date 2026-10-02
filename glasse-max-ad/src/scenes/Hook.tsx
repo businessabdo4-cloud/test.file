@@ -6,6 +6,7 @@ import {Glitch, Pop, shake} from '../components/Motion';
 import {SubtitleScrim} from '../components/Subtitles';
 import {COLORS, FONTS} from '../config';
 import {at} from '../timeline';
+import {VARIANT} from '../variant';
 
 /** Motion-graphics fallback: cloudy tap water pouring into a glass. */
 const MurkyGlass: React.FC = () => {
@@ -61,8 +62,8 @@ const MurkyGlass: React.FC = () => {
   );
 };
 
-/** "كتسكن فآسفي؟" — a pin drops on a Safi badge. */
-const SafiPin: React.FC<{start: number; end: number}> = ({start, end}) => {
+/** "كتسكن ف<city>؟" — a pin drops on a city badge. */
+const CityPin: React.FC<{start: number; end: number}> = ({start, end}) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const drop = spring({frame: frame - start, fps, config: {damping: 9, stiffness: 180, mass: 0.6}});
@@ -118,8 +119,8 @@ const SafiPin: React.FC<{start: number; end: number}> = ({start, end}) => {
           textAlign: 'center',
         }}
       >
-        آسفي
-        <div style={{fontFamily: FONTS.latin, fontSize: 44, letterSpacing: 18, marginTop: -18, color: COLORS.logoBlue}}>SAFI</div>
+        {VARIANT.cityAr}
+        <div style={{fontFamily: FONTS.latin, fontSize: 44, letterSpacing: VARIANT.cityLatin.length > 6 ? 10 : 18, marginTop: VARIANT.cityLatin.length > 6 ? 2 : -18, color: COLORS.logoBlue}}>{VARIANT.cityLatin}</div>
       </div>
     </div>
   );
@@ -147,7 +148,7 @@ export const Hook: React.FC = () => {
         <AbsoluteFill style={{background: 'radial-gradient(75% 60% at 50% 45%, transparent 40%, rgba(0,0,0,0.7) 100%)'}} />
       </AbsoluteFill>
       <SubtitleScrim strength={0.7} />
-      <SafiPin start={0} end={tGlass} />
+      <CityPin start={0} end={tGlass} />
       <Pop at={tGlass + 4} from={0.2} rotate={-25} style={{position: 'absolute', left: 70, top: 420}}>
         <div style={{transform: `scale(${pulse}) rotate(-8deg)`}}>
           <WarningIcon size={210} style={{filter: 'drop-shadow(0 12px 30px rgba(255,180,0,0.55))'}} />

@@ -4,13 +4,15 @@
 //  Which image files are used lives in src/data/media.json.
 // ─────────────────────────────────────────────────────────────────────────────
 
+import {VARIANT} from './variant';
+
 export const PRODUCT_NAME = 'GLASSE MAX';
 
 export const OFFER = {
   price: '1799',
   currency: 'درهم',
   delivery: 'التوصيل فابور',
-  city: 'فآسفي',
+  city: VARIANT.cityIn, // per city version: src/variant.ts
 };
 
 export const SPECS = {
