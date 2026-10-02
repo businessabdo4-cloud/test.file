@@ -1,0 +1,48 @@
+{
+  "_note": "Single source of truth for on-screen text. Display words come from the approved script, never from ASR. 'anchors' locate each word's onset in the CTC character stream (ctc_tokens.json) — a string is searched sequentially, a number is a manual source-time onset (seconds) taken from an energy dip where the CTC model dropped the words.",
+  "splits": [3.32, 7.76, 10.26, 12.88, 16.31, 20.6],
+  "lines": [
+    {
+      "id": "L1", "speaker": "hamza",
+      "text": "صاحبي شرا تيليفون رخيص… وطلع ماشي أوريجينال!",
+      "words": ["صاحبي", "شرا", "تيليفون", "رخيص…", "وطلع", "ماشي", "أوريجينال!"],
+      "anchors": ["صاحب", "شر", "تليف", "رخي", "وطل", "ماش", "أوري"]
+    },
+    {
+      "id": "L2", "speaker": "citybot",
+      "text": "ما تخافش آ خويا! فـ City Store كلشي أوريجينال، مية فالمية.",
+      "words": ["ما", "تخافش", "آ", "خويا!", "فـ", "City", "Store", "كلشي", "أوريجينال،", "مية", "فالمية."],
+      "anchors": ["ما", "تخا", "أ", "خو", "في", "ست", "ستو", "كل", "أور", 6.78, 7.19]
+    },
+    {
+      "id": "L3", "speaker": "hamza",
+      "text": "واو! iPhone 18 Pro Max؟!",
+      "words": ["واو!", "iPhone", "18", "Pro", "Max؟!"],
+      "anchors": ["وا", "يp", "dي", "po", "ma"]
+    },
+    {
+      "id": "L4", "speaker": "citybot",
+      "text": "وحتى الـ 18 Pro، وبجميع الألوان!",
+      "words": ["وحتى", "الـ 18", "Pro،", "وبجميع", "الألوان!"],
+      "anchors": ["وح", "dي", "pر", "وب", "الأ"]
+    },
+    {
+      "id": "L5", "speaker": "citybot",
+      "text": "وعندنا البيسيات، الساعات، الكاسكات والكونسولات.",
+      "words": ["وعندنا", "البيسيات،", "الساعات،", "الكاسكات", "والكونسولات."],
+      "anchors": ["وع", "الب", "الس", "الك", "والك"]
+    },
+    {
+      "id": "L6", "speaker": "citybot",
+      "text": "صيفط لينا فإنستغرام ولا فيسبوك، ولا دخل لـ citystore.ma",
+      "words": ["صيفط", "لينا", "فإنستغرام", "ولا", "فيسبوك،", "ولا", "دخل", "لـ citystore.ma"],
+      "anchors": ["صف", "لن", "في", "ولا", "فيس", "ولا", "ادخ", "cي"]
+    },
+    {
+      "id": "L7", "speaker": "both",
+      "text": "City Store… الأصلي ديما!",
+      "words": ["City", "Store…", "الأصلي", "ديما!"],
+      "anchors": ["سي", "ست", "الأ", "دي"]
+    }
+  ]
+}

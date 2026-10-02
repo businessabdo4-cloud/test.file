@@ -11,7 +11,7 @@ a = np.frombuffer(raw, np.float32); sr = 16000
 res = []
 for sp in spans.split(","):
     s, e = map(float, sp.split(":"))
-    st = rec.create_stream(); st.accept_waveform(sr, a[int(s*sr):int(e*sr)]); rec.decode_stream(st)
+    seg = np.concatenate([np.zeros(int(0.3*sr), np.float32), a[int(s*sr):int(e*sr)], np.zeros(int(1.5*sr), np.float32)]); st = rec.create_stream(); st.accept_waveform(sr, seg); rec.decode_stream(st)
     r = st.result
     res.append({"start": s, "end": e, "text": r.text.strip(), "tokens": list(r.tokens), "timestamps": list(getattr(r, "timestamps", []))})
     print(f"[{s:6.2f} → {e:6.2f}] {r.text.strip()}", flush=True)
