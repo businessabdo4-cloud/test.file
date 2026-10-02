@@ -1,0 +1,542 @@
+<!doctype html>
+<html lang="ar">
+<head>
+<meta charset="utf-8">
+<style>
+@font-face{font-family:Cairo;src:url(fonts/Cairo-Black.ttf);font-weight:900}
+@font-face{font-family:Cairo;src:url(fonts/Cairo-Bold.ttf);font-weight:700}
+@font-face{font-family:Cairo;src:url(fonts/Cairo-Regular.ttf);font-weight:400}
+@font-face{font-family:Lalezar;src:url(fonts/Lalezar.ttf)}
+@font-face{font-family:Anton;src:url(fonts/Anton.ttf)}
+@font-face{font-family:Mont;src:url(fonts/Montserrat-Black.ttf);font-weight:900}
+:root{--cy:#25F4EE;--pk:#FE2C55;--gold:#FFD23F;--green:#2BE07A;--red:#E0243A;--bar:#9b1222}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:#000}
+body{font-family:Cairo,'Noto Color Emoji',sans-serif;color:#fff}
+#stage{position:absolute;inset:0;overflow:hidden;background:#050507}
+#world{position:absolute;inset:0;transform-origin:50% 45%}
+.abs{position:absolute}
+.center{left:50%;top:50%;transform:translate(-50%,-50%)}
+.scene{position:absolute;inset:0;visibility:hidden}
+.emoji{font-family:'Noto Color Emoji';line-height:1}
+/* background */
+#bggrad{position:absolute;inset:-200px;background:radial-gradient(ellipse at 50% 30%,#14141f 0%,#050507 60%)}
+.orb{position:absolute;border-radius:50%;filter:blur(90px);opacity:.55}
+#grid{position:absolute;left:-540px;width:2160px;height:1400px;bottom:-300px;
+  background-image:linear-gradient(rgba(255,255,255,.07) 2px,transparent 2px),linear-gradient(90deg,rgba(255,255,255,.07) 2px,transparent 2px);
+  background-size:90px 90px;transform:perspective(700px) rotateX(62deg);transform-origin:50% 0;
+  -webkit-mask-image:linear-gradient(to bottom,transparent,#000 40%)}
+#swoosh1,#swoosh2{position:absolute;width:290px;height:300px;opacity:.16;background:url(logo.png);background-size:908px 908px}
+#swoosh1{left:0;top:0;background-position:0 0;transform-origin:0 0}
+#swoosh2{right:0;bottom:0;background-position:-618px -608px;transform-origin:100% 100%}
+#redtint{position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(224,36,58,.0),rgba(224,36,58,.45));opacity:0}
+#grain{position:absolute;inset:-100px;opacity:.07;mix-blend-mode:overlay}
+#vig{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 45%,transparent 55%,rgba(0,0,0,.75) 100%);pointer-events:none}
+#flash{position:absolute;inset:0;background:#fff;opacity:0}
+/* captions */
+#caps{position:absolute;left:40px;right:40px;top:1395px;height:260px}
+.cap{position:absolute;left:0;right:0;top:0;text-align:center;direction:rtl;font-weight:900;font-size:96px;line-height:1.15;
+  paint-order:stroke fill;-webkit-text-stroke:14px #000;text-shadow:0 10px 0 rgba(0,0,0,.6),0 0 40px rgba(0,0,0,.6);visibility:hidden}
+.cap .hl{color:var(--gold)}
+.cap .cy{color:var(--cy)}
+.cap .pk{color:var(--pk)}
+.cap .gr{color:var(--green)}
+.lat{font-family:Mont;font-weight:900;font-size:.82em;letter-spacing:-1px}
+/* phone */
+.phone{position:absolute;width:560px;height:1080px;border-radius:78px;background:#0b0b10;
+  box-shadow:0 0 0 14px #1d1d24,0 0 0 17px #3a3a46,0 40px 120px rgba(0,0,0,.8),0 0 120px rgba(37,244,238,.15);overflow:hidden}
+.notch{position:absolute;left:50%;top:22px;width:150px;height:40px;border-radius:30px;background:#000;transform:translateX(-50%);z-index:5}
+.scr{position:absolute;inset:0;padding:110px 40px 40px}
+.card{background:linear-gradient(160deg,#1c1c27,#121219);border:2px solid rgba(255,255,255,.08);border-radius:34px}
+.pill{display:inline-block;padding:6px 22px;border-radius:999px;font-weight:900}
+.hdr{font-family:Mont;font-weight:900;font-size:34px;letter-spacing:-.5px}
+.big{font-family:Mont;font-weight:900}
+.title{position:absolute;left:0;right:0;text-align:center;direction:rtl;font-family:Lalezar;font-size:118px;line-height:1.1;
+  text-shadow:-5px -3px 0 var(--cy),5px 3px 0 var(--pk),0 20px 40px rgba(0,0,0,.7)}
+.redbar{display:inline-block;background:var(--bar);padding:6px 40px 14px;transform:skewX(-10deg);font-family:Lalezar;font-size:76px;
+  box-shadow:0 10px 30px rgba(155,18,34,.6)}
+.redbar>span{display:inline-block;transform:skewX(10deg)}
+.chk{display:inline-flex;align-items:center;justify-content:center;width:56px;height:56px;border-radius:50%;background:var(--green);color:#03150a;font-weight:900;font-size:38px}
+.particle{position:absolute;left:0;top:0;font-family:'Noto Color Emoji';font-size:90px;line-height:1;will-change:transform}
+</style>
+</head>
+<body>
+<div id="stage">
+ <div id="bggrad"></div>
+ <div class="orb" id="orb1" style="width:700px;height:700px;background:var(--cy)"></div>
+ <div class="orb" id="orb2" style="width:760px;height:760px;background:var(--pk)"></div>
+ <div class="orb" id="orb3" style="width:600px;height:600px;background:#6b2bff;opacity:.35"></div>
+ <div id="grid"></div>
+ <div id="swoosh1"></div><div id="swoosh2"></div>
+ <div id="redtint"></div>
+ <div id="rays" class="abs" style="left:50%;top:44%;width:2400px;height:2400px;margin:-1200px 0 0 -1200px;opacity:0;
+   background:repeating-conic-gradient(from 0deg,rgba(255,210,63,.20) 0deg 6deg,transparent 6deg 18deg);-webkit-mask-image:radial-gradient(circle,#000 0%,transparent 60%)"></div>
+
+ <div id="world">
+  <!-- S1/S2 HOOK + PROBLEM -->
+  <div class="scene" id="s1">
+   <div class="title" id="hookT" style="top:225px">تربح من <span class="lat" style="font-size:.9em">TikTok</span> <span class="emoji" style="font-size:.8em">💸</span></div>
+   <div class="abs" id="hookBar" style="left:0;right:0;top:375px;text-align:center;direction:rtl"><div class="redbar"><span>من المغرب؟</span></div></div>
+   <div class="phone" id="ph1" style="left:260px;top:500px;width:560px;height:870px;border-radius:70px">
+    <div class="notch"></div>
+    <div class="scr" id="ph1ok">
+     <div style="display:flex;align-items:center;gap:14px;direction:ltr"><div class="emoji" style="font-size:44px">🎁</div><div class="hdr">Creator Rewards</div></div>
+     <div style="color:#9aa;font-size:28px;margin-top:22px;direction:ltr;font-family:Mont">Estimated rewards</div>
+     <div class="big" id="cnt1" style="font-size:96px;margin-top:4px;direction:ltr;color:var(--green);text-shadow:0 0 30px rgba(43,224,122,.5)">$0.00</div>
+     <div style="direction:ltr;margin-top:6px"><span class="pill" style="background:rgba(43,224,122,.15);color:var(--green);font-size:30px;font-family:Mont">▲ +312%</span></div>
+     <svg width="480" height="260" style="margin-top:16px" viewBox="0 0 480 260">
+      <defs><linearGradient id="gA" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2BE07A" stop-opacity=".45"/><stop offset="1" stop-color="#2BE07A" stop-opacity="0"/></linearGradient></defs>
+      <path id="area1" d="M0 240 L60 220 L120 228 L180 180 L240 190 L300 120 L360 130 L420 60 L480 20 L480 260 L0 260Z" fill="url(#gA)"/>
+      <path id="line1" d="M0 240 L60 220 L120 228 L180 180 L240 190 L300 120 L360 130 L420 60 L480 20" fill="none" stroke="#2BE07A" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/>
+     </svg>
+     <div style="display:flex;gap:16px;margin-top:30px;direction:ltr">
+      <div class="card" style="flex:1;padding:18px 22px"><div style="color:#9aa;font-size:22px;font-family:Mont">VIEWS</div><div class="big" style="font-size:40px">2.4M</div></div>
+      <div class="card" style="flex:1;padding:18px 22px"><div style="color:#9aa;font-size:22px;font-family:Mont">RPM</div><div class="big" style="font-size:40px;color:var(--gold)">$1.18</div></div>
+     </div>
+    </div>
+    <div class="scr" id="ph1bad" style="opacity:0;text-align:center">
+     <div style="display:flex;align-items:center;gap:14px;direction:ltr;opacity:.6"><div class="emoji" style="font-size:44px">🎁</div><div class="hdr">Creator Rewards</div></div>
+     <div class="emoji" style="font-size:190px;margin-top:70px">🔒</div>
+     <div style="font-weight:900;font-size:58px;margin-top:30px;color:#ff5a6b">غير متوفر فبلادك</div>
+     <div style="font-family:Mont;font-size:28px;color:#99a;margin-top:6px">Not available in your region</div>
+     <div class="card" style="margin-top:50px;padding:24px;display:flex;align-items:center;justify-content:center;gap:20px;direction:rtl">
+      <div class="emoji" style="font-size:70px">🇲🇦</div><div style="font-size:44px;font-weight:900">المغرب</div>
+      <div style="width:64px;height:64px;border-radius:50%;background:var(--red);font-size:44px;font-weight:900;line-height:64px">✕</div>
+     </div>
+    </div>
+    <div id="glitchbars" class="abs" style="inset:0;opacity:0;"></div>
+   </div>
+   <div class="abs" id="stampWrap" style="left:540px;top:900px;width:0;height:0">
+    <div id="stamp" class="abs" style="left:-400px;top:-110px;width:800px;height:220px;border:16px solid var(--red);border-radius:30px;color:var(--red);
+      font-weight:900;font-size:120px;line-height:180px;text-align:center;background:rgba(10,0,0,.55);opacity:0;text-shadow:0 0 30px rgba(224,36,58,.6);box-shadow:0 0 60px rgba(224,36,58,.5)">ما كاينش!</div>
+   </div>
+  </div>
+
+  <!-- S3 DON'T WORRY -->
+  <div class="scene" id="s3">
+   <div class="abs center" id="dw" style="top:42%;text-align:center;direction:rtl;width:1000px">
+    <div class="emoji" style="font-size:420px;filter:drop-shadow(0 0 80px rgba(255,210,63,.6))">😎</div>
+   </div>
+  </div>
+
+  <!-- S4 LOGO REVEAL -->
+  <div class="scene" id="s4">
+   <div class="abs" id="logoBig" style="left:115px;top:330px;width:850px;height:850px;border-radius:60px;overflow:hidden;
+     box-shadow:0 0 0 4px rgba(255,255,255,.15),0 0 120px rgba(37,244,238,.35),0 0 240px rgba(254,44,85,.25)">
+     <img src="logo.png" style="width:100%;height:100%;display:block">
+     <div id="logoShine" class="abs" style="top:-20%;bottom:-20%;width:200px;left:-300px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.55),transparent);transform:skewX(-20deg)"></div>
+   </div>
+   <div class="abs" id="solTxt" style="left:0;right:0;top:1210px;text-align:center;direction:rtl">
+     <div class="redbar" style="font-size:90px"><span>جابت ليك الحل <span class="emoji" style="font-size:.8em">✅</span></span></div>
+   </div>
+  </div>
+
+  <!-- S5 ACCOUNTS + TOGGLE -->
+  <div class="scene" id="s5">
+   <div class="abs" id="accTitle" style="left:0;right:0;top:245px;text-align:center">
+     <div style="font-family:Lalezar;font-size:96px;direction:rtl;text-shadow:-4px -2px 0 var(--cy),4px 2px 0 var(--pk)">حسابات <span class="lat">TikTok</span></div>
+     <div class="pill" id="betaPill" style="margin-top:6px;font-family:Mont;font-size:60px;padding:6px 40px;background:linear-gradient(90deg,var(--cy),var(--pk));color:#000">BETA</div>
+   </div>
+   <div id="accs" class="abs" style="left:0;right:0;top:560px;height:800px">
+    <!-- filled by JS -->
+   </div>
+   <div class="abs" id="readyStamp" style="left:540px;top:1240px;width:0;height:0">
+     <div class="abs" style="left:-260px;top:-60px;width:520px;height:120px;border-radius:30px;background:var(--green);color:#03150a;font-weight:900;font-size:66px;line-height:116px;text-align:center;box-shadow:0 0 60px rgba(43,224,122,.6)">واجدين ✓</div>
+   </div>
+   <div class="card abs" id="togglePanel" style="left:90px;top:600px;width:900px;height:560px;padding:44px 50px;opacity:0;box-shadow:0 30px 100px rgba(0,0,0,.7)">
+     <div style="display:flex;align-items:center;gap:20px;direction:ltr"><div class="emoji" style="font-size:64px">⚙️</div><div class="hdr" style="font-size:44px">Monetization</div></div>
+     <div style="height:2px;background:rgba(255,255,255,.08);margin:34px 0"></div>
+     <div style="display:flex;align-items:center;justify-content:space-between;direction:ltr">
+       <div><div class="hdr" style="font-size:50px">Creator Rewards</div><div style="font-family:Mont;color:#99a;font-size:28px;margin-top:4px">Program</div></div>
+       <div id="tg" style="width:190px;height:104px;border-radius:60px;background:#3a3a46;position:relative">
+         <div id="tgKnob" style="position:absolute;left:10px;top:10px;width:84px;height:84px;border-radius:50%;background:#fff;box-shadow:0 6px 16px rgba(0,0,0,.4)"></div>
+       </div>
+     </div>
+     <div id="tgOn" style="margin-top:56px;text-align:center;direction:rtl;font-weight:900;font-size:64px;color:var(--green);opacity:0;text-shadow:0 0 30px rgba(43,224,122,.5)">مفعّل ✓ <span class="lat" style="font-size:.7em">ACTIVE</span></div>
+   </div>
+  </div>
+
+  <!-- S6 CREATE + ANALYTICS -->
+  <div class="scene" id="s6">
+   <div class="phone" id="ph2" style="left:260px;top:250px;width:560px;height:1080px">
+    <div class="notch"></div>
+    <div id="cam" class="abs" style="inset:0;background:radial-gradient(circle at 50% 40%,#3b2a5a,#120d1d 70%)">
+      <div class="abs center emoji" style="top:44%;font-size:330px">🤳</div>
+      <div class="abs" style="left:36px;top:96px;display:flex;align-items:center;gap:12px;direction:ltr">
+        <div id="recDot" style="width:30px;height:30px;border-radius:50%;background:#ff2d45;box-shadow:0 0 20px #ff2d45"></div>
+        <div class="hdr" style="font-size:32px" id="recT">REC 00:00</div>
+      </div>
+      <div id="locChip" class="abs" style="left:50%;top:760px;transform:translateX(-50%);white-space:nowrap;padding:14px 34px;border-radius:999px;background:rgba(0,0,0,.6);border:2px solid rgba(255,255,255,.2);font-weight:900;font-size:48px;direction:rtl">📍 من المغرب <span class="emoji">🇲🇦</span></div>
+      <div class="abs" style="left:50%;bottom:50px;width:130px;height:130px;margin-left:-65px;border-radius:50%;border:10px solid #fff;"><div style="margin:12px;width:86px;height:86px;border-radius:50%;background:#ff2d45"></div></div>
+    </div>
+    <div id="ana" class="scr" style="opacity:0;background:#0b0b10">
+      <div class="hdr" style="direction:ltr;font-size:36px">Analytics</div>
+      <div style="color:#9aa;font-size:26px;margin-top:26px;direction:ltr;font-family:Mont">Video views</div>
+      <div class="big" id="cntV" style="font-size:86px;direction:ltr">0</div>
+      <svg width="480" height="270" style="margin-top:20px" viewBox="0 0 480 270">
+        <defs><linearGradient id="gB" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#25F4EE" stop-opacity=".4"/><stop offset="1" stop-color="#25F4EE" stop-opacity="0"/></linearGradient></defs>
+        <path id="area2" d="M0 255 C80 250 120 235 170 215 S260 190 300 140 S400 60 480 15 L480 270 L0 270Z" fill="url(#gB)" opacity="0"/>
+        <path id="line2" d="M0 255 C80 250 120 235 170 215 S260 190 300 140 S400 60 480 15" fill="none" stroke="#25F4EE" stroke-width="9" stroke-linecap="round"/>
+      </svg>
+      <div class="card" style="margin-top:30px;padding:26px 30px;direction:ltr">
+        <div style="color:#9aa;font-size:26px;font-family:Mont">Estimated rewards</div>
+        <div class="big" id="cntR" style="font-size:74px;color:var(--green)">$0</div>
+      </div>
+      <div id="qual" style="margin-top:30px;text-align:center;opacity:0"><span class="pill" style="background:var(--green);color:#03150a;font-size:40px;padding:10px 30px;direction:rtl">✓ كيتحسب ليك</span></div>
+    </div>
+   </div>
+  </div>
+
+  <!-- S7 FAST DELIVERY -->
+  <div class="scene" id="s7">
+   <div class="abs center emoji" id="bolt" style="top:620px;font-size:330px;filter:drop-shadow(0 0 60px rgba(255,210,63,.8))">⚡</div>
+   <div class="abs" id="fastT" style="left:0;right:0;top:850px;text-align:center;font-family:Lalezar;font-size:140px;direction:rtl;color:var(--gold);text-shadow:0 0 50px rgba(255,210,63,.5),0 12px 0 #000">تسليم فوري</div>
+   <div class="abs" style="left:140px;width:800px;top:1090px;height:56px;border-radius:40px;background:#1f1f29;overflow:hidden;border:3px solid rgba(255,255,255,.12)">
+     <div id="prog" style="height:100%;width:0%;background:linear-gradient(90deg,var(--cy),var(--green));box-shadow:0 0 30px var(--green)"></div>
+   </div>
+   <div class="abs" id="progT" style="left:0;right:0;top:1165px;text-align:center;font-family:Mont;font-size:52px">0%</div>
+   <div class="abs card" id="notif" style="left:60px;right:60px;top:-260px;height:200px;padding:30px 36px;display:flex;align-items:center;gap:28px;direction:rtl;
+     background:rgba(30,30,40,.92);box-shadow:0 20px 80px rgba(0,0,0,.7)">
+     <img src="logo.png" style="width:130px;height:130px;border-radius:30px">
+     <div><div style="font-family:Mont;font-size:30px;color:#aab;direction:ltr;text-align:right">HOCHI SHOP · now</div>
+     <div style="font-weight:900;font-size:50px">الحساب ديالك واجد ✅</div></div>
+   </div>
+  </div>
+
+  <!-- S8 TUTORIAL -->
+  <div class="scene" id="s8">
+   <div class="abs" id="tutT" style="left:0;right:0;top:240px;text-align:center;direction:rtl">
+     <div style="font-family:Lalezar;font-size:110px;text-shadow:-4px -2px 0 var(--cy),4px 2px 0 var(--pk)">شرح كامل <span class="emoji" style="font-size:.8em">🎓</span></div>
+     <div class="redbar" style="margin-top:10px"><span>بالدارجة</span></div>
+   </div>
+   <div class="abs card" id="player" style="left:140px;top:560px;width:800px;height:430px;overflow:hidden;background:linear-gradient(135deg,#2a1640,#0d2a33)">
+     <div class="abs" style="inset:0;background:radial-gradient(circle at 30% 30%,rgba(37,244,238,.25),transparent 50%),radial-gradient(circle at 75% 70%,rgba(254,44,85,.25),transparent 50%)"></div>
+     <div id="playBtn" class="abs center" style="width:190px;height:190px;border-radius:50%;background:rgba(255,255,255,.95);box-shadow:0 0 0 20px rgba(255,255,255,.18)">
+       <div style="position:absolute;left:72px;top:50px;border-left:76px solid #111;border-top:46px solid transparent;border-bottom:46px solid transparent"></div></div>
+     <div class="abs" style="left:30px;right:30px;bottom:26px;height:12px;border-radius:8px;background:rgba(255,255,255,.2)"><div id="vbar" style="width:0%;height:100%;border-radius:8px;background:var(--pk)"></div></div>
+   </div>
+   <div id="steps" class="abs" style="left:140px;right:140px;top:1020px;direction:rtl"></div>
+  </div>
+
+  <!-- S9 PAYMENT -->
+  <div class="scene" id="s9">
+   <div class="abs" id="payT" style="left:0;right:0;top:250px;text-align:center;direction:rtl;font-family:Lalezar;font-size:130px;text-shadow:-5px -3px 0 var(--cy),5px 3px 0 var(--pk)">الخلاص ساهل <span class="emoji" style="font-size:.8em">💳</span></div>
+   <div id="pays" class="abs" style="left:110px;right:110px;top:520px"></div>
+  </div>
+
+  <!-- S10 CTA -->
+  <div class="scene" id="s10">
+   <div class="abs" id="clockW" style="left:0;right:0;top:330px;text-align:center">
+     <div class="emoji" id="clock" style="font-size:440px;display:inline-block;filter:drop-shadow(0 0 70px rgba(254,44,85,.6))">⏰</div>
+     
+   </div>
+   <div class="abs" id="dmW" style="left:0;right:0;top:250px;opacity:0">
+     <img src="logo_wide_t.png" id="ctaLogo" style="display:block;margin:0 auto;width:760px;">
+     <div class="card abs" id="chat" style="left:90px;width:900px;top:420px;padding:30px;direction:rtl">
+       <div style="display:flex;align-items:center;gap:20px">
+         <img src="logo.png" style="width:90px;height:90px;border-radius:50%">
+         <div><div style="font-weight:900;font-size:40px">Hochi Shop</div><div style="color:var(--green);font-size:26px;font-weight:700">● متصل دابا</div></div>
+       </div>
+       <div style="height:2px;background:rgba(255,255,255,.08);margin:24px 0"></div>
+       <div id="bubble" style="margin-right:auto;margin-left:0;width:fit-content;max-width:760px;padding:22px 32px;border-radius:36px 36px 36px 8px;background:linear-gradient(135deg,var(--pk),#ff5d7c);font-size:44px;font-weight:700;opacity:0">سلام، بغيت حساب <span class="lat">Beta</span> 👋</div>
+       <div style="display:flex;gap:16px;margin-top:24px;align-items:center">
+         <div style="flex:1;height:84px;border-radius:44px;background:#24242f;padding:0 30px;font-size:36px;line-height:84px;color:#ccd;overflow:hidden;white-space:nowrap" id="typed"></div>
+         <div style="width:84px;height:84px;border-radius:50%;background:var(--pk);font-size:40px;line-height:84px;text-align:center" class="emoji">➤</div>
+       </div>
+     </div>
+     <div class="abs" id="ctaBtn" style="left:140px;width:800px;top:860px;height:150px;border-radius:80px;background:linear-gradient(90deg,var(--pk),#ff2d6f);text-align:center;
+       font-weight:900;font-size:66px;line-height:146px;direction:rtl;box-shadow:0 0 0 0 rgba(254,44,85,.6),0 20px 60px rgba(254,44,85,.5)">صيفط ميساج دابا <span class="emoji">📩</span></div>
+     <div class="abs emoji" id="hand" style="left:700px;top:1000px;font-size:150px;opacity:0">👆</div>
+   </div>
+   <div class="abs" id="winW" style="left:0;right:0;top:520px;text-align:center;opacity:0">
+     <div class="big" id="winN" style="font-size:190px;color:var(--green);text-shadow:0 0 60px rgba(43,224,122,.7),0 12px 0 #000">$5,000</div>
+     <div style="font-family:Lalezar;font-size:130px;direction:rtl;text-shadow:-5px -3px 0 var(--cy),5px 3px 0 var(--pk)">وبدا تربح <span class="emoji" style="font-size:.8em">🚀</span></div>
+   </div>
+  </div>
+
+  <!-- END CARD -->
+  <div class="scene" id="s11">
+   <img src="logo_wide_t.png" id="endLogo" class="abs" style="left:110px;top:430px;width:860px;">
+   <div class="abs" id="endBtn" style="left:140px;width:800px;top:900px;height:150px;border-radius:80px;background:linear-gradient(90deg,var(--pk),#ff2d6f);text-align:center;
+       font-weight:900;font-size:66px;line-height:146px;direction:rtl;box-shadow:0 20px 60px rgba(254,44,85,.5)">صيفط ميساج دابا <span class="emoji">📩</span></div>
+   <div class="abs" id="endSub" style="left:0;right:0;top:1090px;text-align:center;direction:rtl;font-weight:700;font-size:44px;color:#ccd">CIH · Cash Plus · Wafacash</div>
+  </div>
+
+  <div id="parts" class="abs" style="inset:0;pointer-events:none"></div>
+ </div>
+
+ <div id="wm" class="abs" style="left:36px;top:118px;width:200px;opacity:0"><img src="logo_wide_t.png" style="width:100%;"></div>
+ <div id="caps"></div>
+ <div id="vig"></div>
+ <canvas id="grain" width="640" height="1140"></canvas>
+ <div id="flash"></div>
+</div>
+
+<script src="node_modules/gsap/dist/gsap.min.js"></script>
+<script>
+const O=0.1; // VO offset
+const $=s=>document.querySelector(s);
+function rnd(seed){let s=seed>>>0;return()=>{s=(s*1664525+1013904223)>>>0;return s/4294967296}}
+// ---------- captions (start,end,html) times in VO timeline
+const C=[
+ [0.00,0.48,'باغي تبدا'],
+ [0.48,1.08,'تربح من <span class="cy lat">TikTok</span>'],
+ [1.08,1.88,'ولكن <span class="hl">فالمغرب</span>'],
+ [1.88,2.39,'<span class="pk">ما كاينش</span>'],
+ [2.39,3.47,'برنامج <span class="hl">المكافآت</span>؟'],
+ [3.47,4.25,'ما تقلقش'],
+ [4.25,4.85,'<span class="hl">هوشي شوب</span>'],
+ [4.85,5.57,'جابت ليك <span class="gr">الحل</span>'],
+ [5.57,6.75,'حسابات <span class="lat cy">TikTok Beta</span>'],
+ [6.75,7.37,'<span class="gr">واجدين</span>'],
+ [7.37,7.95,'مفعل فيهم'],
+ [7.95,9.03,'<span class="lat hl">Creator Rewards</span>'],
+ [9.03,9.85,'باش تبدا تصاوب'],
+ [9.85,10.6,'المحتوى ديالك'],
+ [10.6,11.38,'من هنا <span class="hl">فالمغرب</span>'],
+ [11.38,12.3,'وتشوف المجهود ديالك'],
+ [12.3,12.85,'<span class="gr">كيتحسب</span>'],
+ [12.85,13.85,'كتوصل بالحساب <span class="hl">دغيا</span>'],
+ [13.85,14.66,'من بعد الخلاص'],
+ [14.66,15.3,'مع شرح كامل'],
+ [15.3,16.09,'<span class="hl">بالدارجة</span>'],
+ [16.09,16.75,'كيفاش تبدا'],
+ [16.75,17.53,'وكيفاش تخدم بيه'],
+ [17.53,18.36,'والخلاص <span class="gr">ساهل</span>'],
+ [18.36,19.09,'<span class="lat hl">CIH</span>'],
+ [19.09,19.8,'<span class="lat hl">Cash Plus</span>'],
+ [19.8,20.65,'ولا <span class="lat hl">Wafacash</span>'],
+ [20.65,21.48,'ما تضيعش <span class="pk">الوقت</span>'],
+ [21.48,22.0,'صيفط لينا'],
+ [22.0,22.69,'<span class="hl">ميساج دابا</span>'],
+ [22.69,23.2,'وبدا <span class="gr">تربح</span>'],
+ [23.2,23.95,'من <span class="lat cy">TikTok</span>']
+];
+const caps=$('#caps');
+C.forEach((c,i)=>{const d=document.createElement('div');d.className='cap';d.id='cap'+i;d.innerHTML=c[2];caps.appendChild(d)});
+
+// ---------- accounts cards
+const accs=$('#accs');
+['hochi.beta01','hochi.beta02','hochi.beta03'].forEach((u,i)=>{
+ const d=document.createElement('div');d.className='card abs acc';d.id='acc'+i;
+ d.style.cssText=`left:120px;width:840px;height:200px;top:${i*230}px;padding:30px 36px;display:flex;align-items:center;gap:30px;direction:ltr;box-shadow:0 20px 60px rgba(0,0,0,.6)`;
+ const g=['linear-gradient(135deg,#25F4EE,#6b2bff)','linear-gradient(135deg,#FE2C55,#ffb03b)','linear-gradient(135deg,#2BE07A,#25F4EE)'][i];
+ d.innerHTML=`<div style="width:130px;height:130px;border-radius:50%;background:${g};display:flex;align-items:center;justify-content:center;font-size:70px" class="emoji">${['🧑🏻‍💻','👩🏻','🧔🏻'][i]}</div>
+  <div style="flex:1"><div class="hdr" style="font-size:44px">@${u}</div>
+  <div style="margin-top:8px;display:flex;gap:12px"><span class="pill" style="background:linear-gradient(90deg,#25F4EE,#FE2C55);color:#000;font-family:Mont;font-size:26px">BETA</span>
+  <span class="pill" style="background:rgba(255,210,63,.15);color:#FFD23F;font-family:Mont;font-size:26px">🎁 Rewards</span></div></div>
+  <div class="chk">✓</div>`;
+ accs.appendChild(d);
+});
+// ---------- steps
+const steps=$('#steps');
+[['1','كيفاش تبدا'],['2','كيفاش تخدم بيه'],['3','كيفاش تربح <span class="emoji">💸</span>']].forEach((s,i)=>{
+ const d=document.createElement('div');d.className='card';d.id='st'+i;
+ d.style.cssText='display:flex;align-items:center;gap:22px;padding:10px 26px;margin-bottom:14px;opacity:0';
+ d.innerHTML=`<div style="width:76px;height:76px;border-radius:50%;background:linear-gradient(135deg,var(--cy),var(--pk));font-family:Mont;font-size:42px;line-height:76px;text-align:center;color:#000">${s[0]}</div>
+  <div style="flex:1;font-weight:900;font-size:46px">${s[1]}</div><div class="chk">✓</div>`;
+ steps.appendChild(d);
+});
+// ---------- payments
+const pays=$('#pays');
+[['CIH','Bank','linear-gradient(135deg,#f07b1d,#c2410c)'],['Cash Plus','','linear-gradient(135deg,#ffd23f,#e0a800)'],['Wafacash','','linear-gradient(135deg,#ff6b3d,#d6232f)']].forEach((p,i)=>{
+ const d=document.createElement('div');d.className='card';d.id='pay'+i;
+ d.style.cssText='height:230px;margin-bottom:36px;display:flex;align-items:center;gap:36px;padding:0 44px;direction:ltr;opacity:0;box-shadow:0 20px 60px rgba(0,0,0,.6)';
+ d.innerHTML=`<div style="width:150px;height:150px;border-radius:36px;background:${p[2]};display:flex;align-items:center;justify-content:center" class="emoji"><span style="font-size:80px">${['🏦','💵','💸'][i]}</span></div>
+ <div style="flex:1"><div class="big" style="font-size:72px;letter-spacing:-1px">${p[0]}</div><div style="font-family:Mont;color:#99a;font-size:28px">${['Bank transfer','Cash transfer','Cash transfer'][i]}</div></div><div class="chk" style="width:80px;height:80px;font-size:52px">✓</div>`;
+ pays.appendChild(d);
+});
+
+// ---------- particles (money bursts), deterministic
+const parts=$('#parts');const P=[];
+function burst(t0,n,x,y,emojis,seed,spd=1,size=90,grav=1400,life=1.8){
+ const r=rnd(seed);
+ for(let i=0;i<n;i++){const d=document.createElement('div');d.className='particle';d.textContent=emojis[i%emojis.length];d.style.fontSize=(size*(0.6+r()*0.7))+'px';d.style.opacity=0;parts.appendChild(d);
+  const a=r()*Math.PI*2, v=(700+r()*1300)*spd;
+  P.push({el:d,t0:t0+r()*0.08,x,y,vx:Math.cos(a)*v,vy:Math.sin(a)*v-700*spd,rot:(r()-.5)*720,grav,life});}
+}
+function rain(t0,t1,n,emojis,seed){
+ const r=rnd(seed);
+ for(let i=0;i<n;i++){const d=document.createElement('div');d.className='particle';d.textContent=emojis[i%emojis.length];d.style.fontSize=(60+r()*70)+'px';d.style.opacity=0;parts.appendChild(d);
+  const st=t0+r()*(t1-t0-0.6);P.push({el:d,t0:st,x:r()*1080,y:-150,vx:(r()-.5)*120,vy:900+r()*700,rot:(r()-.5)*400,grav:0,life:2.2,end:t1});}
+}
+burst(0.0,26,540,880,['💵','💸','💰','🪙'],11,1.1,100);
+rain(0.1,1.3,14,['💵','💸'],12);
+burst(4.35+O,18,540,760,['✨','⭐','💫'],21,0.9,70,900,1.4);
+burst(8.12+O,18,780,830,['🎉','✨','💚'],31,0.8,70,1300,1.5);
+burst(22.83+O,24,540,700,['💵','💸','💰','🪙'],41,1.3,100);
+rain(22.85+O,24.3,12,['💵','💸'],42);
+burst(23.95+O,10,540,560,['✨','⭐'],51,1.0,60,900,1.0);
+function renderParticles(t){
+ for(const p of P){const dt=t-p.t0;
+  if(dt<0||dt>p.life||(p.end&&t>p.end)){p.el.style.opacity=0;continue}
+  const x=p.x+p.vx*dt, y=p.y+p.vy*dt+0.5*p.grav*dt*dt;
+  const o=Math.min(1,dt/0.05)*Math.min(1,(p.life-dt)/0.4);
+  p.el.style.opacity=o;p.el.style.transform=`translate(${x-45}px,${y-45}px) rotate(${p.rot*dt}deg)`;}
+}
+
+// ---------- timeline
+const tl=gsap.timeline({paused:true,defaults:{ease:'power3.out'}});
+const S=(id,a,b)=>{tl.set(id,{visibility:'visible'},a);tl.set(id,{visibility:'hidden'},b)};
+const V={c1:1250,cV:0,cR:0,prog:0,win:0};
+// captions
+C.forEach((c,i)=>{const a=i?c[0]+O:0,b=(i<C.length-1?C[i+1][0]:c[1])+O;const id='#cap'+i;
+ tl.set(id,{visibility:'visible'},a);
+ tl.fromTo(id,{scale:i?0.55:0.9,y:i?30:0,rotation:i%2?-3:3,opacity:i?0:1},{scale:1,y:0,rotation:0,opacity:1,duration:0.16,ease:'back.out(2.5)'},a);
+ tl.set(id,{visibility:'hidden'},Math.max(a+0.05,b-0.001));
+});
+// world camera punches
+tl.fromTo('#world',{scale:1.12},{scale:1,duration:0.3,ease:'expo.out'},0);
+// --- S1 hook
+S('#s1',0,3.57);
+tl.fromTo('#hookT',{scale:1.12,opacity:1},{scale:1,opacity:1,duration:0.22,ease:'back.out(1.6)'},0);
+tl.fromTo('#hookBar',{x:-1100},{x:0,duration:0.25,ease:'expo.out'},0.04);
+tl.fromTo('#ph1',{y:260,rotation:6},{y:0,rotation:0,duration:0.45,ease:'expo.out'},0.0);
+tl.fromTo(V,{c1:1250},{c1:2847.6,duration:1.0,immediateRender:false,ease:'power2.out'},0.05);
+tl.fromTo(['#line1'],{strokeDasharray:700,strokeDashoffset:700},{strokeDashoffset:0,duration:0.9,ease:'power2.out'},0.1);
+tl.fromTo(['#area1'],{opacity:0},{opacity:1,duration:0.6},0.4);
+// problem
+tl.to('#redtint',{opacity:1,duration:0.3},1.08+O);
+tl.to('#ph1ok',{opacity:0,duration:0.06},1.16+O);
+tl.to('#ph1bad',{opacity:1,duration:0.06},1.16+O);
+tl.to('#hookT',{scale:0.85,opacity:0.0,y:-40,duration:0.25},1.08+O);
+tl.to('#hookBar',{y:-150,duration:0.3},1.08+O);
+tl.fromTo('#ph1',{rotation:0},{rotation:-4,duration:0.12,yoyo:true,repeat:3,ease:'sine.inOut'},1.16+O);
+tl.to('#ph1',{scale:0.92,y:40,duration:0.4},1.3+O);
+tl.fromTo('#stamp',{scale:3,opacity:0,rotation:-25},{scale:1,opacity:1,rotation:-10,duration:0.18,ease:'power4.in'},2.37+O);
+tl.to('#stamp',{scale:1.06,duration:0.1,yoyo:true,repeat:1},2.55+O);
+// --- S3 don't worry
+tl.to('#ph1',{scale:0.2,rotation:-40,x:-700,opacity:0,duration:0.35,ease:'power3.in'},3.47+O);
+tl.to('#stamp',{x:900,opacity:0,duration:0.3,ease:'power3.in'},3.47+O);
+tl.to('#hookBar',{opacity:0,duration:0.2},3.47+O);
+tl.to('#redtint',{opacity:0,duration:0.4},3.47+O);
+S('#s3',3.47+O,4.25+O);
+tl.fromTo('#dw',{scale:0,rotation:-20},{scale:1,rotation:0,duration:0.4,ease:'back.out(2)'},3.5+O);
+tl.to('#dw',{scale:1.15,duration:0.5,ease:'none'},3.9+O);
+tl.to('#rays',{opacity:0.6,duration:0.7,ease:'power2.in'},3.55+O);
+// --- S4 logo reveal
+S('#s4',4.25+O,5.57+O);
+tl.fromTo('#flash',{opacity:1},{opacity:0,duration:0.45,ease:'power2.out',immediateRender:false},4.25+O);
+tl.fromTo('#logoBig',{scale:1.8,rotation:-6,opacity:0},{scale:1,rotation:0,opacity:1,duration:0.5,ease:'back.out(1.4)'},4.25+O);
+tl.to('#logoBig',{scale:1.05,duration:1.0,ease:'none'},4.75+O);
+tl.fromTo('#logoShine',{x:0},{x:1500,duration:0.7,ease:'power2.inOut'},4.5+O);
+tl.fromTo('#solTxt',{y:200,opacity:0,scale:0.6},{y:0,opacity:1,scale:1,duration:0.35,ease:'back.out(2)'},4.85+O);
+tl.to('#rays',{opacity:0,duration:0.5},5.3+O);
+tl.to(['#logoBig','#solTxt'],{scale:0.3,opacity:0,y:-500,duration:0.3,ease:'power3.in'},5.45+O);
+tl.to('#wm',{opacity:0.95,duration:0.4},5.6+O);
+// --- S5 accounts
+S('#s5',5.57+O,9.03+O);
+tl.fromTo('#accTitle',{y:-300,opacity:0},{y:0,opacity:1,duration:0.4,ease:'back.out(1.6)'},5.57+O);
+tl.fromTo('#betaPill',{scale:0},{scale:1,duration:0.35,ease:'back.out(3)'},6.0+O);
+[0,1,2].forEach(i=>tl.fromTo('#acc'+i,{x:1200,rotation:8},{x:0,rotation:0,duration:0.45,ease:'expo.out'},5.62+i*0.17+O));
+tl.fromTo('#readyStamp',{scale:0,rotation:-20},{scale:1,rotation:-4,duration:0.3,ease:'back.out(3)'},6.75+O);
+tl.to(['#accs','#readyStamp'],{y:-120,scale:0.8,opacity:0,duration:0.3,ease:'power3.in'},7.32+O);
+tl.fromTo('#togglePanel',{y:400,opacity:0,scale:0.8},{y:0,opacity:1,scale:1,duration:0.4,ease:'back.out(1.5)'},7.4+O);
+tl.to('#tgKnob',{x:86,duration:0.18,ease:'power2.inOut'},8.02+O);
+tl.to('#tg',{backgroundColor:'#2BE07A',boxShadow:'0 0 40px rgba(43,224,122,.8)',duration:0.18},8.02+O);
+tl.fromTo('#tgOn',{opacity:0,scale:0.5},{opacity:1,scale:1,duration:0.3,ease:'back.out(3)'},8.12+O);
+tl.to('#togglePanel',{scale:1.06,duration:0.9,ease:'none'},8.1+O);
+// --- S6 create
+S('#s6',9.03+O,12.85+O);
+tl.fromTo('#ph2',{y:1400,rotation:-10},{y:0,rotation:0,duration:0.5,ease:'expo.out'},9.03+O);
+tl.fromTo('#locChip',{scale:0,opacity:0},{scale:1,opacity:1,duration:0.35,ease:'back.out(3)'},10.6+O);
+tl.to('#cam',{opacity:0,duration:0.15},11.38+O);
+tl.to('#ana',{opacity:1,duration:0.15},11.38+O);
+tl.fromTo('#ph2',{rotationY:0},{rotationY:360,duration:0.5,ease:'power2.inOut'},11.2+O);
+tl.to(V,{cV:1254890,duration:1.3,ease:'power2.out'},11.45+O);
+tl.to(V,{cR:1340,duration:1.3,ease:'power2.out'},11.5+O);
+tl.fromTo('#line2',{strokeDasharray:620,strokeDashoffset:620},{strokeDashoffset:0,duration:1.1,ease:'power2.out'},11.45+O);
+tl.to('#area2',{opacity:1,duration:0.6},11.8+O);
+tl.fromTo('#qual',{opacity:0,scale:0.4},{opacity:1,scale:1,duration:0.3,ease:'back.out(3)'},12.3+O);
+tl.to('#ph2',{scale:1.05,duration:1.3,ease:'none'},11.5+O);
+tl.to('#ph2',{x:-1100,rotation:-15,duration:0.3,ease:'power3.in'},12.6+O);
+// --- S7 fast delivery
+S('#s7',12.85+O,14.66+O);
+tl.fromTo('#bolt',{scale:0,rotation:-30},{scale:1,rotation:0,duration:0.35,ease:'back.out(3)'},12.88+O);
+tl.fromTo('#fastT',{x:1100},{x:0,duration:0.35,ease:'expo.out'},12.95+O);
+tl.to(V,{prog:100,duration:0.9,ease:'power2.inOut'},13.05+O);
+tl.to('#notif',{y:500,duration:0.45,ease:'back.out(1.5)'},13.9+O);
+tl.to('#wm',{opacity:0,duration:0.2},13.85+O);tl.to('#wm',{opacity:0.95,duration:0.3},14.7+O);
+// --- S8 tutorial
+S('#s8',14.66+O,17.53+O);
+tl.fromTo('#tutT',{y:-400},{y:0,duration:0.45,ease:'expo.out'},14.66+O);
+tl.fromTo('#player',{scale:0.3,opacity:0,rotation:6},{scale:1,opacity:1,rotation:0,duration:0.45,ease:'back.out(1.6)'},14.75+O);
+tl.to('#vbar',{width:'85%',duration:2.6,ease:'none'},14.95+O);
+[16.09,16.75,17.18].forEach((t,i)=>tl.fromTo('#st'+i,{x:-900,opacity:0},{x:0,opacity:1,duration:0.35,ease:'expo.out'},t+O));
+// --- S9 payment
+S('#s9',17.53+O,20.65+O);
+tl.fromTo('#payT',{scale:2.5,opacity:0},{scale:1,opacity:1,duration:0.35,ease:'back.out(1.5)'},17.53+O);
+[18.36,19.09,19.8].forEach((t,i)=>tl.fromTo('#pay'+i,{scale:0.2,opacity:0,rotation:i%2?8:-8},{scale:1,opacity:1,rotation:0,duration:0.4,ease:'back.out(2.2)'},t+O));
+// --- S10 CTA
+S('#s10',20.65+O,23.95+O);
+tl.fromTo('#clockW',{scale:0},{scale:1,duration:0.35,ease:'back.out(2.5)'},20.65+O);
+tl.fromTo('#clock',{rotation:-14},{rotation:14,duration:0.08,yoyo:true,repeat:9,ease:'sine.inOut'},20.7+O);
+tl.to('#clockW',{scale:0,opacity:0,duration:0.2,ease:'power3.in'},21.4+O);
+tl.fromTo('#dmW',{opacity:0,y:200},{opacity:1,y:0,duration:0.35,ease:'expo.out'},21.48+O);
+tl.to('#bubble',{opacity:1,duration:0.2},22.2+O);
+tl.fromTo('#bubble',{scale:0.5,transformOrigin:'0% 100%'},{scale:1,duration:0.3,ease:'back.out(2.5)'},22.2+O);
+tl.fromTo('#hand',{opacity:0,y:150},{opacity:1,y:0,duration:0.3},22.1+O);
+tl.to('#hand',{scale:0.85,y:-30,duration:0.1,yoyo:true,repeat:1},22.45+O);
+tl.to('#ctaBtn',{scale:0.93,duration:0.1,yoyo:true,repeat:1},22.45+O);
+tl.to('#dmW',{opacity:0,scale:0.6,duration:0.2,ease:'power3.in'},22.6+O);
+tl.fromTo('#winW',{opacity:0,scale:0.3},{opacity:1,scale:1,duration:0.35,ease:'back.out(2.2)'},22.69+O);
+tl.to(V,{win:5000,duration:1.0,ease:'power2.out'},22.69+O);
+tl.fromTo('#flash',{opacity:0.7},{opacity:0,duration:0.35,immediateRender:false},22.69+O);
+// --- end card
+S('#s11',23.95+O,26);
+tl.fromTo('#flash',{opacity:0.9},{opacity:0,duration:0.5,immediateRender:false},23.95+O);
+tl.fromTo('#endLogo',{scale:1.6,opacity:0},{scale:1,opacity:1,duration:0.45,ease:'back.out(1.5)'},23.95+O);
+tl.fromTo('#endBtn',{y:300,opacity:0},{y:0,opacity:1,duration:0.4,ease:'back.out(1.6)'},24.15+O);
+tl.fromTo('#endSub',{opacity:0},{opacity:1,duration:0.4},24.35+O);
+tl.to('#wm',{opacity:0,duration:0.2},23.95+O);
+
+// ---------- procedural per-frame stuff
+const grain=$('#grain'),gctx=grain.getContext('2d');const gimg=gctx.createImageData(640,1140);
+function shakeAmt(t){
+ const hits=[[0,22],[1.16+O,16],[2.5+O,26],[4.25+O,30],[8.12+O,8],[13.0+O,14],[22.69+O,24],[23.95+O,20]];
+ let a=0;for(const [h,m] of hits){const d=t-h;if(d>=0&&d<0.45)a+=m*Math.exp(-d*9)}return a;
+}
+function fmt(n,dec){return n.toLocaleString('en-US',{minimumFractionDigits:dec,maximumFractionDigits:dec})}
+window.renderAt=function(t){
+ tl.seek(Math.max(t,0.001),false);
+ // background motion
+ $('#orb1').style.transform=`translate(${-150+Math.sin(t*0.7)*200}px,${200+Math.cos(t*0.5)*180}px)`;
+ $('#orb2').style.transform=`translate(${520+Math.cos(t*0.6)*200}px,${1050+Math.sin(t*0.8)*200}px)`;
+ $('#orb3').style.transform=`translate(${300+Math.sin(t*0.4+1)*300}px,${600+Math.cos(t*0.3)*300}px)`;
+ $('#grid').style.backgroundPosition=`0 ${(t*120)%90}px`;
+ $('#rays').style.transform=`rotate(${t*25}deg)`;
+ $('#swoosh1').style.transform=`scale(1.7) translate(${Math.sin(t*1.1)*8}px,${Math.cos(t*0.9)*8}px)`;
+ $('#swoosh2').style.transform=`scale(1.7) translate(${Math.cos(t*1.0)*8}px,${Math.sin(t*1.2)*8}px)`;
+ // counters
+ $('#cnt1').textContent='$'+fmt(V.c1,2);
+ $('#cntV').textContent=fmt(Math.round(V.cV),0);
+ $('#cntR').textContent='$'+fmt(Math.round(V.cR),0);
+ $('#prog').style.width=V.prog+'%';$('#progT').textContent=Math.round(V.prog)+'%'+(V.prog>=100?' ✓':'');
+ $('#winN').textContent='$'+fmt(Math.round(V.win),0);
+ // rec
+ const rt=Math.max(0,t-(9.03+O));$('#recT').textContent='REC 00:'+String(Math.floor(rt*4)%60).padStart(2,'0');
+ $('#recDot').style.opacity=(Math.floor(t*3)%2)?0.25:1;
+ // typing
+ const msg='سلام، بغيت حساب Beta 👋';const tt=t-(21.6+O);
+ $('#typed').textContent=tt<0?'':(tt>0.6?'':Array.from(msg).slice(0,Math.floor(tt/0.6*msg.length)).join(''));
+ // CTA pulse
+ const pp=(t*1.6)%1;$('#ctaBtn').style.boxShadow=`0 0 0 ${pp*40}px rgba(254,44,85,${0.6*(1-pp)}),0 20px 60px rgba(254,44,85,.5)`;
+ $('#endBtn').style.transform=`scale(${1+0.04*Math.sin(t*9)})`;
+ $('#playBtn').style.boxShadow=`0 0 0 ${10+pp*40}px rgba(255,255,255,${0.3*(1-pp)})`;
+ // glitch on problem
+ const gl=$('#glitchbars');const gd=t-(1.16+O);
+ if((gd>=0&&gd<0.35)||(t>2.0+O&&t<2.2+O)){const r=rnd(Math.floor(t*30));let h='';for(let i=0;i<6;i++){h+=`<div style="position:absolute;left:0;right:0;top:${r()*100}%;height:${4+r()*40}px;background:${r()>.5?'#25F4EE':'#FE2C55'};opacity:.6;transform:translateX(${(r()-.5)*80}px)"></div>`}gl.innerHTML=h;gl.style.opacity=1;
+  $('#ph1').style.filter=`drop-shadow(${(r()-.5)*30}px 0 0 rgba(254,44,85,.8)) drop-shadow(${(r()-.5)*30}px 0 0 rgba(37,244,238,.8))`;}
+ else{gl.style.opacity=0;$('#ph1').style.filter='none'}
+ // shake
+ const a=shakeAmt(t);const sx=Math.sin(t*93.1)*a, sy=Math.cos(t*77.3)*a;
+ const base=gsap.getProperty('#world','scale');
+ $('#world').style.transform=`translate(${sx}px,${sy}px) scale(${base})`;
+ renderParticles(t);
+ // grain
+ const r=rnd(Math.floor(t*30)+1);const d=gimg.data;for(let i=0;i<d.length;i+=4){const v=r()*255;d[i]=d[i+1]=d[i+2]=v;d[i+3]=255}gctx.putImageData(gimg,0,0);
+};
+window.DUR=25.2;
+</script>
+</body>
+</html>
