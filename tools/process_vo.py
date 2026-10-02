@@ -2,7 +2,7 @@
 
 Inputs  (assets/vo): voiceover.wav, script.json, ctc_tokens.json (from tools/ctc_tokens.py)
 Outputs (assets/vo): lines/L1.wav..L7.wav (clean), lines/L*_robot.wav (Citybot FX),
-                     voiceover_clean.wav, voiceover_robot.wav, timings.json
+                     voiceover_clean.wav, voiceover_robot.wav, dialogue_comp.wav, timings.json
 No re-voicing: only trimming, gain/limiting and the light robot effect on Citybot lines.
 """
 import json, subprocess
@@ -161,6 +161,11 @@ def main():
     out = {"fps": FPS, "leadIn": LEAD_IN, "endTail": END_TAIL, "durationSec": total, "durationInFrames": frames,
            "masterStart": to_comp(m_off), "loudness": report, "lines": lines}
     json.dump(out, open(VO / "timings.json", "w"), ensure_ascii=False, indent=1)
+    # final dialogue (robot FX) laid on the composition timeline: starts at t=0, exactly durationSec long
+    y, _ = sf.read(VO / "voiceover_robot.wav", dtype="float32")
+    comp = np.concatenate([np.zeros(int(round(out["masterStart"] * SR)), np.float32), y])
+    n = int(total * SR)
+    sf.write(VO / "dialogue_comp.wav", np.pad(comp, (0, max(0, n - len(comp))))[:n], SR, subtype="PCM_24")
     print(json.dumps(report, indent=1))
     print(f"total {total}s = {frames} frames")
 

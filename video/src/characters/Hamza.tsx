@@ -33,7 +33,7 @@ export const HAMZA_REST: Record<HamzaExpr, Viseme> = { neutral: 'X', worried: 'X
 const mixExpr = (a: ExprDef, b: ExprDef, t: number): ExprDef =>
 	Object.fromEntries(Object.keys(a).map((k) => [k, lerp(a[k as keyof ExprDef], b[k as keyof ExprDef], t)])) as ExprDef;
 
-export type Held = { kind: 'cracked' | 'image'; glow?: number; src?: string; angle?: number; size?: number; offset?: Pt };
+export type Held = { kind: 'cracked' | 'image'; glow?: number; src?: string; tint?: string; label?: string; angle?: number; size?: number; offset?: Pt; stamp?: number };
 
 export type HamzaPose = {
 	expr?: HamzaExpr;
@@ -107,10 +107,19 @@ const HeldPhone: React.FC<{ held: Held; at: Pt; uid: string }> = ({ held, at, ui
 	const off = held.offset ?? { x: -6, y: -40 };
 	const glow = held.glow ?? 0;
 	const tf = `translate(${at.x + off.x} ${at.y + off.y}) rotate(${held.angle ?? -8}) scale(${size})`;
-	if (held.kind === 'image' && held.src) {
+	if (held.kind === 'image') {
 		return (
 			<g transform={tf}>
-				<image href={held.src} x={-40} y={-80} width={80} height={160} preserveAspectRatio="xMidYMid meet" />
+				{held.src ? (
+					<image href={held.src} x={-40} y={-80} width={80} height={160} preserveAspectRatio="xMidYMid meet" />
+				) : (
+					// placeholder until the official product image is available — deliberately not a phone render
+					<g>
+						<rect x={-38} y={-78} width={76} height={156} rx={14} fill={held.tint ?? '#888'} stroke="#FFFFFF" strokeWidth={3} strokeDasharray="8 6" />
+						<text x={0} y={-6} textAnchor="middle" fontFamily="Montserrat" fontWeight={900} fontSize={11} fill="#FFFFFF">{held.label ?? 'PRODUCT'}</text>
+						<text x={0} y={12} textAnchor="middle" fontFamily="Montserrat" fontWeight={800} fontSize={8} fill="#FFFFFF">IMAGE PENDING</text>
+					</g>
+				)}
 			</g>
 		);
 	}
@@ -135,6 +144,12 @@ const HeldPhone: React.FC<{ held: Held; at: Pt; uid: string }> = ({ held, at, ui
 				<path d="M 10 -6 L 22 2" />
 			</g>
 			<circle cx={0} cy={47} r={2.5} fill="#22262C" />
+			{held.stamp ? (
+				<g transform={`rotate(-12) scale(${held.stamp})`} opacity={Math.min(1, held.stamp * 1.5)}>
+					<circle r={30} fill="#E8333A" stroke="#FFFFFF" strokeWidth={4} />
+					<path d="M -12 -12 L 12 12 M 12 -12 L -12 12" stroke="#FFFFFF" strokeWidth={7} strokeLinecap="round" />
+				</g>
+			) : null}
 		</g>
 	);
 };

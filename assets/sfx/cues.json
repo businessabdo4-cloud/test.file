@@ -1,0 +1,66 @@
+[
+ {
+  "name": "citybotPop",
+  "file": "sfx/pop.wav",
+  "t": 3.3667,
+  "frame": 101,
+  "gain": 0.55,
+  "why": "Citybot bursts out of the phone (gap L1→L2)"
+ },
+ {
+  "name": "boxWhoosh",
+  "file": "sfx/whoosh.wav",
+  "t": 7.7667,
+  "frame": 233,
+  "gain": 0.5,
+  "why": "box drops in (gap L2→L3)"
+ },
+ {
+  "name": "checkDing",
+  "file": "sfx/ding.wav",
+  "t": 6.8667,
+  "frame": 206,
+  "gain": 0.2,
+  "why": "checkmark on Citybot's face, end of 'أوريجينال'"
+ },
+ {
+  "name": "crowdOoh",
+  "file": "sfx/ooh.wav",
+  "t": 10.3,
+  "frame": 309,
+  "gain": 0.2,
+  "why": "reaction to the iPhone 18 Pro Max (gap L3→L4)"
+ },
+ {
+  "name": "hostBlip",
+  "file": "sfx/blip1.wav",
+  "t": 12.9333,
+  "frame": 388,
+  "gain": 0.28,
+  "why": "Citybot switches to game-show host (gap L4→L5)"
+ },
+ {
+  "name": "ctaBlip",
+  "file": "sfx/blip2.wav",
+  "t": 16.3333,
+  "frame": 490,
+  "gain": 0.28,
+  "why": "Citybot CTA gesture (gap L5→L6)"
+ },
+ {
+  "name": "citySlam",
+  "file": "sfx/slam.wav",
+  "t": 20.6333,
+  "frame": 619,
+  "gain": 0.55,
+  "why": "CITY slams in (gap L6→L7)"
+ },
+ {
+  "name": "highFive",
+  "file": "sfx/clap.wav",
+  "t": 23.1667,
+  "frame": 695,
+  "gain": 0.6,
+  "why": "high-five after the last word"
+ }
+]
