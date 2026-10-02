@@ -36,7 +36,9 @@ https://www.apple.com/newsroom/2026/09/apple-debuts-iphone-18-pro-and-iphone-18-
 - Voice-over — supplied by City Store (`assets/vo/voiceover.wav`). Only trimming, gain/limiting and a light robot
   effect on Citybot's lines were applied (`tools/process_vo.py`).
 - SFX — synthesized for this project from scratch (`tools/make_sfx.py`); no third-party samples.
-- Music — none yet (`assets/music/PLACEHOLDER.txt`).
+- Music — original track composed for this ad in code (`tools/make_music.py`, 118.25 BPM, light pop with a darbuka
+  groove); no samples or third-party material, so it is royalty-free. Ducking under speech is baked into
+  `assets/music/citystore_bed.wav`.
 
 ## Fonts (SIL Open Font License)
 - Cairo and Montserrat from Google Fonts — the same variable `woff2` files `@remotion/google-fonts` serves,

@@ -6,7 +6,7 @@ phone and shows him that at City Store everything is original — including the 
 ## Deliverables (`deliverables/`)
 | File | Spec |
 |---|---|
-| `reel_9x16.mp4` | 1080×1920, 30 fps, H.264 yuv420p BT.709, 751 frames (25.03 s), AAC, −14.2 LUFS |
+| `reel_9x16.mp4` | 1080×1920, 30 fps, H.264 yuv420p BT.709, 751 frames (25.03 s), AAC, −14.2 LUFS (dialogue, SFX, music) |
 | `reel_1x1.mp4` | 1080×1080, same timing, re-laid-out for square |
 | `thumbnail_9x16.png` | 1080×1920 cover |
 | `reel.srt` | Darija subtitles from the script (with speaker names) |
@@ -20,6 +20,7 @@ python3 tools/lipsync.py         # Rhubarb (phonetic) → assets/vo/lipsync.json
 python3 tools/extract_logo.py    # white logo parts for the end card
 python3 tools/make_sfx.py        # synthesize SFX
 python3 tools/sfx_cues.py        # place SFX + check none covers a word → assets/sfx/cues.json
+python3 tools/make_music.py      # compose the background track + bake ducking → assets/music/
 python3 tools/prepare_products.py  # official product images → cut-outs + manifest (see below)
 ./tools/render_all.sh            # render everything + verify ≤ 900 frames / ≤ 30.0 s
 ```
@@ -31,5 +32,8 @@ All scene timing is read from `assets/vo/timings.json`; subtitle text comes from
    `<iphone-18-pro-max|iphone-18-pro>_<black|silver|glacier|burgundy>_<front|back|pair>.png`, run
    `python3 tools/prepare_products.py`, then `./tools/render_all.sh`. Placeholders and the PREVIEW badge
    disappear automatically. List the exact image URLs in `SOURCES.md`.
-2. **Music** — add a royalty-free track to `assets/music/` and set `"file"` in `assets/music/music.json`; it is
-   ducked 10 dB under speech with 150 ms ramps automatically.
+
+## Music
+Original background track (`tools/make_music.py`), sitting ~12 dB under full scale in pauses and a further
+10 dB down under speech (150 ms ramps). Change `gainDb` / `duckDb` in `assets/music/music.json` and re-run the
+script to make it louder or quieter.

@@ -1,1 +1,10 @@
-{ "file": null, "gainDb": -16, "duckDb": -10, "rampSec": 0.15, "_note": "Set file to e.g. music/track.mp3 once a royalty-free track is added." }
+{
+ "file": "music/citystore_bed.wav",
+ "gainDb": -12,
+ "duckDb": -10,
+ "rampSec": 0.15,
+ "_note": "Original track by tools/make_music.py; ducking baked in (gainDb, duckDb, rampSec).",
+ "baked": true,
+ "bpm": 118.25,
+ "phase": 0.334
+}

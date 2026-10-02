@@ -16,7 +16,7 @@ export const DURATION_FRAMES: number = timingsJson.durationInFrames;
 export const LINES = timingsJson.lines as Line[];
 export const LIPSYNC = lipsyncJson as Record<string, Cue[]>;
 export const LOGO = logoPartsJson;
-export const MUSIC = musicJson as { file: string | null; gainDb: number; duckDb: number; rampSec: number };
+export const MUSIC = musicJson as { file: string | null; gainDb: number; duckDb: number; rampSec: number; baked?: boolean };
 
 export type ProductColor = 'black' | 'silver' | 'glacier' | 'burgundy';
 /** 'pair' = Apple's back+front composite in one image. */

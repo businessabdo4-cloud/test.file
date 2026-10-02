@@ -67,7 +67,8 @@ export const Reel: React.FC = () => {
 					<Audio src={staticFile(c.file)} volume={c.gain} />
 				</Sequence>
 			))}
-			{MUSIC.file ? <Audio src={staticFile(MUSIC.file)} loop volume={(f) => musicVolume(f / FPS)} /> : null}
+			{/* baked = gain and ducking already rendered into the file by tools/make_music.py */}
+			{MUSIC.file ? <Audio src={staticFile(MUSIC.file)} volume={MUSIC.baked ? 1 : (f) => musicVolume(f / FPS)} /> : null}
 		</AbsoluteFill>
 	);
 };
