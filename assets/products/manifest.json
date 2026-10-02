@@ -1,1 +1,8 @@
-{}
+{
+ "iphone-18-pro": {
+  "burgundy": {
+   "pair": "products/iphone-18-pro_burgundy_pair.png",
+   "back": "products/iphone-18-pro_burgundy_back.png"
+  }
+ }
+}

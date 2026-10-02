@@ -27,9 +27,9 @@ All scene timing is read from `assets/vo/timings.json`; subtitle text comes from
 `cd video && npx remotion studio` opens the project for editing.
 
 ## Still to do
-1. **Official iPhone images** — put the 16 Apple images in `assets/products/raw/` named
-   `<iphone-18-pro-max|iphone-18-pro>_<black|silver|glacier|burgundy>_<front|back>.png`, run
-   `python3 tools/prepare_products.py`, then `./tools/render_all.sh`. The placeholders and the PREVIEW badge
+1. **iPhone 18 Pro Max image** — the 18 Pro (Burgundy) is in. Put official images in `assets/products/raw/` named
+   `<iphone-18-pro-max|iphone-18-pro>_<black|silver|glacier|burgundy>_<front|back|pair>.png`, run
+   `python3 tools/prepare_products.py`, then `./tools/render_all.sh`. Placeholders and the PREVIEW badge
    disappear automatically. List the exact image URLs in `SOURCES.md`.
 2. **Music** — add a royalty-free track to `assets/music/` and set `"file"` in `assets/music/music.json`; it is
    ducked 10 dB under speech with 150 ms ramps automatically.

@@ -14,8 +14,13 @@ export const COLORS: { key: ProductColor; name: string; hex: string }[] = [
 	{ key: 'burgundy', name: 'Burgundy', hex: '#6B1F33' },
 ];
 
-const MODELS: Model[] = ['iphone-18-pro-max', 'iphone-18-pro'];
-export const PRODUCTS_READY = MODELS.every((m) => COLORS.every((c) => PRODUCTS[m]?.[c.key]?.front && PRODUCTS[m]?.[c.key]?.back));
+export const productSrc = (m: Model, c: ProductColor, s: ProductSide) => PRODUCTS[m]?.[c]?.[s];
+export const hasColor = (m: Model, c: ProductColor) => Boolean(productSrc(m, c, 'pair') || productSrc(m, c, 'back') || productSrc(m, c, 'front'));
+export const hasAnyImage = (m: Model) => COLORS.some((c) => hasColor(m, c.key));
+/** The ad needs a real image of each model in its hero colour (burgundy); extra colours are optional. */
+export const PRODUCTS_READY = hasColor('iphone-18-pro-max', 'burgundy') && hasColor('iphone-18-pro', 'burgundy');
+/** Colour to show for a model during the colour run: only colours we have real images for (placeholders cycle freely). */
+export const colorFor = (m: Model, wanted: ProductColor, hero: ProductColor = 'burgundy'): ProductColor => (!hasAnyImage(m) || hasColor(m, wanted) ? wanted : hero);
 
 /**
  * Official product image from assets/products/manifest.json. Until the official Apple images are downloaded,

@@ -2,18 +2,19 @@
 
 Put the downloaded OFFICIAL images (Apple Newsroom / apple.com only) in assets/products/raw/ named
     <model>_<color>_<side>.<png|jpg|webp>
-    model: iphone-18-pro-max | iphone-18-pro      color: black | silver | glacier | burgundy      side: front | back
+    model: iphone-18-pro-max | iphone-18-pro      color: black | silver | glacier | burgundy
+    side: front | back | pair   (pair = Apple's back+front composite in one image)
 then run:  python3 tools/prepare_products.py
 Images that already have transparency are kept as-is; others go through rembg. Output: assets/products/<name>.png
 (trimmed, max 1600 px tall) and assets/products/manifest.json, which the Remotion project reads — placeholders
-disappear automatically and the PREVIEW badge goes away once all 16 images are present."""
+disappear automatically; the PREVIEW badge goes away once both models have a burgundy image."""
 import json, re, sys
 from pathlib import Path
 from PIL import Image
 
 ROOT = Path(__file__).resolve().parent.parent
 RAW, OUT = ROOT / "assets" / "products" / "raw", ROOT / "assets" / "products"
-NAME = re.compile(r"^(iphone-18-pro-max|iphone-18-pro)_(black|silver|glacier|burgundy)_(front|back)$")
+NAME = re.compile(r"^(iphone-18-pro-max|iphone-18-pro)_(black|silver|glacier|burgundy)_(front|back|pair)$")
 
 files = sorted(p for p in RAW.glob("*") if p.suffix.lower() in {".png", ".jpg", ".jpeg", ".webp"}) if RAW.exists() else []
 if not files:
@@ -40,5 +41,5 @@ for p in files:
     manifest.setdefault(model, {}).setdefault(color, {})[side] = f"products/{dest.name}"
     print(f"ok   {p.name} → {dest.relative_to(ROOT)} ({im.width}×{im.height})")
 (OUT / "manifest.json").write_text(json.dumps(manifest, indent=1))
-missing = [f"{mo}_{c}_{s}" for mo in ("iphone-18-pro-max", "iphone-18-pro") for c in ("black", "silver", "glacier", "burgundy") for s in ("front", "back") if not manifest.get(mo, {}).get(c, {}).get(s)]
-print("all 16 product images present" if not missing else f"still missing {len(missing)}: {', '.join(missing)}")
+ready = all(any(manifest.get(mo, {}).get("burgundy", {}).get(sd) for sd in ("pair", "back", "front")) for mo in ("iphone-18-pro-max", "iphone-18-pro"))
+print("both models have a burgundy image — PREVIEW badge will be removed" if ready else "still need a burgundy image for: " + ", ".join(mo for mo in ("iphone-18-pro-max", "iphone-18-pro") if not any(manifest.get(mo, {}).get("burgundy", {}).get(sd) for sd in ("pair", "back", "front"))))

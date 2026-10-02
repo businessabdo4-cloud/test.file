@@ -19,7 +19,8 @@ export const LOGO = logoPartsJson;
 export const MUSIC = musicJson as { file: string | null; gainDb: number; duckDb: number; rampSec: number };
 
 export type ProductColor = 'black' | 'silver' | 'glacier' | 'burgundy';
-export type ProductSide = 'front' | 'back';
+/** 'pair' = Apple's back+front composite in one image. */
+export type ProductSide = 'front' | 'back' | 'pair';
 export type ProductManifest = Record<string, Partial<Record<ProductColor, Partial<Record<ProductSide, string>>>>>;
 export const PRODUCTS = productsJson as ProductManifest;
 

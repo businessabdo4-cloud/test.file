@@ -4,9 +4,9 @@ import { BrandWorld } from '../backgrounds/BrandWorld';
 import { Hamza } from '../characters/Hamza';
 import { Citybot } from '../characters/Citybot';
 import { blinkAt, breatheAt, ease, mouthAt, pop, squashAt, track } from '../acting';
-import { PRODUCTS, SCENES, line, w } from '../data';
+import { SCENES, line, w } from '../data';
 import { C, LATIN } from '../brand';
-import { COLORS, FacebookIcon, InstagramIcon } from '../components/Props';
+import { COLORS, FacebookIcon, InstagramIcon, productSrc } from '../components/Props';
 import { Camera, pick, useFmt, useT } from './common';
 
 const LAYOUT = (sq: boolean) =>
@@ -45,7 +45,7 @@ export const Scene5CTA: React.FC<{ from: number }> = ({ from }) => {
 	const fb = pop(t, tFB);
 	const handle = pop(t, tIG + 0.35);
 	const url = pop(t, tURL);
-	const proMaxSrc = PRODUCTS['iphone-18-pro-max']?.burgundy?.front;
+	const phoneSrc = productSrc('iphone-18-pro', 'burgundy', 'back');
 	const bob = (t0: number) => (t > t0 + 0.5 ? 6 * Math.sin((t - t0) * 3) : 0);
 	return (
 		<Camera zoom={ease(t, S, S + 0.25, 1.06, 1, Easing.out(Easing.cubic))} ox={540} oy={sq ? 540 : 960}>
@@ -100,7 +100,7 @@ export const Scene5CTA: React.FC<{ from: number }> = ({ from }) => {
 				headTilt={-6 + 2 * Math.sin(t * 2)}
 				lean={2}
 				handR={{ x: 150, y: -22 }}
-				held={{ kind: 'image', src: proMaxSrc ? staticFile(proMaxSrc) : undefined, tint: COLORS[3].hex, label: 'iPhone 18 Pro Max', size: 1.45, angle: 10, offset: { x: 4, y: -70 } }}
+				held={{ kind: 'image', src: phoneSrc ? staticFile(phoneSrc) : undefined, tint: COLORS[3].hex, label: 'iPhone 18 Pro', size: 1.45, angle: 10, offset: { x: 4, y: -70 } }}
 				handL={track(t, [
 					[S, { x: -104, y: 196 }],
 					[tURL, { x: -104, y: 196 }],

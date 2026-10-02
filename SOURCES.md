@@ -2,15 +2,22 @@
 
 Every asset used in the City Store "واش أوريجينال؟" ad, and where it came from.
 
-## Product images — **pending**
-Official images could not be downloaded yet: this environment's network policy blocks `www.apple.com`.
-The renders show clearly labelled placeholders ("OFFICIAL IMAGE PENDING") and a red PREVIEW badge until
-all 16 images are in place (`tools/prepare_products.py`).
+## Product images
+`www.apple.com` is blocked from this environment, so product images are supplied by City Store.
+Renders keep a red PREVIEW badge until both models have a real image (see `PRODUCTS_READY` in
+`video/src/components/Props.tsx`).
 
-| Product | Intended source (official only) | Status |
-|---|---|---|
-| iPhone 18 Pro / 18 Pro Max — Black, Silver, Glacier, Burgundy, front + back | Apple Newsroom launch release: https://www.apple.com/newsroom/2026/09/apple-debuts-iphone-18-pro-and-iphone-18-pro-max/ (regional copies seen: [IN](https://www.apple.com/in/newsroom/2026/09/apple-debuts-iphone-18-pro-and-iphone-18-pro-max/), [AE](https://www.apple.com/ae/newsroom/2026/09/apple-debuts-iphone-18-pro-and-iphone-18-pro-max/), [PH](https://www.apple.com/ph/newsroom/2026/09/apple-debuts-iphone-18-pro-and-iphone-18-pro-max/)), then https://www.apple.com/iphone-18-pro/ | not downloaded (egress blocked) |
-| Laptops, smartwatches, headphones, consoles | City Store's own line icons, keyed from `assets/logo.png` (`tools/extract_logo.py`) | in use |
+| Product | File(s) | Source | Status |
+|---|---|---|---|
+| iPhone 18 Pro — Burgundy, back + front composite | `assets/products/source/iphone-18-pro_burgundy_pair_supplied.png` (700×700, sha256 `d695a164…ae2242`) → `iphone-18-pro_burgundy_pair.png`, `iphone-18-pro_burgundy_back.png` | Supplied by City Store in chat on 2026-10-02; **original URL to be confirmed** | in use (scene 3, scene 5) |
+| iPhone 18 Pro Max | — | Supplied in chat but not received as a file | pending |
+| iPhone 18 Pro Max colour line-up (Black, Silver, Glacier, Burgundy) | — | Supplied in chat but not received as a file | pending |
+| Laptops, smartwatches, headphones, consoles | City Store's own line icons, keyed from `assets/logo.png` (`tools/extract_logo.py`) | City Store logo | in use |
+
+Processing: background keyed out (flat #F5F5F7, edge colour un-mixed); the back-only view is the unobstructed
+back phone cut with a rounded-rectangle mask fitted to its silhouette (41 px corner radius). No retouching.
+Intended official source for anything still missing: Apple Newsroom launch release
+https://www.apple.com/newsroom/2026/09/apple-debuts-iphone-18-pro-and-iphone-18-pro-max/ and https://www.apple.com/iphone-18-pro/.
 
 ### On-screen product facts
 - **Colour names** — Black, Silver, Glacier, Burgundy for both iPhone 18 Pro and 18 Pro Max. Confirmed from

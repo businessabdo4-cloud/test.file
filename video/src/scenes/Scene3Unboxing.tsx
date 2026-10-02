@@ -5,7 +5,7 @@ import { Hamza } from '../characters/Hamza';
 import { Citybot, CitybotExpr } from '../characters/Citybot';
 import { blinkAt, breatheAt, ease, mouthAt, pop, sp, squashAt, track } from '../acting';
 import { SCENES, line, w } from '../data';
-import { COLORS, CityBox, KText, LightBurst, Model, ProductImage, Swatch } from '../components/Props';
+import { COLORS, CityBox, KText, LightBurst, Model, ProductImage, Swatch, colorFor, productSrc } from '../components/Props';
 import { pick, useFmt, useT } from './common';
 
 const LAYOUT = (sq: boolean) =>
@@ -53,6 +53,15 @@ const Sparkles: React.FC<{ t: number; t0: number; cx: number; cy: number; spread
 
 /** A product that turns in fake 3D (scaleX = cos), showing its back then its front. */
 const SpinningPhone: React.FC<{ model: Model; color: (typeof COLORS)[number]['key']; x: number; y: number; h: number; scale: number; angle: number; opacity?: number }> = ({ model, color, x, y, h, scale, angle, opacity = 1 }) => {
+	if (productSrc(model, color, 'pair')) {
+		// Apple's back+front composite: present it upright with a gentle sway instead of a fake 3D flip
+		const sway = 3 * Math.sin((angle * Math.PI) / 180);
+		return (
+			<div style={{ position: 'absolute', left: x, top: y, opacity, transform: `translate(-50%, -50%) scale(${scale}) rotate(${sway}deg)` }}>
+				<ProductImage model={model} color={color} side="pair" height={h} />
+			</div>
+		);
+	}
 	const c = Math.cos((angle * Math.PI) / 180);
 	return (
 		<div style={{ position: 'absolute', left: x, top: y, opacity, transform: `translate(-50%, -50%) scale(${scale}) scaleX(${Math.max(0.04, Math.abs(c))})` }}>
@@ -96,8 +105,8 @@ export const Scene3Unboxing: React.FC<{ from: number }> = ({ from }) => {
 	const maxScale = (0.25 + 0.75 * rise) * (1 - (1 - lay.split.k) * split);
 	const proK = pop(t, P);
 	const ci = t < C0 ? -1 : Math.min(3, Math.floor((t - C0) / 0.22));
-	const maxColor = ci < 0 ? 'burgundy' : COLORS[ci].key;
-	const proColor = ci < 0 ? 'glacier' : COLORS[ci].key;
+	const maxColor = colorFor('iphone-18-pro-max', ci < 0 ? 'burgundy' : COLORS[ci].key);
+	const proColor = colorFor('iphone-18-pro', ci < 0 ? 'burgundy' : COLORS[ci].key);
 
 	// Hamza: cartoon jaw drop on "iPhone 18 Pro Max"
 	const jaw = sp(t, w('L3', 1), { damping: 8, stiffness: 180 }) * (1 - ease(t, line('L3').end + 0.05, line('L3').end + 0.45, 0, 1));
