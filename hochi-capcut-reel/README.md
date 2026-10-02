@@ -25,8 +25,10 @@
 ## Re-rendering
 ```
 cd source && python3 -m http.server 8765 &
+python3 build/align.py        # vo.wav -> build/vo_cut.wav + build/timing.json
+ffmpeg -i build/vo_cut.wav -af "rubberband=tempo=1.15:pitchq=quality:formant=preserved,highpass=f=80,equalizer=f=250:t=q:w=1.2:g=-3,equalizer=f=3200:t=q:w=1.5:g=3,equalizer=f=9000:t=h:w=0.7:g=2,acompressor=threshold=-20dB:ratio=3:attack=8:release=120:makeup=2" -ar 48000 build/vo_fast.wav
 node render.js video          # frames -> build/video.mp4  (needs build/timing.json)
-python3 build/mix.py          # needs build/vo_fast.wav (align.py output, sped up 1.15x)
+python3 build/mix.py          # VO + music + SFX -> build/final.mp4
 ```
 The original voiceover is `source/vo.wav` (mono, 24 kHz, 31 s). `build/align.py` reads it, cuts the pauses using the segment times in that script, and writes `build/vo_cut.wav` and `build/timing.json`.
 Text, colours and timings are all in `reel.html`, one block per scene.
