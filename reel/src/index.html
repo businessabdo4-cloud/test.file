@@ -32,6 +32,7 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:#000}
   font-family:MontI;font-weight:900;font-size:34px;letter-spacing:.5px;white-space:nowrap}
 #flash{position:absolute;inset:0;background:#fff;opacity:0;z-index:90;pointer-events:none}
 #fx{position:absolute;inset:0;z-index:30;pointer-events:none}
+.dotc{position:absolute;right:36px;top:36px;width:110px;height:110px;border-radius:50%;border:8px solid #fff;box-shadow:0 8px 24px rgba(0,0,0,.35)}
 .card{background:rgba(255,255,255,.1);border:2px solid rgba(255,255,255,.25);border-radius:44px;backdrop-filter:blur(8px)}
 </style></head>
 <body><div id="stage">
@@ -111,12 +112,9 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:#000}
   <div id="rays" class="abs" style="left:-460px;top:-60px;width:2000px;height:2000px;opacity:.25;
      background:repeating-conic-gradient(from 0deg,rgba(255,255,255,.55) 0deg 6deg,rgba(255,255,255,0) 6deg 18deg);border-radius:50%"></div>
   <div class="ar abs center" style="top:300px"><div id="t6a" style="font-size:78px;opacity:0">جابت ليك</div></div>
-  <div id="prodSlot" class="abs" style="left:240px;top:560px;width:600px;height:720px;opacity:0">
-    <svg width="600" height="720" viewBox="0 0 600 720">
-      <defs><linearGradient id="dg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#E9FBFF"/><stop offset=".5" stop-color="#7FDBFF"/><stop offset="1" stop-color="#14B6F6"/></linearGradient></defs>
-      <path d="M300 40 C 300 40, 520 330, 520 470 A 220 220 0 0 1 80 470 C 80 330, 300 40, 300 40 Z" fill="url(#dg)" stroke="#fff" stroke-width="10"/>
-      <ellipse cx="220" cy="430" rx="40" ry="80" fill="#fff" opacity=".55" transform="rotate(20 220 430)"/>
-    </svg>
+  <div id="glow6" class="abs" style="left:140px;top:380px;width:800px;height:900px;border-radius:50%;background:radial-gradient(closest-side,rgba(255,255,255,.75),rgba(255,255,255,0));opacity:0"></div>
+  <div id="prodSlot" class="abs" style="left:298px;top:415px;width:483px;height:760px;opacity:0">
+    <img src="white_cut.png" style="width:483px;height:760px;filter:drop-shadow(0 40px 50px rgba(0,0,0,.45))">
   </div>
   <div id="pname" class="abs center" style="top:1180px;text-align:center;opacity:0">
     <div class="lat" id="pnameTxt" style="display:inline-block;font-size:150px;color:#fff;letter-spacing:2px;text-shadow:0 10px 40px rgba(0,0,0,.35);
@@ -134,7 +132,9 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:#000}
 </div>
 
 <!-- S8 specs -->
-<div class="scene" id="s8" style="background:linear-gradient(180deg,#04163A 0%,#0A2A5E 100%)">
+<div class="scene" id="s8" style="background:#04163A">
+  <img id="s8bg" src="p_black.jpg" class="abs" style="left:-420px;top:0;width:1920px;height:1920px;filter:blur(5px)">
+  <div class="shade" style="background:linear-gradient(180deg,rgba(4,22,58,.88) 0%,rgba(10,42,94,.78) 100%)"></div>
   <canvas id="c8" class="abs" width="1080" height="1920" style="left:0;top:0"></canvas>
   <div id="card1" class="abs card" style="left:80px;top:300px;width:920px;height:470px;opacity:0">
     <div class="ar abs center" style="top:40px;font-size:64px">ممبران <span class="lat" style="font-size:64px;color:var(--cy)">LG</span></div>
@@ -167,11 +167,10 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:#000}
 <!-- S10 colors -->
 <div class="scene" id="s10" style="background:linear-gradient(180deg,#eaf7ff 0%,#bfe9ff 100%)">
   <div class="ar abs center" style="top:270px;color:var(--navy)"><div id="t10" style="font-size:110px;opacity:0"><span style="color:var(--cy);font-size:170px">3</span> ديال الألوان</div></div>
-  <div class="abs" style="left:0;right:0;top:700px;height:600px">
-    <div class="sw10 abs" data-c="#ffffff" style="left:705px"></div>
-    <div class="sw10 abs" data-c="#111418" style="left:390px"></div>
-    <div class="sw10 abs" data-c="#7fd3ff" style="left:75px"></div>
-  </div>
+  <img id="trio10" src="trio_cut.png" class="abs" style="left:85px;top:640px;width:910px;opacity:0;filter:drop-shadow(0 30px 40px rgba(10,42,94,.35))">
+  <div class="pc abs" style="left:110px;top:540px;width:860px;height:840px;border-radius:56px;overflow:hidden;border:10px solid #fff;box-shadow:0 30px 70px rgba(10,42,94,.4);opacity:0"><img src="p_white.jpg" style="width:100%;height:100%;object-fit:cover;object-position:60% 60%"><div class="dotc" style="background:#fff"></div></div>
+  <div class="pc abs" style="left:110px;top:540px;width:860px;height:840px;border-radius:56px;overflow:hidden;border:10px solid #fff;box-shadow:0 30px 70px rgba(10,42,94,.4);opacity:0"><img src="p_black.jpg" style="width:100%;height:100%;object-fit:cover;object-position:60% 60%"><div class="dotc" style="background:#111"></div></div>
+  <div class="pc abs" style="left:110px;top:540px;width:860px;height:840px;border-radius:56px;overflow:hidden;border:10px solid #fff;box-shadow:0 30px 70px rgba(10,42,94,.4);opacity:0"><img src="p_teal.jpg" style="width:100%;height:100%;object-fit:cover;object-position:60% 60%"><div class="dotc" style="background:#148F8E"></div></div>
 </div>
 
 <!-- S11 price -->
@@ -179,11 +178,12 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:#000}
   <div id="rays11" class="abs" style="left:-460px;top:-40px;width:2000px;height:2000px;opacity:.18;
      background:repeating-conic-gradient(from 0deg,rgba(255,210,63,.9) 0deg 5deg,rgba(255,210,63,0) 5deg 15deg);border-radius:50%"></div>
   <canvas id="c11" class="abs" width="1080" height="1920" style="left:0;top:0"></canvas>
-  <div class="ar abs center" style="top:420px"><div id="t11" style="font-size:110px;opacity:0">الثمن غير</div></div>
-  <div id="priceBox" class="abs center" style="top:640px;text-align:center;opacity:0">
+  <div class="ar abs center" style="top:290px"><div id="t11" style="font-size:110px;opacity:0">الثمن غير</div></div>
+  <div id="priceBox" class="abs center" style="top:480px;text-align:center;opacity:0">
     <div class="lat" id="price" style="font-size:300px;color:var(--gold);text-shadow:0 14px 0 #b38600,0 30px 60px rgba(0,0,0,.45);line-height:1">0</div>
     <div class="ar" id="dh" style="font-size:120px;margin-top:10px">درهم</div>
   </div>
+  <img id="trio11" src="trio_cut.png" class="abs" style="left:160px;top:1010px;width:760px;opacity:0;filter:drop-shadow(0 30px 40px rgba(0,0,0,.5))">
 </div>
 
 <!-- S12 delivery -->
@@ -242,8 +242,9 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:#000}
     <div class="ar" style="font-size:78px">صيفط لينا دابا</div>
   </div>
   <div id="endInfo" class="abs ar" style="left:0;right:0;top:1440px;opacity:0"><div class="chip" style="background:var(--gold);color:#0A2A5E;font-size:60px;padding:10px 44px"><span class="lat" style="font-size:58px">1799</span> درهم • التوصيل فابور</div></div>
-  <div id="end" class="abs" style="left:0;right:0;top:640px;text-align:center;opacity:0">
-    <div style="display:inline-block;background:#fff;border-radius:50px;padding:30px 40px;box-shadow:0 20px 60px rgba(0,0,0,.35)"><img src="logo.png" style="width:640px;display:block"></div>
+  <img id="endTrio" src="trio_cut.png" class="abs" style="left:200px;top:250px;width:680px;opacity:0;filter:drop-shadow(0 30px 40px rgba(0,0,0,.5))">
+  <div id="end" class="abs" style="left:0;right:0;top:790px;text-align:center;opacity:0">
+    <div style="display:inline-block;background:#fff;border-radius:50px;padding:30px 40px;box-shadow:0 20px 60px rgba(0,0,0,.35)"><img src="logo.png" style="width:560px;display:block"></div>
   </div>
 </div>
 
@@ -313,10 +314,6 @@ function setup(){
   let g='';for(let i=0;i<10;i++){g+=`<rect x="-20" y="-130" width="40" height="44" rx="8" fill="#14B6F6" transform="rotate(${i*36})"/>`}
   g+='<circle r="96" fill="#14B6F6"/>';$('gear').innerHTML=g;
   // color swatches
-  const names=['البيض','الكحل','الزرق الفاتح'];
-  document.querySelectorAll('.sw10').forEach((d,i)=>{d.style.cssText+=';top:0;width:300px;height:520px;opacity:0';
-    d.innerHTML=`<div style="width:300px;height:300px;border-radius:50%;background:${d.dataset.c};border:10px solid #fff;box-shadow:0 20px 50px rgba(10,42,94,.35)"></div>
-      <div class="ar" style="margin-top:40px;font-size:62px;color:#0A2A5E">${names[i]}</div>`});
 }
 let CAPS=[];
 
@@ -419,7 +416,7 @@ function render(t){
   // ---- S6 product
   if(t>=C.s6-.1&&t<C.s7+.2){const lt=t-C.s6;$('rays').style.transform=`rotate(${lt*18}deg)`;
     slideUp($('t6a'),lt,0,.3);
-    const pp=P(lt,.1,.5);$('prodSlot').style.opacity=cl(pp*3);$('prodSlot').style.transform=`translateY(${(1-eb(pp))*300+Math.sin(lt*3)*12}px) scale(${.6+.4*eb(pp)})`;
+    const pp=P(lt,.1,.5);$('glow6').style.opacity=cl(pp*1.5)*(.8+.2*Math.sin(lt*5));$('prodSlot').style.opacity=cl(pp*3);$('prodSlot').style.transform=`translateY(${(1-eb(pp))*300+Math.sin(lt*3)*12}px) scale(${.6+.4*eb(pp)})`;
     const np=pop($('pname'),lt,.35,.45,2.2);$('pnameTxt').style.backgroundPosition=`${100-((lt-0.6)*90)}% 0`;}
   // ---- S7 stages
   if(t>=C.s7-.1&&t<C.s8+.2){const lt=t-C.s7;bubbles('c7',t,45,5,'#9be7ff');
@@ -430,7 +427,7 @@ function render(t){
     bads.forEach((d,i)=>{pop(d,lt,bt[i]-.05,.3,.3);const xp=eo(P(lt,bt[i]+.35,.25));d.querySelector('.x').style.transform=`scaleX(${xp}) rotate(-8deg)`;d.style.filter=`grayscale(${xp*.6})`;if(xp>0)d.style.opacity=1-xp*.35;});
     const goods=document.querySelectorAll('#good .chip');[m(19.55),m(20.35)].forEach((a,i)=>pop(goods[i],lt,a-C.s7,.35,.3));}
   // ---- S8 specs
-  if(t>=C.s8-.1&&t<C.s9+.2){const lt=t-C.s8;bubbles('c8',t,30,8,'#5fd3ff');
+  if(t>=C.s8-.1&&t<C.s9+.2){const lt=t-C.s8;$('s8bg').style.transform=`scale(${1.05+lt*.02})`;bubbles('c8',t,30,8,'#5fd3ff');
     slideUp($('card1'),lt,.02,.4,140);$('gpd').textContent=Math.round(80*eo(P(lt,.5,.9)));
     const c2=m(24.30)-C.s8;slideUp($('card2'),lt,c2,.4,140);$('gearBox').style.transform=`rotate(${lt*220}deg)`;
     slideUp($('nowaste'),lt,m(25.6)-C.s8,.35,40);}
@@ -440,13 +437,18 @@ function render(t){
     const top=1260-640*lv;let d=`M300 ${top} `;for(let x=300;x<=780;x+=20){d+=`L${x} ${top+Math.sin(x/40+lt*6)*14}`}d+=' L780 1300 L300 1300 Z';$('tw').setAttribute('d',d);}
   // ---- S10 colors
   if(t>=C.s10-.1&&t<C.s11+.2){const lt=t-C.s10;pop($('t10'),lt,.02,.35,.5);
-    const sws=document.querySelectorAll('.sw10');[m(30.38),m(31.0),m(31.6)].forEach((a,i)=>{const p=pop(sws[i],lt,a-C.s10,.4,.2);
-      if(p>=1)sws[i].style.transform=`translateY(${Math.sin(lt*3+i)*10}px)`;});}
+    const tp=pop($('trio10'),lt,.15,.45,.5);const ft=P(lt,m(30.3)-C.s10,.15);if(tp>0)$('trio10').style.opacity=cl(tp*3)*(1-ft);
+    const pcs=document.querySelectorAll('.pc');const ts=[m(30.38),m(31.0),m(31.6)].map(x=>x-C.s10);
+    pcs.forEach((d,i)=>{const p=P(lt,ts[i]-.04,.22);const nxt=i<2?P(lt,ts[i+1]-.04,.22):0;
+      if(p<=0||nxt>=1){d.style.opacity=0;return}
+      d.style.opacity=1;d.style.zIndex=i+1;const k=eb(p);d.style.transform=`translateX(${(1-eo(p))*-260}px) rotate(${(1-k)*-8+[-2,1.5,-1][i]}deg) scale(${.85+.15*k+lt*.01})`;});
+  }
   // ---- S11 price
   if(t>=C.s11-.1&&t<C.s12+.2){const lt=t-C.s11;$('rays11').style.transform=`rotate(${lt*25}deg)`;
     pop($('t11'),lt,0,.3,.5);const pa=m(34.13)-C.s11;const pb=$('priceBox');const p=P(lt,pa,.25);pb.style.opacity=cl(p*3);
     const cnt=eo(P(lt,pa,.75));$('price').textContent=Math.round(1799*cnt);
     const hit=P(lt,pa+.75,.3);pb.style.transform=`scale(${hit>0&&hit<1?1+.18*Math.sin(hit*Math.PI):1})`;
+    slideUp($('trio11'),lt,pa+.55,.45,200);
     coins(t,lt-(pa+.75));}
   // ---- S12 delivery
   if(t>=C.s12-.1&&t<C.s13+.2){const lt=t-C.s12;slideUp($('t12a'),lt,0,.3);const fp=pop($('t12b'),lt,m(37.0)-C.s12,.35,2);$('t12b').style.transform+=' rotate(-3deg)';
@@ -465,7 +467,7 @@ function render(t){
     pop($('bub2'),lt,m(43.89)-C.s14,.3,.5);
     const bp=pop($('btn'),lt,.2,.4,.4);if(bp>=1)$('btn').style.transform=`scale(${1+.05*Math.sin(lt*9)})`;
     // final logo end card
-    const ep=P(t,C.vend-.05,.4);if(ep>0){ph.style.opacity=1-ep;$('end').style.opacity=ep;$('end').style.transform=`scale(${.7+.3*eb(ep)})`;slideUp($('endInfo'),t,C.vend+.25,.35,50);}
+    const ep=P(t,C.vend-.05,.4);if(ep>0){ph.style.opacity=1-ep;$('end').style.opacity=ep;$('end').style.transform=`scale(${.7+.3*eb(ep)})`;slideUp($('endInfo'),t,C.vend+.25,.35,50);slideUp($('endTrio'),t,C.vend+.05,.45,-120);}
   }
   // bug (brand pill) visible on graphic scenes after logo reveal
   const bugOn=t>=C.s6&&t<C.vend; $('bug').style.opacity=bugOn?cl(P(t,C.s6,.3)):0;$('bug').style.transform='translateX(-50%) scale(.9)';
