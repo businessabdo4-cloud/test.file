@@ -1,0 +1,356 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:Lalezar;src:url(fonts/Lalezar-Regular.ttf)}
+@font-face{font-family:Anton;src:url(fonts/Anton-Regular.ttf)}
+@font-face{font-family:TajB;src:url(fonts/Tajawal-Black.ttf)}
+html,body{margin:0;width:1080px;height:1920px;overflow:hidden;background:#000}
+#root{position:absolute;left:0;top:0;width:1080px;height:1920px;overflow:hidden;background:#07070b}
+#stage{position:absolute;inset:0;transform-origin:50% 45%}
+.L{position:absolute;left:0;top:0}
+.full{position:absolute;inset:0}
+.scene{position:absolute;inset:0;overflow:hidden;visibility:hidden}
+.cover{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ar{font-family:Lalezar,Anton,sans-serif;direction:rtl}
+.lat{font-family:Anton,Lalezar,sans-serif;letter-spacing:1px}
+.taj{font-family:TajB,Anton,sans-serif}
+.ol{-webkit-text-stroke:9px #000;paint-order:stroke fill}
+.c{display:flex;align-items:center;justify-content:center}
+.pill{position:absolute;border-radius:999px;display:flex;align-items:center;justify-content:center;white-space:nowrap}
+.rays{position:absolute;left:-760px;top:-340px;width:2600px;height:2600px;border-radius:50%;background:repeating-conic-gradient(from 0deg,rgba(255,255,255,.10) 0deg 7deg,rgba(255,255,255,0) 7deg 18deg)}
+.phone{position:absolute;width:640px;height:1160px;left:220px;top:150px;border-radius:84px;background:#0d0d12;box-shadow:0 0 0 14px #1d1d25,0 0 0 17px #3a3a48,0 40px 120px rgba(0,0,0,.7)}
+.screen{position:absolute;inset:16px;border-radius:70px;overflow:hidden;background:#000}
+.notch{position:absolute;top:28px;left:50%;width:170px;height:44px;margin-left:-85px;border-radius:30px;background:#000;z-index:5}
+/* app icons (stylised, no official artwork) */
+.app{position:absolute;width:220px;height:220px;border-radius:52px;display:flex;align-items:center;justify-content:center;box-shadow:0 18px 40px rgba(0,0,0,.55),inset 0 0 0 3px rgba(255,255,255,.12)}
+.app.nf{background:#000}
+.app.nf span{font-family:Anton;font-size:170px;color:#E50914;line-height:1;transform:scaleX(.82);text-shadow:0 6px 14px rgba(229,9,20,.45)}
+.app.sp{background:#121212}
+.app.sh{background:linear-gradient(140deg,#00d7a0,#00a6c8 55%,#5b2bd9)}
+.app.sh span{font-family:Lalezar;font-size:96px;color:#fff;margin-top:14px;text-shadow:0 5px 0 rgba(0,0,0,.25)}
+.tag{position:absolute;padding:0 22px;height:64px;border-radius:20px;font-family:Anton;font-size:40px;color:#fff;display:flex;align-items:center;white-space:nowrap}
+#subs{position:absolute;left:40px;right:40px;top:1320px;height:300px;display:flex;align-items:center;justify-content:center}
+#subpage{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;direction:rtl;gap:6px 22px;max-width:1000px;transform-origin:50% 50%}
+.w{font-family:Lalezar,Anton,sans-serif;font-size:104px;line-height:1.25;color:#fff;-webkit-text-stroke:12px #000;paint-order:stroke fill;text-shadow:0 8px 0 rgba(0,0,0,.55),0 0 30px rgba(0,0,0,.5);padding:0 14px;border-radius:26px;display:inline-block}
+.w.on{background:#FE2C55;-webkit-text-stroke:0;text-shadow:0 6px 0 #9e0f2c;box-shadow:0 10px 0 #9e0f2c,0 0 40px rgba(254,44,85,.55)}
+#grain{position:absolute;left:-60px;top:-60px;width:1200px;height:2040px;background:url(assets/grain.png);background-size:540px 960px;opacity:.07;mix-blend-mode:overlay;pointer-events:none}
+#vig{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 45%,rgba(0,0,0,0) 55%,rgba(0,0,0,.55) 100%);pointer-events:none}
+#flash{position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none}
+#prog{position:absolute;left:0;top:0;height:10px;background:linear-gradient(90deg,#1DB954,#E50914 50%,#00b3c8);box-shadow:0 0 18px #E50914}
+</style></head>
+<body><div id="root"><div id="stage"></div>
+<div id="vig"></div><div id="grain"></div>
+<div id="subs"><div id="subpage"></div></div>
+<div id="prog"></div><div id="flash"></div></div>
+<script>
+// ---------- helpers ----------
+const cl=(x,a=0,b=1)=>Math.min(b,Math.max(a,x));
+const P=(t,a,b)=>cl((t-a)/(b-a));
+const eOut=x=>1-Math.pow(1-x,3);
+const eExpo=x=>x>=1?1:1-Math.pow(2,-10*x);
+const eBack=(x,s=1.9)=>{x=cl(x);return 1+(s+1)*Math.pow(x-1,3)+s*Math.pow(x-1,2)};
+const eInOut=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;
+const lerp=(a,b,x)=>a+(b-a)*x;
+function rng(seed){return function(){seed|=0;seed=seed+0x6D2B79F5|0;let t=Math.imul(seed^seed>>>15,1|seed);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+const $=(html,parent)=>{const d=document.createElement('div');d.innerHTML=html.trim();const e=d.firstChild;(parent||stage).appendChild(e);return e};
+const css=(e,o)=>{for(const k in o)e.style[k]=o[k]};
+const tr=(e,x,y,s=1,r=0)=>{e.style.transform=`translate(${x}px,${y}px) rotate(${r}deg) scale(${s})`};
+const pop=(e,t,a,d=.28,s=2.4)=>{e.style.opacity=P(t,a,a+.04);return eBack(P(t,a,a+d),s)};
+const stage=document.getElementById('stage');
+const A='assets/';
+const T=window.TIMING; const W=T.words; const DUR=window.DUR;
+const ws=i=>W[i].s;            // word start (output seconds)
+const SG=T.segs.map(s=>s[0]-0.04); // scene cut points: just before each VO line
+const spotIcon=(sz=150)=>`<svg width="${sz}" height="${sz}" viewBox="0 0 100 100"><circle cx="50" cy="50" r="48" fill="#1DB954"/><g fill="none" stroke="#000" stroke-linecap="round"><path d="M24 38 Q52 28 78 42" stroke-width="8"/><path d="M28 54 Q52 46 73 57" stroke-width="7"/><path d="M31 68 Q50 62 68 71" stroke-width="6"/></g></svg>`;
+const appHTML=(k,extra='')=>k=='nf'?`<div class="app nf" ${extra}><span>N</span></div>`:k=='sp'?`<div class="app sp" ${extra}>${spotIcon(150)}</div>`:`<div class="app sh" ${extra}><span>شاهد</span></div>`;
+// ---------- scenes ----------
+const scenes=[];
+function scene(a,b,build,upd){const el=$('<div class="scene"></div>');const o={a,b,el};build(el,o);o.upd=upd.bind(null,o);scenes.push(o);return o}
+
+// ===== 0 HOOK: "شحال كتخلص في Netflix و Spotify و شاهد كل واحد بوحدو؟" =====
+scene(0,SG[1],(el,o)=>{
+  o.bg=$(`<img class="cover" src="${A}creator_hd.jpg">`,el);
+  o.big=$(`<div class="L ar" style="width:1080px;top:230px;text-align:center;font-size:300px;line-height:1.1;color:transparent;background:linear-gradient(180deg,#fff 15%,#ff4d6d 60%,#b3001b 100%);-webkit-background-clip:text;background-clip:text;filter:drop-shadow(0 0 40px rgba(255,40,80,.55))">شحال؟</div>`,el);
+  o.cut=$(`<img class="cover" src="${A}creator_cut_hd.png">`,el);
+  o.dark=$(`<div class="full" style="background:linear-gradient(180deg,rgba(0,0,0,.55) 0%,rgba(0,0,0,0) 28%,rgba(0,0,0,.1) 50%,rgba(0,0,0,.75) 100%)"></div>`,el);
+  o.ban=$(`<div class="L" style="left:70px;top:90px;width:940px;height:150px">
+     <div class="full" style="background:#B3122E;border-radius:22px;transform:skewX(-10deg);box-shadow:0 12px 0 #5c0715,0 0 50px rgba(254,44,85,.6)"></div>
+     <div class="full c" style="gap:22px;direction:rtl"><span class="ar" style="font-size:80px;color:#fff;margin-top:10px">3 فـ 1</span><span class="lat" style="font-size:60px;color:#fff">•</span><span class="ar" style="font-size:80px;color:#FFE600;margin-top:10px">غير بـ 70 درهم 🔥</span></div></div>`,el);
+  o.apps=['nf','sp','sh'].map((k,i)=>$(appHTML(k,`style="left:${70+i*330}px;top:1010px"`),el));
+  o.x=[0,1].map(i=>$(`<div class="L c lat" style="left:${300+i*330}px;top:1060px;width:90px;height:120px;font-size:110px;color:#ff2d55;text-shadow:0 0 30px #ff2d55">+</div>`,el));
+  o.bill=$(`<div class="pill" style="left:200px;top:880px;width:680px;height:110px;background:rgba(15,0,5,.85);border:4px solid #ff2d55;box-shadow:0 0 40px rgba(255,45,85,.55);gap:20px;direction:rtl"><span class="ar" style="font-size:62px;color:#fff;margin-top:8px">💳 كل شهر:</span><span class="num lat" style="font-size:72px;color:#ff2d55;direction:ltr">000 DH</span></div>`,el);
+  o.num=o.bill.querySelector('.num');
+  o.redv=$(`<div class="full" style="background:radial-gradient(ellipse at 50% 50%,rgba(255,0,40,0) 45%,rgba(255,0,40,.6) 100%);opacity:0"></div>`,el);
+},(o,t)=>{
+  const end=SG[1];const z=lerp(1.16,1.04,eOut(P(t,0,end)));
+  [o.bg,o.cut].forEach(e=>tr(e,0,lerp(-40,30,eOut(P(t,0,end))),z));
+  o.bg.style.filter=`brightness(${lerp(.6,.8,P(t,0,.5))}) saturate(1.2)`;
+  o.big.style.opacity=1;tr(o.big,0,lerp(160,0,eOut(P(t,0,.35))),lerp(.55,1,eBack(P(t,0,.4),2.2))*z*(1+.03*Math.sin(t*9)));
+  o.ban.style.opacity=P(t,.1,.16);tr(o.ban,lerp(800,0,eExpo(P(t,.1,.42))),0,eBack(P(t,.1,.45))*(1+.025*Math.sin(t*12)),-3);
+  const at=[ws(3),ws(5),ws(7)]; const split=P(t,ws(8),ws(8)+.2);
+  o.apps.forEach((e,i)=>{const s=pop(e,t,at[i]-.05,.3,2.6);const dx=(i-1)*70*eOut(split);const sh=t>ws(8)?Math.sin(t*70+i)*8*(1-P(t,ws(8)+.3,ws(10)+.4)):0;tr(e,dx+sh,0,s*(1-.06*split),(i-1)*8*split)});
+  o.x.forEach((e,i)=>{const a=at[i+1]-.08;e.style.opacity=P(t,a,a+.05)*(1-split);tr(e,0,0,eBack(P(t,a,a+.2),3))});
+  // monthly bill counter rolls up with each app, then spins to ??? on "كل واحد بوحدو"
+  o.bill.style.opacity=P(t,at[0],at[0]+.06);tr(o.bill,0,lerp(-60,0,eOut(P(t,at[0],at[0]+.25))),1+(t>ws(8)?.05*Math.sin(t*40)*(1-P(t,ws(8),ws(10)+.3)):0));
+  const R=rng(Math.floor(t*24));o.num.textContent=t<ws(8)?String(100+Math.floor(R()*900))+' DH':(Math.floor(t*20)%2?'??? DH':'💸💸💸');
+  o.redv.style.opacity=t>ws(8)?(.35+.3*P(t,ws(8),ws(10)))*(.75+.25*Math.sin(t*30)):0;
+});
+
+// ===== 1 SOLUTION (beat drop): "عندنا ليك الحل" =====
+scene(SG[1],SG[2],(el,o)=>{
+  $(`<div class="full" style="background:radial-gradient(circle at 50% 42%,#ffde4d 0%,#ff7a00 28%,#8a1a5c 62%,#1a0624 100%)"></div>`,el);
+  o.rays=$(`<div class="rays" style="background:repeating-conic-gradient(from 0deg,rgba(255,255,255,.18) 0deg 7deg,rgba(255,255,255,0) 7deg 18deg)"></div>`,el);
+  o.chk=$(`<div class="L c" style="left:290px;top:300px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#4dff9a,#12b85a 70%);box-shadow:0 0 0 22px rgba(255,255,255,.25),0 0 120px rgba(40,255,140,.85)"><svg width="300" height="300" viewBox="0 0 100 100"><path d="M22 54 L42 72 L80 30" fill="none" stroke="#fff" stroke-width="13" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="100" stroke-dashoffset="100"/></svg></div>`,el);
+  o.path=o.chk.querySelector('path');
+  o.txt=$(`<div class="L ar ol" style="width:1080px;top:860px;text-align:center;font-size:190px;color:#fff;text-shadow:0 14px 0 rgba(0,0,0,.35)">عندنا الحل</div>`,el);
+  o.parts=[];const R=rng(3);
+  for(let i=0;i<30;i++)o.parts.push({e:$(`<div class="L" style="width:${12+R()*18}px;height:${12+R()*18}px;border-radius:${R()>.5?'50%':'4px'};background:${['#FFE600','#1DB954','#E50914','#fff','#00c2d8'][i%5]}"></div>`,el),a:R()*Math.PI*2,v:500+R()*900,r:R()*400});
+},(o,t)=>{
+  const k=t-SG[1];
+  tr(o.rays,0,0,1,t*30);
+  o.chk.style.opacity=P(k,0,.04);tr(o.chk,0,0,lerp(2.4,1,eExpo(P(k,0,.3)))*(1+.03*Math.sin(t*12)),lerp(-25,0,eExpo(P(k,0,.3))));
+  o.path.style.strokeDashoffset=lerp(100,0,eOut(P(k,.12,.42)));
+  o.txt.style.opacity=P(t,ws(13)-.05,ws(13));tr(o.txt,0,0,eBack(P(t,ws(13)-.05,ws(13)+.2),2.6));
+  o.parts.forEach(p=>{const d=eOut(P(k,0,.9));p.e.style.opacity=1-P(k,.5,.9);tr(p.e,540+Math.cos(p.a)*p.v*d,550+Math.sin(p.a)*p.v*d+300*d*d,1,p.r*d)});
+});
+
+// ===== 2 PACK REVEAL: "Le Pack Streaming من عند Hochi Shop" =====
+scene(SG[2],SG[3],(el,o)=>{
+  $(`<div class="full" style="background:radial-gradient(circle at 50% 38%,#3a1366 0%,#14072b 45%,#05030b 80%)"></div>`,el);
+  o.rays=$(`<div class="rays" style="opacity:.7"></div>`,el);
+  o.sw1=$(`<img class="L" src="${A}swoosh_tl.png" style="width:520px;left:0;top:0">`,el);
+  o.sw2=$(`<img class="L" src="${A}swoosh_br.png" style="width:480px;left:600px;top:1440px">`,el);
+  o.le=$(`<div class="L lat" style="width:1080px;top:70px;text-align:center;font-size:90px;color:#FFE600;letter-spacing:12px">LE</div>`,el);
+  o.pack=$(`<div class="L lat" style="width:1080px;top:190px;text-align:center;font-size:250px;line-height:1;color:#fff;text-shadow:8px 0 0 #E50914,-8px 0 0 #1DB954,0 18px 40px rgba(0,0,0,.5)">PACK</div>`,el);
+  o.str=$(`<div class="L c" style="left:110px;top:445px;width:860px;height:150px"><div class="full" style="background:linear-gradient(90deg,#1DB954,#00b3c8 50%,#E50914);border-radius:26px;transform:skewX(-10deg);box-shadow:0 12px 0 rgba(0,0,0,.45),0 0 60px rgba(0,179,200,.5)"></div><span class="lat" style="position:relative;font-size:118px;color:#fff;letter-spacing:6px;text-shadow:0 6px 0 rgba(0,0,0,.3)">STREAMING</span></div>`,el);
+  o.apps=['nf','sp','sh'].map((k,i)=>$(appHTML(k,`style="left:${95+i*330}px;top:680px"`),el));
+  o.logo=$(`<div class="L" style="left:190px;top:960px;width:700px;height:284px"><img src="${A}logo_main.png" style="width:700px"><div class="full" style="overflow:hidden;-webkit-mask:url(${A}logo_main.png) 0 0/700px auto no-repeat"><div class="shine L" style="top:-100px;width:150px;height:500px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.85),transparent);transform:rotate(20deg)"></div></div></div>`,el);
+  o.shine=o.logo.querySelector('.shine');
+},(o,t)=>{
+  const k=t-SG[2];tr(o.rays,0,0,1,t*20);
+  o.le.style.opacity=P(t,ws(14)-.05,ws(14));tr(o.le,0,0,1);o.le.style.letterSpacing=lerp(60,12,eOut(P(t,ws(14),ws(14)+.3)))+'px';
+  o.pack.style.opacity=P(t,ws(15)-.05,ws(15));tr(o.pack,0,0,lerp(2.6,1,eExpo(P(t,ws(15)-.05,ws(15)+.2))));o.pack.style.filter=`blur(${lerp(12,0,P(t,ws(15)-.05,ws(15)+.12))}px)`;
+  o.str.style.opacity=P(t,ws(16)-.05,ws(16));tr(o.str,lerp(-1100,0,eExpo(P(t,ws(16)-.05,ws(16)+.3))),0,1,0);
+  o.apps.forEach((e,i)=>{const a=ws(17)-.1+i*.08;tr(e,0,lerp(300,0,eExpo(P(t,a,a+.3)))+Math.sin(t*4+i*2)*10,pop(e,t,a,.3,2.4))});
+  const lg=ws(19)-.08;o.logo.style.opacity=P(t,lg,lg+.05);tr(o.logo,0,0,lerp(.3,1,eBack(P(t,lg,lg+.35),2)));
+  css(o.shine,{left:lerp(-300,1000,P(t,lg+.35,lg+.85))+'px'});
+  tr(o.sw1,lerp(-520,0,eExpo(P(t,lg,lg+.4))),lerp(-300,0,eExpo(P(t,lg,lg+.4))));tr(o.sw2,lerp(480,0,eExpo(P(t,lg,lg+.4))),lerp(400,0,eExpo(P(t,lg,lg+.4))));
+});
+
+// ===== 3 SPOTIFY: "Spotify للموسيقى بلا حدود" =====
+scene(SG[3],SG[4],(el,o)=>{
+  $(`<div class="full" style="background:radial-gradient(circle at 50% 35%,#1f7a45 0%,#0b2a18 45%,#040a06 85%)"></div>`,el);
+  o.notes=[];const R=rng(9);for(let i=0;i<14;i++)o.notes.push({e:$(`<div class="L" style="font-size:${60+R()*60}px;color:#1DB954">${['♪','♫','🎵','🎧'][i%4]}</div>`,el),x:R()*980,d:R()*1.6,sp:180+R()*220});
+  o.brand=$(`<div class="L c" style="left:0;top:110px;width:1080px;height:200px;gap:30px">${spotIcon(170)}<span class="taj" style="font-size:150px;color:#fff;letter-spacing:-3px">Spotify</span></div>`,el);
+  o.card=$(`<div class="L" style="left:150px;top:360px;width:780px;height:880px;border-radius:50px;background:linear-gradient(180deg,#2b2b2b,#141414);box-shadow:0 40px 90px rgba(0,0,0,.6),0 0 0 3px rgba(255,255,255,.08)">
+    <div class="art L c" style="left:90px;top:60px;width:600px;height:440px;border-radius:30px;background:linear-gradient(135deg,#1DB954,#0d6b8a 55%,#3a1366);overflow:hidden"><div class="L c" style="width:600px;height:440px;font-size:220px">🎧</div><div class="eq L c" style="left:0;top:330px;width:600px;height:100px;gap:9px;align-items:flex-end"></div></div>
+    <div class="L taj" style="left:90px;top:530px;font-size:56px;color:#fff">Hochi Mix 🔥</div><div class="L taj" style="left:90px;top:600px;font-size:38px;color:#9a9a9a">Top hits • Rai • Rap • Pop</div>
+    <div class="L" style="left:90px;top:680px;width:600px;height:12px;border-radius:6px;background:#4a4a4a"><div class="bar" style="height:100%;width:0;border-radius:6px;background:#1DB954"></div></div>
+    <div class="L c" style="left:90px;top:715px;width:600px;height:130px;gap:90px"><span style="font-size:60px;color:#fff">⏮</span><div class="L c" style="position:relative;width:130px;height:130px;border-radius:50%;background:#1DB954"><svg width="54" height="60" viewBox="0 0 10 12"><rect x="1" y="0" width="3" height="12" fill="#000"/><rect x="6" y="0" width="3" height="12" fill="#000"/></svg></div><span style="font-size:60px;color:#fff">⏭</span></div></div>`,el);
+  o.bars=[];const eq=o.card.querySelector('.eq');for(let i=0;i<26;i++)o.bars.push($(`<div style="width:14px;border-radius:7px;background:rgba(255,255,255,.85)"></div>`,eq));
+  o.bar=o.card.querySelector('.bar');
+  o.inf=$(`<div class="L c" style="left:240px;top:520px;width:600px;height:330px;border-radius:60px;background:#1DB954;box-shadow:0 16px 0 #0d7a37,0 0 90px rgba(29,185,84,.8);flex-direction:column"><div class="lat" style="font-size:250px;line-height:.9;color:#000;margin-top:-20px">∞</div><div class="lat" style="font-size:60px;color:#000;letter-spacing:8px;margin-top:-10px">UNLIMITED</div></div>`,el);
+},(o,t)=>{
+  const k=t-SG[3];
+  o.brand.style.opacity=P(k,0,.05);tr(o.brand,0,lerp(-200,0,eExpo(P(k,0,.3))),1);
+  tr(o.card,0,lerp(900,0,eExpo(P(k,.05,.4))),1,lerp(4,0,eExpo(P(k,.05,.4))));
+  o.bars.forEach((b,i)=>{b.style.height=(14+80*Math.abs(Math.sin(i*1.3+t*11)*Math.sin(i*.5+t*5)))+'px'});
+  o.bar.style.width=(lerp(8,92,P(k,0,1.9)))+'%';
+  o.notes.forEach(n=>{const kk=k-n.d*.4;n.e.style.opacity=kk>0?.85*(1-P(kk,1.4,1.8)):0;tr(n.e,n.x+Math.sin(kk*3)*30,1500-kk*n.sp*2,1,Math.sin(kk*4)*15)});
+  const a=ws(23)-.05;o.inf.style.opacity=P(t,a,a+.04);tr(o.inf,0,0,lerp(2.5,1,eExpo(P(t,a,a+.22)))*(1+.03*Math.sin(t*12)),lerp(-14,-4,eExpo(P(t,a,a+.22))));
+});
+
+// ===== 4 NETFLIX: "Netflix لأحسن الأفلام والمسلسلات" =====
+scene(SG[4],SG[5],(el,o)=>{
+  $(`<div class="full" style="background:radial-gradient(circle at 50% 40%,#3a0508 0%,#100203 50%,#000 85%)"></div>`,el);
+  const R=rng(17);const gen=['ACTION','THRILLER','DRAMA','COMEDY','SCI-FI','CRIME','ROMANCE','HORROR','ANIME','HEIST','WAR','MYSTERY'];
+  const pal=[['#ff4b2b','#3b0a45'],['#00c9ff','#1b1464'],['#f7971e','#3a1c71'],['#e94057','#1a1a2e'],['#56ab2f','#0f2027'],['#c33764','#1d2671'],['#f12711','#2c0a0a'],['#8e2de2','#120018'],['#ffd200','#4a1a00'],['#00b09b','#0b1d26']];
+  const em=['💥','🕵️','🔥','😂','🚀','🔫','💔','👻','⚔️','💰','🌌','🦸'];
+  o.rows=[0,1,2].map(r=>{const row=$(`<div class="L" style="top:${300+r*430}px;left:0;height:400px;width:3000px;display:flex;gap:26px"></div>`,el);
+    for(let i=0;i<10;i++){const p=pal[Math.floor(R()*pal.length)],g=gen[Math.floor(R()*gen.length)];
+      $(`<div style="position:relative;flex:none;width:270px;height:400px;border-radius:22px;overflow:hidden;background:linear-gradient(170deg,${p[0]},${p[1]});box-shadow:0 18px 40px rgba(0,0,0,.6)"><div class="L c" style="width:270px;height:300px;font-size:130px">${em[Math.floor(R()*em.length)]}</div><div class="L lat" style="top:300px;width:270px;text-align:center;font-size:44px;color:#fff;letter-spacing:3px;text-shadow:0 4px 0 rgba(0,0,0,.4)">${g}</div>${R()<.35?'<div class="L lat c" style="left:200px;top:0;width:60px;height:84px;background:#E50914;font-size:22px;color:#fff;line-height:1;flex-direction:column;border-radius:0 0 6px 6px">TOP<br><span style="font-size:36px">10</span></div>':''}</div>`,row)}
+    return row});
+  o.shade=$(`<div class="full" style="background:linear-gradient(180deg,rgba(0,0,0,.9) 0%,rgba(0,0,0,.2) 18%,rgba(0,0,0,.2) 62%,rgba(0,0,0,.92) 80%)"></div>`,el);
+  o.nf=$(`<div class="L lat" style="width:1080px;top:80px;text-align:center;font-size:210px;line-height:1;color:#E50914;letter-spacing:4px;transform-origin:50% 60%;text-shadow:0 10px 30px rgba(229,9,20,.6),0 6px 0 #5a0004">NETFLIX</div>`,el);
+  o.p1=$(`<div class="pill" style="left:90px;top:1140px;height:130px;padding:0 44px;background:#E50914;box-shadow:0 10px 0 #7a0006;direction:rtl;gap:14px"><span class="ar" style="font-size:80px;color:#fff;margin-top:10px">🎬 أفلام</span></div>`,el);
+  o.p2=$(`<div class="pill" style="left:560px;top:1140px;height:130px;padding:0 44px;background:#fff;box-shadow:0 10px 0 #999;direction:rtl"><span class="ar" style="font-size:80px;color:#111;margin-top:10px">📺 مسلسلات</span></div>`,el);
+  o.pop=$(`<div class="L" style="left:820px;top:240px;font-size:170px">🍿</div>`,el);
+},(o,t)=>{
+  const k=t-SG[4];
+  o.rows.forEach((r,i)=>{const dir=i%2?1:-1;tr(r,(i%2?-1400:-80)+dir*k*260,lerp(500,0,eExpo(P(k,.02+i*.05,.4+i*.05))),1)});
+  o.nf.style.opacity=P(t,ws(25)-.06,ws(25)-.02);tr(o.nf,0,0,lerp(2.8,1,eExpo(P(t,ws(25)-.06,ws(25)+.2))),0);
+  [[o.p1,ws(27)],[o.p2,ws(28)]].forEach(([e,a])=>{tr(e,0,0,pop(e,t,a-.05,.28,2.8),-3)});
+  o.pop.style.opacity=P(k,.3,.35);tr(o.pop,0,Math.sin(t*5)*16,eBack(P(k,.3,.6),2.5),Math.sin(t*3)*10);
+});
+
+// ===== 5 SHAHID: "وشاهد لأحسن المحتوى العربي" =====
+scene(SG[5],SG[6],(el,o)=>{
+  $(`<div class="full" style="background:radial-gradient(circle at 50% 30%,#0f6b6b 0%,#13254a 45%,#0a0716 85%)"></div>`,el);
+  o.pat=$(`<div class="L" style="left:-200px;top:-200px;width:1480px;height:2400px;opacity:.08;background-image:repeating-linear-gradient(45deg,#fff 0 3px,transparent 3px 60px),repeating-linear-gradient(-45deg,#fff 0 3px,transparent 3px 60px)"></div>`,el);
+  o.moon=$(`<div class="L" style="left:760px;top:120px;font-size:150px;filter:drop-shadow(0 0 40px rgba(255,220,120,.8))">🌙</div>`,el);
+  o.brand=$(`<div class="L c" style="left:240px;top:170px;width:600px;height:260px;border-radius:60px;background:linear-gradient(140deg,#00d7a0,#00a6c8 55%,#5b2bd9);box-shadow:0 18px 0 rgba(0,0,0,.35),0 0 90px rgba(0,215,160,.55)"><span class="ar" style="font-size:200px;color:#fff;margin-top:34px;text-shadow:0 8px 0 rgba(0,0,0,.25)">شاهد</span></div>`,el);
+  const it=[['🌙','مسلسلات رمضان','#00d7a0'],['🎞️','أفلام عربية','#00a6c8'],['😂','كوميديا','#ffb000'],['🎤','برامج و شوهات','#c86bff']];
+  o.cards=it.map((x,i)=>$(`<div class="L c" style="left:${i%2?555:95}px;top:${520+Math.floor(i/2)*360}px;width:430px;height:320px;border-radius:40px;background:rgba(255,255,255,.08);border:4px solid ${x[2]};box-shadow:0 0 40px ${x[2]}55;flex-direction:column;direction:rtl"><div style="font-size:130px;line-height:1.1">${x[0]}</div><div class="ar" style="font-size:66px;color:#fff;margin-top:6px">${x[1]}</div></div>`,el));
+},(o,t)=>{
+  const k=t-SG[5];tr(o.pat,(k*40)%60,0);
+  o.brand.style.opacity=P(t,ws(29)-.08,ws(29)-.04);tr(o.brand,0,0,lerp(2.5,1,eExpo(P(t,ws(29)-.08,ws(29)+.15))),lerp(10,0,eExpo(P(t,ws(29)-.08,ws(29)+.2))));
+  o.moon.style.opacity=P(k,.3,.4);tr(o.moon,0,Math.sin(t*3)*12,eBack(P(k,.3,.6)),-15);
+  o.cards.forEach((e,i)=>{const a=ws(30)+i*.16;tr(e,0,lerp(400,0,eExpo(P(t,a,a+.3))),pop(e,t,a,.3,2.2))});
+});
+
+// ===== 6 THREE IN ONE: "التلاتة في بلاصة واحدة" =====
+scene(SG[6],SG[7],(el,o)=>{
+  $(`<div class="full" style="background:radial-gradient(circle at 50% 45%,#2a1060 0%,#0c0520 60%,#04020a 100%)"></div>`,el);
+  o.rays=$(`<div class="rays" style="opacity:0"></div>`,el);
+  o.n3=$(`<div class="L c" style="left:0;top:110px;width:1080px;height:250px;gap:40px"><span class="lat" style="font-size:230px;color:#fff">3</span><span class="lat" style="font-size:150px;color:#FFE600">➜</span><span class="lat" style="font-size:230px;color:#1DB954;text-shadow:0 0 50px rgba(29,185,84,.8)">1</span></div>`,el);
+  o.box=$(`<div class="L c" style="left:190px;top:560px;width:700px;height:620px;border-radius:70px;background:linear-gradient(160deg,rgba(255,255,255,.16),rgba(255,255,255,.04));border:5px solid rgba(255,255,255,.35);box-shadow:0 0 80px rgba(123,44,255,.55);flex-direction:column;justify-content:flex-end;padding-bottom:40px;box-sizing:border-box"><span class="lat" style="font-size:66px;color:#fff;letter-spacing:6px">PACK STREAMING</span></div>`,el);
+  o.apps=['nf','sp','sh'].map((k,i)=>$(appHTML(k,`style="left:430px;top:620px"`),el));
+  o.start=[[-330,-520],[0,-640],[330,-520]];o.end=[[-235,0],[0,0],[235,0]];
+},(o,t)=>{
+  const k=t-SG[6];const m=ws(36)-.05;const mg=eInOut(P(t,ws(35)-.1,m));
+  o.n3.style.opacity=P(k,0,.05);tr(o.n3,0,0,eBack(P(k,0,.3),2.4));
+  o.box.style.opacity=P(k,.05,.1);tr(o.box,0,lerp(300,0,eExpo(P(k,.05,.35))),1+(t>m?.06*Math.max(0,1-(t-m)*4):0));
+  o.box.style.borderColor=t>m?'#1DB954':'rgba(255,255,255,.35)';o.box.style.boxShadow=t>m?'0 0 120px rgba(29,185,84,.75),inset 0 0 60px rgba(29,185,84,.25)':'0 0 80px rgba(123,44,255,.55)';
+  o.apps.forEach((e,i)=>{const s=o.start[i],d=o.end[i];const x=lerp(s[0],d[0],mg),y=lerp(s[1],d[1],mg)+lerp(0,0,mg);e.style.opacity=P(k,i*.07,i*.07+.05);tr(e,x,y+(t<m?Math.sin(t*6+i)*12:0),lerp(.8,.92,mg)*eBack(P(k,i*.07,i*.07+.3),2.2),lerp((i-1)*-14,(i-1)*6,mg))});
+  o.rays.style.opacity=t>m?.6:0;tr(o.rays,0,0,1,t*25);
+});
+
+// ===== 7 PRICE: "وغير بـ 70 درهم للشهر" =====
+scene(SG[7],SG[8],(el,o)=>{
+  $(`<div class="full" style="background:radial-gradient(circle at 50% 42%,#0f5a2c 0%,#04170c 45%,#020604 80%)"></div>`,el);
+  o.rays=$(`<div class="rays" style="background:repeating-conic-gradient(from 0deg,rgba(255,215,0,.13) 0deg 6deg,rgba(255,215,0,0) 6deg 16deg)"></div>`,el);
+  o.rain=[];const R=rng(5);for(let i=0;i<30;i++)o.rain.push({e:$(`<div class="L" style="font-size:${70+R()*70}px">${['💵','💸','💰','🪙'][i%4]}</div>`,el),x:R()*1000,d:R()*1.4,sp:900+R()*700,r:(R()-.5)*300});
+  o.ghir=$(`<div class="L ar ol" style="width:1080px;top:95px;text-align:center;font-size:130px;color:#fff">غير بـ</div>`,el);
+  o.num=$(`<div class="L lat" style="width:1080px;top:290px;text-align:center;font-size:560px;line-height:1.05;color:transparent;background:linear-gradient(180deg,#fff7b0,#FFD000 50%,#ff9a00);-webkit-background-clip:text;background-clip:text;filter:drop-shadow(0 16px 0 #5a3a00) drop-shadow(0 0 60px rgba(255,208,0,.6))">70</div>`,el);
+  o.dh=$(`<div class="L ar ol" style="width:1080px;top:870px;text-align:center;font-size:150px;color:#fff">درهم</div>`,el);
+  o.mo=$(`<div class="L c" style="left:290px;top:1080px;width:500px;height:140px"><div class="full" style="background:#B3122E;border-radius:22px;transform:skewX(-10deg);box-shadow:0 10px 0 #5c0715"></div><span class="ar" style="position:relative;font-size:96px;color:#fff">/ للشهر</span></div>`,el);
+},(o,t)=>{
+  tr(o.rays,0,0,1,t*-20);const n0=ws(38);
+  o.rain.forEach(r=>{const k=t-n0-r.d*.4;r.e.style.opacity=k>0?1:0;tr(r.e,r.x,-200+k*r.sp,1,k*r.r)});
+  o.ghir.style.opacity=P(t,ws(37)-.05,ws(37));tr(o.ghir,0,0,eBack(P(t,ws(37)-.05,ws(37)+.2),2.5));
+  const n=P(t,n0,n0+.3);o.num.textContent=String(Math.round(lerp(0,70,eOut(n)))).padStart(2,'0');
+  o.num.style.opacity=P(t,n0-.02,n0);tr(o.num,0,0,lerp(2.4,1,eExpo(P(t,n0,n0+.2)))*(1+.025*Math.sin(t*11)));
+  o.dh.style.opacity=P(t,ws(39)-.04,ws(39));tr(o.dh,0,0,eBack(P(t,ws(39)-.04,ws(39)+.2),2.6));
+  o.mo.style.opacity=P(t,ws(40)-.04,ws(40));tr(o.mo,lerp(700,0,eExpo(P(t,ws(40)-.04,ws(40)+.22))),0,1,-3);
+});
+
+// ===== 8 DELIVERY + SECURE: "توصيل سريع، آمن 100%" =====
+scene(SG[8],SG[10],(el,o)=>{
+  o.bg=$(`<img class="cover" src="${A}creator_hd.jpg" style="filter:blur(22px) brightness(.4) saturate(1.3)">`,el);
+  o.ph=$(`<div class="phone"><div class="screen" style="background:linear-gradient(170deg,#3b1d6e,#0b1a3a 60%,#04060c)"><div class="L lat" style="width:608px;top:150px;text-align:center;font-size:180px;color:#fff">9:41</div><div class="L ar" style="width:608px;top:360px;text-align:center;font-size:52px;color:#ddd">الخميس 2 أكتوبر</div></div><div class="notch"></div></div>`,el);
+  const nt=(title,body)=>`<div class="L" style="left:230px;width:620px;height:200px;border-radius:44px;background:rgba(245,245,250,.96);box-shadow:0 20px 50px rgba(0,0,0,.5);direction:rtl">
+    <div class="L" style="right:24px;left:auto;top:24px;width:96px;height:96px;border-radius:24px;background:#000 url(${A}logo_full.png) center/150% no-repeat"></div>
+    <div class="L ar" style="right:140px;left:auto;top:18px;font-size:46px;color:#111">${title}</div><div class="L lat" style="left:28px;top:26px;font-size:30px;color:#888">now</div>
+    <div class="L ar" style="right:140px;left:auto;top:86px;width:460px;font-size:40px;color:#333;line-height:1.25">${body}</div></div>`;
+  o.n1=$(nt('Hochi Shop','💳 الخلاص توصلنا بيه ✓'),el);
+  o.n2=$(nt('Hochi Shop','🎁 Pack Streaming ديالك واجد!'),el);
+  o.fast=$(`<div class="L c" style="left:300px;top:1000px;width:480px;height:150px;border-radius:40px;background:#FFE600;box-shadow:0 12px 0 #9c8a00"><span class="ar" style="font-size:100px;color:#111;margin-top:10px">⚡ سريع</span></div>`,el);
+  o.dim=$(`<div class="full" style="background:rgba(0,0,0,.6);opacity:0"></div>`,el);
+  o.shield=$(`<div class="L c" style="left:240px;top:260px;width:600px;height:700px;flex-direction:column"><svg width="460" height="540" viewBox="0 0 100 118"><defs><linearGradient id="sg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4dff9a"/><stop offset="1" stop-color="#0a8f45"/></linearGradient></defs><path d="M50 4 L92 20 L92 56 C92 84 72 104 50 114 C28 104 8 84 8 56 L8 20 Z" fill="url(#sg)" stroke="#fff" stroke-width="5"/><path d="M30 60 L45 74 L72 44" fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg></div>`,el);
+  o.pct=$(`<div class="L c" style="left:190px;top:900px;width:700px;height:200px;border-radius:40px;background:#0b1a10;border:8px solid #1DB954;box-shadow:0 0 70px rgba(29,185,84,.6);gap:24px;direction:rtl"><span class="ar" style="font-size:110px;color:#fff;margin-top:12px">آمن</span><span class="v lat" style="font-size:130px;color:#1DB954">100%</span></div>`,el);
+  o.v=o.pct.querySelector('.v');
+},(o,t)=>{
+  const k=t-SG[8];
+  tr(o.ph,0,lerp(900,0,eExpo(P(k,0,.3))),1);tr(o.bg,0,0,1.1+k*.03);
+  o.n1.style.opacity=P(t,ws(41)-.1,ws(41)-.05);tr(o.n1,0,lerp(-400,300,eBack(P(t,ws(41)-.1,ws(41)+.2),1.6)),1);
+  o.n2.style.opacity=P(t,ws(41)+.15,ws(41)+.2);tr(o.n2,0,lerp(-400,530,eBack(P(t,ws(41)+.15,ws(41)+.45),1.6)),1);
+  o.fast.style.opacity=P(t,ws(42)-.03,ws(42));tr(o.fast,0,0,eBack(P(t,ws(42)-.03,ws(42)+.25),3)*(1+.03*Math.sin(t*16)),-4);
+  const s=ws(43)-.08;o.dim.style.opacity=.8*P(t,s,s+.1);
+  o.shield.style.opacity=P(t,s,s+.04);tr(o.shield,0,0,lerp(2.2,1,eExpo(P(t,s,s+.25)))*(1+.02*Math.sin(t*10)));
+  o.pct.style.opacity=P(t,ws(44)-.08,ws(44)-.04);tr(o.pct,0,0,eBack(P(t,ws(44)-.08,ws(44)+.2),2.6),-3);
+  o.v.textContent=Math.round(100*eOut(P(t,ws(44)-.08,ws(44)+.35)))+'%';
+});
+
+// ===== 9 DEVICES + CANCEL: "خدام على كاع الأجهزة وتقدر تحبس فأي وقت" =====
+scene(SG[10],SG[11],(el,o)=>{
+  o.img=$(`<img class="cover" src="${A}devices_hd.jpg" style="filter:brightness(.8) saturate(1.2)">`,el);
+  o.ic=['📺','💻','📱','🖥️'].map((x,i)=>$(`<div class="L c" style="left:${70+i*245}px;top:150px;width:210px;height:210px;border-radius:54px;background:rgba(255,255,255,.12);border:4px solid rgba(255,255,255,.5);font-size:130px;box-shadow:0 0 50px rgba(0,179,200,.35)">${x}</div>`,el));
+  o.ok=$(`<div class="L c" style="left:110px;top:410px;width:860px;height:120px;border-radius:30px;background:rgba(10,10,16,.78)"><span class="lat" style="font-size:66px;color:#00d7c8">✓ TV • PC • iPhone • Android</span></div>`,el);
+  o.stamp=$(`<div class="L c" style="left:110px;top:760px;width:860px;height:300px;border-radius:44px;border:14px solid #1DB954;background:rgba(5,30,15,.72);box-shadow:0 0 60px rgba(29,185,84,.55);flex-direction:column;direction:rtl"><span class="ar" style="font-size:120px;color:#1DB954;text-shadow:0 6px 0 #000;line-height:1.1;margin-top:20px">تحبس فأي وقت ✓</span><span class="ar" style="font-size:66px;color:#fff">بلا التزام</span></div>`,el);
+},(o,t)=>{
+  const k=t-SG[10];
+  tr(o.img,lerp(80,-40,P(k,0,2.6)),0,lerp(1.25,1.1,eOut(P(k,0,2.6))));
+  const at=[ws(45),ws(46),ws(47),ws(48)];o.ic.forEach((e,i)=>tr(e,0,0,pop(e,t,at[i]-.04,.25,3)));
+  o.ok.style.opacity=P(t,ws(48)+.15,ws(48)+.2);tr(o.ok,0,lerp(60,0,eOut(P(t,ws(48)+.15,ws(48)+.35))),1);
+  const s=ws(50)-.06;o.stamp.style.opacity=P(t,s,s+.03);tr(o.stamp,0,0,lerp(2.4,1,eExpo(P(t,s,s+.18))),lerp(-18,-6,eExpo(P(t,s,s+.18))));
+});
+
+// ===== 10 SAVE MONEY: "ما تبقاش تخلص بزاف" =====
+scene(SG[11],SG[12],(el,o)=>{
+  o.img=$(`<img class="cover" src="${A}souk_hd.jpg">`,el);
+  o.g=$(`<div class="full" style="background:linear-gradient(180deg,rgba(0,0,0,.65) 0%,rgba(0,0,0,0) 30%,rgba(0,0,0,0) 55%,rgba(0,0,0,.7) 100%)"></div>`,el);
+  o.old=$(`<div class="L c" style="left:150px;top:150px;width:780px;height:150px;border-radius:30px;background:rgba(40,0,8,.85);border:4px solid #ff2d55;direction:rtl;gap:20px"><span class="ar" style="font-size:74px;color:#fff;margin-top:8px">3 اشتراكات</span><span class="lat" style="font-size:80px;color:#ff2d55">💸💸💸</span></div>`,el);
+  o.strike=$(`<div class="L" style="left:120px;top:207px;width:840px;height:30px;border-radius:15px;background:#fff;box-shadow:0 0 0 6px #ff2d55,0 0 30px #ff2d55;transform-origin:0 50%"></div>`,el);
+  o.save=$(`<div class="L c" style="left:190px;top:340px;width:700px;height:170px;border-radius:40px;background:#1DB954;box-shadow:0 12px 0 #0d7a37,0 0 60px rgba(29,185,84,.7);direction:rtl;gap:16px"><span class="ar" style="font-size:96px;color:#fff;margin-top:10px">وفّر فلوسك</span><span style="font-size:90px">💰</span></div>`,el);
+},(o,t)=>{
+  const k=t-SG[11];
+  tr(o.img,0,0,lerp(1.18,1.06,eOut(P(k,0,1.2))));
+  o.old.style.opacity=P(k,0,.05);tr(o.old,lerp(-900,0,eExpo(P(k,0,.25))),0,1,-2);
+  o.strike.style.transform=`rotate(-4deg) scaleX(${eOut(P(t,ws(54)-.05,ws(54)+.15))})`;o.strike.style.opacity=P(t,ws(54)-.05,ws(54)-.02);
+  o.save.style.opacity=P(t,ws(56)-.08,ws(56)-.04);tr(o.save,0,0,eBack(P(t,ws(56)-.08,ws(56)+.2),2.8)*(1+.025*Math.sin(t*12)),3);
+});
+
+// ===== 11 CTA: "أرسل لنا ميساج دابا على @hochi_shop_" =====
+scene(SG[12],99,(el,o)=>{
+  $(`<div class="full" style="background:radial-gradient(circle at 50% 40%,#2a0d1c 0%,#08060b 70%)"></div>`,el);
+  o.rays=$(`<div class="rays" style="opacity:.6"></div>`,el);
+  o.sw1=$(`<img class="L" src="${A}swoosh_tl.png" style="width:520px;left:0;top:0">`,el);
+  o.sw2=$(`<img class="L" src="${A}swoosh_br.png" style="width:480px;left:600px;top:1440px">`,el);
+  o.logo=$(`<div class="L" style="left:140px;top:120px;width:800px;height:325px"><img src="${A}logo_main.png" style="width:800px"></div>`,el);
+  o.btn=$(`<div class="pill" style="left:110px;top:540px;width:860px;height:180px;background:linear-gradient(90deg,#feda75,#fa7e1e 25%,#d62976 55%,#962fbf 80%,#4f5bd5);box-shadow:0 14px 0 #5c1640,0 0 70px rgba(214,41,118,.6)"><span class="ar" style="font-size:96px;color:#fff;text-shadow:0 5px 0 rgba(0,0,0,.35)">📩 صيفط ميساج دابا</span></div>`,el);
+  o.handle=$(`<div class="L c" style="left:60px;top:775px;width:960px;height:160px;gap:26px">
+     <div style="width:116px;height:116px;border-radius:34px;background:radial-gradient(circle at 30% 110%,#fdf497 0%,#fd5949 45%,#d6249f 60%,#285AEB 90%);position:relative;flex:none"><div class="L" style="left:25px;top:25px;width:50px;height:50px;border:9px solid #fff;border-radius:50%"></div><div class="L" style="left:82px;top:16px;width:14px;height:14px;border-radius:50%;background:#fff"></div></div>
+     <span class="hd lat" style="font-size:108px;color:#fff;direction:ltr;text-shadow:0 8px 0 #000"></span></div>`,el);
+  o.hd=o.handle.querySelector('.hd');
+  o.apps=['nf','sp','sh'].map((k,i)=>$(appHTML(k,`style="left:${185+i*260}px;top:975px;transform-origin:50% 50%"`),el));
+  o.tag=$(`<div class="L c" style="left:140px;top:1185px;width:800px;height:100px;border-radius:26px;background:rgba(255,255,255,.08);border:3px solid rgba(255,255,255,.25)"><span class="lat" style="font-size:54px;color:#FFE600">PACK STREAMING • 70 DH / MONTH</span></div>`,el);
+  o.hand=$(`<div class="L" style="font-size:150px">👆</div>`,el);
+  o.ring=$(`<div class="L" style="width:140px;height:140px;border-radius:50%;border:9px solid #fff"></div>`,el);
+},(o,t)=>{
+  const k=t-SG[12];tr(o.rays,0,0,1,t*15);
+  const hit=T.vo_end+.15;
+  o.logo.style.opacity=P(k,0,.05);tr(o.logo,0,0,eBack(P(k,0,.35),2)*(1+(t>hit?.06*Math.max(0,1-(t-hit)*4):0)));
+  tr(o.sw1,lerp(-520,0,eExpo(P(k,0,.4))),lerp(-300,0,eExpo(P(k,0,.4))));tr(o.sw2,lerp(480,0,eExpo(P(k,0,.4))),lerp(400,0,eExpo(P(k,0,.4))));
+  const tap=ws(59); const press=(t>tap&&t<tap+.12)?.92:1;
+  o.btn.style.opacity=P(k,.12,.17);tr(o.btn,0,0,eBack(P(k,.12,.42),2.4)*press*(t>tap+.3?1+.025*Math.sin(t*9):1));
+  const hp=eInOut(P(t,tap-.4,tap));o.hand.style.opacity=P(t,tap-.4,tap-.35)*(1-P(t,tap+.5,tap+.65));tr(o.hand,lerp(900,640,hp),lerp(1350,640,hp),(t>tap&&t<tap+.12)?.88:1,-10);
+  const r=P(t,tap,tap+.33);o.ring.style.opacity=r>0&&r<1?1-r:0;tr(o.ring,640,590,.3+r*1.8);
+  const h0=ws(62)-.15;const full='@hochi_shop_';const n=Math.round(full.length*P(t,h0,h0+.5));o.hd.textContent=full.slice(0,n)+((t>h0-.1&&t<h0+1&&Math.floor(t*6)%2==0)?'|':'');
+  o.handle.style.opacity=P(t,h0-.1,h0-.05);tr(o.handle,0,0,eBack(P(t,h0-.1,h0+.15),2));
+  o.apps.forEach((e,i)=>{const a=k+0>0?SG[12]+.35+i*.08:99;e.style.opacity=P(t,a,a+.05);tr(e,0,Math.sin(t*4+i*2)*8,.72*eBack(P(t,a,a+.3),2.4),0)});
+  o.tag.style.opacity=P(t,hit-.3,hit-.25);tr(o.tag,0,lerp(80,0,eOut(P(t,hit-.3,hit-.05))),1);
+});
+
+// ---------- subtitles ----------
+const pages=[];{let cur=[];W.forEach((w,i)=>{const prev=W[i-1];const brk=cur.length&&w.w!=='Shop'&&((w.s-prev.e)>0.1||(w.s-prev.e)>0.05&&cur.length>=2||cur.length>=3||cur.map(x=>x.w).join('').length+w.w.length>17);if(brk){pages.push(cur);cur=[]}cur.push(w)});if(cur.length)pages.push(cur)}
+pages.forEach((p,i)=>{p.a=p[0].s-0.04;p.b=i<pages.length-1?Math.min(pages[i+1][0].s-0.04,p[p.length-1].e+0.6):p[p.length-1].e+0.5});
+const subpage=document.getElementById('subpage');let curPage=-1,spans=[];
+function subs(t){
+  const i=pages.findIndex(p=>t>=p.a&&t<p.b);
+  if(i!==curPage){curPage=i;subpage.innerHTML='';spans=[];if(i>=0){const lat=w=>/^[@A-Za-z0-9]/.test(w.w);let grp=null;spans=pages[i].map((w,j,arr)=>{const s=document.createElement('span');s.className='w';s.textContent=w.w;if(lat(w)){s.style.direction='ltr';s.style.unicodeBidi='isolate';if(!grp||!lat(arr[j-1])){grp=document.createElement('span');grp.style.cssText='display:inline-flex;direction:ltr;gap:6px 22px';subpage.appendChild(grp)}grp.appendChild(s)}else{grp=null;subpage.appendChild(s)}return s})}}
+  if(i<0){subpage.style.opacity=0;return}
+  const p=pages[i];subpage.style.opacity=1;subpage.style.direction=p.every(w=>/^[@A-Za-z0-9]/.test(w.w))?'ltr':'rtl';
+  const big=t<SG[1]?1.12:1;
+  subpage.style.transform=`scale(${big*lerp(.6,1,eBack(P(t,p.a,p.a+.14),2.6))})`;
+  p.forEach((w,j)=>{const on=t>=w.s-0.02&&t<(j<p.length-1?p[j+1].s-0.02:w.e+0.25);spans[j].className='w'+(on?' on':'');spans[j].style.transform=on?`scale(${1+.08*eBack(P(t,w.s-.02,w.s+.1))})`:'scale(1)';spans[j].style.opacity=t>=w.s-0.02?1:.55});
+}
+// ---------- global fx ----------
+const cuts=SG.slice(1).filter((_,i)=>i!=8);  // scene 8 spans two VO lines
+const DROP=SG[1];
+const shakes=[[0,14],[DROP,34],[ws(15),16],[ws(25),14],[ws(36)-.05,22],[ws(38),30],[ws(43)-.08,18],[ws(50)-.06,14],[T.vo_end+.15,24]];
+const flashes=[[DROP,.85],[ws(36)-.05,.55],[ws(38),.6],[ws(43)-.08,.35],[T.vo_end+.15,.5]];
+const flashEl=document.getElementById('flash'),grain=document.getElementById('grain'),prog=document.getElementById('prog');
+window.CUES={DROP,cuts,words:W.map(w=>w.s),vo_end:T.vo_end};
+window.render=function(t){
+  scenes.forEach(s=>{const on=t>=s.a&&t<s.b;s.el.style.visibility=on?'visible':'hidden';if(on)s.upd(t)});
+  let z=1,bl=0,sx=0,sy=0;
+  cuts.forEach(c=>{const k=t-c;if(k>=0&&k<.22){z=Math.max(z,lerp(1.13,1,eOut(k/.22)));bl=Math.max(bl,lerp(12,0,cl(k/.12)))}});
+  shakes.forEach(([c,m])=>{const k=t-c;if(k>=0&&k<.4){const a=m*Math.pow(1-k/.4,2);sx+=Math.sin(k*97+c)*a;sy+=Math.cos(k*83+c)*a}});
+  stage.style.transform=`translate(${sx}px,${sy}px) scale(${z})`;stage.style.filter=bl>.3?`blur(${bl}px)`:'none';
+  let f=0;flashes.forEach(([c,m])=>{const k=t-c;if(k>=0&&k<.2)f=Math.max(f,m*(1-k/.2))});flashEl.style.opacity=f;
+  const R=rng(Math.floor(t*30)+1);grain.style.transform=`translate(${-R()*60}px,${-R()*60}px)`;
+  prog.style.width=(1080*cl(t/DUR))+'px';
+  subs(t);
+};
+window.ready=Promise.all([document.fonts.ready,...[...document.images].map(i=>i.decode().catch(()=>{}))]).then(()=>Promise.all(['Lalezar','Anton','TajB'].map(f=>document.fonts.load('100px '+f))));
+</script></body></html>
