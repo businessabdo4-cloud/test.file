@@ -5,7 +5,7 @@ import { Hamza } from '../characters/Hamza';
 import { Citybot, CitybotExpr } from '../characters/Citybot';
 import { blinkAt, breatheAt, ease, mouthAt, pop, sp, squashAt, track } from '../acting';
 import { SCENES, line, w } from '../data';
-import { COLORS, CityBox, KText, LightBurst, Model, ProductImage, Swatch, colorFor, productSrc } from '../components/Props';
+import { COLORS, CityBox, HEIGHT_MM, KText, LightBurst, Model, ProductImage, Swatch, colorFor, productSrc } from '../components/Props';
 import { pick, useFmt, useT } from './common';
 
 const LAYOUT = (sq: boolean) =>
@@ -52,12 +52,13 @@ const Sparkles: React.FC<{ t: number; t0: number; cx: number; cy: number; spread
 );
 
 /** A product that turns in fake 3D (scaleX = cos), showing its back then its front. */
-const SpinningPhone: React.FC<{ model: Model; color: (typeof COLORS)[number]['key']; x: number; y: number; h: number; scale: number; angle: number; opacity?: number }> = ({ model, color, x, y, h, scale, angle, opacity = 1 }) => {
+const SpinningPhone: React.FC<{ model: Model; color: (typeof COLORS)[number]['key']; x: number; y: number; h: number; scale: number; angle: number; opacity?: number; turnIn?: boolean }> = ({ model, color, x, y, h, scale, angle, opacity = 1, turnIn }) => {
 	if (productSrc(model, color, 'pair')) {
-		// Apple's back+front composite: present it upright with a gentle sway instead of a fake 3D flip
+		// Apple's back+front composite: no fake 3D flip. It can turn in from an angle (reveal), then sways gently.
 		const sway = 3 * Math.sin((angle * Math.PI) / 180);
+		const turn = turnIn ? Math.sin((Math.min(90, Math.max(0, angle / 2)) * Math.PI) / 180) : 1;
 		return (
-			<div style={{ position: 'absolute', left: x, top: y, opacity, transform: `translate(-50%, -50%) scale(${scale}) rotate(${sway}deg)` }}>
+			<div style={{ position: 'absolute', left: x, top: y, opacity, transform: `translate(-50%, -50%) scale(${scale}) rotate(${sway}deg) scaleX(${0.3 + 0.7 * turn}) skewY(${(1 - turn) * -10}deg)` }}>
 				<ProductImage model={model} color={color} side="pair" height={h} />
 			</div>
 		);
@@ -69,6 +70,8 @@ const SpinningPhone: React.FC<{ model: Model; color: (typeof COLORS)[number]['ke
 		</div>
 	);
 };
+
+const PRO_RATIO = HEIGHT_MM['iphone-18-pro'] / HEIGHT_MM['iphone-18-pro-max'];
 
 const botExpr = (t: number): CitybotExpr => {
 	if (t < line('L4').start) return t > w('L3', 1) ? 'proud' : 'happy';
@@ -140,8 +143,11 @@ export const Scene3Unboxing: React.FC<{ from: number }> = ({ from }) => {
 				</div>
 			) : null}
 			{/* phones */}
-			{t >= R ? <SpinningPhone model="iphone-18-pro-max" color={maxColor} x={maxX} y={phoneY} h={lay.phone.h} scale={maxScale} angle={spin} /> : null}
-			{proK > 0 ? <SpinningPhone model="iphone-18-pro" color={proColor} x={lay.split.proX} y={lay.phone.y + lay.phone.h * 0.035} h={lay.phone.h * 0.93} scale={lay.split.k * proK} angle={-spin * 0.6} /> : null}
+			{t >= R ? <SpinningPhone model="iphone-18-pro-max" color={maxColor} x={maxX} y={phoneY} h={lay.phone.h} scale={maxScale} angle={spin} turnIn /> : null}
+			{proK > 0 ? (
+				// true-to-spec size relative to the Pro Max, bottoms aligned
+				<SpinningPhone model="iphone-18-pro" color={proColor} x={lay.split.proX} y={lay.phone.y + (lay.phone.h * lay.split.k * (1 - PRO_RATIO)) / 2} h={lay.phone.h * PRO_RATIO} scale={lay.split.k * proK} angle={-spin * 0.6} />
+			) : null}
 			<Sparkles t={t} t0={line('L3').end} cx={lay.phone.x} cy={lay.phone.y} spread={lay.phone.h * 0.5} />
 			{/* kinetic product name, word by word */}
 			{titleOut > 0 && t >= w('L3', 1) ? (

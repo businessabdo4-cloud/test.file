@@ -14,6 +14,9 @@ export const COLORS: { key: ProductColor; name: string; hex: string }[] = [
 	{ key: 'burgundy', name: 'Burgundy', hex: '#6B1F33' },
 ];
 
+/** Body heights from Apple's tech specs (apple.com/iphone-18-pro/specs) — used to keep on-screen sizes honest. */
+export const HEIGHT_MM: Record<Model, number> = { 'iphone-18-pro-max': 163.4, 'iphone-18-pro': 150.0 };
+
 export const productSrc = (m: Model, c: ProductColor, s: ProductSide) => PRODUCTS[m]?.[c]?.[s];
 export const hasColor = (m: Model, c: ProductColor) => Boolean(productSrc(m, c, 'pair') || productSrc(m, c, 'back') || productSrc(m, c, 'front'));
 export const hasAnyImage = (m: Model) => COLORS.some((c) => hasColor(m, c.key));

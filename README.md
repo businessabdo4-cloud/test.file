@@ -27,7 +27,7 @@ All scene timing is read from `assets/vo/timings.json`; subtitle text comes from
 `cd video && npx remotion studio` opens the project for editing.
 
 ## Still to do
-1. **iPhone 18 Pro Max image** — the 18 Pro (Burgundy) is in. Put official images in `assets/products/raw/` named
+1. **More iPhone colours (optional)** — the 18 Pro / Pro Max Burgundy image is in; other colours show as swatches only. Put official images in `assets/products/raw/` named
    `<iphone-18-pro-max|iphone-18-pro>_<black|silver|glacier|burgundy>_<front|back|pair>.png`, run
    `python3 tools/prepare_products.py`, then `./tools/render_all.sh`. Placeholders and the PREVIEW badge
    disappear automatically. List the exact image URLs in `SOURCES.md`.

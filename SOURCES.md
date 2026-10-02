@@ -4,13 +4,12 @@ Every asset used in the City Store "واش أوريجينال؟" ad, and where i
 
 ## Product images
 `www.apple.com` is blocked from this environment, so product images are supplied by City Store.
-Renders keep a red PREVIEW badge until both models have a real image (see `PRODUCTS_READY` in
-`video/src/components/Props.tsx`).
+Both models now have a real image, so the PREVIEW badge is off (`PRODUCTS_READY` in `video/src/components/Props.tsx`).
 
 | Product | File(s) | Source | Status |
 |---|---|---|---|
 | iPhone 18 Pro — Burgundy, back + front composite | `assets/products/source/iphone-18-pro_burgundy_pair_supplied.png` (700×700, sha256 `d695a164…ae2242`) → `iphone-18-pro_burgundy_pair.png`, `iphone-18-pro_burgundy_back.png` | Supplied by City Store in chat on 2026-10-02; **original URL to be confirmed** | in use (scene 3, scene 5) |
-| iPhone 18 Pro Max | — | Supplied in chat but not received as a file | pending |
+| iPhone 18 Pro Max — Burgundy | Same files as the 18 Pro | City Store confirmed (2026-10-02) the supplied image is to be used for both models — Apple uses one shared render for 18 Pro / 18 Pro Max. Shown 1.089× the 18 Pro's height (163.4 mm vs 150.0 mm, [Apple tech specs](https://www.apple.com/iphone-18-pro/specs/)), bottoms aligned | in use (scene 3, thumbnail) |
 | iPhone 18 Pro Max colour line-up (Black, Silver, Glacier, Burgundy) | — | Supplied in chat but not received as a file | pending |
 | Laptops, smartwatches, headphones, consoles | City Store's own line icons, keyed from `assets/logo.png` (`tools/extract_logo.py`) | City Store logo | in use |
 
