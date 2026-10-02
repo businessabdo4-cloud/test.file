@@ -1,0 +1,233 @@
+{
+ "airpods3": {
+  "w": 218,
+  "h": 204,
+  "source": "supplied_sheet1.png",
+  "box": [
+   18,
+   86,
+   142,
+   200
+  ]
+ },
+ "airpods2": {
+  "w": 163,
+  "h": 221,
+  "source": "supplied_sheet1.png",
+  "box": [
+   172,
+   86,
+   296,
+   200
+  ]
+ },
+ "airpods4anc": {
+  "w": 202,
+  "h": 222,
+  "source": "supplied_sheet1.png",
+  "box": [
+   314,
+   80,
+   438,
+   200
+  ]
+ },
+ "airpods4": {
+  "w": 201,
+  "h": 215,
+  "source": "supplied_sheet1.png",
+  "box": [
+   455,
+   80,
+   572,
+   200
+  ]
+ },
+ "airtagPack": {
+  "w": 144,
+  "h": 214,
+  "source": "supplied_sheet1.png",
+  "box": [
+   16,
+   262,
+   136,
+   378
+  ]
+ },
+ "cableLightning": {
+  "w": 260,
+  "h": 186,
+  "source": "supplied_sheet1.png",
+  "box": [
+   162,
+   262,
+   292,
+   378
+  ]
+ },
+ "cableC": {
+  "w": 250,
+  "h": 205,
+  "source": "supplied_sheet1.png",
+  "box": [
+   308,
+   264,
+   438,
+   378
+  ]
+ },
+ "airtag": {
+  "w": 212,
+  "h": 154,
+  "source": "supplied_sheet1.png",
+  "box": [
+   460,
+   262,
+   580,
+   378
+  ]
+ },
+ "hub": {
+  "w": 251,
+  "h": 173,
+  "source": "supplied_sheet1.png",
+  "box": [
+   12,
+   448,
+   142,
+   566
+  ]
+ },
+ "adapter20": {
+  "w": 129,
+  "h": 225,
+  "source": "supplied_sheet1.png",
+  "box": [
+   172,
+   446,
+   292,
+   566
+  ]
+ },
+ "magsafe": {
+  "w": 191,
+  "h": 191,
+  "source": "supplied_sheet1.png",
+  "box": [
+   314,
+   446,
+   438,
+   566
+  ]
+ },
+ "earpods": {
+  "w": 193,
+  "h": 217,
+  "source": "supplied_sheet1.png",
+  "box": [
+   460,
+   446,
+   582,
+   566
+  ]
+ },
+ "whoopLife": {
+  "w": 183,
+  "h": 212,
+  "source": "supplied_sheet2.png",
+  "box": [
+   62,
+   80,
+   182,
+   196
+  ]
+ },
+ "whoopPeak": {
+  "w": 182,
+  "h": 215,
+  "source": "supplied_sheet2.png",
+  "box": [
+   238,
+   80,
+   362,
+   196
+  ]
+ },
+ "rayban": {
+  "w": 305,
+  "h": 106,
+  "source": "supplied_sheet2.png",
+  "box": [
+   396,
+   82,
+   562,
+   198
+  ]
+ },
+ "watchUltra": {
+  "w": 207,
+  "h": 233,
+  "source": "supplied_sheet2.png",
+  "box": [
+   62,
+   262,
+   182,
+   382
+  ]
+ },
+ "watchSeries": {
+  "w": 270,
+  "h": 211,
+  "source": "supplied_sheet2.png",
+  "box": [
+   228,
+   262,
+   378,
+   382
+  ]
+ },
+ "watchSE": {
+  "w": 265,
+  "h": 196,
+  "source": "supplied_sheet2.png",
+  "box": [
+   408,
+   262,
+   552,
+   382
+  ]
+ },
+ "airpodsPro3": {
+  "w": 144,
+  "h": 227,
+  "source": "supplied_sheet2.png",
+  "box": [
+   62,
+   448,
+   180,
+   568
+  ]
+ },
+ "airpodsPro2": {
+  "w": 191,
+  "h": 235,
+  "source": "supplied_sheet2.png",
+  "box": [
+   232,
+   450,
+   356,
+   568
+  ]
+ },
+ "airpodsMax": {
+  "w": 256,
+  "h": 195,
+  "source": "supplied_sheet2.png",
+  "box": [
+   402,
+   440,
+   540,
+   570
+  ]
+ }
+}

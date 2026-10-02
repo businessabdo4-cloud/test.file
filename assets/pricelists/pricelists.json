@@ -1,0 +1,145 @@
+{
+ "_note": "Edit prices/names here, then render (see README). '^e' = superscript; \\u00a0 = no line break. Prices in DH.",
+ "sheets": [
+  {
+   "id": "accessoires",
+   "title": "AIRPODS & ACCESSOIRES",
+   "columns": 4,
+   "items": [
+    {
+     "name": "AIRPODS (3^e GÉNÉRATION)",
+     "note": "NEUF · BOÎTE FERMÉE",
+     "price": 1400,
+     "icon": "airpods3"
+    },
+    {
+     "name": "AIRPODS 2",
+     "note": "NEUF · BOÎTE FERMÉE",
+     "price": 1150,
+     "icon": "airpods2"
+    },
+    {
+     "name": "AIRPODS 4 ANC",
+     "note": "NEUF · BOÎTE FERMÉE",
+     "price": 1900,
+     "icon": "airpods4anc"
+    },
+    {
+     "name": "AIRPODS 4",
+     "note": "NEUF · BOÎTE FERMÉE",
+     "price": 1450,
+     "icon": "airpods4"
+    },
+    {
+     "name": "AIRTAG PACK",
+     "note": "NEUF · BOÎTE FERMÉE",
+     "price": 1200,
+     "icon": "airtagPack"
+    },
+    {
+     "name": "CÂBLE USB-C / LIGHTNING",
+     "note": "NEUF",
+     "price": 150,
+     "icon": "cableLightning"
+    },
+    {
+     "name": "CÂBLE USB-C / USB-C",
+     "note": "NEUF",
+     "price": 200,
+     "icon": "cableC"
+    },
+    {
+     "name": "AIRTAG",
+     "note": "NEUF · BOÎTE FERMÉE",
+     "price": 300,
+     "icon": "airtag"
+    },
+    {
+     "name": "ADAPTATEUR 3 EN 1",
+     "note": "HDMI 4K · USB-C · USB",
+     "price": 170,
+     "icon": "hub"
+    },
+    {
+     "name": "ADAPTATEUR 20 W",
+     "note": "NEUF · BOÎTE FERMÉE",
+     "price": 300,
+     "icon": "adapter20"
+    },
+    {
+     "name": "CHARGEUR MAGSAFE",
+     "note": "NEUF · BOÎTE FERMÉE",
+     "price": 350,
+     "icon": "magsafe"
+    },
+    {
+     "name": "ÉCOUTEURS FILAIRES USB‑C",
+     "note": "NEUF · BOÎTE FERMÉE",
+     "price": 300,
+     "icon": "earpods"
+    }
+   ]
+  },
+  {
+   "id": "montres-audio",
+   "title": "MONTRES · AUDIO · WEARABLES",
+   "columns": 3,
+   "items": [
+    {
+     "name": "WHOOP LIFE",
+     "note": "ABONNEMENT 12 MOIS · NEUF",
+     "price": 4450,
+     "icon": "whoopLife"
+    },
+    {
+     "name": "WHOOP PEAK",
+     "note": "ABONNEMENT 12 MOIS · NEUF",
+     "price": 3200,
+     "icon": "whoopPeak"
+    },
+    {
+     "name": "RAY-BAN META 2",
+     "note": "NEUF · BOÎTE FERMÉE",
+     "price": 4400,
+     "icon": "rayban"
+    },
+    {
+     "name": "APPLE WATCH ULTRA 3",
+     "note": "NEUF · BOÎTE FERMÉE",
+     "price": 7800,
+     "icon": "watchUltra"
+    },
+    {
+     "name": "APPLE WATCH SERIES 11",
+     "note": "NEUF · BOÎTE FERMÉE",
+     "price": 4300,
+     "icon": "watchSeries"
+    },
+    {
+     "name": "APPLE WATCH SE 2",
+     "note": "NEUF · BOÎTE FERMÉE",
+     "price": 2400,
+     "icon": "watchSE"
+    },
+    {
+     "name": "AIRPODS PRO 3",
+     "note": "NEUF · BOÎTE FERMÉE",
+     "price": 2500,
+     "icon": "airpodsPro3"
+    },
+    {
+     "name": "AIRPODS PRO 2 USB-C",
+     "note": "NEUF · BOÎTE FERMÉE",
+     "price": 2100,
+     "icon": "airpodsPro2"
+    },
+    {
+     "name": "AIRPODS MAX",
+     "note": "NEUF · BOÎTE FERMÉE",
+     "price": 5800,
+     "icon": "airpodsMax"
+    }
+   ]
+  }
+ ]
+}

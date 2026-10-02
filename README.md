@@ -37,3 +37,10 @@ All scene timing is read from `assets/vo/timings.json`; subtitle text comes from
 Original background track (`tools/make_music.py`), sitting ~12 dB under full scale in pauses and a further
 10 dB down under speech (150 ms ramps). Change `gainDb` / `duckDb` in `assets/music/music.json` and re-run the
 script to make it louder or quieter.
+
+## Price-list posters
+`deliverables/pricelists/` — two sheets (AirPods & accessoires, Montres · audio · wearables), each in 4:5 and 1:1.
+Edit names/prices in `assets/pricelists/pricelists.json`, then:
+```bash
+cd video && for id in PriceAccessoires4x5 PriceAccessoires1x1 PriceMontres4x5 PriceMontres1x1; do npx remotion still src/index.ts $id out/$id.png; done
+```

@@ -50,3 +50,10 @@ https://www.apple.com/newsroom/2026/09/apple-debuts-iphone-18-pro-and-iphone-18-
 - WeSpeaker ResNet34 (sherpa-onnx `speaker-recongition-models` release) — speaker-similarity check.
 - Rhubarb Lip Sync 1.14.0 (GitHub release), phonetic recognizer — mouth shapes.
 - rembg (`isnet-general-use`) — background removal for product images.
+
+## Price-list posters (`deliverables/pricelists/`)
+- Products and prices: copied from the two price-list images supplied by City Store on 2026-10-02
+  (`assets/pricelists/source/`), at City Store's request; data in `assets/pricelists/pricelists.json`.
+- Product photos: cut out of those same supplied images at City Store's request (`tools/extract_pricelist_products.py`:
+  rembg BiRefNet + isnet masks, wood-circle removal, a few hand-measured shapes). The source images are 600 px, so
+  each photo starts at ~110 px and is upscaled 2×. The other shop's branding is not used anywhere.
