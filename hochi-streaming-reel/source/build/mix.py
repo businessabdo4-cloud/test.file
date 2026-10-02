@@ -32,7 +32,7 @@ for k,f in enumerate(files): idx[f]=2+k; inp+=['-i',A+f+'.mp3']
 uses={f:[c for c in cues if c[1]==f] for f in files}
 fc=[]
 # loudnorm upsamples to 192 kHz: bring the VO back to 48 kHz and pad it so the sidechain and amix run the full length
-fc.append(f'[0:a]aresample=48000,aformat=channel_layouts=stereo,loudnorm=I=-14:TP=-1.5:LRA=7,aresample=48000,apad=whole_dur={DUR},asplit=2[vo][vosc]')
+fc.append(f'[0:a]aresample=48000,aformat=channel_layouts=stereo,loudnorm=I=-14:TP=-1.5:LRA=7,aresample=48000,apad=whole_dur={DUR},asplit=3[vo][vosc][vosc2]')
 fc.append(f'[1:a]aresample=48000,aformat=channel_layouts=stereo,volume=0.42,afade=t=out:st={DUR-0.7:.3f}:d=0.7[mus0]')
 fc.append('[mus0][vosc]sidechaincompress=threshold=0.04:ratio=5:attack=15:release=250:makeup=1[mus]')
 labels=[]
@@ -40,8 +40,9 @@ for f in files:
     n=len(uses[f]); fc.append(f'[{idx[f]}:a]aresample=48000,aformat=channel_layouts=stereo,asplit={n}'+''.join(f'[{f}{i}]' for i in range(n)))
     for i,(t,_,v) in enumerate(uses[f]):
         ms=max(0,int(t*1000)); lab=f's_{f}{i}'; fc.append(f'[{f}{i}]volume={v},adelay={ms}|{ms}[{lab}]'); labels.append(lab)
-fc.append(''.join(f'[{l}]' for l in labels)+f'amix=inputs={len(labels)}:normalize=0,volume=0.8[sfx]')
-fc.append(f'[vo][mus][sfx]amix=inputs=3:normalize=0,volume=0.85,alimiter=limit=0.79:level=false,atrim=0:{DUR}[out]')
+fc.append(''.join(f'[{l}]' for l in labels)+f'amix=inputs={len(labels)}:normalize=0,volume=0.6[sfx0]')
+fc.append('[sfx0][vosc2]sidechaincompress=threshold=0.03:ratio=6:attack=5:release=200:makeup=1[sfx]')
+fc.append(f'[vo][mus][sfx]amix=inputs=3:normalize=0,volume=0.965,alimiter=limit=0.79:level=false,atrim=0:{DUR}[out]')
 cmd=['ffmpeg','-y','-v','error']+inp+['-filter_complex',';'.join(fc),'-map','[out]','-ar','48000','-c:a','pcm_s16le','build/mix.wav']
 subprocess.run(cmd,check=True)
 subprocess.run(['ffmpeg','-y','-v','error','-i','build/video.mp4','-i','build/mix.wav','-map','0:v','-map','1:a','-c:v','copy',
