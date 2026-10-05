@@ -4,7 +4,7 @@ import { FONT } from "../brand";
 import { SOCIAL } from "../config";
 import { lerp, shake, slam, sp } from "../anim";
 import { useLayout } from "../layout";
-import { ev, TL } from "../timeline";
+import { evIn, useTL } from "../timeline";
 import { LineIcon } from "../components/Icons";
 import { SceneShell, useSceneFrame } from "../components/SceneShell";
 import logo from "../../public/logo/layout.json";
@@ -12,8 +12,11 @@ import logo from "../../public/logo/layout.json";
 const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
 
 /** 26.0-30.0 s END CARD: logo rebuilt from the real wordmark; final frame held from 29.0 s. */
-export const EndCard: React.FC = () => {
+/** tagline: optional slogan pill (e.g. Darija) shown instead of the Instagram handle, at event "end.tagline". */
+export const EndCard: React.FC<{ tagline?: string }> = ({ tagline }) => {
   const frame = useSceneFrame("end");
+  const TL = useTL();
+  const ev = (k: string) => evIn(TL, k);
   const L = useLayout();
   const P = L.portrait;
   const box = P ? { x: 75, y: 220, size: 860 } : { x: 30, y: 170, size: 640 };
@@ -29,13 +32,14 @@ export const EndCard: React.FC = () => {
   const cityAt = ev("end.city");
   const city = slam(frame, cityAt, 1.9);
   const sk = shake(frame, cityAt, 20, 10);
-  const typed = Math.max(0, Math.min(8, Math.floor((frame - ev("end.typeStart")) / (TL.fps * TL.eventsSec["end.typeStep"])) + 1));
-  const typeEndFrame = ev("end.typeStart") + Math.round(8 * TL.fps * TL.eventsSec["end.typeStep"]);
+  const typed = Math.max(0, Math.min(8, Math.floor((frame - ev("end.typeStart")) / (TL.fps * (TL.eventsSec["end.typeStep"] as number))) + 1));
+  const typeEndFrame = ev("end.typeStart") + Math.round(8 * TL.fps * (TL.eventsSec["end.typeStep"] as number));
   const clipW = typed === 0 ? 0 : logo.storemaLetters[typed - 1] + 8;
   const cursorOn = frame >= ev("end.typeStart") - 6 && (frame < typeEndFrame + 12 ? Math.floor(frame / 4) % 2 === 0 || frame < typeEndFrame : false);
-  const iconStep = TL.fps * TL.eventsSec["end.iconStep"];
+  const iconStep = TL.fps * (TL.eventsSec["end.iconStep"] as number);
   const sweep = interpolate(frame, [ev("end.wink") - 10, ev("end.wink") + 8], [-0.3, 1.3], clamp);
-  const handle = sp(frame, ev("end.icons") + 14, { damping: 14, stiffness: 160 });
+  const handleAt = tagline && TL.events["end.tagline"] !== undefined ? ev("end.tagline") : ev("end.icons") + 14;
+  const handle = sp(frame, handleAt, { damping: 14, stiffness: 160 });
 
   return (
     <SceneShell id="end" shakeX={sk.x} shakeY={sk.y} noOut>
@@ -78,17 +82,23 @@ export const EndCard: React.FC = () => {
           position: "absolute",
           left: P ? 0 : box.x,
           width: P ? 1010 : box.size,
-          top: box.y + 868 * k,
+          top: box.y + (tagline ? 856 : 868) * k,
           display: "flex",
           justifyContent: "center",
           opacity: handle,
           transform: `translateY(${(1 - handle) * 24}px)`,
         }}
       >
-        <div style={{ display: "flex", alignItems: "center", gap: 12, fontFamily: FONT, fontWeight: 800, fontSize: P ? 40 : 32, color: "#fff", background: "rgba(255,255,255,0.16)", border: "2px solid rgba(255,255,255,0.55)", borderRadius: 999, padding: "8px 26px 8px 12px" }}>
-          <LineIcon name="instagram" size={P ? 46 : 38} stroke={8} />
-          {SOCIAL.instagram}
-        </div>
+        {tagline ? (
+          <div dir="rtl" style={{ fontFamily: FONT, fontWeight: 900, fontSize: P ? 46 : 38, color: "#2E3EFE", background: "#fff", borderRadius: 999, padding: "0 30px 8px", boxShadow: "0 12px 30px rgba(6,14,90,0.3)", transform: `scale(${0.7 + 0.3 * handle}) rotate(${(1 - handle) * -6}deg)` }}>
+            {tagline}
+          </div>
+        ) : (
+          <div style={{ display: "flex", alignItems: "center", gap: 12, fontFamily: FONT, fontWeight: 800, fontSize: P ? 40 : 32, color: "#fff", background: "rgba(255,255,255,0.16)", border: "2px solid rgba(255,255,255,0.55)", borderRadius: 999, padding: "8px 26px 8px 12px" }}>
+            <LineIcon name="instagram" size={P ? 46 : 38} stroke={8} />
+            {SOCIAL.instagram}
+          </div>
+        )}
       </div>
     </SceneShell>
   );

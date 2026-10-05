@@ -22,7 +22,11 @@
     "finalize": "bash scripts/finalize.sh",
     "verify": "bash scripts/verify.sh",
     "build": "npm run products && npm run audio && npm run srt && npm run render:9x16 && npm run render:1x1 && npm run render:cover && npm run finalize && npm run verify",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "watch:cutout": "python3 reels/watch/cutout.py",
+    "watch:audio": "REEL=watch python3 scripts/process_vo_take.py && python3 reels/watch/build_timeline.py && REEL=watch python3 scripts/make_music.py && REEL=watch python3 scripts/mix_audio.py",
+    "watch:render": "remotion render WatchReel9x16 out/watch/reel_9x16_raw.mp4 --codec=h264 --crf=16 && remotion render WatchReel1x1 out/watch/reel_1x1_raw.mp4 --codec=h264 --crf=16 && remotion still WatchCover out/watch/cover_1080x1920.png",
+    "watch:build": "npm run watch:cutout && npm run watch:audio && REEL=watch node scripts/make_srt.mjs && npm run watch:render && REEL=watch bash scripts/finalize.sh && REEL=watch bash scripts/verify.sh"
   },
   "dependencies": {
     "@remotion/cli": "4.0.532",

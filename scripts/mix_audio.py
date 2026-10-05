@@ -16,8 +16,10 @@ import soundfile as sf
 from scipy.ndimage import maximum_filter1d
 from scipy.signal import resample_poly
 
+from reel import ASSETS, PUB, REEL
+
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-TL = json.loads((ROOT / "public" / "data" / "timeline.json").read_text())
+TL = json.loads((PUB / "data" / "timeline.json").read_text())
 SR = 48000
 DUR = TL["totalFrames"] / TL["fps"]
 N = int(round(SR * DUR))
@@ -31,7 +33,7 @@ meter = pyln.Meter(SR)
 
 
 def load(path, stereo=True):
-    tmp = ROOT / ".cache" / "mix" / (path.stem + "_48k.wav")
+    tmp = ROOT / ".cache" / "mix" / REEL / (path.stem + "_48k.wav")
     tmp.parent.mkdir(parents=True, exist_ok=True)
     subprocess.run(["ffmpeg", "-y", "-v", "error", "-i", str(path), "-ar", str(SR), "-ac", "2" if stereo else "1", str(tmp)],
                    check=True)
@@ -50,14 +52,14 @@ def place(bus, x, t, gain=1.0):
 # ---- VO
 vo = np.zeros((N, 2))
 for line in TL["vo"]:
-    x = load(ROOT / "public" / "audio" / "vo" / f"{line['id']}.wav")
+    x = load(PUB / "audio" / "vo" / f"{line['id']}.wav")
     place(vo, x, line["start"])
 vo_lufs_raw = meter.integrated_loudness(vo)
 vo *= 10 ** ((VO_LUFS - vo_lufs_raw) / 20)
 
 # ---- music
-tracks = sorted(p for p in (ROOT / "assets" / "music").glob("*") if p.suffix.lower() in (".wav", ".mp3", ".m4a", ".aac", ".flac", ".ogg"))
-music_src = tracks[0] if tracks else ROOT / "public" / "audio" / "music.wav"
+tracks = sorted(p for p in (ASSETS / "music").glob("*") if p.suffix.lower() in (".wav", ".mp3", ".m4a", ".aac", ".flac", ".ogg"))
+music_src = tracks[0] if tracks else PUB / "audio" / "music.wav"
 music = load(music_src)[:N]
 if len(music) < N:
     music = np.pad(music, ((0, N - len(music)), (0, 0)))
@@ -106,10 +108,10 @@ for i in range(N):
 mix *= g[:, None]
 mix = np.clip(mix, -CEILING, CEILING)
 
-out = ROOT / "public" / "audio" / "mix.wav"
+out = PUB / "audio" / "mix.wav"
 sf.write(out, mix.astype(np.float32), SR, subtype="PCM_16")
 for name, stem in (("vo", vo), ("music", music), ("sfx", sfx)):
-    sf.write(ROOT / ".cache" / "mix" / f"stem_{name}.wav", stem.astype(np.float32), SR, subtype="PCM_16")
+    sf.write(ROOT / ".cache" / "mix" / REEL / f"stem_{name}.wav", stem.astype(np.float32), SR, subtype="PCM_16")
 tp = 20 * np.log10(np.abs(resample_poly(mix, 4, 1, axis=0)).max())
 print(f"music source: {music_src.relative_to(ROOT)}")
 print(f"VO stem: {meter.integrated_loudness(vo * g[:, None]):.1f} LUFS (target {VO_LUFS})")

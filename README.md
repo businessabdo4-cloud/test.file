@@ -1,4 +1,4 @@
-# City Store: promo reel (Remotion)
+# City Store: promo reels (Remotion)
 
 30-second vertical promo reel for **City Store (citystore.ma)** with the Citybot mascot.
 
@@ -27,3 +27,15 @@ npm run studio                   # interactive preview
 - **Products**: drop official images into `assets/products/` (names in `SOURCES.md`), then rebuild.
   Without them the phones are a stylised illustration and the categories are animated line-icons.
 - **Placeholders**: warranty / delivery / price in `src/config.ts` (off by default).
+
+## Reels
+| Reel | Compositions | Outputs | Build |
+|---|---|---|---|
+| iPhone 18 Pro (FR) | `Reel9x16`, `Reel1x1`, `Cover` | `out/` | `npm run build` |
+| Apple Watch Ultra 4 (Darija) | `WatchReel9x16`, `WatchReel1x1`, `WatchCover` | `out/watch/` | `npm run watch:build` |
+
+Shared parts: Citybot (`src/citybot`), its actor engine (`src/components/CitybotActor.tsx`, with
+per-reel acting in `src/reels/<reel>/direction`), bidi-aware subtitles (French, Darija or mixed),
+scene shell, logo end card, and the audio pipeline. Select a reel for the scripts with `REEL=<id>`.
+A reel recorded as one continuous take uses `scripts/process_vo_take.py` with the sentence
+boundaries listed in `reels/<reel>/reel.json`.

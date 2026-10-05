@@ -6,6 +6,9 @@ import { Reel } from "./compositions/Reel";
 import { FPS, MAX_FRAMES } from "./config";
 import { LAYOUT_1x1, LAYOUT_9x16 } from "./layout";
 import { TL } from "./timeline";
+import { WatchReel } from "./reels/watch/WatchReel";
+import { WatchCover } from "./reels/watch/WatchCover";
+import { WTL } from "./reels/watch/timeline";
 
 // Hard length limit: never more than 900 frames (30.0 s).
 const DURATION = Math.min(TL.totalFrames, MAX_FRAMES);
@@ -15,6 +18,9 @@ export const RemotionRoot: React.FC = () => (
     <Composition id="Reel9x16" component={Reel} durationInFrames={DURATION} fps={FPS} width={1080} height={1920} defaultProps={{ layout: LAYOUT_9x16 }} />
     <Composition id="Reel1x1" component={Reel} durationInFrames={DURATION} fps={FPS} width={1080} height={1080} defaultProps={{ layout: LAYOUT_1x1 }} />
     <Still id="Cover" component={Cover} width={1080} height={1920} />
+    <Composition id="WatchReel9x16" component={WatchReel} durationInFrames={Math.min(WTL.totalFrames, MAX_FRAMES)} fps={FPS} width={1080} height={1920} defaultProps={{ layout: LAYOUT_9x16 }} />
+    <Composition id="WatchReel1x1" component={WatchReel} durationInFrames={Math.min(WTL.totalFrames, MAX_FRAMES)} fps={FPS} width={1080} height={1080} defaultProps={{ layout: LAYOUT_1x1 }} />
+    <Still id="WatchCover" component={WatchCover} width={1080} height={1920} />
     <Still id="CitybotSheet" component={CitybotSheet} width={1920} height={1080} />
   </>
 );

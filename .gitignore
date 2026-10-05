@@ -1,6 +1,7 @@
 node_modules/
 .cache/
 out/*_raw.mp4
+out/*/*_raw.mp4
 out/preview/
 tools/rhubarb/
 assets/logo_source.jpg

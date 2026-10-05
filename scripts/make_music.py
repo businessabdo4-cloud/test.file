@@ -14,13 +14,26 @@ import pyloudnorm as pyln
 import soundfile as sf
 from scipy.signal import butter, sosfilt, sawtooth
 
+from reel import PUB, REEL
+
 ROOT = pathlib.Path(__file__).resolve().parent.parent
+# per-reel arrangement: chord loop, first downbeat (bars of 2 s from there), drop, end-card lift
+STYLES = {
+    "iphone18": dict(seed=7, phase=0.0, drop=4.0, end_lift=26.0, stop=28.0,
+                     chords=[[57, 60, 64], [53, 57, 60], [48, 52, 55], [55, 59, 62]], roots=[45, 41, 36, 43],
+                     final=[57, 60, 64, 69], final_bass=33, arp=[0, 1, 2, 1, 2, 0, 2, 1]),
+    # darker F-minor loop for the Apple Watch Ultra reel; drop on the hero cut at 3.0 s
+    "watch": dict(seed=21, phase=1.0, drop=3.0, end_lift=26.5, stop=29.0,
+                  chords=[[53, 56, 60], [49, 53, 56], [51, 56, 60], [51, 55, 58]], roots=[41, 37, 44, 39],
+                  final=[53, 56, 60, 65], final_bass=29, arp=[0, 2, 1, 2, 0, 2, 1, 2]),
+}
+ST = STYLES[REEL]
 SR = 48000
 BPM = 120
 BEAT = 60 / BPM
 DUR = 30.0
 N = int(SR * DUR)
-rng = np.random.default_rng(7)
+rng = np.random.default_rng(ST["seed"])
 
 L = np.zeros(N, dtype=np.float64)
 R = np.zeros(N, dtype=np.float64)
@@ -38,6 +51,8 @@ def place(sig, t0, gain=1.0, pan=0.0):
         sl, sr_ = sig * (1 - max(0, pan)), sig * (1 + min(0, pan))
     else:
         sl, sr_ = sig[0], sig[1]
+    if i < 0:  # pickup bar that starts before 0 s
+        sl, sr_, i = sl[-i:], sr_[-i:], 0
     n = min(len(sl), N - i)
     L[i:i + n] += sl[:n] * gain
     R[i:i + n] += sr_[:n] * gain
@@ -148,20 +163,21 @@ def pluck(n, d=0.22):
 
 
 # Am - F - C - G (one chord per bar)
-CHORDS = [[57, 60, 64], [53, 57, 60], [48, 52, 55], [55, 59, 62]]
-ROOTS = [45, 41, 36, 43]
-BARS = int(DUR / (4 * BEAT))
+CHORDS, ROOTS = ST["chords"], ST["roots"]
+PHASE, DROP = ST["phase"], ST["drop"]
+BARS = int(DUR / (4 * BEAT)) + (1 if PHASE else 0)
 
 K, C, HC, HO, S = kick(), clap(), hat(), hat(True), snare()
 pad_bus_l, pad_bus_r = np.zeros(N), np.zeros(N)
 sidechain = np.ones(N)
 
+FINAL_T = 29.0
 for bar in range(BARS):
-    t0 = bar * 4 * BEAT
+    t0 = PHASE - (4 * BEAT if PHASE else 0) + bar * 4 * BEAT
     chord, root = CHORDS[bar % 4], ROOTS[bar % 4]
-    hook = bar < 2
-    final = bar == BARS - 1
-    build = bar == BARS - 2
+    hook = t0 < DROP
+    final = t0 >= ST["stop"] - 1e-6  # groove stops here; the final hit lands at FINAL_T
+    build = abs(t0 + 4 * BEAT - ST["stop"]) < 1e-6
     if final:
         continue
     for b in range(4):
@@ -184,11 +200,13 @@ for bar in range(BARS):
     cutoff = 900 + 900 * bar if hook else (5200 if not build else 3500)
     pad = supersaw([n + 12 for n in chord], 4 * BEAT, cutoff)
     i = int(t0 * SR)
+    if i < 0:
+        pad, i = pad[:, -i:], 0
     pad_bus_l[i:i + pad.shape[1]] += pad[0][: N - i]
     pad_bus_r[i:i + pad.shape[1]] += pad[1][: N - i]
     # arp after the drop
     if not hook:
-        seq = [0, 1, 2, 1, 2, 0, 2, 1]
+        seq = ST["arp"]
         for k in range(16):
             note = chord[seq[k % 8]] + 24 if k % 4 != 3 else chord[0] + 36
             place(pluck(note), t0 + k * BEAT / 4, 0.55 if not build else 0.4, pan=0.35 if k % 2 else -0.35)
@@ -196,17 +214,17 @@ for bar in range(BARS):
         for k in range(8):
             place(S, t0 + 2 * BEAT + k * BEAT / 4, 0.25 + 0.06 * k)
 
-# hook: impact on 1, snare roll + riser into the drop at 4.0 s
+# hook: impact on 1, snare roll + riser into the drop
 place(impact(), 0.0, 0.9)
 place(crash(), 0.0, 0.8)
 for k in range(8):
-    place(S, 3.0 + k * BEAT / 8, 0.2 + 0.07 * k)
-place(riser(2.0), 2.0, 0.9)
-place(crash(), 4.0, 1.0)
-place(impact(), 4.0, 0.6)
-# small lift into the CTA and end card
-place(riser(1.0), 25.0, 0.6)
-place(crash(), 26.0, 0.8)
+    place(S, DROP - 1.0 + k * BEAT / 8, 0.2 + 0.07 * k)
+place(riser(min(2.0, DROP - 0.5)), DROP - min(2.0, DROP - 0.5), 0.9)
+place(crash(), DROP, 1.0)
+place(impact(), DROP, 0.6)
+# small lift into the end card
+place(riser(1.0), ST["end_lift"] - 1.0, 0.6)
+place(crash(), ST["end_lift"], 0.8)
 place(riser(1.0), 28.0, 0.7)
 
 # final hit at 29.0 s, rings to the end
@@ -214,10 +232,10 @@ tf = 29.0
 place(impact(), tf, 1.0)
 place(crash(), tf, 1.0)
 place(K, tf, 1.0)
-fin = supersaw([n + 12 for n in [57, 60, 64, 69]], 1.0, 4500)
+fin = supersaw([n + 12 for n in ST["final"]], 1.0, 4500)
 fade = np.linspace(1, 0, fin.shape[1]) ** 1.5
 place(fin * fade, tf, 1.3)
-place(bass_note(33, 1.0), tf, 1.0)
+place(bass_note(ST["final_bass"], 1.0), tf, 1.0)
 
 L += pad_bus_l * sidechain * 0.9
 R += pad_bus_r * sidechain * 0.9
@@ -236,7 +254,7 @@ mix[-fo:] *= np.linspace(1, 0, fo)[:, None]
 meter = pyln.Meter(SR)
 mix = pyln.normalize.loudness(mix, meter.integrated_loudness(mix), -14.0)
 mix /= max(1.0, np.abs(mix).max() / 0.95)
-out = ROOT / "public" / "audio" / "music.wav"
+out = PUB / "audio" / "music.wav"
 out.parent.mkdir(parents=True, exist_ok=True)
 sf.write(out, mix.astype(np.float32), SR, subtype="PCM_24")
 print("music:", out, f"{len(mix)/SR:.2f}s", f"{meter.integrated_loudness(mix):.1f} LUFS")

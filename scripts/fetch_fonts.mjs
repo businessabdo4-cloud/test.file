@@ -1,6 +1,7 @@
 // Downloads Montserrat (latin + latin-ext) using @remotion/google-fonts' manifest,
 // so renders don't depend on fonts.gstatic.com being reachable from the headless browser.
 import { getInfo } from "@remotion/google-fonts/Montserrat";
+import { getInfo as getCairo } from "@remotion/google-fonts/Cairo";
 import fs from "node:fs";
 import path from "node:path";
 
@@ -15,6 +16,17 @@ for (const subset of ["latin", "latin-ext"]) {
   if (!res.ok) throw new Error(`${url}: ${res.status}`);
   fs.writeFileSync(path.join(outDir, file), Buffer.from(await res.arrayBuffer()));
   manifest.push({ subset, file, unicodeRange: info.unicodeRanges[subset], source: url });
+  console.log("saved", file);
+}
+// Cairo (variable 200-1000) for Arabic glyphs only: Montserrat has no Arabic.
+const cairo = getCairo();
+{
+  const url = cairo.fonts.normal["900"].arabic;
+  const file = "cairo-arabic.woff2";
+  const res = await fetch(url);
+  if (!res.ok) throw new Error(`${url}: ${res.status}`);
+  fs.writeFileSync(path.join(outDir, file), Buffer.from(await res.arrayBuffer()));
+  manifest.push({ family: "Cairo", subset: "arabic", file, unicodeRange: cairo.unicodeRanges.arabic, source: url });
   console.log("saved", file);
 }
 fs.writeFileSync(path.join(outDir, "manifest.json"), JSON.stringify(manifest, null, 2) + "\n");

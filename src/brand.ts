@@ -22,13 +22,14 @@ export const GRID = { pitch: 60, opacity: 0.15, lineWidth: 2 };
 
 // Montserrat (variable 100-900) fetched from Google Fonts by scripts/fetch_fonts.mjs
 // using @remotion/google-fonts' manifest. latin-ext covers é è à ç ô œ etc.
-export const FONT = "Montserrat";
+// Cairo covers Arabic script (Darija subtitles/titles); CSS falls back to it per glyph.
+export const FONT = "Montserrat, Cairo";
 export const fontsReady = Promise.all(
-  fontManifest.map((f) =>
+  (fontManifest as { family?: string; file: string; unicodeRange: string }[]).map((f) =>
     loadFont({
-      family: FONT,
+      family: f.family ?? "Montserrat",
       url: staticFile(`fonts/${f.file}`),
-      weight: "100 900",
+      weight: f.family === "Cairo" ? "200 1000" : "100 900",
       unicodeRange: f.unicodeRange,
       format: "woff2",
     }),

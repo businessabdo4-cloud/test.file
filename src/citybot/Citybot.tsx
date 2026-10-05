@@ -37,6 +37,8 @@ export interface CitybotProps {
   thrust?: number; // 0..1 thruster glow intensity
   id?: string; // unique prefix for gradient/clip ids
   style?: React.CSSProperties;
+  /** replaces the face (eyes/brows/mouth) with custom SVG drawn in screen space (x 108-292, y 68-287) */
+  face?: React.ReactNode | null;
 }
 
 const EXPRESSIONS: Record<Expression, { left: EyeStyle; right: EyeStyle; browY: number; browAngle: number }> = {
@@ -145,6 +147,7 @@ export const Citybot: React.FC<CitybotProps> = ({
   thrust = 0.6,
   id = "cb",
   style,
+  face = null,
 }) => {
   const ex = EXPRESSIONS[expression];
   const g = (n: string) => `${id}-${n}`;
@@ -228,7 +231,8 @@ export const Citybot: React.FC<CitybotProps> = ({
               <path d="M 108 68 L 200 68 L 120 287 L 108 287 Z" fill="#fff" opacity={0.08} />
               <circle cx={200} cy={84} r={4.5} fill={COLORS.navy} opacity={0.45} />
 
-              <g transform={`translate(${lx} ${ly})`}>
+              {face ? <g id="custom-face">{face}</g> : null}
+              <g transform={`translate(${lx} ${ly})`} style={{ display: face ? "none" : undefined }}>
                 {/* cheeks */}
                 <ellipse cx={136} cy={214} rx={15} ry={8} fill="#fff" opacity={0.2} />
                 <ellipse cx={264} cy={214} rx={15} ry={8} fill="#fff" opacity={0.2} />

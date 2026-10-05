@@ -23,6 +23,8 @@ check() {
   echo "$ok  $f  ${vw}x${vh} $codec $pix ${fps}fps frames=$frames duration=${dur}s audio=[$a]"
   [ $ok = OK ] || fail=1
 }
-check out/reel_9x16.mp4 1080 1920
-check out/reel_1x1.mp4 1080 1080
+REEL=${REEL:-iphone18}
+if [ "$REEL" = iphone18 ]; then OUT=out; else OUT=out/$REEL; fi
+check $OUT/reel_9x16.mp4 1080 1920
+check $OUT/reel_1x1.mp4 1080 1080
 exit $fail

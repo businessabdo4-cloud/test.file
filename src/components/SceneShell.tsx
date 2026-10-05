@@ -1,10 +1,10 @@
 import React from "react";
 import { AbsoluteFill, useCurrentFrame } from "remotion";
 import { sceneTransition } from "../anim";
-import { scene, SceneId } from "../timeline";
+import { SceneId, sceneIn, useTL } from "../timeline";
 
 /** Absolute frame inside a <Sequence> scene. */
-export const useSceneFrame = (id: SceneId) => useCurrentFrame() + scene(id).from;
+export const useSceneFrame = (id: SceneId) => useCurrentFrame() + sceneIn(useTL(), id).from;
 
 /** Wraps a scene with the zoom-through in/out transition (cuts land on the beat). */
 export const SceneShell: React.FC<{ id: SceneId; children: React.ReactNode; shakeX?: number; shakeY?: number; noOut?: boolean }> = ({
@@ -15,7 +15,7 @@ export const SceneShell: React.FC<{ id: SceneId; children: React.ReactNode; shak
   noOut,
 }) => {
   const local = useCurrentFrame();
-  const s = scene(id);
+  const s = sceneIn(useTL(), id);
   const t = sceneTransition(local, noOut ? 1e6 : s.to - s.from);
   return (
     <AbsoluteFill style={{ ...t, transform: `${t.transform} translate(${shakeX}px, ${shakeY}px)` }}>{children}</AbsoluteFill>

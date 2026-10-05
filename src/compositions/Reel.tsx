@@ -1,10 +1,8 @@
 import React from "react";
-import { AbsoluteFill, Audio, Freeze, Sequence, staticFile } from "remotion";
-import { BrandBackground } from "../components/BrandBackground";
-import { CitybotActor } from "../components/CitybotActor";
-import { Subtitles } from "../components/Subtitles";
-import { Layout, LayoutProvider } from "../layout";
-import { scene, TL } from "../timeline";
+import { Layout } from "../layout";
+import { TL } from "../timeline";
+import { iphoneDirection } from "../reels/iphone/direction";
+import { ReelFrame } from "./ReelFrame";
 import { Hook } from "../scenes/Hook";
 import { Hero } from "../scenes/Hero";
 import { Ecosystem } from "../scenes/Ecosystem";
@@ -21,26 +19,7 @@ const SCENES = [
   ["end", EndCard],
 ] as const;
 
-/** Full 30 s reel. Picture freezes on the final frame from 29.0 s; audio keeps ringing out. */
+/** iPhone 18 Pro reel (30 s). Picture freezes on the final frame from 29.0 s; audio rings out. */
 export const Reel: React.FC<{ layout: Layout }> = ({ layout }) => (
-  <LayoutProvider layout={layout}>
-    <AbsoluteFill style={{ background: "#2E3EFE" }}>
-      <Freeze frame={TL.holdFrom} active={(f) => f >= TL.holdFrom}>
-        <AbsoluteFill>
-          <BrandBackground />
-          {SCENES.map(([id, Comp]) => {
-            const s = scene(id);
-            return (
-              <Sequence key={id} from={s.from} durationInFrames={s.to - s.from} name={id}>
-                <Comp />
-              </Sequence>
-            );
-          })}
-          <CitybotActor />
-          <Subtitles />
-        </AbsoluteFill>
-      </Freeze>
-      <Audio src={staticFile("audio/mix.wav")} />
-    </AbsoluteFill>
-  </LayoutProvider>
+  <ReelFrame layout={layout} tl={TL} scenes={SCENES} direction={iphoneDirection} audio="audio/mix.wav" />
 );
