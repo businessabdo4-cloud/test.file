@@ -26,7 +26,11 @@
     "watch:cutout": "python3 reels/watch/cutout.py",
     "watch:audio": "REEL=watch python3 scripts/process_vo_take.py && python3 reels/watch/build_timeline.py && REEL=watch python3 scripts/make_music.py && REEL=watch python3 scripts/mix_audio.py",
     "watch:render": "remotion render WatchReel9x16 out/watch/reel_9x16_raw.mp4 --codec=h264 --crf=16 && remotion render WatchReel1x1 out/watch/reel_1x1_raw.mp4 --codec=h264 --crf=16 && remotion still WatchCover out/watch/cover_1080x1920.png",
-    "watch:build": "npm run watch:cutout && npm run watch:audio && REEL=watch node scripts/make_srt.mjs && npm run watch:render && REEL=watch bash scripts/finalize.sh && REEL=watch bash scripts/verify.sh"
+    "watch:build": "npm run watch:cutout && npm run watch:audio && REEL=watch node scripts/make_srt.mjs && npm run watch:render && REEL=watch bash scripts/finalize.sh && REEL=watch bash scripts/verify.sh",
+    "galaxy:cutout": "python3 reels/galaxy/cutout.py",
+    "galaxy:audio": "REEL=galaxy python3 scripts/process_vo_take.py && python3 reels/galaxy/build_timeline.py && REEL=galaxy python3 scripts/make_music.py && REEL=galaxy python3 scripts/mix_audio.py",
+    "galaxy:render": "remotion render GalaxyReel9x16 out/galaxy/reel_9x16_raw.mp4 --codec=h264 --crf=16 && remotion render GalaxyReel1x1 out/galaxy/reel_1x1_raw.mp4 --codec=h264 --crf=16 && remotion still GalaxyCover out/galaxy/cover_1080x1920.png",
+    "galaxy:build": "npm run galaxy:cutout && npm run galaxy:audio && REEL=galaxy node scripts/make_srt.mjs && npm run galaxy:render && REEL=galaxy bash scripts/finalize.sh && REEL=galaxy bash scripts/verify.sh"
   },
   "dependencies": {
     "@remotion/cli": "4.0.532",

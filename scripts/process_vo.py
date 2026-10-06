@@ -111,7 +111,9 @@ def stretch(x, speed, name):
 
 SPOKEN = {"18": "dix-huit", "100": "cent pour cent", "%": "", "citystore.ma": "city store point em a",
           "iphone": "aille faune", "city": "si ti", "store": "store", "laptops": "lap tops",
-          "49": "ta sa ud wa ar ba in", "4": "four", "gps": "ji pi es", "sos": "es o es", "apple": "a pel"}
+          "49": "ta sa ud wa ar ba in", "4": "four", "gps": "ji pi es", "sos": "es o es", "apple": "a pel",
+          "5000": "khams ta la af", "60": "sit tin", "ultra2": "ul tra tu", "watch8": "watch eight",
+          "galaxy": "ga la xy", "gemini": "dje mi ni", "samsung": "sam sung", "watches": "wat ches"}
 ARABIC = "\\u0621-\\u063F\\u0641-\\u064A\\u0671-\\u06D3"  # Arabic letters (no punctuation, no tatweel)
 
 
@@ -121,7 +123,7 @@ def syllables(word):
     arabic = re.findall(f"[{ARABIC}]", word)
     if arabic:  # unvocalised Arabic script: ~1 syllable per 2 letters (ignoring the article/prefix letters)
         return max(1, round(len(arabic) / 2.1))
-    spoken = " ".join(SPOKEN.get(t, t) for t in re.split(r"\s+", word.lower().strip(".,!?:…")))
+    spoken = " ".join(SPOKEN.get(t, t) for t in re.split(r"\s+", word.lower().strip(".,!?:…،")))
     spoken = re.sub(r"e\b", "", spoken)  # mute final e
     return max(1, len(re.findall(r"[aeiouyéèêàâîïôûù]+", spoken)))
 

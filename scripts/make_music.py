@@ -26,6 +26,10 @@ STYLES = {
     "watch": dict(seed=21, phase=1.0, drop=3.0, end_lift=26.5, stop=29.0,
                   chords=[[53, 56, 60], [49, 53, 56], [51, 56, 60], [51, 55, 58]], roots=[41, 37, 44, 39],
                   final=[53, 56, 60, 65], final_bass=29, arp=[0, 2, 1, 2, 0, 2, 1, 2]),
+    # D-minor (i-VI-III-VII) lift for the Samsung Galaxy Watch reel; drop on the first product cut at 2.5 s
+    "galaxy": dict(seed=33, phase=0.5, drop=2.5, end_lift=27.0, stop=28.5,
+                   chords=[[50, 53, 57], [46, 50, 53], [45, 48, 53], [48, 52, 55]], roots=[38, 34, 41, 36],
+                   final=[50, 53, 57, 62], final_bass=26, arp=[0, 1, 2, 0, 2, 1, 2, 1]),
 }
 ST = STYLES[REEL]
 SR = 48000

@@ -17,7 +17,7 @@ SRC = ROOT / "assets" / "products" / "src"
 DST = ROOT / "assets" / "products"
 
 
-def cutout(name, out, bg, tol, soft, src_dir=SRC, dst_dir=DST, feather_edges=0, hole_min_area=0):
+def cutout(name, out, bg, tol, soft, src_dir=SRC, dst_dir=DST, feather_edges=0, hole_min_area=0, feather_sides=("top", "bottom", "left", "right")):
     """feather_edges: px of alpha fade where the product is cut by the photo frame (e.g. a strap)."""
     rgb = np.asarray(Image.open(src_dir / name).convert("RGB")).astype(float)
     dist = np.abs(rgb - np.array(bg)).max(axis=2)
@@ -45,7 +45,7 @@ def cutout(name, out, bg, tol, soft, src_dir=SRC, dst_dir=DST, feather_edges=0, 
         h, w = alpha.shape
         ramp_ = np.clip(np.arange(max(h, w)) / feather_edges, 0, 1)
         for edge_px, axis_alpha in ((fg[0], "top"), (fg[-1], "bottom"), (fg[:, 0], "left"), (fg[:, -1], "right")):
-            if edge_px.sum() == 0:
+            if edge_px.sum() == 0 or axis_alpha not in feather_sides:
                 continue
             if axis_alpha == "top":
                 alpha *= ramp_[:h][:, None]

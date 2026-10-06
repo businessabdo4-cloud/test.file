@@ -1,0 +1,8 @@
+{
+ "id": "galaxy",
+ "vo_mode": "take",
+ "take": "vo/vo_full_take.wav",
+ "takeBoundaries": [2.83, 10.18, 19.25, 22.92, 25.92, 28.84],
+ "lead": 0.08,
+ "voEndBy": 28.9
+}

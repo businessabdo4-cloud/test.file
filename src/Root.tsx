@@ -9,6 +9,9 @@ import { TL } from "./timeline";
 import { WatchReel } from "./reels/watch/WatchReel";
 import { WatchCover } from "./reels/watch/WatchCover";
 import { WTL } from "./reels/watch/timeline";
+import { GalaxyReel } from "./reels/galaxy/GalaxyReel";
+import { GalaxyCover } from "./reels/galaxy/GalaxyCover";
+import { GTL } from "./reels/galaxy/timeline";
 
 // Hard length limit: never more than 900 frames (30.0 s).
 const DURATION = Math.min(TL.totalFrames, MAX_FRAMES);
@@ -21,6 +24,9 @@ export const RemotionRoot: React.FC = () => (
     <Composition id="WatchReel9x16" component={WatchReel} durationInFrames={Math.min(WTL.totalFrames, MAX_FRAMES)} fps={FPS} width={1080} height={1920} defaultProps={{ layout: LAYOUT_9x16 }} />
     <Composition id="WatchReel1x1" component={WatchReel} durationInFrames={Math.min(WTL.totalFrames, MAX_FRAMES)} fps={FPS} width={1080} height={1080} defaultProps={{ layout: LAYOUT_1x1 }} />
     <Still id="WatchCover" component={WatchCover} width={1080} height={1920} />
+    <Composition id="GalaxyReel9x16" component={GalaxyReel} durationInFrames={Math.min(GTL.totalFrames, MAX_FRAMES)} fps={FPS} width={1080} height={1920} defaultProps={{ layout: LAYOUT_9x16 }} />
+    <Composition id="GalaxyReel1x1" component={GalaxyReel} durationInFrames={Math.min(GTL.totalFrames, MAX_FRAMES)} fps={FPS} width={1080} height={1080} defaultProps={{ layout: LAYOUT_1x1 }} />
+    <Still id="GalaxyCover" component={GalaxyCover} width={1080} height={1920} />
     <Still id="CitybotSheet" component={CitybotSheet} width={1920} height={1080} />
   </>
 );
