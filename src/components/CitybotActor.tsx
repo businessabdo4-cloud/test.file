@@ -40,6 +40,8 @@ export interface Direction {
   faceAt?: (f: number) => React.ReactNode | null;
   /** optional headphones accessory */
   headphonesAt?: (f: number) => { color: string; p: number } | null;
+  /** optional smart-glasses accessory */
+  glassesAt?: (f: number) => { p: number; lens?: string; led?: number } | null;
 }
 
 const idleMouth: Record<Expression, MouthShape> = { excited: "grin", happy: "smile", proud: "smile", wink: "smile", neutral: "X" };
@@ -144,6 +146,7 @@ export const CitybotActor: React.FC<{ direction: Direction }> = ({ direction: d 
         thrust={Math.min(1, thrust)}
         face={d.faceAt?.(frame) ?? null}
         headphones={d.headphonesAt?.(frame) ?? null}
+        glasses={d.glassesAt?.(frame) ?? null}
       />
     </div>
   );

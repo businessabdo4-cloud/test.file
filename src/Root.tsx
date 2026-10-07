@@ -15,6 +15,9 @@ import { GTL } from "./reels/galaxy/timeline";
 import { SonyReel } from "./reels/sony/SonyReel";
 import { SonyCover } from "./reels/sony/SonyCover";
 import { STL } from "./reels/sony/timeline";
+import { RaybanReel } from "./reels/rayban/RaybanReel";
+import { RaybanCover } from "./reels/rayban/RaybanCover";
+import { RTL } from "./reels/rayban/timeline";
 
 // Hard length limit: never more than 900 frames (30.0 s).
 const DURATION = Math.min(TL.totalFrames, MAX_FRAMES);
@@ -33,6 +36,9 @@ export const RemotionRoot: React.FC = () => (
     <Composition id="SonyReel9x16" component={SonyReel} durationInFrames={Math.min(STL.totalFrames, MAX_FRAMES)} fps={FPS} width={1080} height={1920} defaultProps={{ layout: LAYOUT_9x16 }} />
     <Composition id="SonyReel1x1" component={SonyReel} durationInFrames={Math.min(STL.totalFrames, MAX_FRAMES)} fps={FPS} width={1080} height={1080} defaultProps={{ layout: LAYOUT_1x1 }} />
     <Still id="SonyCover" component={SonyCover} width={1080} height={1920} />
+    <Composition id="RaybanReel9x16" component={RaybanReel} durationInFrames={Math.min(RTL.totalFrames, MAX_FRAMES)} fps={FPS} width={1080} height={1920} defaultProps={{ layout: LAYOUT_9x16 }} />
+    <Composition id="RaybanReel1x1" component={RaybanReel} durationInFrames={Math.min(RTL.totalFrames, MAX_FRAMES)} fps={FPS} width={1080} height={1080} defaultProps={{ layout: LAYOUT_1x1 }} />
+    <Still id="RaybanCover" component={RaybanCover} width={1080} height={1920} />
     <Still id="CitybotSheet" component={CitybotSheet} width={1920} height={1080} />
   </>
 );

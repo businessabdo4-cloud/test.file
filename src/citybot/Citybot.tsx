@@ -41,6 +41,8 @@ export interface CitybotProps {
   face?: React.ReactNode | null;
   /** optional over-ear headphones accessory (p: 0 = above the frame, 1 = on the head) */
   headphones?: { color: string; p: number } | null;
+  /** optional smart-glasses accessory over the eyes (p: 0 = above the head, 1 = on; led: camera light 0..1) */
+  glasses?: { p: number; lens?: string; led?: number } | null;
 }
 
 const EXPRESSIONS: Record<Expression, { left: EyeStyle; right: EyeStyle; browY: number; browAngle: number }> = {
@@ -151,6 +153,7 @@ export const Citybot: React.FC<CitybotProps> = ({
   style,
   face = null,
   headphones = null,
+  glasses = null,
 }) => {
   const ex = EXPRESSIONS[expression];
   const g = (n: string) => `${id}-${n}`;
@@ -277,6 +280,23 @@ export const Citybot: React.FC<CitybotProps> = ({
               {/* screen flash */}
               {flash > 0 && <rect x={108} y={68} width={184} height={219} fill="#fff" opacity={flash} />}
             </g>
+            {/* smart glasses (generic black frame; camera dot on the left corner) */}
+            {glasses && glasses.p > 0 && (
+              <g transform={`translate(${lx * 0.4} ${-(1 - glasses.p) * 260 + ly * 0.4})`} opacity={Math.min(1, glasses.p * 3)}>
+                <path d="M 112 150 L 88 146 M 288 150 L 312 146" stroke="#14161c" strokeWidth={10} strokeLinecap="round" />
+                {[160, 240].map((cx) => (
+                  <g key={cx}>
+                    <path d={`M ${cx - 40} 134 Q ${cx} 128 ${cx + 40} 134 L ${cx + 35} 178 Q ${cx} 190 ${cx - 33} 178 Z`} fill={glasses.lens ?? "#1d2b26"} fillOpacity={0.88} stroke="#14161c" strokeWidth={9} strokeLinejoin="round" />
+                    <path d={`M ${cx - 28} 142 L ${cx - 12} 142 L ${cx - 26} 170`} fill="none" stroke="#fff" strokeOpacity={0.35} strokeWidth={4} strokeLinecap="round" />
+                  </g>
+                ))}
+                <path d="M 199 140 Q 200 132 201 140" fill="none" stroke="#14161c" strokeWidth={10} />
+                <rect x={196} y={134} width={8} height={8} fill="#14161c" />
+                <circle cx={125} cy={138} r={5} fill="#3a3f4a" stroke="#14161c" strokeWidth={2} />
+                {(glasses.led ?? 0) > 0 && <circle cx={275} cy={138} r={4 + 6 * (glasses.led ?? 0)} fill="#fff" opacity={0.9 * (glasses.led ?? 0)} />}
+                <circle cx={275} cy={138} r={3} fill="#fff" opacity={0.8} />
+              </g>
+            )}
           </g>
         </g>
       </g>

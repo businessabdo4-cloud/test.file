@@ -34,7 +34,11 @@
     "sony:cutout": "python3 reels/sony/cutout.py",
     "sony:audio": "REEL=sony python3 scripts/process_vo_take.py && python3 reels/sony/build_timeline.py && REEL=sony python3 scripts/make_music.py && REEL=sony python3 scripts/mix_audio.py",
     "sony:render": "remotion render SonyReel9x16 out/sony/reel_9x16_raw.mp4 --codec=h264 --crf=16 && remotion render SonyReel1x1 out/sony/reel_1x1_raw.mp4 --codec=h264 --crf=16 && remotion still SonyCover out/sony/cover_1080x1920.png",
-    "sony:build": "npm run sony:cutout && npm run sony:audio && REEL=sony node scripts/make_srt.mjs && npm run sony:render && REEL=sony bash scripts/finalize.sh && REEL=sony bash scripts/verify.sh"
+    "sony:build": "npm run sony:cutout && npm run sony:audio && REEL=sony node scripts/make_srt.mjs && npm run sony:render && REEL=sony bash scripts/finalize.sh && REEL=sony bash scripts/verify.sh",
+    "rayban:cutout": "python3 reels/rayban/cutout.py",
+    "rayban:audio": "REEL=rayban python3 scripts/process_vo_take.py && python3 reels/rayban/build_timeline.py && REEL=rayban python3 scripts/make_music.py && REEL=rayban python3 scripts/mix_audio.py",
+    "rayban:render": "remotion render RaybanReel9x16 out/rayban/reel_9x16_raw.mp4 --codec=h264 --crf=16 && remotion render RaybanReel1x1 out/rayban/reel_1x1_raw.mp4 --codec=h264 --crf=16 && remotion still RaybanCover out/rayban/cover_1080x1920.png",
+    "rayban:build": "npm run rayban:cutout && npm run rayban:audio && REEL=rayban node scripts/make_srt.mjs && npm run rayban:render && REEL=rayban bash scripts/finalize.sh && REEL=rayban bash scripts/verify.sh"
   },
   "dependencies": {
     "@remotion/cli": "4.0.532",

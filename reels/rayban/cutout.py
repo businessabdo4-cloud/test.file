@@ -33,3 +33,41 @@ for key, (name, bg) in IMAGES.items():
     manifest[key] = {"src": f"rayban/products/{key}.png", "w": w, "h": h}
 (ROOT / "public" / "rayban" / "data" / "products.json").write_text(json.dumps(manifest, indent=1) + "\n")
 print(json.dumps(manifest))
+
+
+# --- clean-up specific to these shots ---------------------------------------
+# The glasses are black: the leftover floor reflection (front shots) and the white
+# under-glow (angled Wayfarer) are light and low-saturation, so key them out by luminance.
+import numpy as np  # noqa: E402
+
+
+def luma_key(key, lo, hi, only_soft=False):
+    p = dst / f"{key}.png"
+    a = np.asarray(Image.open(p).convert("RGBA")).astype(np.float32)
+    rgb, al = a[..., :3], a[..., 3] / 255
+    lum = rgb @ np.array([0.2126, 0.7152, 0.0722], dtype=np.float32)
+    k = np.clip((hi - lum) / (hi - lo), 0, 1)
+    # keep small light details printed on the frame/lenses (logo script, markings): only key light
+    # regions that are large or touch the image edge (floor reflection, glow)
+    from scipy import ndimage
+    lab, n = ndimage.label((k < 1) & (al > 0))
+    if n:
+        sizes = ndimage.sum(np.ones_like(k), lab, index=np.arange(1, n + 1))
+        edge = set(np.unique(np.concatenate([lab[0], lab[-1], lab[:, 0], lab[:, -1]]))) - {0}
+        small = np.array([sizes[i - 1] < 400 and i not in edge for i in range(1, n + 1)])
+        k = np.where(small[np.maximum(lab - 1, 0)] & (lab > 0), 1, k)
+    if only_soft:  # leave the solid frame (incl. silver hinge details) untouched
+        k = np.where(al > 0.9, 1, k)
+    a[..., 3] = al * k * 255
+    out = Image.fromarray(a.astype(np.uint8), "RGBA")
+    out = out.crop(out.getchannel("A").point(lambda v: 255 if v > 8 else 0).getbbox())
+    out.save(p)
+    shutil.copy(p, pub / f"{key}.png")
+    manifest[key].update(w=out.width, h=out.height)
+
+
+luma_key("headliner_front", 105, 150)
+luma_key("wayfarer_front", 105, 150)
+luma_key("wayfarer_angle", 70, 140, only_soft=True)
+(ROOT / "public" / "rayban" / "data" / "products.json").write_text(json.dumps(manifest, indent=1) + "\n")
+print("cleaned", json.dumps(manifest))

@@ -34,6 +34,10 @@ STYLES = {
     "sony": dict(seed=45, phase=1.5, drop=3.5, end_lift=27.5, stop=27.5, hook_mode="noise",
                  chords=[[52, 55, 59], [48, 52, 55], [55, 59, 62], [50, 54, 57]], roots=[40, 36, 43, 38],
                  final=[52, 55, 59, 64], final_bass=28, arp=[0, 1, 2, 1, 0, 2, 1, 2]),
+    # Ray-Ban Meta reel: sunny G-major (I-V-vi-IV) groove; drop on the product reveal at 3.5 s
+    "rayban": dict(seed=57, phase=1.5, drop=3.5, end_lift=28.0, stop=28.0,
+                   chords=[[55, 59, 62], [50, 54, 57], [52, 55, 59], [48, 52, 55]], roots=[43, 38, 40, 36],
+                   final=[55, 59, 62, 67], final_bass=31, arp=[0, 2, 1, 2, 0, 1, 2, 1]),
 }
 ST = STYLES[REEL]
 SR = 48000

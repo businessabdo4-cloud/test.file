@@ -1,8 +1,8 @@
 {
  "headliner_front": {
   "src": "rayban/products/headliner_front.png",
-  "w": 506,
-  "h": 219
+  "w": 502,
+  "h": 187
  },
  "headliner_angle": {
   "src": "rayban/products/headliner_angle.png",
@@ -11,12 +11,12 @@
  },
  "wayfarer_front": {
   "src": "rayban/products/wayfarer_front.png",
-  "w": 504,
-  "h": 211
+  "w": 501,
+  "h": 178
  },
  "wayfarer_angle": {
   "src": "rayban/products/wayfarer_angle.png",
-  "w": 1547,
-  "h": 709
+  "w": 1397,
+  "h": 618
  }
 }

@@ -1,0 +1,1805 @@
+[
+ {
+  "id": "line_01",
+  "subtitle": "هادو ماشي غير نضاضر…",
+  "source": "human-take",
+  "start": 0.06,
+  "duration": 0.993,
+  "speed": 1.0929,
+  "words": [
+   {
+    "word": "هادو",
+    "start": 0.0,
+    "end": 0.26
+   },
+   {
+    "word": "ماشي",
+    "start": 0.26,
+    "end": 0.54
+   },
+   {
+    "word": "غير",
+    "start": 0.54,
+    "end": 0.68
+   },
+   {
+    "word": "نضاضر…",
+    "start": 0.68,
+    "end": 0.96
+   }
+  ],
+  "mouthCues": [
+   {
+    "start": 0.0,
+    "end": 0.04,
+    "value": "B"
+   },
+   {
+    "start": 0.04,
+    "end": 0.08,
+    "value": "C"
+   },
+   {
+    "start": 0.08,
+    "end": 0.22,
+    "value": "B"
+   },
+   {
+    "start": 0.22,
+    "end": 0.3,
+    "value": "A"
+   },
+   {
+    "start": 0.3,
+    "end": 0.35,
+    "value": "B"
+   },
+   {
+    "start": 0.35,
+    "end": 0.47,
+    "value": "F"
+   },
+   {
+    "start": 0.47,
+    "end": 0.61,
+    "value": "C"
+   },
+   {
+    "start": 0.61,
+    "end": 0.72,
+    "value": "A"
+   },
+   {
+    "start": 0.72,
+    "end": 0.85,
+    "value": "F"
+   },
+   {
+    "start": 0.85,
+    "end": 0.9,
+    "value": "A"
+   },
+   {
+    "start": 0.9,
+    "end": 0.98,
+    "value": "B"
+   },
+   {
+    "start": 0.98,
+    "end": 0.99,
+    "value": "X"
+   }
+  ]
+ },
+ {
+  "id": "line_02",
+  "subtitle": "حيت فيهوم كاميرا، كاسك و Meta AI مجموعين ف Ray-Ban Meta Gen 2، disponibles دابا عندنا.",
+  "source": "human-take",
+  "start": 1.053,
+  "duration": 4.996,
+  "speed": 1.0929,
+  "words": [
+   {
+    "word": "حيت",
+    "start": 0.1,
+    "end": 0.24
+   },
+   {
+    "word": "فيهوم",
+    "start": 0.24,
+    "end": 0.56
+   },
+   {
+    "word": "كاميرا،",
+    "start": 0.56,
+    "end": 1.12
+   },
+   {
+    "word": "كاسك",
+    "start": 1.12,
+    "end": 1.54
+   },
+   {
+    "word": "و",
+    "start": 1.54,
+    "end": 1.7
+   },
+   {
+    "word": "Meta",
+    "start": 1.7,
+    "end": 1.88
+   },
+   {
+    "word": "AI",
+    "start": 1.88,
+    "end": 2.2
+   },
+   {
+    "word": "مجموعين",
+    "start": 2.2,
+    "end": 2.66
+   },
+   {
+    "word": "ف",
+    "start": 2.66,
+    "end": 2.82
+   },
+   {
+    "word": "Ray-Ban",
+    "start": 2.82,
+    "end": 3.12
+   },
+   {
+    "word": "Meta",
+    "start": 3.12,
+    "end": 3.28
+   },
+   {
+    "word": "Gen",
+    "start": 3.28,
+    "end": 3.44
+   },
+   {
+    "word": "2،",
+    "start": 3.44,
+    "end": 3.6
+   },
+   {
+    "word": "disponibles",
+    "start": 3.6,
+    "end": 4.36
+   },
+   {
+    "word": "دابا",
+    "start": 4.36,
+    "end": 4.66
+   },
+   {
+    "word": "عندنا.",
+    "start": 4.66,
+    "end": 4.98
+   }
+  ],
+  "mouthCues": [
+   {
+    "start": 0.0,
+    "end": 0.06,
+    "value": "X"
+   },
+   {
+    "start": 0.06,
+    "end": 0.3,
+    "value": "B"
+   },
+   {
+    "start": 0.3,
+    "end": 0.37,
+    "value": "C"
+   },
+   {
+    "start": 0.37,
+    "end": 0.51,
+    "value": "E"
+   },
+   {
+    "start": 0.51,
+    "end": 0.65,
+    "value": "D"
+   },
+   {
+    "start": 0.65,
+    "end": 0.72,
+    "value": "C"
+   },
+   {
+    "start": 0.72,
+    "end": 0.8,
+    "value": "A"
+   },
+   {
+    "start": 0.8,
+    "end": 0.86,
+    "value": "B"
+   },
+   {
+    "start": 0.86,
+    "end": 0.92,
+    "value": "E"
+   },
+   {
+    "start": 0.92,
+    "end": 0.99,
+    "value": "C"
+   },
+   {
+    "start": 0.99,
+    "end": 1.2,
+    "value": "D"
+   },
+   {
+    "start": 1.2,
+    "end": 1.34,
+    "value": "B"
+   },
+   {
+    "start": 1.34,
+    "end": 1.48,
+    "value": "A"
+   },
+   {
+    "start": 1.48,
+    "end": 1.53,
+    "value": "B"
+   },
+   {
+    "start": 1.53,
+    "end": 1.58,
+    "value": "A"
+   },
+   {
+    "start": 1.58,
+    "end": 1.66,
+    "value": "C"
+   },
+   {
+    "start": 1.66,
+    "end": 1.74,
+    "value": "A"
+   },
+   {
+    "start": 1.74,
+    "end": 1.84,
+    "value": "C"
+   },
+   {
+    "start": 1.84,
+    "end": 2.05,
+    "value": "B"
+   },
+   {
+    "start": 2.05,
+    "end": 2.12,
+    "value": "C"
+   },
+   {
+    "start": 2.12,
+    "end": 2.19,
+    "value": "B"
+   },
+   {
+    "start": 2.19,
+    "end": 2.27,
+    "value": "A"
+   },
+   {
+    "start": 2.27,
+    "end": 2.35,
+    "value": "B"
+   },
+   {
+    "start": 2.35,
+    "end": 2.49,
+    "value": "F"
+   },
+   {
+    "start": 2.49,
+    "end": 2.63,
+    "value": "B"
+   },
+   {
+    "start": 2.63,
+    "end": 2.77,
+    "value": "G"
+   },
+   {
+    "start": 2.77,
+    "end": 2.84,
+    "value": "B"
+   },
+   {
+    "start": 2.84,
+    "end": 2.91,
+    "value": "C"
+   },
+   {
+    "start": 2.91,
+    "end": 2.99,
+    "value": "A"
+   },
+   {
+    "start": 2.99,
+    "end": 3.19,
+    "value": "C"
+   },
+   {
+    "start": 3.19,
+    "end": 3.25,
+    "value": "A"
+   },
+   {
+    "start": 3.25,
+    "end": 3.31,
+    "value": "B"
+   },
+   {
+    "start": 3.31,
+    "end": 3.37,
+    "value": "A"
+   },
+   {
+    "start": 3.37,
+    "end": 3.54,
+    "value": "F"
+   },
+   {
+    "start": 3.54,
+    "end": 3.68,
+    "value": "B"
+   },
+   {
+    "start": 3.68,
+    "end": 3.96,
+    "value": "F"
+   },
+   {
+    "start": 3.96,
+    "end": 4.1,
+    "value": "B"
+   },
+   {
+    "start": 4.1,
+    "end": 4.18,
+    "value": "A"
+   },
+   {
+    "start": 4.18,
+    "end": 4.31,
+    "value": "F"
+   },
+   {
+    "start": 4.31,
+    "end": 4.45,
+    "value": "B"
+   },
+   {
+    "start": 4.45,
+    "end": 4.51,
+    "value": "A"
+   },
+   {
+    "start": 4.51,
+    "end": 4.57,
+    "value": "B"
+   },
+   {
+    "start": 4.57,
+    "end": 4.65,
+    "value": "A"
+   },
+   {
+    "start": 4.65,
+    "end": 4.77,
+    "value": "C"
+   },
+   {
+    "start": 4.77,
+    "end": 4.98,
+    "value": "B"
+   },
+   {
+    "start": 4.98,
+    "end": 4.99,
+    "value": "X"
+   }
+  ]
+ },
+ {
+  "id": "line_03",
+  "subtitle": "Ray-Ban Meta Headliner Gen 2 – Shiny Black: style classique و élégant، كيبان مع أي لوك.",
+  "source": "human-take",
+  "start": 6.048,
+  "duration": 4.589,
+  "speed": 1.0929,
+  "words": [
+   {
+    "word": "Ray-Ban",
+    "start": 0.1,
+    "end": 0.42
+   },
+   {
+    "word": "Meta",
+    "start": 0.42,
+    "end": 0.6
+   },
+   {
+    "word": "Headliner",
+    "start": 0.6,
+    "end": 1.12
+   },
+   {
+    "word": "Gen",
+    "start": 1.12,
+    "end": 1.28
+   },
+   {
+    "word": "2 –",
+    "start": 1.28,
+    "end": 1.44
+   },
+   {
+    "word": "Shiny",
+    "start": 1.44,
+    "end": 1.84
+   },
+   {
+    "word": "Black:",
+    "start": 1.84,
+    "end": 2.0
+   },
+   {
+    "word": "style",
+    "start": 2.0,
+    "end": 2.18
+   },
+   {
+    "word": "classique",
+    "start": 2.18,
+    "end": 2.8
+   },
+   {
+    "word": "و",
+    "start": 2.8,
+    "end": 2.96
+   },
+   {
+    "word": "élégant،",
+    "start": 2.96,
+    "end": 3.56
+   },
+   {
+    "word": "كيبان",
+    "start": 3.56,
+    "end": 3.98
+   },
+   {
+    "word": "مع",
+    "start": 3.98,
+    "end": 4.14
+   },
+   {
+    "word": "أي",
+    "start": 4.14,
+    "end": 4.36
+   },
+   {
+    "word": "لوك.",
+    "start": 4.36,
+    "end": 4.54
+   }
+  ],
+  "mouthCues": [
+   {
+    "start": 0.0,
+    "end": 0.23,
+    "value": "B"
+   },
+   {
+    "start": 0.23,
+    "end": 0.31,
+    "value": "A"
+   },
+   {
+    "start": 0.31,
+    "end": 0.46,
+    "value": "C"
+   },
+   {
+    "start": 0.46,
+    "end": 0.53,
+    "value": "A"
+   },
+   {
+    "start": 0.53,
+    "end": 0.59,
+    "value": "B"
+   },
+   {
+    "start": 0.59,
+    "end": 0.65,
+    "value": "A"
+   },
+   {
+    "start": 0.65,
+    "end": 0.83,
+    "value": "C"
+   },
+   {
+    "start": 0.83,
+    "end": 0.9,
+    "value": "B"
+   },
+   {
+    "start": 0.9,
+    "end": 0.98,
+    "value": "A"
+   },
+   {
+    "start": 0.98,
+    "end": 1.04,
+    "value": "B"
+   },
+   {
+    "start": 1.04,
+    "end": 1.16,
+    "value": "C"
+   },
+   {
+    "start": 1.16,
+    "end": 1.23,
+    "value": "G"
+   },
+   {
+    "start": 1.23,
+    "end": 1.3,
+    "value": "B"
+   },
+   {
+    "start": 1.3,
+    "end": 1.37,
+    "value": "C"
+   },
+   {
+    "start": 1.37,
+    "end": 1.65,
+    "value": "F"
+   },
+   {
+    "start": 1.65,
+    "end": 2.0,
+    "value": "B"
+   },
+   {
+    "start": 2.0,
+    "end": 2.08,
+    "value": "A"
+   },
+   {
+    "start": 2.08,
+    "end": 2.17,
+    "value": "H"
+   },
+   {
+    "start": 2.17,
+    "end": 2.24,
+    "value": "C"
+   },
+   {
+    "start": 2.24,
+    "end": 2.73,
+    "value": "B"
+   },
+   {
+    "start": 2.73,
+    "end": 2.8,
+    "value": "H"
+   },
+   {
+    "start": 2.8,
+    "end": 2.87,
+    "value": "D"
+   },
+   {
+    "start": 2.87,
+    "end": 3.01,
+    "value": "B"
+   },
+   {
+    "start": 3.01,
+    "end": 3.29,
+    "value": "F"
+   },
+   {
+    "start": 3.29,
+    "end": 3.36,
+    "value": "B"
+   },
+   {
+    "start": 3.36,
+    "end": 3.5,
+    "value": "C"
+   },
+   {
+    "start": 3.5,
+    "end": 3.78,
+    "value": "B"
+   },
+   {
+    "start": 3.78,
+    "end": 3.86,
+    "value": "A"
+   },
+   {
+    "start": 3.86,
+    "end": 3.97,
+    "value": "C"
+   },
+   {
+    "start": 3.97,
+    "end": 4.05,
+    "value": "A"
+   },
+   {
+    "start": 4.05,
+    "end": 4.12,
+    "value": "C"
+   },
+   {
+    "start": 4.12,
+    "end": 4.19,
+    "value": "A"
+   },
+   {
+    "start": 4.19,
+    "end": 4.29,
+    "value": "C"
+   },
+   {
+    "start": 4.29,
+    "end": 4.43,
+    "value": "B"
+   },
+   {
+    "start": 4.43,
+    "end": 4.57,
+    "value": "F"
+   },
+   {
+    "start": 4.57,
+    "end": 4.58,
+    "value": "X"
+   }
+  ]
+ },
+ {
+  "id": "line_04",
+  "subtitle": "Ray-Ban Meta Wayfarer Gen 2 – Matte Black: le modèle iconique ديال Ray-Ban، بـ finition mat.",
+  "source": "human-take",
+  "start": 10.637,
+  "duration": 4.694,
+  "speed": 1.0929,
+  "words": [
+   {
+    "word": "Ray-Ban",
+    "start": 0.02,
+    "end": 0.4
+   },
+   {
+    "word": "Meta",
+    "start": 0.4,
+    "end": 0.58
+   },
+   {
+    "word": "Wayfarer",
+    "start": 0.58,
+    "end": 0.92
+   },
+   {
+    "word": "Gen",
+    "start": 0.92,
+    "end": 1.1
+   },
+   {
+    "word": "2 –",
+    "start": 1.1,
+    "end": 1.26
+   },
+   {
+    "word": "Matte",
+    "start": 1.26,
+    "end": 1.42
+   },
+   {
+    "word": "Black:",
+    "start": 1.42,
+    "end": 1.6
+   },
+   {
+    "word": "le",
+    "start": 1.6,
+    "end": 1.82
+   },
+   {
+    "word": "modèle",
+    "start": 1.82,
+    "end": 2.18
+   },
+   {
+    "word": "iconique",
+    "start": 2.18,
+    "end": 3.02
+   },
+   {
+    "word": "ديال",
+    "start": 3.02,
+    "end": 3.36
+   },
+   {
+    "word": "Ray-Ban،",
+    "start": 3.36,
+    "end": 3.7
+   },
+   {
+    "word": "بـ",
+    "start": 3.7,
+    "end": 3.96
+   },
+   {
+    "word": "finition",
+    "start": 3.96,
+    "end": 4.46
+   },
+   {
+    "word": "mat.",
+    "start": 4.46,
+    "end": 4.64
+   }
+  ],
+  "mouthCues": [
+   {
+    "start": 0.0,
+    "end": 0.23,
+    "value": "B"
+   },
+   {
+    "start": 0.23,
+    "end": 0.31,
+    "value": "A"
+   },
+   {
+    "start": 0.31,
+    "end": 0.46,
+    "value": "C"
+   },
+   {
+    "start": 0.46,
+    "end": 0.52,
+    "value": "A"
+   },
+   {
+    "start": 0.52,
+    "end": 0.58,
+    "value": "C"
+   },
+   {
+    "start": 0.58,
+    "end": 0.64,
+    "value": "A"
+   },
+   {
+    "start": 0.64,
+    "end": 0.79,
+    "value": "E"
+   },
+   {
+    "start": 0.79,
+    "end": 0.93,
+    "value": "F"
+   },
+   {
+    "start": 0.93,
+    "end": 1.07,
+    "value": "B"
+   },
+   {
+    "start": 1.07,
+    "end": 1.14,
+    "value": "C"
+   },
+   {
+    "start": 1.14,
+    "end": 1.28,
+    "value": "F"
+   },
+   {
+    "start": 1.28,
+    "end": 1.42,
+    "value": "B"
+   },
+   {
+    "start": 1.42,
+    "end": 1.63,
+    "value": "F"
+   },
+   {
+    "start": 1.63,
+    "end": 1.87,
+    "value": "A"
+   },
+   {
+    "start": 1.87,
+    "end": 1.94,
+    "value": "B"
+   },
+   {
+    "start": 1.94,
+    "end": 2.15,
+    "value": "H"
+   },
+   {
+    "start": 2.15,
+    "end": 2.22,
+    "value": "C"
+   },
+   {
+    "start": 2.22,
+    "end": 2.5,
+    "value": "F"
+   },
+   {
+    "start": 2.5,
+    "end": 2.58,
+    "value": "A"
+   },
+   {
+    "start": 2.58,
+    "end": 2.89,
+    "value": "B"
+   },
+   {
+    "start": 2.89,
+    "end": 3.03,
+    "value": "E"
+   },
+   {
+    "start": 3.03,
+    "end": 3.52,
+    "value": "B"
+   },
+   {
+    "start": 3.52,
+    "end": 3.6,
+    "value": "A"
+   },
+   {
+    "start": 3.6,
+    "end": 3.92,
+    "value": "C"
+   },
+   {
+    "start": 3.92,
+    "end": 3.99,
+    "value": "B"
+   },
+   {
+    "start": 3.99,
+    "end": 4.06,
+    "value": "C"
+   },
+   {
+    "start": 4.06,
+    "end": 4.34,
+    "value": "B"
+   },
+   {
+    "start": 4.34,
+    "end": 4.41,
+    "value": "E"
+   },
+   {
+    "start": 4.41,
+    "end": 4.53,
+    "value": "A"
+   },
+   {
+    "start": 4.53,
+    "end": 4.57,
+    "value": "D"
+   },
+   {
+    "start": 4.57,
+    "end": 4.68,
+    "value": "B"
+   },
+   {
+    "start": 4.68,
+    "end": 4.69,
+    "value": "X"
+   }
+  ]
+ },
+ {
+  "id": "line_05",
+  "subtitle": "كاميرا 12MP و vidéo 3K.",
+  "source": "human-take",
+  "start": 15.331,
+  "duration": 2.146,
+  "speed": 1.0929,
+  "words": [
+   {
+    "word": "كاميرا",
+    "start": 0.04,
+    "end": 0.62
+   },
+   {
+    "word": "12MP",
+    "start": 0.62,
+    "end": 1.22
+   },
+   {
+    "word": "و",
+    "start": 1.22,
+    "end": 1.38
+   },
+   {
+    "word": "vidéo",
+    "start": 1.38,
+    "end": 1.74
+   },
+   {
+    "word": "3K.",
+    "start": 1.74,
+    "end": 2.06
+   }
+  ],
+  "mouthCues": [
+   {
+    "start": 0.0,
+    "end": 0.01,
+    "value": "X"
+   },
+   {
+    "start": 0.01,
+    "end": 0.1,
+    "value": "B"
+   },
+   {
+    "start": 0.1,
+    "end": 0.24,
+    "value": "E"
+   },
+   {
+    "start": 0.24,
+    "end": 0.32,
+    "value": "A"
+   },
+   {
+    "start": 0.32,
+    "end": 0.38,
+    "value": "E"
+   },
+   {
+    "start": 0.38,
+    "end": 0.44,
+    "value": "C"
+   },
+   {
+    "start": 0.44,
+    "end": 0.64,
+    "value": "A"
+   },
+   {
+    "start": 0.64,
+    "end": 0.71,
+    "value": "D"
+   },
+   {
+    "start": 0.71,
+    "end": 0.78,
+    "value": "B"
+   },
+   {
+    "start": 0.78,
+    "end": 0.9,
+    "value": "A"
+   },
+   {
+    "start": 0.9,
+    "end": 1.08,
+    "value": "C"
+   },
+   {
+    "start": 1.08,
+    "end": 1.15,
+    "value": "E"
+   },
+   {
+    "start": 1.15,
+    "end": 1.22,
+    "value": "F"
+   },
+   {
+    "start": 1.22,
+    "end": 1.36,
+    "value": "G"
+   },
+   {
+    "start": 1.36,
+    "end": 1.57,
+    "value": "F"
+   },
+   {
+    "start": 1.57,
+    "end": 1.64,
+    "value": "B"
+   },
+   {
+    "start": 1.64,
+    "end": 1.71,
+    "value": "H"
+   },
+   {
+    "start": 1.71,
+    "end": 1.78,
+    "value": "C"
+   },
+   {
+    "start": 1.78,
+    "end": 1.85,
+    "value": "B"
+   },
+   {
+    "start": 1.85,
+    "end": 1.92,
+    "value": "C"
+   },
+   {
+    "start": 1.92,
+    "end": 2.13,
+    "value": "B"
+   },
+   {
+    "start": 2.13,
+    "end": 2.14,
+    "value": "X"
+   }
+  ]
+ },
+ {
+  "id": "line_06",
+  "subtitle": "Haut-parleurs open-ear, تسمع الموسيقى وتجاوب على les appels.",
+  "source": "human-take",
+  "start": 17.477,
+  "duration": 2.855,
+  "speed": 1.0929,
+  "words": [
+   {
+    "word": "Haut-parleurs",
+    "start": 0.06,
+    "end": 0.48
+   },
+   {
+    "word": "open-ear,",
+    "start": 0.48,
+    "end": 1.02
+   },
+   {
+    "word": "تسمع",
+    "start": 1.02,
+    "end": 1.34
+   },
+   {
+    "word": "الموسيقى",
+    "start": 1.34,
+    "end": 1.86
+   },
+   {
+    "word": "وتجاوب",
+    "start": 1.86,
+    "end": 2.26
+   },
+   {
+    "word": "على",
+    "start": 2.26,
+    "end": 2.4
+   },
+   {
+    "word": "les",
+    "start": 2.4,
+    "end": 2.52
+   },
+   {
+    "word": "appels.",
+    "start": 2.52,
+    "end": 2.84
+   }
+  ],
+  "mouthCues": [
+   {
+    "start": 0.0,
+    "end": 0.01,
+    "value": "X"
+   },
+   {
+    "start": 0.01,
+    "end": 0.08,
+    "value": "B"
+   },
+   {
+    "start": 0.08,
+    "end": 0.14,
+    "value": "A"
+   },
+   {
+    "start": 0.14,
+    "end": 0.23,
+    "value": "D"
+   },
+   {
+    "start": 0.23,
+    "end": 0.27,
+    "value": "C"
+   },
+   {
+    "start": 0.27,
+    "end": 0.35,
+    "value": "A"
+   },
+   {
+    "start": 0.35,
+    "end": 0.4,
+    "value": "E"
+   },
+   {
+    "start": 0.4,
+    "end": 0.45,
+    "value": "F"
+   },
+   {
+    "start": 0.45,
+    "end": 0.53,
+    "value": "A"
+   },
+   {
+    "start": 0.53,
+    "end": 0.67,
+    "value": "F"
+   },
+   {
+    "start": 0.67,
+    "end": 1.16,
+    "value": "B"
+   },
+   {
+    "start": 1.16,
+    "end": 1.24,
+    "value": "A"
+   },
+   {
+    "start": 1.24,
+    "end": 1.37,
+    "value": "C"
+   },
+   {
+    "start": 1.37,
+    "end": 1.48,
+    "value": "A"
+   },
+   {
+    "start": 1.48,
+    "end": 1.54,
+    "value": "E"
+   },
+   {
+    "start": 1.54,
+    "end": 1.6,
+    "value": "B"
+   },
+   {
+    "start": 1.6,
+    "end": 1.74,
+    "value": "C"
+   },
+   {
+    "start": 1.74,
+    "end": 1.88,
+    "value": "E"
+   },
+   {
+    "start": 1.88,
+    "end": 2.16,
+    "value": "F"
+   },
+   {
+    "start": 2.16,
+    "end": 2.24,
+    "value": "A"
+   },
+   {
+    "start": 2.24,
+    "end": 2.29,
+    "value": "C"
+   },
+   {
+    "start": 2.29,
+    "end": 2.55,
+    "value": "F"
+   },
+   {
+    "start": 2.55,
+    "end": 2.62,
+    "value": "B"
+   },
+   {
+    "start": 2.62,
+    "end": 2.7,
+    "value": "A"
+   },
+   {
+    "start": 2.7,
+    "end": 2.84,
+    "value": "C"
+   },
+   {
+    "start": 2.84,
+    "end": 2.85,
+    "value": "X"
+   }
+  ]
+ },
+ {
+  "id": "line_07",
+  "subtitle": "باطري كتصبر حتى لـ 8 سوايع، و la boîte de charge كتعطيك كثر.",
+  "source": "human-take",
+  "start": 20.331,
+  "duration": 3.559,
+  "speed": 1.0929,
+  "words": [
+   {
+    "word": "باطري",
+    "start": 0.0,
+    "end": 0.42
+   },
+   {
+    "word": "كتصبر",
+    "start": 0.42,
+    "end": 0.78
+   },
+   {
+    "word": "حتى",
+    "start": 0.78,
+    "end": 0.96
+   },
+   {
+    "word": "لـ",
+    "start": 0.96,
+    "end": 1.16
+   },
+   {
+    "word": "8",
+    "start": 1.16,
+    "end": 1.48
+   },
+   {
+    "word": "سوايع،",
+    "start": 1.48,
+    "end": 1.82
+   },
+   {
+    "word": "و",
+    "start": 1.82,
+    "end": 2.06
+   },
+   {
+    "word": "la",
+    "start": 2.06,
+    "end": 2.22
+   },
+   {
+    "word": "boîte",
+    "start": 2.22,
+    "end": 2.38
+   },
+   {
+    "word": "de",
+    "start": 2.38,
+    "end": 2.54
+   },
+   {
+    "word": "charge",
+    "start": 2.54,
+    "end": 2.72
+   },
+   {
+    "word": "كتعطيك",
+    "start": 2.72,
+    "end": 3.3
+   },
+   {
+    "word": "كثر.",
+    "start": 3.3,
+    "end": 3.48
+   }
+  ],
+  "mouthCues": [
+   {
+    "start": 0.0,
+    "end": 0.07,
+    "value": "X"
+   },
+   {
+    "start": 0.07,
+    "end": 0.15,
+    "value": "A"
+   },
+   {
+    "start": 0.15,
+    "end": 0.24,
+    "value": "D"
+   },
+   {
+    "start": 0.24,
+    "end": 0.32,
+    "value": "A"
+   },
+   {
+    "start": 0.32,
+    "end": 0.42,
+    "value": "F"
+   },
+   {
+    "start": 0.42,
+    "end": 0.63,
+    "value": "C"
+   },
+   {
+    "start": 0.63,
+    "end": 0.7,
+    "value": "B"
+   },
+   {
+    "start": 0.7,
+    "end": 0.97,
+    "value": "A"
+   },
+   {
+    "start": 0.97,
+    "end": 1.05,
+    "value": "B"
+   },
+   {
+    "start": 1.05,
+    "end": 1.12,
+    "value": "C"
+   },
+   {
+    "start": 1.12,
+    "end": 1.68,
+    "value": "B"
+   },
+   {
+    "start": 1.68,
+    "end": 1.75,
+    "value": "F"
+   },
+   {
+    "start": 1.75,
+    "end": 1.89,
+    "value": "C"
+   },
+   {
+    "start": 1.89,
+    "end": 1.96,
+    "value": "B"
+   },
+   {
+    "start": 1.96,
+    "end": 2.1,
+    "value": "F"
+   },
+   {
+    "start": 2.1,
+    "end": 2.16,
+    "value": "A"
+   },
+   {
+    "start": 2.16,
+    "end": 2.22,
+    "value": "E"
+   },
+   {
+    "start": 2.22,
+    "end": 2.37,
+    "value": "A"
+   },
+   {
+    "start": 2.37,
+    "end": 2.53,
+    "value": "F"
+   },
+   {
+    "start": 2.53,
+    "end": 2.67,
+    "value": "B"
+   },
+   {
+    "start": 2.67,
+    "end": 2.74,
+    "value": "D"
+   },
+   {
+    "start": 2.74,
+    "end": 2.95,
+    "value": "B"
+   },
+   {
+    "start": 2.95,
+    "end": 3.03,
+    "value": "A"
+   },
+   {
+    "start": 3.03,
+    "end": 3.26,
+    "value": "B"
+   },
+   {
+    "start": 3.26,
+    "end": 3.4,
+    "value": "C"
+   },
+   {
+    "start": 3.4,
+    "end": 3.54,
+    "value": "B"
+   },
+   {
+    "start": 3.54,
+    "end": 3.55,
+    "value": "X"
+   }
+  ]
+ },
+ {
+  "id": "line_08",
+  "subtitle": "Produits originaux, boîte fermée, jamais ouverts, jamais activés.",
+  "source": "human-take",
+  "start": 23.89,
+  "duration": 3.303,
+  "speed": 1.0929,
+  "words": [
+   {
+    "word": "Produits",
+    "start": 0.06,
+    "end": 0.36
+   },
+   {
+    "word": "originaux,",
+    "start": 0.36,
+    "end": 1.12
+   },
+   {
+    "word": "boîte",
+    "start": 1.12,
+    "end": 1.26
+   },
+   {
+    "word": "fermée,",
+    "start": 1.26,
+    "end": 1.62
+   },
+   {
+    "word": "jamais",
+    "start": 1.62,
+    "end": 2.02
+   },
+   {
+    "word": "ouverts,",
+    "start": 2.02,
+    "end": 2.32
+   },
+   {
+    "word": "jamais",
+    "start": 2.32,
+    "end": 2.72
+   },
+   {
+    "word": "activés.",
+    "start": 2.72,
+    "end": 3.22
+   }
+  ],
+  "mouthCues": [
+   {
+    "start": 0.0,
+    "end": 0.03,
+    "value": "X"
+   },
+   {
+    "start": 0.03,
+    "end": 0.08,
+    "value": "B"
+   },
+   {
+    "start": 0.08,
+    "end": 0.2,
+    "value": "F"
+   },
+   {
+    "start": 0.2,
+    "end": 0.28,
+    "value": "A"
+   },
+   {
+    "start": 0.28,
+    "end": 0.35,
+    "value": "B"
+   },
+   {
+    "start": 0.35,
+    "end": 0.42,
+    "value": "A"
+   },
+   {
+    "start": 0.42,
+    "end": 0.59,
+    "value": "E"
+   },
+   {
+    "start": 0.59,
+    "end": 0.73,
+    "value": "B"
+   },
+   {
+    "start": 0.73,
+    "end": 0.8,
+    "value": "C"
+   },
+   {
+    "start": 0.8,
+    "end": 0.87,
+    "value": "B"
+   },
+   {
+    "start": 0.87,
+    "end": 0.94,
+    "value": "E"
+   },
+   {
+    "start": 0.94,
+    "end": 1.04,
+    "value": "A"
+   },
+   {
+    "start": 1.04,
+    "end": 1.25,
+    "value": "F"
+   },
+   {
+    "start": 1.25,
+    "end": 1.32,
+    "value": "C"
+   },
+   {
+    "start": 1.32,
+    "end": 1.39,
+    "value": "B"
+   },
+   {
+    "start": 1.39,
+    "end": 1.53,
+    "value": "C"
+   },
+   {
+    "start": 1.53,
+    "end": 1.6,
+    "value": "G"
+   },
+   {
+    "start": 1.6,
+    "end": 1.67,
+    "value": "C"
+   },
+   {
+    "start": 1.67,
+    "end": 1.75,
+    "value": "A"
+   },
+   {
+    "start": 1.75,
+    "end": 1.91,
+    "value": "B"
+   },
+   {
+    "start": 1.91,
+    "end": 1.98,
+    "value": "D"
+   },
+   {
+    "start": 1.98,
+    "end": 2.06,
+    "value": "A"
+   },
+   {
+    "start": 2.06,
+    "end": 2.11,
+    "value": "B"
+   },
+   {
+    "start": 2.11,
+    "end": 2.23,
+    "value": "E"
+   },
+   {
+    "start": 2.23,
+    "end": 2.3,
+    "value": "G"
+   },
+   {
+    "start": 2.3,
+    "end": 2.51,
+    "value": "C"
+   },
+   {
+    "start": 2.51,
+    "end": 2.65,
+    "value": "B"
+   },
+   {
+    "start": 2.65,
+    "end": 2.72,
+    "value": "D"
+   },
+   {
+    "start": 2.72,
+    "end": 2.8,
+    "value": "A"
+   },
+   {
+    "start": 2.8,
+    "end": 2.87,
+    "value": "B"
+   },
+   {
+    "start": 2.87,
+    "end": 2.94,
+    "value": "C"
+   },
+   {
+    "start": 2.94,
+    "end": 3.15,
+    "value": "B"
+   },
+   {
+    "start": 3.15,
+    "end": 3.22,
+    "value": "G"
+   },
+   {
+    "start": 3.22,
+    "end": 3.29,
+    "value": "B"
+   },
+   {
+    "start": 3.29,
+    "end": 3.3,
+    "value": "X"
+   }
+  ]
+ },
+ {
+  "id": "line_09",
+  "subtitle": "إلا بغيتي تكوموندي، صيفط لينا ميساج.",
+  "source": "human-take",
+  "start": 27.194,
+  "duration": 1.706,
+  "speed": 1.0929,
+  "words": [
+   {
+    "word": "إلا",
+    "start": 0.06,
+    "end": 0.16
+   },
+   {
+    "word": "بغيتي",
+    "start": 0.16,
+    "end": 0.4
+   },
+   {
+    "word": "تكوموندي،",
+    "start": 0.4,
+    "end": 0.88
+   },
+   {
+    "word": "صيفط",
+    "start": 0.88,
+    "end": 1.2
+   },
+   {
+    "word": "لينا",
+    "start": 1.2,
+    "end": 1.44
+   },
+   {
+    "word": "ميساج.",
+    "start": 1.44,
+    "end": 1.68
+   }
+  ],
+  "mouthCues": [
+   {
+    "start": 0.0,
+    "end": 0.03,
+    "value": "X"
+   },
+   {
+    "start": 0.03,
+    "end": 0.18,
+    "value": "B"
+   },
+   {
+    "start": 0.18,
+    "end": 0.25,
+    "value": "C"
+   },
+   {
+    "start": 0.25,
+    "end": 0.46,
+    "value": "B"
+   },
+   {
+    "start": 0.46,
+    "end": 0.67,
+    "value": "E"
+   },
+   {
+    "start": 0.67,
+    "end": 0.75,
+    "value": "A"
+   },
+   {
+    "start": 0.75,
+    "end": 1.11,
+    "value": "B"
+   },
+   {
+    "start": 1.11,
+    "end": 1.25,
+    "value": "F"
+   },
+   {
+    "start": 1.25,
+    "end": 1.32,
+    "value": "C"
+   },
+   {
+    "start": 1.32,
+    "end": 1.4,
+    "value": "A"
+   },
+   {
+    "start": 1.4,
+    "end": 1.55,
+    "value": "B"
+   },
+   {
+    "start": 1.55,
+    "end": 1.69,
+    "value": "F"
+   },
+   {
+    "start": 1.69,
+    "end": 1.7,
+    "value": "X"
+   }
+  ]
+ }
+]

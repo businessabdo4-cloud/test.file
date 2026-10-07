@@ -10,15 +10,12 @@ import { evIn, evListIn, useTL } from "../timeline";
 
 const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
 const CHECK = "M 30 52 L 45 67 L 72 36";
-const ITEMS: { icon: IconName; text: string }[] = [
-  { icon: "box", text: "Boîte fermée" },
-  { icon: "lock", text: "Jamais ouvert" },
-  { icon: "power", text: "Jamais activé" },
-];
+const ICONS: IconName[] = ["box", "lock", "power"];
+const ITEMS = ["Boîte fermée", "Jamais ouvert", "Jamais activé"];
 
 /** TRUST scene shared by the Darija reels: "PRODUIT ORIGINAL" seal + checklist ticking on the VO
  * (events trust.badge / trust.original / trust.checks[3]). */
-export const ChecklistTrust: React.FC = () => {
+export const ChecklistTrust: React.FC<{ title?: string; items?: string[] }> = ({ title: heading = "PRODUIT ORIGINAL", items = ITEMS }) => {
   const frame = useSceneFrame("trust");
   const TL = useTL();
   const wev = (k: string) => evIn(TL, k);
@@ -52,10 +49,10 @@ export const ChecklistTrust: React.FC = () => {
       </div>
       <div style={{ position: "absolute", left: P ? 0 : G.cx - 300, right: P ? 70 : undefined, width: P ? undefined : 600, top: G.title, display: "flex", justifyContent: "center" }}>
         <div style={{ ...title, fontFamily: FONT, fontWeight: 900, fontSize: G.tsize, color: "#fff", textAlign: "center", lineHeight: 1, textShadow: "0 8px 30px rgba(8,20,110,0.35)" }}>
-          PRODUIT ORIGINAL
+          {heading}
         </div>
       </div>
-      {ITEMS.map((it, i) => {
+      {items.map((text, i) => {
         const at = checks[i];
         const p = sp(frame, at - 2, { damping: 14, stiffness: 190 });
         const c = ramp(frame, at + 2, at + 11);
@@ -63,8 +60,8 @@ export const ChecklistTrust: React.FC = () => {
         const cp = sp(frame, at + 1, { damping: 9, stiffness: 260 });
         return (
           <div key={i} style={{ position: "absolute", left: G.rows.x, top: G.rows.y + i * G.rows.dy, width: G.rows.w, display: "flex", alignItems: "center", gap: 18, opacity: Math.min(1, p * 1.4), transform: `translateX(${(1 - p) * 240}px)`, fontFamily: FONT, fontWeight: 800, fontSize: G.rows.size, color: "#fff" }}>
-            <LineIcon name={it.icon} size={G.rows.size * 1.4} stroke={6} />
-            <span style={{ flex: 1, whiteSpace: "nowrap" }}>{it.text}</span>
+            <LineIcon name={ICONS[i]} size={G.rows.size * 1.4} stroke={6} />
+            <span style={{ flex: 1, whiteSpace: "nowrap" }}>{text}</span>
             <svg viewBox="0 0 100 100" width={G.rows.size * 1.5} height={G.rows.size * 1.5} style={{ transform: `scale(${cp})` }}>
               <circle cx={50} cy={50} r={46} fill="#fff" />
               <path d={CHECK} fill="none" stroke={COLORS.blue} strokeWidth={11} strokeLinecap="round" strokeLinejoin="round" strokeDasharray={evo.strokeDasharray} strokeDashoffset={evo.strokeDashoffset} />

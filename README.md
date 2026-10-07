@@ -35,6 +35,7 @@ npm run studio                   # interactive preview
 | Apple Watch Ultra 4 (Darija) | `WatchReel9x16`, `WatchReel1x1`, `WatchCover` | `out/watch/` | `npm run watch:build` |
 | Galaxy Watch8 Classic + Ultra2 (Darija) | `GalaxyReel9x16`, `GalaxyReel1x1`, `GalaxyCover` | `out/galaxy/` | `npm run galaxy:build` |
 | Sony WH-1000XM6 + XM5 (Darija) | `SonyReel9x16`, `SonyReel1x1`, `SonyCover` | `out/sony/` | `npm run sony:build` |
+| Ray-Ban Meta Headliner + Wayfarer Gen 2 (Darija) | `RaybanReel9x16`, `RaybanReel1x1`, `RaybanCover` | `out/rayban/` | `npm run rayban:build` |
 
 Shared parts: Citybot (`src/citybot`), its actor engine (`src/components/CitybotActor.tsx`, with
 per-reel acting in `src/reels/<reel>/direction`), bidi-aware subtitles (French, Darija or mixed),

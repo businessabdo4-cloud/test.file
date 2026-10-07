@@ -1,0 +1,10 @@
+{
+ "id": "rayban",
+ "vo_mode": "take",
+ "take": "vo/vo_full_take.wav",
+ "takeBoundaries": [1.35, 7.25, 12.77, 18.6, 21.14, 24.68, 28.74, 32.75],
+ "lead": 0.06,
+ "voEndBy": 28.9,
+ "maxPause": 0.09,
+ "sentPause": 0.15
+}
