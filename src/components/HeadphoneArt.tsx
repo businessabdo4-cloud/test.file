@@ -1,5 +1,5 @@
 import React from "react";
-import { Img, staticFile } from "remotion";
+import { ProductImage } from "./ProductImage";
 
 /*
  * Over-ear headphones artwork for the Sony reel.
@@ -14,11 +14,19 @@ export const HeadphoneArt: React.FC<{
   fold?: number;
   sweep?: number;
   id: string;
-  official?: string | null;
+  official?: { src: string; aspect: number } | null;
 }> = ({ width, colour, variant = "xm6", fold = 0, sweep = -1, id, official }) => {
   const h = width * 1.1;
   if (official) {
-    return <Img src={staticFile(official)} style={{ width, height: h, objectFit: "contain" }} />;
+    // a photo can't fold: the "fold" beat becomes a 3D turn of the real product
+    const w = width * 0.96;
+    return (
+      <div style={{ width, height: h, display: "flex", alignItems: "center", justifyContent: "center", perspective: 1200 }}>
+        <div style={{ transform: `rotateY(${fold * 180}deg) scale(${1 - 0.12 * Math.sin(Math.PI * fold)})` }}>
+          <ProductImage src={official.src} aspect={official.aspect} width={w} sweep={sweep} />
+        </div>
+      </div>
+    );
   }
   const g = (n: string) => `${id}-${n}`;
   const band = variant === "xm6" ? 30 : 22;

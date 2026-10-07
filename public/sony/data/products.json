@@ -1,1 +1,12 @@
-{}
+{
+ "xm6_black": {
+  "src": "sony/products/xm6_black.png",
+  "w": 252,
+  "h": 288
+ },
+ "xm6_blue": {
+  "src": "sony/products/xm6_blue.png",
+  "w": 659,
+  "h": 757
+ }
+}

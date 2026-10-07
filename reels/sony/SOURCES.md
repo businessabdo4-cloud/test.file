@@ -1,18 +1,18 @@
 # Sony WH-1000XM6 / WH-1000XM5 reel: sources
 
 ## Product visuals
-**No product images were supplied**, and sony.com is blocked from this session, so the headphones
-are a clean flat-vector illustration (`src/components/HeadphoneArt.tsx`: no logos, not a photo).
-To use official Sony images, save them (transparent PNG preferred) as:
+Official WH-1000XM6 images **supplied by City Store** on 2026-10-07 (source URLs: _add_), originals in
+`assets/sony/products/src/`, cut out by `reels/sony/cutout.py`:
 
-| File (`public/sony/products/`) | Shows |
-|---|---|
-| `xm6_black.png` | WH-1000XM6, Black |
-| `xm6_blue.png` | WH-1000XM6, Midnight Blue |
-| `xm5_black.png` | WH-1000XM5, Black |
+| Original | Cut-out | Notes |
+|---|---|---|
+| `sony_wh1000xm6_black.png` (360 px) | `xm6_black.png` | low resolution: looks slightly soft when large |
+| `sony_wh1000xm6_midnight_blue.png` (800 px) | `xm6_blue.png` | |
 
-and list them in `public/sony/data/products.json` (`{"xm6_black": "sony/products/xm6_black.png", ...}`),
-then re-render (`npm run sony:render` + finalize). The scenes and cover pick them up automatically.
+**WH-1000XM5 (Black):** shared in chat but not received as a file. Until it is, the XM5 scene uses the
+flat-vector illustration (`src/components/HeadphoneArt.tsx`, no logos). Save it as
+`assets/sony/products/src/sony_wh1000xm5_black.png`, then run `python3 reels/sony/cutout.py` and
+`npm run sony:render` + `REEL=sony bash scripts/finalize.sh`.
 
 ## Specs on screen (checked via reviews/retailers + Sony's press release; sony.com itself is blocked)
 - XM6: up to **30 h with noise cancelling on**, **3 min charge = 3 h** playback, **foldable** with a

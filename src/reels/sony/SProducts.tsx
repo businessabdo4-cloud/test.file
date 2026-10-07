@@ -51,7 +51,7 @@ export const SXm6: React.FC = () => {
   const sweep = interpolate(frame, [sweepAt, sweepAt + 16], [-0.3, 1.3], clamp);
   const sk = shake(frame, sev("xm6.reveal"), 16, 9);
   const t = frame / 30;
-  const art = (colour: string, op: number, key: string, official: string | null) => (
+  const art = (colour: string, op: number, key: string, official: { src: string; aspect: number } | null) => (
     <div key={key} style={{ position: "absolute", inset: 0, opacity: op }}>
       <HeadphoneArt id={`xm6-${key}`} width={G.hp.w} colour={colour} sweep={sweep} official={official} />
     </div>
