@@ -113,7 +113,9 @@ SPOKEN = {"18": "dix-huit", "100": "cent pour cent", "%": "", "citystore.ma": "c
           "iphone": "aille faune", "city": "si ti", "store": "store", "laptops": "lap tops",
           "49": "ta sa ud wa ar ba in", "4": "four", "gps": "ji pi es", "sos": "es o es", "apple": "a pel",
           "5000": "khams ta la af", "60": "sit tin", "ultra2": "ul tra tu", "watch8": "watch eight",
-          "galaxy": "ga la xy", "gemini": "dje mi ni", "samsung": "sam sung", "watches": "wat ches"}
+          "galaxy": "ga la xy", "gemini": "dje mi ni", "samsung": "sam sung", "watches": "wat ches",
+          "wh-1000xm6": "dou ble you ech ten tho u sand ex em six", "wh-1000xm5": "dou ble you ech ten tho u sand ex em five",
+          "sony": "so ny", "30": "tla tin", "3": "tlat"}
 ARABIC = "\\u0621-\\u063F\\u0641-\\u064A\\u0671-\\u06D3"  # Arabic letters (no punctuation, no tatweel)
 
 

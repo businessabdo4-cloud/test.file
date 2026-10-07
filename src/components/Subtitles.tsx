@@ -5,7 +5,7 @@ import { sp } from "../anim";
 import { SubsPlace, useLayout } from "../layout";
 import { useTL } from "../timeline";
 
-const ARABIC = /[؀-ۿݐ-ݿ]/;
+const ARABIC = /[\u0621-\u064A\u0671-\u06D3\u0750-\u077F]/; // letters only: "،" alone must not flip a French line
 const STRONG_LTR = /[A-Za-zÀ-ÿ0-9]/;
 type Dir = "rtl" | "ltr";
 

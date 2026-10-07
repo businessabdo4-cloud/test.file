@@ -112,6 +112,26 @@ S["blip_up"] = chirp_seq([(660, 700), (880, 940), (1320, 1500)], step=0.07)
 S["blip_jump"] = chirp_seq([(400, 1600)], step=0.12)
 S["blip_wink"] = chirp_seq([(1500, 1100), (1100, 1700)], step=0.06)
 
+# city noise for the Sony hook (appended last so the RNG sequence of the sounds above is unchanged)
+t = t_arr(0.42)
+honk = sum(np.sign(np.sin(2 * np.pi * f * t)) * 0.5 + np.sin(2 * np.pi * f * t) for f in (415.0, 523.0))
+S["horn"] = filt(np.tanh(honk * 0.8), "low", 3200) * np.clip(t / 0.01, 0, 1) * np.clip((0.42 - t) / 0.04, 0, 1)
+t = t_arr(1.75)
+crowd = np.zeros(len(t))
+for k in range(7):  # overlapping "voices": formant-band noise with syllabic modulation
+    lo = rng.uniform(350, 900)
+    v = filt(rng.standard_normal(len(t)), "band", [lo, lo * rng.uniform(2.2, 3.5)])
+    syll = np.clip(np.sin(2 * np.pi * rng.uniform(3.5, 7.5) * t + rng.uniform(0, 6.28)), 0, 1) ** 1.5
+    crowd += v * syll * rng.uniform(0.5, 1.0)
+S["crowd"] = crowd * np.clip(t / 0.15, 0, 1) * np.clip((1.75 - t) / 0.08, 0, 1)
+t = t_arr(1.1)
+engine = sum(np.sin(2 * np.pi * 46 * h * t + h) / h for h in range(1, 9)) * (1 + 0.3 * np.sin(2 * np.pi * 9 * t))
+hiss = filt(rng.standard_normal(len(t)), "high", 3000) * np.clip((t - 0.75) / 0.05, 0, 1) * np.exp(-np.clip(t - 0.8, 0, None) * 6)
+S["bus"] = (filt(engine, "low", 400) * 0.8 + hiss * 0.5) * np.clip(t / 0.08, 0, 1) * np.clip((1.1 - t) / 0.05, 0, 1)
+t = t_arr(0.9)
+sweep = swept_noise(0.9, 6000, 150, lambda p: p ** 0.6) * np.exp(-t * 3.5)
+S["anc"] = sweep + tone(lambda t: 120 * np.exp(-t * 6) + 40, 0.9, decay=5) * 0.6
+
 for name, x in S.items():
     x = np.asarray(x, dtype=np.float64)
     sf.write(OUT / f"{name}.wav", norm(fade(x)).astype(np.float32), SR, subtype="PCM_16")

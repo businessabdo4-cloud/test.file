@@ -30,6 +30,10 @@ STYLES = {
     "galaxy": dict(seed=33, phase=0.5, drop=2.5, end_lift=27.0, stop=28.5,
                    chords=[[50, 53, 57], [46, 50, 53], [45, 48, 53], [48, 52, 55]], roots=[38, 34, 41, 36],
                    final=[50, 53, 57, 62], final_bass=26, arp=[0, 1, 2, 0, 2, 1, 2, 1]),
+    # Sony reel: the hook is city noise + an ANC "silence" moment, so no music before the drop at 3.5 s
+    "sony": dict(seed=45, phase=1.5, drop=3.5, end_lift=27.5, stop=27.5, hook_mode="noise",
+                 chords=[[52, 55, 59], [48, 52, 55], [55, 59, 62], [50, 54, 57]], roots=[40, 36, 43, 38],
+                 final=[52, 55, 59, 64], final_bass=28, arp=[0, 1, 2, 1, 0, 2, 1, 2]),
 }
 ST = STYLES[REEL]
 SR = 48000
@@ -180,6 +184,8 @@ for bar in range(BARS):
     t0 = PHASE - (4 * BEAT if PHASE else 0) + bar * 4 * BEAT
     chord, root = CHORDS[bar % 4], ROOTS[bar % 4]
     hook = t0 < DROP
+    if hook and ST.get("hook_mode") == "noise":
+        continue  # silent hook: the reel's noise SFX play there instead
     final = t0 >= ST["stop"] - 1e-6  # groove stops here; the final hit lands at FINAL_T
     build = abs(t0 + 4 * BEAT - ST["stop"]) < 1e-6
     if final:
@@ -218,12 +224,13 @@ for bar in range(BARS):
         for k in range(8):
             place(S, t0 + 2 * BEAT + k * BEAT / 4, 0.25 + 0.06 * k)
 
-# hook: impact on 1, snare roll + riser into the drop
-place(impact(), 0.0, 0.9)
-place(crash(), 0.0, 0.8)
-for k in range(8):
-    place(S, DROP - 1.0 + k * BEAT / 8, 0.2 + 0.07 * k)
-place(riser(min(2.0, DROP - 0.5)), DROP - min(2.0, DROP - 0.5), 0.9)
+# hook: impact on 1, snare roll + riser into the drop (skipped for a silent "noise" hook)
+if ST.get("hook_mode") != "noise":
+    place(impact(), 0.0, 0.9)
+    place(crash(), 0.0, 0.8)
+    for k in range(8):
+        place(S, DROP - 1.0 + k * BEAT / 8, 0.2 + 0.07 * k)
+    place(riser(min(2.0, DROP - 0.5)), DROP - min(2.0, DROP - 0.5), 0.9)
 place(crash(), DROP, 1.0)
 place(impact(), DROP, 0.6)
 # small lift into the end card

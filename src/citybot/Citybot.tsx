@@ -39,6 +39,8 @@ export interface CitybotProps {
   style?: React.CSSProperties;
   /** replaces the face (eyes/brows/mouth) with custom SVG drawn in screen space (x 108-292, y 68-287) */
   face?: React.ReactNode | null;
+  /** optional over-ear headphones accessory (p: 0 = above the frame, 1 = on the head) */
+  headphones?: { color: string; p: number } | null;
 }
 
 const EXPRESSIONS: Record<Expression, { left: EyeStyle; right: EyeStyle; browY: number; browAngle: number }> = {
@@ -148,6 +150,7 @@ export const Citybot: React.FC<CitybotProps> = ({
   id = "cb",
   style,
   face = null,
+  headphones = null,
 }) => {
   const ex = EXPRESSIONS[expression];
   const g = (n: string) => `${id}-${n}`;
@@ -209,6 +212,14 @@ export const Citybot: React.FC<CitybotProps> = ({
 
           {/* HEAD */}
           <g id="head" transform={`rotate(${tilt} 200 305)`}>
+            {/* headphones band (behind the antenna) */}
+            {headphones && headphones.p > 0 && (
+              <g transform={`translate(0 ${-(1 - headphones.p) * 300})`} opacity={Math.min(1, headphones.p * 3)}>
+                <path d="M 72 178 C 66 -24, 334 -24, 328 178" fill="none" stroke={COLORS.navy} strokeWidth={26} strokeLinecap="round" />
+                <path d="M 72 178 C 66 -24, 334 -24, 328 178" fill="none" stroke={headphones.color} strokeWidth={16} strokeLinecap="round" />
+                <path d="M 96 120 C 104 22, 296 22, 304 120" fill="none" stroke="#fff" strokeOpacity={0.18} strokeWidth={4} strokeLinecap="round" />
+              </g>
+            )}
             {/* antenna */}
             <rect x={196} y={20} width={8} height={34} rx={4} fill={COLORS.navy} />
             <circle cx={200} cy={18} r={11} fill={COLORS.cyan} stroke={COLORS.navy} strokeWidth={5} />
@@ -217,6 +228,18 @@ export const Citybot: React.FC<CitybotProps> = ({
             <rect x={312} y={112} width={9} height={40} rx={4} fill={COLORS.navy} />
             <rect x={79} y={104} width={9} height={26} rx={4} fill={COLORS.navy} />
             <rect x={88} y={50} width={224} height={256} rx={54} fill={COLORS.white} {...OUTLINE} />
+            {/* headphone ear cups (in front of the shell) */}
+            {headphones && headphones.p > 0 && (
+              <g transform={`translate(0 ${-(1 - headphones.p) * 300})`} opacity={Math.min(1, headphones.p * 3)}>
+                {[44, 302].map((x, i) => (
+                  <g key={i}>
+                    <rect x={x} y={112} width={54} height={140} rx={27} fill={headphones.color} stroke={COLORS.navy} strokeWidth={6} />
+                    <rect x={i ? x : x + 34} y={128} width={20} height={108} rx={10} fill="#000" opacity={0.28} />
+                    <path d={i ? `M ${x + 16} 132 Q ${x + 40} 182 ${x + 16} 232` : `M ${x + 38} 132 Q ${x + 14} 182 ${x + 38} 232`} fill="none" stroke="#fff" strokeOpacity={0.22} strokeWidth={4} strokeLinecap="round" />
+                  </g>
+                ))}
+              </g>
+            )}
             {/* screen = face */}
             <g id="screen" clipPath={`url(#${g("screenClip")})`}>
               <rect x={108} y={68} width={184} height={219} fill={`url(#${g("screen")})`} />

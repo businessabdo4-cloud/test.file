@@ -38,6 +38,8 @@ export interface Direction {
   flashAt: (f: number) => number;
   /** optional text shown on the face screen instead of the face (e.g. a watch face) */
   faceAt?: (f: number) => React.ReactNode | null;
+  /** optional headphones accessory */
+  headphonesAt?: (f: number) => { color: string; p: number } | null;
 }
 
 const idleMouth: Record<Expression, MouthShape> = { excited: "grin", happy: "smile", proud: "smile", wink: "smile", neutral: "X" };
@@ -141,6 +143,7 @@ export const CitybotActor: React.FC<{ direction: Direction }> = ({ direction: d 
         flash={d.flashAt(frame)}
         thrust={Math.min(1, thrust)}
         face={d.faceAt?.(frame) ?? null}
+        headphones={d.headphonesAt?.(frame) ?? null}
       />
     </div>
   );

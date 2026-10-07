@@ -30,7 +30,10 @@
     "galaxy:cutout": "python3 reels/galaxy/cutout.py",
     "galaxy:audio": "REEL=galaxy python3 scripts/process_vo_take.py && python3 reels/galaxy/build_timeline.py && REEL=galaxy python3 scripts/make_music.py && REEL=galaxy python3 scripts/mix_audio.py",
     "galaxy:render": "remotion render GalaxyReel9x16 out/galaxy/reel_9x16_raw.mp4 --codec=h264 --crf=16 && remotion render GalaxyReel1x1 out/galaxy/reel_1x1_raw.mp4 --codec=h264 --crf=16 && remotion still GalaxyCover out/galaxy/cover_1080x1920.png",
-    "galaxy:build": "npm run galaxy:cutout && npm run galaxy:audio && REEL=galaxy node scripts/make_srt.mjs && npm run galaxy:render && REEL=galaxy bash scripts/finalize.sh && REEL=galaxy bash scripts/verify.sh"
+    "galaxy:build": "npm run galaxy:cutout && npm run galaxy:audio && REEL=galaxy node scripts/make_srt.mjs && npm run galaxy:render && REEL=galaxy bash scripts/finalize.sh && REEL=galaxy bash scripts/verify.sh",
+    "sony:audio": "REEL=sony python3 scripts/process_vo_take.py && python3 reels/sony/build_timeline.py && REEL=sony python3 scripts/make_music.py && REEL=sony python3 scripts/mix_audio.py",
+    "sony:render": "remotion render SonyReel9x16 out/sony/reel_9x16_raw.mp4 --codec=h264 --crf=16 && remotion render SonyReel1x1 out/sony/reel_1x1_raw.mp4 --codec=h264 --crf=16 && remotion still SonyCover out/sony/cover_1080x1920.png",
+    "sony:build": "npm run sony:audio && REEL=sony node scripts/make_srt.mjs && npm run sony:render && REEL=sony bash scripts/finalize.sh && REEL=sony bash scripts/verify.sh"
   },
   "dependencies": {
     "@remotion/cli": "4.0.532",

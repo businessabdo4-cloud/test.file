@@ -19,8 +19,8 @@ from reel import ASSETS, LINES, PUB, REEL, ROOT
 from process_vo import RHUBARB, SR, frame_db, load_mono, word_timings, TMP
 
 CFG = json.loads((ROOT / "reels" / REEL / "reel.json").read_text())
-MAX_PAUSE = 0.16
-SENT_PAUSE = 0.24
+MAX_PAUSE = CFG.get("maxPause", 0.16)   # per-reel override for long takes
+SENT_PAUSE = CFG.get("sentPause", 0.24)
 MAX_SPEED = 1.10
 TARGET_LUFS = -14.0
 SILENCE_DB = -40.0
