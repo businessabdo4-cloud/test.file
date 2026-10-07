@@ -118,7 +118,7 @@ export const SXm5: React.FC = () => {
   const kOut = ramp(frame, rev - 6, rev + 2);
   const enter = sp(frame, rev, { damping: 11, stiffness: 120, mass: 0.8 });
   const sk = shake(frame, rev, 18, 9);
-  const G = P ? { hp: { cx: 540, top: 360, w: 520 }, sw: { x: 420, y: 990, size: 70 }, kin: 420 } : { hp: { cx: 330, top: 130, w: 400 }, sw: { x: 700, y: 380, size: 64 }, kin: 220 };
+  const G = P ? { hp: { cx: 540, top: 320, w: 600 }, sw: { x: 470, y: 1010, size: 70 }, kin: 420 } : { hp: { cx: 330, top: 130, w: 400 }, sw: { x: 700, y: 380, size: 64 }, kin: 220 };
   const t = frame / 30;
   const sweep = interpolate(frame, [rev + 8, rev + 24], [-0.3, 1.3], clamp);
   return (

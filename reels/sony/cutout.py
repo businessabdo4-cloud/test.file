@@ -20,9 +20,14 @@ manifest = {}
 for key, (name, bg) in IMAGES.items():
     if not (src / name).exists():
         continue
-    if bg is None:
-        bg = tuple(int(v) for v in Image.open(src / name).convert("RGB").getpixel((1, 1)))
-    cutout(name, f"{key}.png", bg, tol=6, soft=14, src_dir=src, dst_dir=dst, hole_min_area=600)
+    im = Image.open(src / name)
+    if im.mode == "RGBA" and im.getextrema()[3][0] < 250:
+        # already transparent: keep the supplied alpha, just crop to content
+        im.crop(im.getchannel("A").point(lambda a: 255 if a > 8 else 0).getbbox()).save(dst / f"{key}.png")
+    else:
+        if bg is None:
+            bg = tuple(int(v) for v in im.convert("RGB").getpixel((1, 1)))
+        cutout(name, f"{key}.png", bg, tol=6, soft=14, src_dir=src, dst_dir=dst, hole_min_area=600)
     shutil.copy(dst / f"{key}.png", pub / f"{key}.png")
     w, h = Image.open(dst / f"{key}.png").size
     manifest[key] = {"src": f"sony/products/{key}.png", "w": w, "h": h}

@@ -8,11 +8,10 @@ Official WH-1000XM6 images **supplied by City Store** on 2026-10-07 (source URLs
 |---|---|---|
 | `sony_wh1000xm6_black.png` (360 px) | `xm6_black.png` | low resolution: looks slightly soft when large |
 | `sony_wh1000xm6_midnight_blue.png` (800 px) | `xm6_blue.png` | |
+| `sony_wh1000xm5_black.png` (400 px, supplied already transparent) | `xm5_black.png` | alpha kept as supplied, cropped; 3/4 view |
 
-**WH-1000XM5 (Black):** shared in chat but not received as a file. Until it is, the XM5 scene uses the
-flat-vector illustration (`src/components/HeadphoneArt.tsx`, no logos). Save it as
-`assets/sony/products/src/sony_wh1000xm5_black.png`, then run `python3 reels/sony/cutout.py` and
-`npm run sony:render` + `REEL=sony bash scripts/finalize.sh`.
+All three products now use official images; the flat-vector `HeadphoneArt` illustration is only a
+fallback if an image is missing.
 
 ## Specs on screen (checked via reviews/retailers + Sony's press release; sony.com itself is blocked)
 - XM6: up to **30 h with noise cancelling on**, **3 min charge = 3 h** playback, **foldable** with a

@@ -19,7 +19,7 @@ export const HeadphoneArt: React.FC<{
   const h = width * 1.1;
   if (official) {
     // a photo can't fold: the "fold" beat becomes a 3D turn of the real product
-    const w = width * 0.96;
+    const w = Math.min(width * 0.96, (h * 0.98) / official.aspect); // fit inside the same box as the illustration
     return (
       <div style={{ width, height: h, display: "flex", alignItems: "center", justifyContent: "center", perspective: 1200 }}>
         <div style={{ transform: `rotateY(${fold * 180}deg) scale(${1 - 0.12 * Math.sin(Math.PI * fold)})` }}>

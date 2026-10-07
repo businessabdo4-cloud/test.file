@@ -8,5 +8,10 @@
   "src": "sony/products/xm6_blue.png",
   "w": 659,
   "h": 757
+ },
+ "xm5_black": {
+  "src": "sony/products/xm5_black.png",
+  "w": 235,
+  "h": 360
  }
 }
