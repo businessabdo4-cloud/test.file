@@ -18,6 +18,9 @@ import { STL } from "./reels/sony/timeline";
 import { RaybanReel } from "./reels/rayban/RaybanReel";
 import { RaybanCover } from "./reels/rayban/RaybanCover";
 import { RTL } from "./reels/rayban/timeline";
+import { OneplusReel } from "./reels/oneplus/OneplusReel";
+import { OneplusCover } from "./reels/oneplus/OneplusCover";
+import { OTL } from "./reels/oneplus/timeline";
 
 // Hard length limit: never more than 900 frames (30.0 s).
 const DURATION = Math.min(TL.totalFrames, MAX_FRAMES);
@@ -39,6 +42,9 @@ export const RemotionRoot: React.FC = () => (
     <Composition id="RaybanReel9x16" component={RaybanReel} durationInFrames={Math.min(RTL.totalFrames, MAX_FRAMES)} fps={FPS} width={1080} height={1920} defaultProps={{ layout: LAYOUT_9x16 }} />
     <Composition id="RaybanReel1x1" component={RaybanReel} durationInFrames={Math.min(RTL.totalFrames, MAX_FRAMES)} fps={FPS} width={1080} height={1080} defaultProps={{ layout: LAYOUT_1x1 }} />
     <Still id="RaybanCover" component={RaybanCover} width={1080} height={1920} />
+    <Composition id="OneplusReel9x16" component={OneplusReel} durationInFrames={Math.min(OTL.totalFrames, MAX_FRAMES)} fps={FPS} width={1080} height={1920} defaultProps={{ layout: LAYOUT_9x16 }} />
+    <Composition id="OneplusReel1x1" component={OneplusReel} durationInFrames={Math.min(OTL.totalFrames, MAX_FRAMES)} fps={FPS} width={1080} height={1080} defaultProps={{ layout: LAYOUT_1x1 }} />
+    <Still id="OneplusCover" component={OneplusCover} width={1080} height={1920} />
     <Still id="CitybotSheet" component={CitybotSheet} width={1920} height={1080} />
   </>
 );

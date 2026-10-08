@@ -38,7 +38,11 @@
     "rayban:cutout": "python3 reels/rayban/cutout.py",
     "rayban:audio": "REEL=rayban python3 scripts/process_vo_take.py && python3 reels/rayban/build_timeline.py && REEL=rayban python3 scripts/make_music.py && REEL=rayban python3 scripts/mix_audio.py",
     "rayban:render": "remotion render RaybanReel9x16 out/rayban/reel_9x16_raw.mp4 --codec=h264 --crf=16 && remotion render RaybanReel1x1 out/rayban/reel_1x1_raw.mp4 --codec=h264 --crf=16 && remotion still RaybanCover out/rayban/cover_1080x1920.png",
-    "rayban:build": "npm run rayban:cutout && npm run rayban:audio && REEL=rayban node scripts/make_srt.mjs && npm run rayban:render && REEL=rayban bash scripts/finalize.sh && REEL=rayban bash scripts/verify.sh"
+    "rayban:build": "npm run rayban:cutout && npm run rayban:audio && REEL=rayban node scripts/make_srt.mjs && npm run rayban:render && REEL=rayban bash scripts/finalize.sh && REEL=rayban bash scripts/verify.sh",
+    "oneplus:cutout": "python3 reels/oneplus/cutout.py",
+    "oneplus:audio": "REEL=oneplus python3 scripts/process_vo_take.py && python3 reels/oneplus/build_timeline.py && REEL=oneplus python3 scripts/make_music.py && REEL=oneplus python3 scripts/mix_audio.py",
+    "oneplus:render": "remotion render OneplusReel9x16 out/oneplus/reel_9x16_raw.mp4 --codec=h264 --crf=16 && remotion render OneplusReel1x1 out/oneplus/reel_1x1_raw.mp4 --codec=h264 --crf=16 && remotion still OneplusCover out/oneplus/cover_1080x1920.png",
+    "oneplus:build": "npm run oneplus:cutout && npm run oneplus:audio && REEL=oneplus node scripts/make_srt.mjs && npm run oneplus:render && REEL=oneplus bash scripts/finalize.sh && REEL=oneplus bash scripts/verify.sh"
   },
   "dependencies": {
     "@remotion/cli": "4.0.532",

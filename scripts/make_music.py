@@ -38,6 +38,10 @@ STYLES = {
     "rayban": dict(seed=57, phase=1.5, drop=3.5, end_lift=28.0, stop=28.0,
                    chords=[[55, 59, 62], [50, 54, 57], [52, 55, 59], [48, 52, 55]], roots=[43, 38, 40, 36],
                    final=[55, 59, 62, 67], final_bass=31, arp=[0, 2, 1, 2, 0, 1, 2, 1]),
+    # OnePlus Watch 3 reel: B-minor (i-VI-III-VII) premium pulse; drop on the reveal at 2.0 s
+    "oneplus": dict(seed=69, phase=0.0, drop=2.0, end_lift=28.0, stop=28.0,
+                    chords=[[59, 62, 66], [55, 59, 62], [62, 66, 69], [57, 61, 64]], roots=[47, 43, 50, 45],
+                    final=[59, 62, 66, 71], final_bass=35, arp=[0, 1, 2, 1, 2, 0, 1, 2]),
 }
 ST = STYLES[REEL]
 SR = 48000

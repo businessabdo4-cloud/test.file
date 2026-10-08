@@ -23,7 +23,7 @@ MAX_PAUSE = CFG.get("maxPause", 0.16)   # per-reel override for long takes
 SENT_PAUSE = CFG.get("sentPause", 0.24)
 MAX_SPEED = 1.10
 TARGET_LUFS = -14.0
-SILENCE_DB = -40.0
+SILENCE_DB = CFG.get("silenceDb", -40.0)  # per-reel: -34 also trims breaths/room tone in long takes
 
 
 def main():

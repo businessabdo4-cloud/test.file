@@ -118,7 +118,8 @@ SPOKEN = {"18": "dix-huit", "100": "cent pour cent", "%": "", "citystore.ma": "c
           "sony": "so ny", "30": "tla tin", "3": "tlat",
           "ray-ban": "ray ban", "meta": "me ta", "ai": "ei ai", "gen": "djen", "2": "tu", "headliner": "hed lai ner",
           "wayfarer": "wey fe rer", "12mp": "douze me ga pik sel", "3k": "tri ka", "8": "tma nya", "open-ear": "o pen ir",
-          "haut-parleurs": "o par leur"}
+          "haut-parleurs": "o par leur", "oneplus": "wan plus", "emerald": "e me rald", "titanium": "ti ta nium",
+          "5": "khem sa", "16": "set tash", "wear": "wer", "os": "o es"}
 ARABIC = "\\u0621-\\u063F\\u0641-\\u064A\\u0671-\\u06D3"  # Arabic letters (no punctuation, no tatweel)
 
 
