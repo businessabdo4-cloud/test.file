@@ -1,0 +1,17 @@
+{
+ "pocket4": {
+  "src": "osmo/products/pocket4.png",
+  "w": 233,
+  "h": 620
+ },
+ "pocket3_combo": {
+  "src": "osmo/products/pocket3_combo.png",
+  "w": 328,
+  "h": 595
+ },
+ "pocket3_box": {
+  "src": "osmo/products/pocket3_box.png",
+  "w": 325,
+  "h": 198
+ }
+}
