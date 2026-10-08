@@ -122,7 +122,9 @@ SPOKEN = {"18": "dix-huit", "100": "cent pour cent", "%": "", "citystore.ma": "c
           "5": "khem sa", "16": "set tash", "wear": "wer", "os": "o es",
           "dji": "di dji ai", "osmo": "os mo", "4": "four", "240fps": "mi tin w ar bi in fi pi es", "120fps": "mi a w ich rin fi pi es",
           "2x": "deux fois", "37mp": "trente sept me ga pik sel", "107gb": "cent sept gi ga", "240": "mi tin w ar bi in",
-          "32": "tnin w tla tin", "4k": "four ka", "mic": "maik", "creator": "kri ei tor", "content": "kon tent"}
+          "32": "tnin w tla tin", "4k": "four ka", "mic": "maik", "creator": "kri ei tor", "content": "kon tent",
+          "nintendo": "nin ten do", "switch": "switch", "oled": "o led", "tv": "ti vi", "64gb": "soi xan te ka tre gi ga", "joy-con": "djoy kon",
+          "7": "sept"}
 ARABIC = "\\u0621-\\u063F\\u0641-\\u064A\\u0671-\\u06D3"  # Arabic letters (no punctuation, no tatweel)
 
 

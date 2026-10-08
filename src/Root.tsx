@@ -24,6 +24,9 @@ import { OTL } from "./reels/oneplus/timeline";
 import { OsmoReel } from "./reels/osmo/OsmoReel";
 import { OsmoCover } from "./reels/osmo/OsmoCover";
 import { XTL } from "./reels/osmo/timeline";
+import { SwitchReel } from "./reels/switch/SwitchReel";
+import { SwitchCover } from "./reels/switch/SwitchCover";
+import { NTL } from "./reels/switch/timeline";
 
 // Hard length limit: never more than 900 frames (30.0 s).
 const DURATION = Math.min(TL.totalFrames, MAX_FRAMES);
@@ -52,6 +55,9 @@ export const RemotionRoot: React.FC = () => (
     <Composition id="OsmoReel9x16" component={OsmoReel} durationInFrames={XTL.totalFrames} fps={FPS} width={1080} height={1920} defaultProps={{ layout: LAYOUT_9x16 }} />
     <Composition id="OsmoReel1x1" component={OsmoReel} durationInFrames={XTL.totalFrames} fps={FPS} width={1080} height={1080} defaultProps={{ layout: LAYOUT_1x1 }} />
     <Still id="OsmoCover" component={OsmoCover} width={1080} height={1920} />
+    <Composition id="SwitchReel9x16" component={SwitchReel} durationInFrames={Math.min(NTL.totalFrames, MAX_FRAMES)} fps={FPS} width={1080} height={1920} defaultProps={{ layout: LAYOUT_9x16 }} />
+    <Composition id="SwitchReel1x1" component={SwitchReel} durationInFrames={Math.min(NTL.totalFrames, MAX_FRAMES)} fps={FPS} width={1080} height={1080} defaultProps={{ layout: LAYOUT_1x1 }} />
+    <Still id="SwitchCover" component={SwitchCover} width={1080} height={1920} />
     <Still id="CitybotSheet" component={CitybotSheet} width={1920} height={1080} />
   </>
 );

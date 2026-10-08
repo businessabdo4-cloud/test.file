@@ -46,7 +46,11 @@
     "osmo:cutout": "python3 reels/osmo/cutout.py",
     "osmo:audio": "REEL=osmo python3 scripts/process_vo_take.py && python3 reels/osmo/build_timeline.py && REEL=osmo python3 scripts/make_music.py && REEL=osmo python3 scripts/mix_audio.py",
     "osmo:render": "remotion render OsmoReel9x16 out/osmo/reel_9x16_raw.mp4 --codec=h264 --crf=16 && remotion render OsmoReel1x1 out/osmo/reel_1x1_raw.mp4 --codec=h264 --crf=16 && remotion still OsmoCover out/osmo/cover_1080x1920.png",
-    "osmo:build": "npm run osmo:cutout && npm run osmo:audio && REEL=osmo node scripts/make_srt.mjs && npm run osmo:render && REEL=osmo bash scripts/finalize.sh && REEL=osmo bash scripts/verify.sh"
+    "osmo:build": "npm run osmo:cutout && npm run osmo:audio && REEL=osmo node scripts/make_srt.mjs && npm run osmo:render && REEL=osmo bash scripts/finalize.sh && REEL=osmo bash scripts/verify.sh",
+    "switch:cutout": "python3 reels/switch/cutout.py",
+    "switch:audio": "REEL=switch python3 scripts/process_vo_take.py && python3 reels/switch/build_timeline.py && REEL=switch python3 scripts/make_music.py && REEL=switch python3 scripts/mix_audio.py",
+    "switch:render": "remotion render SwitchReel9x16 out/switch/reel_9x16_raw.mp4 --codec=h264 --crf=16 && remotion render SwitchReel1x1 out/switch/reel_1x1_raw.mp4 --codec=h264 --crf=16 && remotion still SwitchCover out/switch/cover_1080x1920.png",
+    "switch:build": "npm run switch:cutout && npm run switch:audio && REEL=switch node scripts/make_srt.mjs && npm run switch:render && REEL=switch bash scripts/finalize.sh && REEL=switch bash scripts/verify.sh"
   },
   "dependencies": {
     "@remotion/cli": "4.0.532",

@@ -46,6 +46,10 @@ STYLES = {
     "osmo": dict(seed=81, dur=56.0, phase=0.0, drop=4.0, end_lift=53.0, stop=54.0,
                  chords=[[57, 61, 64], [52, 56, 59], [54, 57, 61], [50, 54, 57]], roots=[45, 40, 42, 38],
                  final=[57, 61, 64, 69], final_bass=33, arp=[0, 1, 2, 1, 0, 2, 1, 2]),
+    # Nintendo Switch OLED reel: playful C-major (I-V-vi-IV) bounce; drop on the reveal at 2.0 s
+    "switch": dict(seed=93, phase=0.0, drop=2.0, end_lift=28.0, stop=28.0,
+                   chords=[[60, 64, 67], [55, 59, 62], [57, 60, 64], [53, 57, 60]], roots=[48, 43, 45, 41],
+                   final=[60, 64, 67, 72], final_bass=36, arp=[0, 2, 1, 2, 0, 2, 1, 0]),
 }
 ST = STYLES[REEL]
 SR = 48000
