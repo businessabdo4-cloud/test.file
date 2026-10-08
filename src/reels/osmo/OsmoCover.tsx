@@ -20,11 +20,11 @@ export const OsmoCover: React.FC = () => {
         <div style={{ ...heavy, fontSize: 92, letterSpacing: -2 }}>Pocket 4 & Pocket 3</div>
         <div style={{ ...heavy, fontSize: 40, letterSpacing: 6, color: COLORS.blue, background: "#fff", padding: "6px 24px 10px", borderRadius: 14, textShadow: "none" }}>CREATOR COMBO</div>
       </div>
-      <div style={{ position: "absolute", left: 470, top: 760, transform: "rotate(-4deg)", filter: "drop-shadow(0 40px 50px rgba(6,14,90,0.5))" }}>
+      <div style={{ position: "absolute", left: 380, top: 760, transform: "rotate(-4deg)", filter: "drop-shadow(0 40px 50px rgba(6,14,90,0.5))" }}>
         <ProductImage src={OFFICIAL.pocket4.src} aspect={OFFICIAL.pocket4.aspect} width={250} sweep={0.45} />
       </div>
-      <div style={{ position: "absolute", left: 700, top: 800, transform: "rotate(5deg)", filter: "drop-shadow(0 40px 50px rgba(6,14,90,0.5))" }}>
-        <ProductImage src={OFFICIAL.combo.src} aspect={OFFICIAL.combo.aspect} width={340} sweep={0.6} />
+      <div style={{ position: "absolute", left: 690, top: 800, transform: "rotate(5deg)", filter: "drop-shadow(0 40px 50px rgba(6,14,90,0.5))" }}>
+        <ProductImage src={OFFICIAL.combo.src} aspect={OFFICIAL.combo.aspect} width={360} sweep={0.6} />
       </div>
       <div style={{ position: "absolute", left: 20, top: 1080 }}>
         <Citybot id="xcover" width={400} expression="excited" mouth="grin" tilt={-6} rightArm={{ rot: 72, hand: "thumb" }} leftArm={{ rot: 30, hand: "open" }} hover={12} />
