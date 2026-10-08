@@ -17,8 +17,8 @@ export const OneplusCover: React.FC = () => {
       <div style={{ position: "absolute", top: 280, left: 0, right: 0, display: "flex", flexDirection: "column", alignItems: "center", gap: 16 }}>
         <div dir="rtl" style={{ background: "#fff", color: COLORS.blue, fontFamily: FONT, fontWeight: 900, fontSize: 58, padding: "0 40px 10px", borderRadius: 999 }}>أيام بلا شارج!</div>
         <div style={{ display: "flex", alignItems: "center", gap: 20, marginTop: 16 }}>
-          <div style={{ ...heavy, fontSize: 112, letterSpacing: -3 }}>OnePlus Watch</div>
-          <div style={{ ...heavy, fontSize: 118, color: COLORS.blue, background: "#fff", padding: "0 28px 6px", borderRadius: 22, textShadow: "none" }}>3</div>
+          <div style={{ ...heavy, fontSize: 98, letterSpacing: -3 }}>OnePlus Watch</div>
+          <div style={{ ...heavy, fontSize: 104, color: COLORS.blue, background: "#fff", padding: "0 26px 6px", borderRadius: 22, textShadow: "none" }}>3</div>
         </div>
         <div style={{ ...heavy, fontSize: 44, letterSpacing: 6, opacity: 0.95 }}>EMERALD TITANIUM</div>
       </div>
