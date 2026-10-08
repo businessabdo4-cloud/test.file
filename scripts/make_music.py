@@ -42,12 +42,16 @@ STYLES = {
     "oneplus": dict(seed=69, phase=0.0, drop=2.0, end_lift=28.0, stop=28.0,
                     chords=[[59, 62, 66], [55, 59, 62], [62, 66, 69], [57, 61, 64]], roots=[47, 43, 50, 45],
                     final=[59, 62, 66, 71], final_bass=35, arp=[0, 1, 2, 1, 2, 0, 1, 2]),
+    # DJI Osmo reel (56 s, user-approved over 30 s): bright A-major creator groove; drop on the reveal at 4.0 s
+    "osmo": dict(seed=81, dur=56.0, phase=0.0, drop=4.0, end_lift=53.0, stop=54.0,
+                 chords=[[57, 61, 64], [52, 56, 59], [54, 57, 61], [50, 54, 57]], roots=[45, 40, 42, 38],
+                 final=[57, 61, 64, 69], final_bass=33, arp=[0, 1, 2, 1, 0, 2, 1, 2]),
 }
 ST = STYLES[REEL]
 SR = 48000
 BPM = 120
 BEAT = 60 / BPM
-DUR = 30.0
+DUR = ST.get("dur", 30.0)  # per-reel length (30 s unless a reel was approved to run longer)
 N = int(SR * DUR)
 rng = np.random.default_rng(ST["seed"])
 
@@ -187,7 +191,7 @@ K, C, HC, HO, S = kick(), clap(), hat(), hat(True), snare()
 pad_bus_l, pad_bus_r = np.zeros(N), np.zeros(N)
 sidechain = np.ones(N)
 
-FINAL_T = 29.0
+FINAL_T = DUR - 1.0
 for bar in range(BARS):
     t0 = PHASE - (4 * BEAT if PHASE else 0) + bar * 4 * BEAT
     chord, root = CHORDS[bar % 4], ROOTS[bar % 4]
@@ -244,10 +248,10 @@ place(impact(), DROP, 0.6)
 # small lift into the end card
 place(riser(1.0), ST["end_lift"] - 1.0, 0.6)
 place(crash(), ST["end_lift"], 0.8)
-place(riser(1.0), 28.0, 0.7)
+place(riser(1.0), DUR - 2.0, 0.7)
 
-# final hit at 29.0 s, rings to the end
-tf = 29.0
+# final hit 1 s before the end (end-card hold), rings to the end
+tf = FINAL_T
 place(impact(), tf, 1.0)
 place(crash(), tf, 1.0)
 place(K, tf, 1.0)

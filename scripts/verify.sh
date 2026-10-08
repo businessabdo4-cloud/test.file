@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# Verifies the rendered reels: <= 900 frames / 30.0 s, resolution, H.264, 30 fps, AAC audio.
+# Verifies the rendered reels: <= 30.0 s (900 frames) unless reels/<id>/reel.json sets an approved
+# "maxSeconds", resolution, H.264, 30 fps, yuv420p, AAC audio.
 set -uo pipefail
 cd "$(dirname "$0")/.."
 fail=0
@@ -18,13 +19,14 @@ check() {
   [ "$vw" = "$w" ] && [ "$vh" = "$h" ] || ok=FAIL
   [ "$fps" = "30/1" ] || ok=FAIL
   [ "$pix" = "yuv420p" ] || ok=FAIL
-  [ "$frames" -le 900 ] || ok=FAIL
-  awk "BEGIN{exit !($dur <= 30.0)}" || ok=FAIL
+  [ "$frames" -le $((MAXS * 30)) ] || ok=FAIL
+  awk "BEGIN{exit !($dur <= $MAXS)}" || ok=FAIL
   echo "$ok  $f  ${vw}x${vh} $codec $pix ${fps}fps frames=$frames duration=${dur}s audio=[$a]"
   [ $ok = OK ] || fail=1
 }
 REEL=${REEL:-iphone18}
 if [ "$REEL" = iphone18 ]; then OUT=out; else OUT=out/$REEL; fi
+MAXS=$(python3 -c "import json,os; f='reels/$REEL/reel.json'; print(json.load(open(f)).get('maxSeconds', 30) if os.path.exists(f) else 30)")
 check $OUT/reel_9x16.mp4 1080 1920
 check $OUT/reel_1x1.mp4 1080 1080
 exit $fail

@@ -37,6 +37,7 @@ npm run studio                   # interactive preview
 | Sony WH-1000XM6 + XM5 (Darija) | `SonyReel9x16`, `SonyReel1x1`, `SonyCover` | `out/sony/` | `npm run sony:build` |
 | Ray-Ban Meta Headliner + Wayfarer Gen 2 (Darija) | `RaybanReel9x16`, `RaybanReel1x1`, `RaybanCover` | `out/rayban/` | `npm run rayban:build` |
 | OnePlus Watch 3 Emerald Titanium (Darija) | `OneplusReel9x16`, `OneplusReel1x1`, `OneplusCover` | `out/oneplus/` | `npm run oneplus:build` |
+| DJI Osmo Pocket 4 + Pocket 3 Creator Combo (Darija, **56 s**, user-approved over 30 s) | `OsmoReel9x16`, `OsmoReel1x1`, `OsmoCover` | `out/osmo/` | `npm run osmo:build` |
 
 Shared parts: Citybot (`src/citybot`), its actor engine (`src/components/CitybotActor.tsx`, with
 per-reel acting in `src/reels/<reel>/direction`), bidi-aware subtitles (French, Darija or mixed),

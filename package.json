@@ -42,7 +42,11 @@
     "oneplus:cutout": "python3 reels/oneplus/cutout.py",
     "oneplus:audio": "REEL=oneplus python3 scripts/process_vo_take.py && python3 reels/oneplus/build_timeline.py && REEL=oneplus python3 scripts/make_music.py && REEL=oneplus python3 scripts/mix_audio.py",
     "oneplus:render": "remotion render OneplusReel9x16 out/oneplus/reel_9x16_raw.mp4 --codec=h264 --crf=16 && remotion render OneplusReel1x1 out/oneplus/reel_1x1_raw.mp4 --codec=h264 --crf=16 && remotion still OneplusCover out/oneplus/cover_1080x1920.png",
-    "oneplus:build": "npm run oneplus:cutout && npm run oneplus:audio && REEL=oneplus node scripts/make_srt.mjs && npm run oneplus:render && REEL=oneplus bash scripts/finalize.sh && REEL=oneplus bash scripts/verify.sh"
+    "oneplus:build": "npm run oneplus:cutout && npm run oneplus:audio && REEL=oneplus node scripts/make_srt.mjs && npm run oneplus:render && REEL=oneplus bash scripts/finalize.sh && REEL=oneplus bash scripts/verify.sh",
+    "osmo:cutout": "python3 reels/osmo/cutout.py",
+    "osmo:audio": "REEL=osmo python3 scripts/process_vo_take.py && python3 reels/osmo/build_timeline.py && REEL=osmo python3 scripts/make_music.py && REEL=osmo python3 scripts/mix_audio.py",
+    "osmo:render": "remotion render OsmoReel9x16 out/osmo/reel_9x16_raw.mp4 --codec=h264 --crf=16 && remotion render OsmoReel1x1 out/osmo/reel_1x1_raw.mp4 --codec=h264 --crf=16 && remotion still OsmoCover out/osmo/cover_1080x1920.png",
+    "osmo:build": "npm run osmo:cutout && npm run osmo:audio && REEL=osmo node scripts/make_srt.mjs && npm run osmo:render && REEL=osmo bash scripts/finalize.sh && REEL=osmo bash scripts/verify.sh"
   },
   "dependencies": {
     "@remotion/cli": "4.0.532",

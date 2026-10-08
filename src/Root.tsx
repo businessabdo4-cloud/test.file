@@ -21,6 +21,9 @@ import { RTL } from "./reels/rayban/timeline";
 import { OneplusReel } from "./reels/oneplus/OneplusReel";
 import { OneplusCover } from "./reels/oneplus/OneplusCover";
 import { OTL } from "./reels/oneplus/timeline";
+import { OsmoReel } from "./reels/osmo/OsmoReel";
+import { OsmoCover } from "./reels/osmo/OsmoCover";
+import { XTL } from "./reels/osmo/timeline";
 
 // Hard length limit: never more than 900 frames (30.0 s).
 const DURATION = Math.min(TL.totalFrames, MAX_FRAMES);
@@ -45,6 +48,10 @@ export const RemotionRoot: React.FC = () => (
     <Composition id="OneplusReel9x16" component={OneplusReel} durationInFrames={Math.min(OTL.totalFrames, MAX_FRAMES)} fps={FPS} width={1080} height={1920} defaultProps={{ layout: LAYOUT_9x16 }} />
     <Composition id="OneplusReel1x1" component={OneplusReel} durationInFrames={Math.min(OTL.totalFrames, MAX_FRAMES)} fps={FPS} width={1080} height={1080} defaultProps={{ layout: LAYOUT_1x1 }} />
     <Still id="OneplusCover" component={OneplusCover} width={1080} height={1920} />
+    {/* DJI Osmo: the user approved going over 30 s for this reel (full 60 s VO kept), so no MAX_FRAMES cap */}
+    <Composition id="OsmoReel9x16" component={OsmoReel} durationInFrames={XTL.totalFrames} fps={FPS} width={1080} height={1920} defaultProps={{ layout: LAYOUT_9x16 }} />
+    <Composition id="OsmoReel1x1" component={OsmoReel} durationInFrames={XTL.totalFrames} fps={FPS} width={1080} height={1080} defaultProps={{ layout: LAYOUT_1x1 }} />
+    <Still id="OsmoCover" component={OsmoCover} width={1080} height={1920} />
     <Still id="CitybotSheet" component={CitybotSheet} width={1920} height={1080} />
   </>
 );
