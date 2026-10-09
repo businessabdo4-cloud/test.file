@@ -50,7 +50,11 @@
     "switch:cutout": "python3 reels/switch/cutout.py",
     "switch:audio": "REEL=switch python3 scripts/process_vo_take.py && python3 reels/switch/build_timeline.py && REEL=switch python3 scripts/make_music.py && REEL=switch python3 scripts/mix_audio.py",
     "switch:render": "remotion render SwitchReel9x16 out/switch/reel_9x16_raw.mp4 --codec=h264 --crf=16 && remotion render SwitchReel1x1 out/switch/reel_1x1_raw.mp4 --codec=h264 --crf=16 && remotion still SwitchCover out/switch/cover_1080x1920.png",
-    "switch:build": "npm run switch:cutout && npm run switch:audio && REEL=switch node scripts/make_srt.mjs && npm run switch:render && REEL=switch bash scripts/finalize.sh && REEL=switch bash scripts/verify.sh"
+    "switch:build": "npm run switch:cutout && npm run switch:audio && REEL=switch node scripts/make_srt.mjs && npm run switch:render && REEL=switch bash scripts/finalize.sh && REEL=switch bash scripts/verify.sh",
+    "iphones:cutout": "python3 reels/iphones/cutout.py",
+    "iphones:audio": "REEL=iphones python3 scripts/process_vo_take.py && python3 reels/iphones/build_timeline.py && REEL=iphones python3 scripts/make_music.py && REEL=iphones python3 scripts/mix_audio.py",
+    "iphones:render": "remotion render IphonesReel9x16 out/iphones/reel_9x16_raw.mp4 --codec=h264 --crf=16 && remotion render IphonesReel1x1 out/iphones/reel_1x1_raw.mp4 --codec=h264 --crf=16 && remotion still IphonesCover out/iphones/cover_1080x1920.png",
+    "iphones:build": "npm run iphones:cutout && npm run iphones:audio && REEL=iphones node scripts/make_srt.mjs && npm run iphones:render && REEL=iphones bash scripts/finalize.sh && REEL=iphones bash scripts/verify.sh"
   },
   "dependencies": {
     "@remotion/cli": "4.0.532",

@@ -27,6 +27,9 @@ import { XTL } from "./reels/osmo/timeline";
 import { SwitchReel } from "./reels/switch/SwitchReel";
 import { SwitchCover } from "./reels/switch/SwitchCover";
 import { NTL } from "./reels/switch/timeline";
+import { IphonesReel } from "./reels/iphones/IphonesReel";
+import { IphonesCover } from "./reels/iphones/IphonesCover";
+import { ITL } from "./reels/iphones/timeline";
 
 // Hard length limit: never more than 900 frames (30.0 s).
 const DURATION = Math.min(TL.totalFrames, MAX_FRAMES);
@@ -58,6 +61,10 @@ export const RemotionRoot: React.FC = () => (
     <Composition id="SwitchReel9x16" component={SwitchReel} durationInFrames={Math.min(NTL.totalFrames, MAX_FRAMES)} fps={FPS} width={1080} height={1920} defaultProps={{ layout: LAYOUT_9x16 }} />
     <Composition id="SwitchReel1x1" component={SwitchReel} durationInFrames={Math.min(NTL.totalFrames, MAX_FRAMES)} fps={FPS} width={1080} height={1080} defaultProps={{ layout: LAYOUT_1x1 }} />
     <Still id="SwitchCover" component={SwitchCover} width={1080} height={1920} />
+    {/* iPhone 18 Pro / 17 Pro: the user approved going over 30 s for this reel (full VO at natural speed), so no MAX_FRAMES cap */}
+    <Composition id="IphonesReel9x16" component={IphonesReel} durationInFrames={ITL.totalFrames} fps={FPS} width={1080} height={1920} defaultProps={{ layout: LAYOUT_9x16 }} />
+    <Composition id="IphonesReel1x1" component={IphonesReel} durationInFrames={ITL.totalFrames} fps={FPS} width={1080} height={1080} defaultProps={{ layout: LAYOUT_1x1 }} />
+    <Still id="IphonesCover" component={IphonesCover} width={1080} height={1920} />
     <Still id="CitybotSheet" component={CitybotSheet} width={1920} height={1080} />
   </>
 );

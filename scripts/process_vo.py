@@ -124,7 +124,9 @@ SPOKEN = {"18": "dix-huit", "100": "cent pour cent", "%": "", "citystore.ma": "c
           "2x": "deux fois", "37mp": "trente sept me ga pik sel", "107gb": "cent sept gi ga", "240": "mi tin w ar bi in",
           "32": "tnin w tla tin", "4k": "four ka", "mic": "maik", "creator": "kri ei tor", "content": "kon tent",
           "nintendo": "nin ten do", "switch": "switch", "oled": "o led", "tv": "ti vi", "64gb": "soi xan te ka tre gi ga", "joy-con": "djoy kon",
-          "7": "sept"}
+          "7": "sept",
+          "17": "seventeen", "256gb": "two fifty six gi ga", "a20": "ei twen ti", "a19": "ei nain tin", "48mp": "for ti eit me ga pik sel",
+          "8x": "eit iks", "6.3": "six point three", "promotion": "pro mo chen", "burgundy": "bur gun di", "sim": "sim"}
 ARABIC = "\\u0621-\\u063F\\u0641-\\u064A\\u0671-\\u06D3"  # Arabic letters (no punctuation, no tatweel)
 
 

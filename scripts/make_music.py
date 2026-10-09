@@ -50,6 +50,10 @@ STYLES = {
     "switch": dict(seed=93, phase=0.0, drop=2.0, end_lift=28.0, stop=28.0,
                    chords=[[60, 64, 67], [55, 59, 62], [57, 60, 64], [53, 57, 60]], roots=[48, 43, 45, 41],
                    final=[60, 64, 67, 72], final_bass=36, arp=[0, 2, 1, 2, 0, 2, 1, 0]),
+    # iPhone 18 Pro / 17 Pro reel (38 s, user-approved over 30 s): sleek F#-minor pulse; drop on the reveal at 4.5 s
+    "iphones": dict(seed=105, dur=38.0, phase=0.5, drop=4.5, end_lift=35.0, stop=36.5,
+                    chords=[[54, 57, 61], [50, 54, 57], [57, 61, 64], [52, 56, 59]], roots=[42, 38, 45, 40],
+                    final=[54, 57, 61, 66], final_bass=30, arp=[0, 1, 2, 1, 2, 1, 0, 2]),
 }
 ST = STYLES[REEL]
 SR = 48000
