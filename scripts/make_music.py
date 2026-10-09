@@ -54,6 +54,10 @@ STYLES = {
     "iphones": dict(seed=105, dur=38.0, phase=0.5, drop=4.5, end_lift=35.0, stop=36.5,
                     chords=[[54, 57, 61], [50, 54, 57], [57, 61, 64], [52, 56, 59]], roots=[42, 38, 45, 40],
                     final=[54, 57, 61, 66], final_bass=30, arp=[0, 1, 2, 1, 2, 1, 0, 2]),
+    # DJI Mic Mini 2 reel: noisy hook (no music), clean D-major groove dropping with the mic at 1.5 s
+    "micmini": dict(seed=117, phase=1.5, drop=1.5, end_lift=28.0, stop=28.0, hook_mode="noise",
+                    chords=[[62, 66, 69], [59, 62, 66], [55, 59, 62], [57, 61, 64]], roots=[50, 47, 43, 45],
+                    final=[62, 66, 69, 74], final_bass=38, arp=[0, 2, 1, 2, 0, 1, 2, 1]),
 }
 ST = STYLES[REEL]
 SR = 48000

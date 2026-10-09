@@ -30,6 +30,9 @@ import { NTL } from "./reels/switch/timeline";
 import { IphonesReel } from "./reels/iphones/IphonesReel";
 import { IphonesCover } from "./reels/iphones/IphonesCover";
 import { ITL } from "./reels/iphones/timeline";
+import { MicminiReel } from "./reels/micmini/MicminiReel";
+import { MicminiCover } from "./reels/micmini/MicminiCover";
+import { MTL } from "./reels/micmini/timeline";
 
 // Hard length limit: never more than 900 frames (30.0 s).
 const DURATION = Math.min(TL.totalFrames, MAX_FRAMES);
@@ -65,6 +68,9 @@ export const RemotionRoot: React.FC = () => (
     <Composition id="IphonesReel9x16" component={IphonesReel} durationInFrames={ITL.totalFrames} fps={FPS} width={1080} height={1920} defaultProps={{ layout: LAYOUT_9x16 }} />
     <Composition id="IphonesReel1x1" component={IphonesReel} durationInFrames={ITL.totalFrames} fps={FPS} width={1080} height={1080} defaultProps={{ layout: LAYOUT_1x1 }} />
     <Still id="IphonesCover" component={IphonesCover} width={1080} height={1920} />
+    <Composition id="MicminiReel9x16" component={MicminiReel} durationInFrames={Math.min(MTL.totalFrames, MAX_FRAMES)} fps={FPS} width={1080} height={1920} defaultProps={{ layout: LAYOUT_9x16 }} />
+    <Composition id="MicminiReel1x1" component={MicminiReel} durationInFrames={Math.min(MTL.totalFrames, MAX_FRAMES)} fps={FPS} width={1080} height={1080} defaultProps={{ layout: LAYOUT_1x1 }} />
+    <Still id="MicminiCover" component={MicminiCover} width={1080} height={1920} />
     <Still id="CitybotSheet" component={CitybotSheet} width={1920} height={1080} />
   </>
 );

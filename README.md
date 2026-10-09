@@ -32,6 +32,7 @@ npm run studio                   # interactive preview
 | Reel | Compositions | Outputs | Build |
 |---|---|---|---|
 | iPhone 18 Pro (FR) | `Reel9x16`, `Reel1x1`, `Cover` | `out/` | `npm run build` |
+| DJI Mic Mini 2 (Darija) | `MicminiReel9x16`, `MicminiReel1x1`, `MicminiCover` | `out/micmini/` | `npm run micmini:build` |
 | Apple Watch Ultra 4 (Darija) | `WatchReel9x16`, `WatchReel1x1`, `WatchCover` | `out/watch/` | `npm run watch:build` |
 | Galaxy Watch8 Classic + Ultra2 (Darija) | `GalaxyReel9x16`, `GalaxyReel1x1`, `GalaxyCover` | `out/galaxy/` | `npm run galaxy:build` |
 | Sony WH-1000XM6 + XM5 (Darija) | `SonyReel9x16`, `SonyReel1x1`, `SonyCover` | `out/sony/` | `npm run sony:build` |

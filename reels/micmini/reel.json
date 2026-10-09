@@ -1,0 +1,11 @@
+{
+ "id": "micmini",
+ "vo_mode": "take",
+ "take": "vo/vo_full_take.wav",
+ "takeBoundaries": [1.89, 7.70, 12.60, 17.37, 22.24, 27.27, 31.42],
+ "lead": 0.06,
+ "voEndBy": 28.9,
+ "maxPause": 0.10,
+ "sentPause": 0.16,
+ "silenceDb": -40.0
+}
