@@ -5,16 +5,19 @@ approved going over 30 s ("just use this VO, even if it surpasses the 30s rule")
 (pauses tightened only). `reels/airpods/reel.json` sets `maxSeconds: 60`.
 
 ## Product visuals
-Images supplied by City Store on 2026-10-10 (source URLs: _add_), originals in `assets/airpods/products/src/`,
-processed by `reels/airpods/cutout.py` (all **enhanced**: Lanczos upscale + unsharp mask, then cut out with a very
-tight key because the product is white on white):
+**v2 (2026-10-10):** City Store supplied higher-quality images, already transparent (RGBA), originals in
+`assets/airpods/products/src/`; `reels/airpods/cutout.py` only crops them to their alpha (no upscaling/keying):
 
-| Original | Output | Notes |
-|---|---|---|
-| `airpods5_open_case.png` (752×636) | `open_case.png` | product shot, enhanced 2x |
-| `airpods5_box_contents.png` (700×700, "Contenu du coffret" slide) | `buds.png`, `case.png` | the earbuds and the case cropped out **without** the slide text, enhanced 2.5x |
-| `rumor_graphic_NOT_USED.png` | (none) | **not used**: pre-launch rumour graphic ("launching next month"), not an official image |
-| `lesnumeriques_review_photo_NOT_USED.webp` | (none) | **not used**: third-party review photo with the Les Numériques watermark |
+| Original | Output |
+|---|---|
+| `hq_airpods5_open_case.webp` (1000×1000) | `open_case.png` |
+| `hq_airpods5_buds.webp` (2000×2000) | `buds.png` |
+| `hq_airpods5_case_with_buds.png` (1500×1125) | `case.png` |
+| `hq_stem_controls_diagram_NOT_USED.png` (198×292) | not used (tiny control diagram with touch-zone overlays) |
+
+The first, low-resolution set (`airpods5_open_case.png`, `airpods5_box_contents.png`, which had been upscaled and
+keyed) is kept in `src/` for reference but no longer used. Also **not used**: `rumor_graphic_NOT_USED.png`
+(pre-launch rumour graphic) and `lesnumeriques_review_photo_NOT_USED.webp` (third-party photo with watermark).
 
 The Apple logo is not shown anywhere in the reel; the charging pad is a generic drawing.
 

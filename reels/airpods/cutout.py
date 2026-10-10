@@ -1,44 +1,29 @@
 """AirPods 5 images -> assets/airpods/products/ + public/airpods/products/.
-- airpods5_open_case.png (752 px): enhanced 2x (Lanczos + unsharp) then cut out
-- airpods5_box_contents.png (700 px): the earbuds and the case are cropped out separately (without the
-  slide's text), enhanced 2.5x, then cut out
-- NOT USED: rumor_graphic_NOT_USED.png (pre-launch rumour graphic, not official) and
-  lesnumeriques_review_photo_NOT_USED.webp (third-party review photo with watermark)
-White product on white background: very tight key (tol 2) so the white plastic edges survive."""
-import json, pathlib, shutil, sys
-from PIL import Image, ImageEnhance, ImageFilter
-sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[2] / "scripts"))
-from cutout_products import cutout  # noqa: E402
+
+v2 (2026-10-10): City Store supplied higher-quality images, already transparent (RGBA, 1000-2000 px), so they
+are only cropped to their alpha (no upscaling, no keying):
+- hq_airpods5_open_case.webp -> open_case.png   (earbuds above the open case)
+- hq_airpods5_buds.webp      -> buds.png        (the two earbuds)
+- hq_airpods5_case_with_buds.png -> case.png    (case with the earbuds inside)
+NOT USED: hq_stem_controls_diagram_NOT_USED.png (198 px control diagram with touch-zone overlays),
+the first, low-res set (airpods5_open_case.png / airpods5_box_contents.png, kept in src/ for reference),
+rumor_graphic_NOT_USED.png (pre-launch rumour graphic) and lesnumeriques_review_photo_NOT_USED.webp
+(third-party review photo with watermark)."""
+import json, pathlib, shutil
+from PIL import Image
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]
 src = ROOT / "assets" / "airpods" / "products" / "src"
 dst = ROOT / "assets" / "airpods" / "products"
 pub = ROOT / "public" / "airpods" / "products"
 pub.mkdir(parents=True, exist_ok=True)
+JOBS = {"open_case": "hq_airpods5_open_case.webp", "buds": "hq_airpods5_buds.webp", "case": "hq_airpods5_case_with_buds.png"}
 manifest = {}
-
-
-def enhance(im, scale):
-    im = im.convert("RGB").resize((round(im.width * scale), round(im.height * scale)), Image.LANCZOS)
-    im = im.filter(ImageFilter.UnsharpMask(radius=1.8, percent=80, threshold=2))
-    return ImageEnhance.Contrast(im).enhance(1.03)
-
-
-JOBS = {  # key -> (source, crop box or None, scale)
-    "open_case": ("airpods5_open_case.png", None, 2),
-    "buds": ("airpods5_box_contents.png", (92, 215, 330, 445), 2.5),
-    "case": ("airpods5_box_contents.png", (368, 222, 612, 445), 2.5),
-}
-for key, (name, box, scale) in JOBS.items():
-    im = Image.open(src / name)
-    if box:
-        im = im.crop(box)
-    bg = tuple(int(v) for v in im.convert("RGB").getpixel((1, 1)))
-    tmp = f"_{key}_x{scale}.png"
-    enhance(im, scale).save(src / tmp)
-    cutout(tmp, f"{key}.png", bg, tol=2, soft=8, src_dir=src, dst_dir=dst, hole_min_area=600)
+for key, name in JOBS.items():
+    im = Image.open(src / name).convert("RGBA")
+    im = im.crop(im.getchannel("A").point(lambda a: 255 if a > 8 else 0).getbbox())
+    im.save(dst / f"{key}.png")
     shutil.copy(dst / f"{key}.png", pub / f"{key}.png")
-    w, h = Image.open(dst / f"{key}.png").size
-    manifest[key] = {"src": f"airpods/products/{key}.png", "w": w, "h": h}
+    manifest[key] = {"src": f"airpods/products/{key}.png", "w": im.width, "h": im.height}
 (ROOT / "public" / "airpods" / "data" / "products.json").write_text(json.dumps(manifest, indent=1) + "\n")
 print(json.dumps(manifest))
