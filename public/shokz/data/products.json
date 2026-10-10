@@ -1,23 +1,18 @@
 {
- "_standIn": true,
+ "_standIn": false,
  "hero": {
   "src": "shokz/products/hero.png",
-  "w": 580,
-  "h": 303
+  "w": 1717,
+  "h": 766
  },
  "front": {
   "src": "shokz/products/front.png",
-  "w": 1458,
-  "h": 589
+  "w": 1499,
+  "h": 708
  },
- "side": {
-  "src": "shokz/products/side.png",
-  "w": 509,
-  "h": 343
- },
- "runner": {
-  "src": "shokz/products/runner.png",
-  "w": 700,
-  "h": 653
+ "ear": {
+  "src": "shokz/products/ear.jpg",
+  "w": 900,
+  "h": 930
  }
 }

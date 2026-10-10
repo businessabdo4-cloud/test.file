@@ -11,6 +11,8 @@ export const zevList = (k: string) => evListIn(ZTL, k);
 type P = { src: string; w: number; h: number };
 const PR = productsJson as unknown as Record<string, P> & { _standIn?: boolean };
 const img = (k: string) => ({ src: PR[k].src, aspect: PR[k].h / PR[k].w });
-export const OFFICIAL = { hero: img("hero"), front: img("front"), side: img("side"), runner: img("runner") };
+export const OFFICIAL = { hero: img("hero"), front: img("front"), ear: img("ear") };
+// transducer position inside the "ear" photo card (fractions)
+export const EAR_TRANSDUCER = { x: 0.55, y: 0.5 };
 /** true while the OpenRun Pro 2 images are used as stand-ins (a visible "provisional" tag is drawn) */
 export const STAND_IN = Boolean(PR._standIn);

@@ -6,7 +6,7 @@ import { useLayout } from "../../layout";
 import { IconName, LineIcon } from "../../components/Icons";
 import { ProductImage } from "../../components/ProductImage";
 import { Burst, SceneShell, useSceneFrame } from "../../components/SceneShell";
-import { OFFICIAL, STAND_IN, zev, zscene } from "./timeline";
+import { EAR_TRANSDUCER, OFFICIAL, STAND_IN, zev, zscene } from "./timeline";
 
 const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
 const easeOut = (x: number) => 1 - Math.pow(1 - x, 3);
@@ -80,7 +80,7 @@ export const ZHook: React.FC = () => {
   const frame = useSceneFrame("hook");
   const L = useLayout();
   const P = L.portrait;
-  const G = P ? { title: 236, tsize: 70, bud: { x: 640, y: 420, w: 200 }, car: { y: 760, w: 380 }, warn: { y: 1100 } } : { title: 40, tsize: 54, bud: { x: 720, y: 160, w: 150 }, car: { y: 380, w: 300 }, warn: { y: 600 } };
+  const G = P ? { title: 236, tsize: 70, bud: { x: 720, y: 420, w: 150 }, car: { y: 600, w: 360 }, warn: { y: 330 } } : { title: 40, tsize: 54, bud: { x: 800, y: 210, w: 120 }, car: { y: 370, w: 280 }, warn: { y: 118 } };
   const budAt = zev("hook.buds"), carAt = zev("hook.car"), dAt = zev("hook.danger");
   const bud = pop(frame, budAt);
   const carX = interpolate(frame, [carAt - 6, dAt + 10], [-(G.car.w + 40), L.w * 0.55], { ...clamp, easing: (x) => x * x });
@@ -116,7 +116,7 @@ export const ZHook: React.FC = () => {
         </div>
       )}
       {frame >= dAt - 1 && (
-        <div style={{ position: "absolute", left: P ? 340 : 0, right: P ? 70 : 0, top: G.warn.y, display: "flex", justifyContent: "center" }}>
+        <div style={{ position: "absolute", left: 0, right: P ? 70 : 0, top: G.warn.y, display: "flex", justifyContent: "center" }}>
           <div style={{ ...warn, display: "flex", alignItems: "center", gap: 12, fontFamily: FONT, fontWeight: 900, fontSize: P ? 46 : 40, color: "#fff", background: "#FF3B5C", padding: "8px 28px", borderRadius: 999, boxShadow: "0 12px 30px rgba(80,0,20,0.4)", whiteSpace: "nowrap" }}>
             ⚠ DANGER
           </div>
@@ -164,51 +164,40 @@ export const ZBone: React.FC = () => {
   const frame = useSceneFrame("bone");
   const L = useLayout();
   const P = L.portrait;
-  const G = P ? { head: { cx: 470, cy: 640, s: 1.4 }, chips: { y: 1080 }, size: 36 } : { head: { cx: 300, cy: 470, s: 1.05 }, chips: { y: 220 }, size: 32 };
-  const tAt = zev("bn.tech"), bAt = zev("bn.bones"), eAt = zev("bn.ears"), oAt = zev("bn.open"), hAt = zev("bn.hear");
-  const s = G.head.s;
-  // vibration rings travel along the cheekbone
+  const G = P ? { card: { x: 140, y: 330, w: 690 }, chips: { y: 1080 }, size: 36 } : { card: { x: 40, y: 100, w: 470 }, chips: { y: 200 }, size: 32 };
+  const tAt = zev("bn.tech"), bAt = zev("bn.bones"), oAt = zev("bn.open"), hAt = zev("bn.hear");
+  const enter = sp(frame, tAt, { damping: 13, stiffness: 120 });
+  const cardH = G.card.w * OFFICIAL.ear.aspect;
+  const tx = G.card.x + EAR_TRANSDUCER.x * G.card.w, ty = G.card.y + EAR_TRANSDUCER.y * cardH;
+  // vibration rings from the transducer (bone conduction)
   const vib = Array.from({ length: 4 }).map((_, k) => {
     if (frame < bAt) return null;
     const life = ((frame - bAt + k * 6) % 24) / 24;
-    const r = (20 + 70 * life) * s;
-    return <circle key={k} cx={G.head.cx + 34 * s} cy={G.head.cy + 6 * s} r={r} fill="none" stroke={COLORS.cyan} strokeWidth={5} opacity={(1 - life) * 0.9} />;
+    const r = (60 + 160 * life) * (G.card.w / 760);
+    return <div key={k} style={{ position: "absolute", left: tx - r, top: ty - r, width: r * 2, height: r * 2, borderRadius: "50%", border: `5px solid ${COLORS.cyan}`, opacity: (1 - life) * 0.9 }} />;
   });
-  // ambient sounds reaching the open ear
-  const AMB: { at: number; icon: IconName; dx: number; dy: number }[] = [
-    { at: hAt, icon: "car", dx: -260, dy: -170 },
-    { at: hAt + 6, icon: "chat", dx: -300, dy: 40 },
-    { at: hAt + 12, icon: "run", dx: -220, dy: 230 },
+  // ambient sounds still reaching the open ear
+  const AMB: { at: number; icon: IconName; x: number; y: number }[] = [
+    { at: hAt, icon: "car", x: 0.08, y: 0.14 },
+    { at: hAt + 6, icon: "chat", x: 0.05, y: 0.55 },
+    { at: hAt + 12, icon: "run", x: 0.2, y: 0.9 },
   ];
-  const earX = G.head.cx - 20 * s, earY = G.head.cy - 10 * s;
   return (
     <SceneShell id="bone">
       <Heading frame={frame} at={tAt} title="Conduction osseuse" P={P} />
-      <svg width={L.w} height={L.h} style={{ position: "absolute", left: 0, top: 0 }}>
-        {/* side-view head silhouette (generic) */}
-        <g opacity={sp(frame, tAt)}>
-          <path d={`M ${G.head.cx - 120 * s} ${G.head.cy + 160 * s} C ${G.head.cx - 150 * s} ${G.head.cy + 40 * s}, ${G.head.cx - 160 * s} ${G.head.cy - 170 * s}, ${G.head.cx} ${G.head.cy - 190 * s} C ${G.head.cx + 130 * s} ${G.head.cy - 200 * s}, ${G.head.cx + 150 * s} ${G.head.cy - 60 * s}, ${G.head.cx + 150 * s} ${G.head.cy - 10 * s} L ${G.head.cx + 175 * s} ${G.head.cy + 50 * s} L ${G.head.cx + 145 * s} ${G.head.cy + 60 * s} C ${G.head.cx + 145 * s} ${G.head.cy + 130 * s}, ${G.head.cx + 90 * s} ${G.head.cy + 150 * s}, ${G.head.cx + 40 * s} ${G.head.cy + 150 * s} L ${G.head.cx + 30 * s} ${G.head.cy + 210 * s}`} fill="rgba(255,255,255,0.16)" stroke="#fff" strokeWidth={5} strokeLinejoin="round" />
-          {/* ear */}
-          <path d={`M ${earX} ${earY - 40 * s} C ${earX - 40 * s} ${earY - 40 * s}, ${earX - 44 * s} ${earY + 40 * s}, ${earX - 6 * s} ${earY + 44 * s}`} fill="none" stroke="#fff" strokeWidth={6} strokeLinecap="round" />
-          {/* headset: band around the back of the ear, transducer on the cheekbone */}
-          <path d={`M ${earX - 70 * s} ${earY + 110 * s} C ${earX - 80 * s} ${earY - 20 * s}, ${earX - 40 * s} ${earY - 90 * s}, ${G.head.cx + 30 * s} ${G.head.cy - 20 * s}`} fill="none" stroke="#2c2f36" strokeWidth={14 * s} strokeLinecap="round" opacity={ramp(frame, tAt + 4, tAt + 12)} />
-          <rect x={G.head.cx + 18 * s} y={G.head.cy - 20 * s} width={34 * s} height={46 * s} rx={12 * s} fill="#2c2f36" stroke={COLORS.cyan} strokeWidth={3} opacity={ramp(frame, tAt + 4, tAt + 12)} />
-        </g>
-        {vib}
-        {/* open-ear check */}
-        {frame >= oAt && (
-          <g transform={`translate(${earX - 30 * s} ${earY - 110 * s}) scale(${pop(frame, oAt)})`}>
-            <circle r={34} fill="#2BD27A" stroke="#fff" strokeWidth={5} />
-            <path d="M -14 0 L -3 11 L 16 -12" fill="none" stroke="#fff" strokeWidth={7} strokeLinecap="round" strokeLinejoin="round" />
-          </g>
-        )}
-      </svg>
+      <div style={{ position: "absolute", left: G.card.x, top: G.card.y, width: G.card.w, height: cardH, borderRadius: 34, overflow: "hidden", border: "6px solid rgba(255,255,255,0.9)", boxShadow: "0 30px 70px rgba(6,14,90,0.5)", transform: `translateY(${(1 - enter) * 900}px) rotate(${lerp(6, -1, enter)}deg)` }}>
+        <Img src={staticFile(OFFICIAL.ear.src)} style={{ width: "100%", height: "100%", objectFit: "cover", transform: `scale(${1 + 0.06 * ramp(frame, tAt, tAt + 240)})` }} />
+      </div>
+      {vib}
+      {frame >= oAt && (
+        <div style={{ position: "absolute", left: G.card.x + G.card.w * 0.3 - 34, top: G.card.y + cardH * 0.08, width: 68, height: 68, borderRadius: "50%", background: "#2BD27A", border: "5px solid #fff", display: "flex", alignItems: "center", justifyContent: "center", transform: `scale(${pop(frame, oAt)})`, boxShadow: "0 8px 20px rgba(6,14,90,0.4)" }}>
+          <LineIcon name="check" size={38} stroke={9} />
+        </div>
+      )}
       {AMB.map((a, i) => {
         if (frame < a.at) return null;
-        const k = easeOut(ramp(frame, a.at, a.at + 18));
-        const x = lerp(earX + a.dx, earX + a.dx * 0.55, k), y = lerp(earY + a.dy, earY + a.dy * 0.55, k);
         return (
-          <div key={i} style={{ position: "absolute", left: x - 40, top: y - 40, width: 80, height: 80, borderRadius: "50%", background: "#fff", display: "flex", alignItems: "center", justifyContent: "center", transform: `scale(${pop(frame, a.at)})`, boxShadow: "0 10px 24px rgba(6,14,90,0.35)" }}>
+          <div key={i} style={{ position: "absolute", left: G.card.x + a.x * G.card.w - 40, top: G.card.y + a.y * cardH - 40, width: 80, height: 80, borderRadius: "50%", background: "#fff", display: "flex", alignItems: "center", justifyContent: "center", transform: `scale(${pop(frame, a.at)})`, boxShadow: "0 10px 24px rgba(6,14,90,0.35)" }}>
             <LineIcon name={a.icon} size={50} stroke={7} color={COLORS.blue} />
           </div>
         );
@@ -227,33 +216,35 @@ export const ZLight: React.FC = () => {
   const frame = useSceneFrame("light");
   const L = useLayout();
   const P = L.portrait;
-  const G = P ? { card: { x: 70, y: 320, w: 560 }, g: { x: 650, y: 420, s: 170 }, chips: { y: 1000 } } : { card: { x: 50, y: 90, w: 400 }, g: { x: 520, y: 140, s: 140 }, chips: { y: 470 } };
+  const G = P ? { hero: { x: 100, y: 400, w: 860 }, g: { y: 790, s: 170 }, chips: { y: 1080 } } : { hero: { x: 40, y: 150, w: 560 }, g: { y: 150, s: 140 }, chips: { y: 470 } };
   const at = zscene("light").from;
   const gAt = zev("lt.grams"), sAt = zev("lt.steady"), rAt = zev("lt.run"), jAt = zev("lt.jump");
   const enter = sp(frame, at, { damping: 13, stiffness: 120 });
   const grams = Math.round(29 * easeOut(ramp(frame, gAt, gAt + 12)));
   const g1 = slam(frame, gAt, 2);
-  // the runner photo bounces on "run/jump" while the headset stays put
-  const bounce = frame >= rAt ? Math.abs(Math.sin((frame - rAt) * 0.45)) * -18 : 0;
-  const imgH = G.card.w * OFFICIAL.runner.aspect;
+  // bounces with the run / jump, but the fit stays locked (no wobble)
+  const bounce = frame >= rAt ? -Math.abs(Math.sin((frame - rAt) * 0.45)) * (frame >= jAt ? 60 : 26) : 0;
+  const lock = ramp(frame, sAt, sAt + 8);
+  const float = Math.sin(frame / 30 * Math.PI) * 10 * (1 - lock); // floats like a feather until "ثابت"
+  const imgH = G.hero.w * OFFICIAL.hero.aspect;
   return (
     <SceneShell id="light">
       <Heading frame={frame} at={at + 2} title="Ultra léger" P={P} />
-      <div style={{ position: "absolute", left: G.card.x, top: G.card.y, width: G.card.w, height: imgH, borderRadius: 34, overflow: "hidden", border: "6px solid #fff", background: "#fff", boxShadow: "0 30px 70px rgba(6,14,90,0.5)", transform: `translateY(${(1 - enter) * 900 + bounce}px) rotate(${lerp(8, -2, enter)}deg)` }}>
-        <Img src={staticFile(OFFICIAL.runner.src)} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+      <div style={{ position: "absolute", left: G.hero.x, top: G.hero.y, transform: `translateY(${(1 - enter) * -700 + bounce + float}px) rotate(${-3 + (1 - lock) * Math.sin(frame * 0.12) * 4}deg)`, filter: "drop-shadow(0 30px 40px rgba(6,14,90,0.45))" }}>
+        <ProductImage src={OFFICIAL.hero.src} aspect={OFFICIAL.hero.aspect} width={G.hero.w} sweep={interpolate(frame, [gAt, gAt + 16], [-0.3, 1.3], clamp)} />
+        {lock > 0 && <div style={{ position: "absolute", left: -12, top: -12, width: G.hero.w * 0.36, height: imgH + 24, borderRadius: 40, border: "5px solid #fff", opacity: lock * 0.9, boxShadow: `0 0 18px ${COLORS.cyan}` }} />}
       </div>
       {frame >= gAt - 1 && (
-        <div style={{ position: "absolute", left: G.g.x, top: G.g.y, display: "flex", flexDirection: "column", alignItems: "center", gap: 6, fontFamily: FONT, color: "#fff", ...g1 }}>
+        <div style={{ position: "absolute", left: P ? 0 : 600, right: P ? 70 : 40, top: G.g.y, display: "flex", flexDirection: "column", alignItems: "center", gap: 6, fontFamily: FONT, color: "#fff", ...g1 }}>
           <div style={{ fontWeight: 900, fontSize: G.g.s, lineHeight: 1, textShadow: "0 10px 30px rgba(8,20,110,0.4)" }}>{grams}<span style={{ fontSize: "0.4em" }}> g</span></div>
           <div style={{ fontWeight: 700, fontSize: G.g.s * 0.17 }}>seulement</div>
         </div>
       )}
-      <div style={{ position: "absolute", left: P ? 340 : 480, right: P ? 70 : 40, top: G.chips.y, display: "flex", flexWrap: "wrap", gap: 14, justifyContent: "center" }}>
+      <div style={{ position: "absolute", left: P ? 340 : 600, right: P ? 70 : 40, top: G.chips.y, display: "flex", flexWrap: "wrap", gap: 14, justifyContent: "center" }}>
         <Chip frame={frame} at={sAt} text="Reste en place" icon="lock" size={P ? 38 : 32} solid />
         <Chip frame={frame} at={rAt} text="Course" icon="run" size={P ? 38 : 32} />
         <Chip frame={frame} at={jAt} text="Sauts" icon="spark" size={P ? 38 : 32} />
       </div>
-      <StandInTag />
     </SceneShell>
   );
 };
