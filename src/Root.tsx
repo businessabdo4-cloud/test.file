@@ -33,6 +33,9 @@ import { ITL } from "./reels/iphones/timeline";
 import { MicminiReel } from "./reels/micmini/MicminiReel";
 import { MicminiCover } from "./reels/micmini/MicminiCover";
 import { MTL } from "./reels/micmini/timeline";
+import { AirpodsReel } from "./reels/airpods/AirpodsReel";
+import { AirpodsCover } from "./reels/airpods/AirpodsCover";
+import { ATL } from "./reels/airpods/timeline";
 
 // Hard length limit: never more than 900 frames (30.0 s).
 const DURATION = Math.min(TL.totalFrames, MAX_FRAMES);
@@ -71,6 +74,10 @@ export const RemotionRoot: React.FC = () => (
     <Composition id="MicminiReel9x16" component={MicminiReel} durationInFrames={Math.min(MTL.totalFrames, MAX_FRAMES)} fps={FPS} width={1080} height={1920} defaultProps={{ layout: LAYOUT_9x16 }} />
     <Composition id="MicminiReel1x1" component={MicminiReel} durationInFrames={Math.min(MTL.totalFrames, MAX_FRAMES)} fps={FPS} width={1080} height={1080} defaultProps={{ layout: LAYOUT_1x1 }} />
     <Still id="MicminiCover" component={MicminiCover} width={1080} height={1920} />
+    {/* AirPods 5: the user approved going over 30 s for this reel (full VO at natural speed), so no MAX_FRAMES cap */}
+    <Composition id="AirpodsReel9x16" component={AirpodsReel} durationInFrames={ATL.totalFrames} fps={FPS} width={1080} height={1920} defaultProps={{ layout: LAYOUT_9x16 }} />
+    <Composition id="AirpodsReel1x1" component={AirpodsReel} durationInFrames={ATL.totalFrames} fps={FPS} width={1080} height={1080} defaultProps={{ layout: LAYOUT_1x1 }} />
+    <Still id="AirpodsCover" component={AirpodsCover} width={1080} height={1920} />
     <Still id="CitybotSheet" component={CitybotSheet} width={1920} height={1080} />
   </>
 );

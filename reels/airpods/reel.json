@@ -1,0 +1,12 @@
+{
+ "id": "airpods",
+ "vo_mode": "take",
+ "take": "vo/vo_full_take.wav",
+ "takeBoundaries": [2.51, 5.10, 9.46, 14.92, 22.50, 28.81, 33.42, 38.35],
+ "lead": 0.06,
+ "voEndBy": 999,
+ "maxPause": 0.14,
+ "sentPause": 0.24,
+ "maxSeconds": 60,
+ "note": "The user approved going over the usual 30 s limit for this reel (full VO kept, no speed-up)."
+}
