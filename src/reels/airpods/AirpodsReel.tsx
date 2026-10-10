@@ -24,7 +24,7 @@ const SCENES = [
   ["end", AEnd],
 ] as const;
 
-/** AirPods 5 reel (39 s, user-approved over 30 s; Darija VO). Final frame held from 38.0 s. */
+/** AirPods 5 reel (40 s, user-approved over 30 s; Darija VO). Final frame held from 39.0 s. */
 export const AirpodsReel: React.FC<{ layout: Layout }> = ({ layout }) => (
   <ReelFrame layout={layout} tl={ATL} scenes={SCENES} direction={airpodsDirection} audio="airpods/audio/mix.wav" />
 );

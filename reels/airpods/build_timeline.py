@@ -1,5 +1,5 @@
 """Timeline for the AirPods 5 reel -> public/airpods/data/timeline.json
-(39 s: the user approved going over 30 s for this reel to keep the full VO at natural speed)
+(40 s: the user approved going over 30 s for this reel to keep the full VO at natural speed)
 (same schema as scripts/build_timeline.py; shared by the picture and the audio mix).
 Scene cuts sit on the 120 BPM beat grid next to sentence breaks; hits land on the
 half-beat nearest the word that triggers them."""
@@ -12,9 +12,9 @@ VO = json.loads((PUB / "data" / "vo.json").read_text())
 LINES = json.loads((ROOT / "reels" / "airpods" / "vo_lines.json").read_text())
 FPS, BPM = 30, 120
 BEAT = 60 / BPM
-TOTAL_FRAMES, HOLD_FROM = 1170, 38.0
-SCENES = [("hook", 0.0, 4.5), ("intro", 4.5, 8.75), ("fit", 8.75, 13.5), ("anc", 13.5, 20.25),
-          ("features", 20.25, 25.75), ("charging", 25.75, 29.75), ("trust", 29.75, 33.75), ("cta", 33.75, 36.25), ("end", 36.25, 39.0)]
+TOTAL_FRAMES, HOLD_FROM = 1200, 39.0
+SCENES = [("hook", 0.0, 4.5), ("intro", 4.5, 8.75), ("fit", 8.75, 13.5), ("anc", 13.5, 20.75),
+          ("features", 20.75, 26.0), ("charging", 26.0, 29.75), ("trust", 29.75, 34.25), ("cta", 34.25, 36.75), ("end", 36.75, 40.0)]
 
 
 def f(t):
@@ -74,18 +74,18 @@ ev["trust.original"] = q(word_t(7, "originaux"))
 ev["trust.thumb"] = ev["trust.original"]
 ev["trust.checks"] = [q(word_t(7, "boîte")), q(nth(7, 4)), q(nth(7, 6))]
 # CTA
-ev["cta.url"] = 34.0
+ev["cta.url"] = 34.5
 ev["cta.message"] = q(word_t(8, "تكوموندي"))
 ev["cta.socials"] = ev["cta.message"] + 0.1
 ev["cta.wave"] = ev["cta.message"] + 0.25
 # END CARD
-ev["end.city"] = 36.25
-ev["end.typeStart"] = 36.5
+ev["end.city"] = 36.75
+ev["end.typeStart"] = 37.0
 ev["end.typeStep"] = 0.0625
-ev["end.icons"] = 37.1
+ev["end.icons"] = 37.6
 ev["end.iconStep"] = 0.06
-ev["end.tagline"] = 37.5
-ev["end.wink"] = 37.75
+ev["end.tagline"] = 38.0
+ev["end.wink"] = 38.25
 ev["end.hold"] = HOLD_FROM
 
 sfx = [("pop_big", ev["hook.bubble1"], -11), ("blip_jump", ev["hook.botLand"], -14), ("pop_big", ev["hook.bubble2"], -11), ("blip_wink", ev["hook.huh"], -11),
@@ -97,9 +97,9 @@ sfx += [("anc", ev["anc.nc"], -10), ("impact", ev["anc.pct"], -9), ("blip_up", e
 sfx += [("blip", ev["ft.siri"], -12), ("shine", ev["ft.spatial"], -13), ("pop_big", ev["ft.ip"], -11)]
 sfx += [("pop_big", ev["ch.case"], -11), ("tap", ev["ch.put"], -9), ("blip_up", ev["ch.put"] + 0.15, -12), ("ding", ev["ch.done"], -12)]
 sfx += [("hit", ev["trust.badge"], -8), ("blip_up", ev["trust.thumb"], -12)] + [("ding", t + 0.15, -12) for t in ev["trust.checks"]]
-sfx += [("whoosh", 33.45, -10), ("pop_big", ev["cta.url"], -11), ("pop_big", ev["cta.message"], -11), ("pop", ev["cta.socials"] + 0.2, -13),
+sfx += [("whoosh", 33.95, -10), ("pop_big", ev["cta.url"], -11), ("pop_big", ev["cta.message"], -11), ("pop", ev["cta.socials"] + 0.2, -13),
         ("blip", ev["cta.wave"], -13)]
-sfx += [("whoosh", 35.95, -9), ("impact", ev["end.city"], -5)] + [("tick", ev["end.typeStart"] + i * ev["end.typeStep"], -12) for i in range(8)]
+sfx += [("whoosh", 36.45, -9), ("impact", ev["end.city"], -5)] + [("tick", ev["end.typeStart"] + i * ev["end.typeStep"], -12) for i in range(8)]
 sfx += [("pop", ev["end.icons"] + i * ev["end.iconStep"], -15) for i in range(6)]
 sfx += [("shine", ev["end.tagline"], -14), ("blip_wink", ev["end.wink"], -11)]
 

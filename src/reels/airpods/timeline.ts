@@ -3,7 +3,7 @@ import productsJson from "../../../public/airpods/data/products.json";
 import { evIn, evListIn, sceneIn, Timeline } from "../../timeline";
 
 // AirPods 5 reel timeline (reels/airpods/build_timeline.py), shared with its mix.
-// 39 s long: the user approved going over the usual 30 s limit for this reel.
+// 40 s long: the user approved going over the usual 30 s limit for this reel.
 export const ATL = timelineJson as unknown as Timeline;
 export const ascene = (id: string) => sceneIn(ATL, id);
 export const aev = (k: string) => evIn(ATL, k);

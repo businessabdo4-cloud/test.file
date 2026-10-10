@@ -2,7 +2,7 @@
  "id": "airpods",
  "vo_mode": "take",
  "take": "vo/vo_full_take.wav",
- "takeBoundaries": [2.51, 5.10, 9.46, 14.92, 22.50, 28.81, 33.42, 38.35],
+ "takeBoundaries": [2.53, 5.20, 9.70, 15.20, 23.07, 28.79, 32.97, 38.06],
  "lead": 0.06,
  "voEndBy": 999,
  "maxPause": 0.14,

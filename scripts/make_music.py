@@ -58,8 +58,8 @@ STYLES = {
     "micmini": dict(seed=117, phase=1.5, drop=1.5, end_lift=28.0, stop=28.0, hook_mode="noise",
                     chords=[[62, 66, 69], [59, 62, 66], [55, 59, 62], [57, 61, 64]], roots=[50, 47, 43, 45],
                     final=[62, 66, 69, 74], final_bass=38, arp=[0, 2, 1, 2, 0, 1, 2, 1]),
-    # AirPods 5 reel (39 s, user-approved over 30 s): airy E-major groove; drop when the AirPods land
-    "airpods": dict(seed=129, dur=39.0, phase=0.5, drop=2.5, end_lift=36.0, stop=37.5,
+    # AirPods 5 reel (40 s, user-approved over 30 s): airy E-major groove; drop when the AirPods land
+    "airpods": dict(seed=129, dur=40.0, phase=0.5, drop=2.5, end_lift=36.5, stop=38.5,
                     chords=[[64, 68, 71], [61, 64, 68], [57, 61, 64], [59, 63, 66]], roots=[52, 49, 45, 47],
                     final=[64, 68, 71, 76], final_bass=40, arp=[0, 1, 2, 1, 0, 2, 1, 2]),
 }

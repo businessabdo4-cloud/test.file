@@ -1,6 +1,6 @@
 # AirPods 5 reel: sources
 
-**Length: 39 s.** The supplied VO is 40.9 s; fitting 30 s would have needed ~1.15x (over the 1.1x limit). The user
+**Length: 40 s.** The supplied VO (v2, corrected take of 2026-10-10 15:09) is 40.7 s; fitting 30 s would have needed ~1.15x (over the 1.1x limit). The user
 approved going over 30 s ("just use this VO, even if it surpasses the 30s rule"), so the VO is kept at natural speed
 (pauses tightened only). `reels/airpods/reel.json` sets `maxSeconds: 60`.
 
@@ -31,6 +31,7 @@ The Apple logo is not shown anywhere in the reel; the charging pad is a generic 
   https://www.igeeksblog.com/airpods-5-features/ · https://ee.co.uk/products/apple-airpods-5
 
 ## Voice-over / audio
-- Single take (`assets/airpods/vo/vo_full_take.wav`, **40.89 s**) + script; pauses ≤ 0.14 s, sentence breaks 0.24 s
-  → VO 36.0 s, ends at 36.1 s; end card 36.25–39 s, final frame held from 38.0 s.
-- Music: original E-major groove, 39 s (`make_music.py`, style `airpods`), drop when the AirPods land (2.5 s).
+- Single take v2 (`assets/airpods/vo/vo_full_take.wav`, **40.69 s**, replaces the first take kept as
+  `vo_full_take_v1_replaced.wav`); same script assumed. Pauses ≤ 0.14 s, sentence breaks 0.24 s → VO 36.6 s,
+  ends at 36.7 s; end card 36.75–40 s, final frame held from 39.0 s.
+- Music: original E-major groove, 40 s (`make_music.py`, style `airpods`), drop when the AirPods land (2.5 s).
