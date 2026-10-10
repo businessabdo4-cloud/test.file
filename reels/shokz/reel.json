@@ -1,0 +1,12 @@
+{
+ "id": "shokz",
+ "vo_mode": "take",
+ "take": "vo/vo_full_take.wav",
+ "takeBoundaries": [3.35, 7.10, 16.42, 22.83, 29.0, 34.62, 39.58],
+ "lead": 0.06,
+ "voEndBy": 999,
+ "maxPause": 0.14,
+ "sentPause": 0.24,
+ "maxSeconds": 60,
+ "note": "User approved going over 30 s ('same as the last video'): full VO at natural speed. Product = OpenRun Pro 1st gen (confirmed by City Store)."
+}

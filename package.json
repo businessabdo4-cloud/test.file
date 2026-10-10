@@ -62,7 +62,11 @@
     "airpods:cutout": "python3 reels/airpods/cutout.py",
     "airpods:audio": "REEL=airpods python3 scripts/process_vo_take.py && python3 reels/airpods/build_timeline.py && REEL=airpods python3 scripts/make_music.py && REEL=airpods python3 scripts/mix_audio.py",
     "airpods:render": "remotion render AirpodsReel9x16 out/airpods/reel_9x16_raw.mp4 --codec=h264 --crf=16 && remotion render AirpodsReel1x1 out/airpods/reel_1x1_raw.mp4 --codec=h264 --crf=16 && remotion still AirpodsCover out/airpods/cover_1080x1920.png",
-    "airpods:build": "npm run airpods:cutout && npm run airpods:audio && REEL=airpods node scripts/make_srt.mjs && npm run airpods:render && REEL=airpods bash scripts/finalize.sh && REEL=airpods bash scripts/verify.sh"
+    "airpods:build": "npm run airpods:cutout && npm run airpods:audio && REEL=airpods node scripts/make_srt.mjs && npm run airpods:render && REEL=airpods bash scripts/finalize.sh && REEL=airpods bash scripts/verify.sh",
+    "shokz:cutout": "python3 reels/shokz/cutout.py",
+    "shokz:audio": "REEL=shokz python3 scripts/process_vo_take.py && python3 reels/shokz/build_timeline.py && REEL=shokz python3 scripts/make_music.py && REEL=shokz python3 scripts/mix_audio.py",
+    "shokz:render": "remotion render ShokzReel9x16 out/shokz/reel_9x16_raw.mp4 --codec=h264 --crf=16 && remotion render ShokzReel1x1 out/shokz/reel_1x1_raw.mp4 --codec=h264 --crf=16 && remotion still ShokzCover out/shokz/cover_1080x1920.png",
+    "shokz:build": "npm run shokz:cutout && npm run shokz:audio && REEL=shokz node scripts/make_srt.mjs && npm run shokz:render && REEL=shokz bash scripts/finalize.sh && REEL=shokz bash scripts/verify.sh"
   },
   "dependencies": {
     "@remotion/cli": "4.0.532",

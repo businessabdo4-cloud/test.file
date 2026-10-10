@@ -36,6 +36,9 @@ import { MTL } from "./reels/micmini/timeline";
 import { AirpodsReel } from "./reels/airpods/AirpodsReel";
 import { AirpodsCover } from "./reels/airpods/AirpodsCover";
 import { ATL } from "./reels/airpods/timeline";
+import { ShokzReel } from "./reels/shokz/ShokzReel";
+import { ShokzCover } from "./reels/shokz/ShokzCover";
+import { ZTL } from "./reels/shokz/timeline";
 
 // Hard length limit: never more than 900 frames (30.0 s).
 const DURATION = Math.min(TL.totalFrames, MAX_FRAMES);
@@ -78,6 +81,10 @@ export const RemotionRoot: React.FC = () => (
     <Composition id="AirpodsReel9x16" component={AirpodsReel} durationInFrames={ATL.totalFrames} fps={FPS} width={1080} height={1920} defaultProps={{ layout: LAYOUT_9x16 }} />
     <Composition id="AirpodsReel1x1" component={AirpodsReel} durationInFrames={ATL.totalFrames} fps={FPS} width={1080} height={1080} defaultProps={{ layout: LAYOUT_1x1 }} />
     <Still id="AirpodsCover" component={AirpodsCover} width={1080} height={1920} />
+    {/* Shokz OpenRun Pro: the user approved going over 30 s for this reel (full VO at natural speed), so no MAX_FRAMES cap */}
+    <Composition id="ShokzReel9x16" component={ShokzReel} durationInFrames={ZTL.totalFrames} fps={FPS} width={1080} height={1920} defaultProps={{ layout: LAYOUT_9x16 }} />
+    <Composition id="ShokzReel1x1" component={ShokzReel} durationInFrames={ZTL.totalFrames} fps={FPS} width={1080} height={1080} defaultProps={{ layout: LAYOUT_1x1 }} />
+    <Still id="ShokzCover" component={ShokzCover} width={1080} height={1920} />
     <Still id="CitybotSheet" component={CitybotSheet} width={1920} height={1080} />
   </>
 );

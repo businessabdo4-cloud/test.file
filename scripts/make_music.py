@@ -62,6 +62,10 @@ STYLES = {
     "airpods": dict(seed=129, dur=40.0, phase=0.5, drop=2.5, end_lift=36.5, stop=38.5,
                     chords=[[64, 68, 71], [61, 64, 68], [57, 61, 64], [59, 63, 66]], roots=[52, 49, 45, 47],
                     final=[64, 68, 71, 76], final_bass=40, arp=[0, 1, 2, 1, 0, 2, 1, 2]),
+    # Shokz OpenRun Pro reel (40 s, user-approved over 30 s): driving A-minor running beat; drop on the reveal at 3.0 s
+    "shokz": dict(seed=141, dur=40.0, phase=1.0, drop=3.0, end_lift=36.5, stop=38.5,
+                  chords=[[57, 60, 64], [53, 57, 60], [55, 59, 62], [52, 55, 59]], roots=[45, 41, 43, 40],
+                  final=[57, 60, 64, 69], final_bass=33, arp=[0, 2, 1, 2, 0, 2, 1, 2]),
 }
 ST = STYLES[REEL]
 SR = 48000

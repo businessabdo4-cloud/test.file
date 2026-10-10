@@ -1,0 +1,23 @@
+{
+ "_standIn": true,
+ "hero": {
+  "src": "shokz/products/hero.png",
+  "w": 580,
+  "h": 303
+ },
+ "front": {
+  "src": "shokz/products/front.png",
+  "w": 1458,
+  "h": 589
+ },
+ "side": {
+  "src": "shokz/products/side.png",
+  "w": 509,
+  "h": 343
+ },
+ "runner": {
+  "src": "shokz/products/runner.png",
+  "w": 700,
+  "h": 653
+ }
+}
