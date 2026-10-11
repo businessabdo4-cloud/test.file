@@ -1,0 +1,12 @@
+{
+ "id": "tabs",
+ "vo_mode": "take",
+ "take": "vo/vo_full_take.wav",
+ "takeBoundaries": [4.16, 12.2, 19.8, 27.05, 34.55, 38.75],
+ "lead": 0.06,
+ "voEndBy": 999,
+ "maxPause": 0.14,
+ "sentPause": 0.24,
+ "maxSeconds": 60,
+ "note": "User approved going over 30 s ('same as the last video'): full VO at natural speed. Four tablets: Galaxy Tab A9+ 5G, Galaxy Tab A11, Lenovo Idea Tab Plus + Tab Pen, Xiaomi Pad 8."
+}

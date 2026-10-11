@@ -66,6 +66,9 @@ STYLES = {
     "shokz": dict(seed=141, dur=40.0, phase=1.0, drop=3.0, end_lift=36.5, stop=38.5,
                   chords=[[57, 60, 64], [53, 57, 60], [55, 59, 62], [52, 55, 59]], roots=[45, 41, 43, 40],
                   final=[57, 60, 64, 69], final_bass=33, arp=[0, 2, 1, 2, 0, 2, 1, 2]),
+    "tabs": dict(seed=152, dur=42.0, phase=1.0, drop=3.5, end_lift=38.5, stop=40.5,
+                 chords=[[62, 66, 69], [59, 62, 66], [55, 59, 62], [57, 61, 64]], roots=[38, 35, 43, 45],
+                 final=[62, 66, 69, 74], final_bass=38, arp=[0, 1, 2, 1, 0, 2, 1, 2]),
 }
 ST = STYLES[REEL]
 SR = 48000
