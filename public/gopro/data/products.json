@@ -3,5 +3,10 @@
   "src": "gopro/products/hero.png",
   "w": 1214,
   "h": 1106
+ },
+ "bundle": {
+  "src": "gopro/products/bundle.png",
+  "w": 1577,
+  "h": 741
  }
 }

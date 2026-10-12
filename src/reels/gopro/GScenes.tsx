@@ -6,7 +6,7 @@ import { useLayout } from "../../layout";
 import { IconName, LineIcon } from "../../components/Icons";
 import { ProductImage } from "../../components/ProductImage";
 import { Burst, SceneShell, useSceneFrame } from "../../components/SceneShell";
-import { gev, gscene, LENS, OFFICIAL } from "./timeline";
+import { gev, gscene, KIT, LENS, OFFICIAL } from "./timeline";
 
 const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
 const easeOut = (x: number) => 1 - Math.pow(1 - x, 3);
@@ -96,13 +96,23 @@ export const GHook: React.FC = () => {
   );
 };
 
-/** 5.0-8.0 s INTRO: GoPro HERO13 Black, DISPONIBLE. */
+/** 5.0-8.0 s INTRO: GoPro HERO13 Black, then (on "disponible") the full pack sold in store: case, 2 batteries, 64GB card, floating grip. */
 export const GIntro: React.FC = () => {
   const frame = useSceneFrame("intro");
   const L = useLayout();
   const P = L.portrait;
-  const G = P ? { cam: { x: 160, y: 440, w: 740 }, name: 226, nsize: 92, pill: { y: 1190, size: 38 } } : { cam: { x: 40, y: 230, w: 560 }, name: 40, nsize: 64, pill: { y: 600, size: 30 } };
+  const G = P
+    ? { cam: { x: 160, y: 440, w: 740 }, name: 226, nsize: 92, pill: { y: 1190, size: 38 }, kit: { x: 90, y: 600, w: 880 } }
+    : { cam: { x: 40, y: 230, w: 560 }, name: 40, nsize: 64, pill: { y: 600, size: 30 }, kit: { x: 40, y: 260, w: 600 } };
   const nAt = gev("intro.name"), dAt = gev("intro.dispo");
+  const kitIn = sp(frame, dAt - 2, { damping: 14, stiffness: 140 });
+  const kitH = G.kit.w * OFFICIAL.bundle.aspect;
+  const KIT_LABELS: { key: keyof typeof KIT; text: string; above: boolean; dx: number; drop: number }[] = [
+    { key: "case", text: "Étui", above: true, dx: -60, drop: 0 },
+    { key: "grip", text: "Poignée flottante", above: true, dx: -40, drop: 0 },
+    { key: "batteries", text: "2 batteries", above: false, dx: -120, drop: 0 },
+    { key: "card", text: "Carte 64 Go", above: false, dx: 110, drop: 70 },
+  ];
   const enter = sp(frame, gscene("intro").from, { damping: 12, stiffness: 120, mass: 0.8 });
   const sk = shake(frame, nAt, 14, 9);
   const t = frame / 30;
@@ -114,14 +124,38 @@ export const GIntro: React.FC = () => {
         <div style={{ ...slam(frame, nAt + 5, 2.2), fontSize: G.nsize, lineHeight: 1 }}>HERO13</div>
         <div style={{ ...slam(frame, nAt + 9, 2), fontSize: G.nsize * 0.5, letterSpacing: 14, background: "#fff", color: "#111", padding: "0 18px 6px 32px", borderRadius: 10, textShadow: "none", marginTop: 8 }}>BLACK</div>
       </div>
-      <div style={{ position: "absolute", left: G.cam.x, top: G.cam.y + (P ? 20 : 0), transform: `translateX(${(1 - enter) * -1000}px) translateY(${Math.sin(t * Math.PI) * 10}px) rotate(${lerp(-14, 0, enter) + Math.sin(t * 2) * 1.5}deg)` }}>
+      <div style={{ position: "absolute", left: G.cam.x, top: G.cam.y + (P ? 20 : 0), opacity: 1 - kitIn, transform: `translateX(${(1 - enter) * -1000 - kitIn * 300}px) translateY(${Math.sin(t * Math.PI) * 10}px) rotate(${lerp(-14, 0, enter) + Math.sin(t * 2) * 1.5}deg) scale(${lerp(1, 0.6, kitIn)})` }}>
         <Cam w={G.cam.w} sweep={interpolate(frame, [nAt + 6, nAt + 22], [-0.3, 1.3], clamp)} />
       </div>
+      {kitIn > 0 && (
+        <div style={{ position: "absolute", left: G.kit.x, top: G.kit.y, width: G.kit.w, height: kitH, opacity: Math.min(1, kitIn * 1.5), transform: `translateX(${(1 - kitIn) * 600}px) scale(${lerp(0.85, 1, kitIn)})`, filter: "drop-shadow(0 30px 40px rgba(6,14,90,0.5))" }}>
+          <ProductImage src={OFFICIAL.bundle.src} aspect={OFFICIAL.bundle.aspect} width={G.kit.w} sweep={interpolate(frame, [dAt + 4, dAt + 20], [-0.3, 1.3], clamp)} />
+        </div>
+      )}
+      {KIT_LABELS.map((k, i) => {
+        const at = dAt + 6 + i * 5;
+        if (frame < at - 1) return null;
+        const ix = G.kit.x + KIT[k.key].x * G.kit.w, iy = G.kit.y + KIT[k.key].y * kitH;
+        const ly = k.above ? G.kit.y - 30 - (i % 2) * 0 : G.kit.y + kitH + 26 + k.drop;
+        const lx = Math.min(Math.max(ix + k.dx, 110), 930);
+        const p = pop(frame, at);
+        return (
+          <React.Fragment key={k.key}>
+            <svg width={L.w} height={L.h} style={{ position: "absolute", left: 0, top: 0, pointerEvents: "none" }}>
+              <path d={`M ${ix} ${iy} L ${lx} ${k.above ? ly + 30 : ly - 4}`} stroke="#fff" strokeWidth={4} strokeDasharray="2 10" strokeLinecap="round" opacity={p} />
+              <circle cx={ix} cy={iy} r={9 * p} fill="#fff" />
+            </svg>
+            <div style={{ position: "absolute", left: lx, top: ly, transform: `translate(-50%, ${k.above ? "-100%" : "0"}) scale(${p})`, fontFamily: FONT, fontWeight: 900, fontSize: 32, color: COLORS.blue, background: "#fff", padding: "4px 18px 8px", borderRadius: 999, whiteSpace: "nowrap", boxShadow: "0 10px 24px rgba(6,14,90,0.35)" }}>
+              {k.text}
+            </div>
+          </React.Fragment>
+        );
+      })}
       {frame >= dAt - 1 && (
         <div style={{ position: "absolute", left: P ? 340 : 640, right: P ? 70 : 30, top: G.pill.y, display: "flex", justifyContent: "center" }}>
-          <div style={{ ...slam(frame, dAt, 1.8), display: "flex", alignItems: "center", gap: 12, fontFamily: FONT, fontWeight: 900, fontSize: G.pill.size, color: COLORS.blue, background: "#fff", padding: "8px 26px", borderRadius: 999, letterSpacing: 3, boxShadow: "0 10px 26px rgba(6,14,90,0.3)" }}>
-            <LineIcon name="store" size={G.pill.size * 1.3} stroke={7} color={COLORS.blue} />
-            DISPONIBLE
+          <div style={{ ...slam(frame, dAt, 1.8), display: "flex", alignItems: "center", gap: 10, fontFamily: FONT, fontWeight: 900, fontSize: G.pill.size * 0.82, color: COLORS.blue, background: "#fff", padding: "8px 22px", borderRadius: 999, letterSpacing: 1, whiteSpace: "nowrap", boxShadow: "0 10px 26px rgba(6,14,90,0.3)" }}>
+            <LineIcon name="box" size={G.pill.size * 1.3} stroke={7} color={COLORS.blue} />
+            PACK COMPLET · DISPONIBLE
           </div>
         </div>
       )}

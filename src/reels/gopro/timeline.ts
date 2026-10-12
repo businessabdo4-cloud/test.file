@@ -9,6 +9,11 @@ export const gev = (k: string) => evIn(GTL, k);
 export const gevList = (k: string) => evListIn(GTL, k);
 type P = { src: string; w: number; h: number };
 const PR = productsJson as unknown as Record<string, P>;
-export const OFFICIAL = { hero: { src: PR.hero.src, aspect: PR.hero.h / PR.hero.w } };
+export const OFFICIAL = {
+  hero: { src: PR.hero.src, aspect: PR.hero.h / PR.hero.w },
+  bundle: { src: PR.bundle.src, aspect: PR.bundle.h / PR.bundle.w },
+};
+/** item centres inside the bundle image (fractions): the pack sold in store */
+export const KIT = { case: { x: 0.444, y: 0.26 }, batteries: { x: 0.455, y: 0.79 }, card: { x: 0.68, y: 0.875 }, grip: { x: 0.837, y: 0.4 } };
 /** lens centre inside the hero image (fractions), for flashes */
 export const LENS = { x: 0.56, y: 0.32 };

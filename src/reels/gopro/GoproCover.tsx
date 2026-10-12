@@ -7,7 +7,7 @@ import { ProductImage } from "../../components/ProductImage";
 import { Citybot } from "../../citybot/Citybot";
 import { OFFICIAL } from "./timeline";
 
-/** 1080x1920 cover for the GoPro HERO13 Black reel (key content inside the centre 4:5 band). */
+/** 1080x1920 cover for the GoPro HERO13 Black reel (the pack sold in store) (key content inside the centre 4:5 band). */
 export const GoproCover: React.FC = () => {
   const heavy: React.CSSProperties = { fontFamily: FONT, fontWeight: 900, color: "#fff", lineHeight: 1, textShadow: "0 10px 34px rgba(8,20,110,0.4)", whiteSpace: "nowrap" };
   return (
@@ -19,9 +19,10 @@ export const GoproCover: React.FC = () => {
         <div style={{ ...heavy, fontSize: 60, letterSpacing: 8, marginTop: 14 }}>GoPro</div>
         <div style={{ ...heavy, fontSize: 130, letterSpacing: -2 }}>HERO13 <span style={{ fontSize: "0.5em", letterSpacing: 8 }}>BLACK</span></div>
       </div>
-      <div style={{ position: "absolute", left: 200, top: 700, filter: "drop-shadow(0 40px 50px rgba(6,14,90,0.5))" }}>
-        <ProductImage src={OFFICIAL.hero.src} aspect={OFFICIAL.hero.aspect} width={760} sweep={0.45} />
+      <div style={{ position: "absolute", left: 60, top: 690, filter: "drop-shadow(0 40px 50px rgba(6,14,90,0.5))" }}>
+        <ProductImage src={OFFICIAL.bundle.src} aspect={OFFICIAL.bundle.aspect} width={960} sweep={0.45} />
       </div>
+      <div style={{ position: "absolute", right: 70, top: 640, transform: "rotate(-6deg)", background: "#fff", color: COLORS.blue, fontFamily: FONT, fontWeight: 900, fontSize: 46, padding: "2px 24px 8px", borderRadius: 16, boxShadow: "0 14px 34px rgba(6,14,90,0.4)" }}>PACK COMPLET</div>
       <div style={{ position: "absolute", left: 20, top: 1150 }}>
         <Citybot id="gcover" width={370} expression="excited" mouth="grin" tilt={-6} rightArm={{ rot: 72, hand: "thumb" }} leftArm={{ rot: 30, hand: "open" }} hover={12} />
       </div>
