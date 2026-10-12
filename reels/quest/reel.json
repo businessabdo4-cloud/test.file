@@ -1,0 +1,20 @@
+{
+ "id": "quest",
+ "vo_mode": "take",
+ "take": "vo/vo_full_take.wav",
+ "takeBoundaries": [
+  3.75,
+  8.62,
+  13.72,
+  19.32,
+  25.75,
+  30.59,
+  35.07
+ ],
+ "lead": 0.06,
+ "voEndBy": 999,
+ "maxPause": 0.14,
+ "sentPause": 0.24,
+ "maxSeconds": 60,
+ "note": "Standing user approval to go over 30 s ('the same as always'): full VO at natural speed. Product = Meta Quest 3 512GB (the box image showing '128 GB' is not used)."
+}

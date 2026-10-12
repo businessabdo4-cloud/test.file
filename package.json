@@ -74,7 +74,11 @@
     "gopro:cutout": "python3 reels/gopro/cutout.py",
     "gopro:audio": "REEL=gopro python3 scripts/process_vo_take.py && python3 reels/gopro/build_timeline.py && REEL=gopro python3 scripts/make_music.py && REEL=gopro python3 scripts/mix_audio.py",
     "gopro:render": "remotion render GoproReel9x16 out/gopro/reel_9x16_raw.mp4 --codec=h264 --crf=16 && remotion render GoproReel1x1 out/gopro/reel_1x1_raw.mp4 --codec=h264 --crf=16 && remotion still GoproCover out/gopro/cover_1080x1920.png",
-    "gopro:build": "npm run gopro:cutout && npm run gopro:audio && REEL=gopro node scripts/make_srt.mjs && npm run gopro:render && REEL=gopro bash scripts/finalize.sh && REEL=gopro bash scripts/verify.sh"
+    "gopro:build": "npm run gopro:cutout && npm run gopro:audio && REEL=gopro node scripts/make_srt.mjs && npm run gopro:render && REEL=gopro bash scripts/finalize.sh && REEL=gopro bash scripts/verify.sh",
+    "quest:cutout": "python3 reels/quest/cutout.py",
+    "quest:audio": "REEL=quest python3 scripts/process_vo_take.py && python3 reels/quest/build_timeline.py && REEL=quest python3 scripts/make_music.py && REEL=quest python3 scripts/mix_audio.py",
+    "quest:render": "remotion render QuestReel9x16 out/quest/reel_9x16_raw.mp4 --codec=h264 --crf=16 && remotion still QuestCover out/quest/cover_1080x1920.png",
+    "quest:build": "npm run quest:cutout && npm run quest:audio && REEL=quest node scripts/make_srt.mjs && npm run quest:render && REEL=quest bash scripts/finalize.sh && REEL=quest bash scripts/verify.sh"
   },
   "dependencies": {
     "@remotion/cli": "4.0.532",

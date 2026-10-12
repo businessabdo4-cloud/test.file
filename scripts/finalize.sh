@@ -10,7 +10,9 @@ if [ "$REEL" = iphone18 ]; then OUT=out; PUB=public; else OUT=out/$REEL; PUB=pub
 FRAMES=$(python3 -c "import json; print(json.load(open('$PUB/data/timeline.json'))['totalFrames'])")
 SAMPLES=$(( FRAMES * 48000 / 30 / 1024 * 1024 ))
 for name in reel_9x16 reel_1x1; do
-  src="$OUT/${name}_raw.mp4"; [ -f "$src" ] || mv "$OUT/${name}.mp4" "$src"
+  src="$OUT/${name}_raw.mp4"
+  [ -f "$src" ] || [ -f "$OUT/${name}.mp4" ] || continue  # format not rendered for this reel (e.g. 9:16 only)
+  [ -f "$src" ] || mv "$OUT/${name}.mp4" "$src"
   ffmpeg -y -v error -i "$src" -i $PUB/audio/mix.wav \
     -map 0:v:0 -map 1:a:0 \
     -vf "scale=in_range=full:out_range=tv,format=yuv420p" \

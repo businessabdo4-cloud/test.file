@@ -28,5 +28,5 @@ REEL=${REEL:-iphone18}
 if [ "$REEL" = iphone18 ]; then OUT=out; else OUT=out/$REEL; fi
 MAXS=$(python3 -c "import json,os; f='reels/$REEL/reel.json'; print(json.load(open(f)).get('maxSeconds', 30) if os.path.exists(f) else 30)")
 check $OUT/reel_9x16.mp4 1080 1920
-check $OUT/reel_1x1.mp4 1080 1080
+[ -f $OUT/reel_1x1_raw.mp4 ] || [ -f $OUT/reel_1x1.mp4 ] && check $OUT/reel_1x1.mp4 1080 1080
 exit $fail

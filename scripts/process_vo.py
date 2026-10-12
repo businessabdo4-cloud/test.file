@@ -137,7 +137,9 @@ SPOKEN = {"18": "dix-huit", "100": "cent pour cent", "%": "", "citystore.ma": "c
           "6gb": "six gi ga", "8gb": "huit gi ga", "128gb": "cent vingt huit gi ga", "blue": "blu",
           "gopro": "go pro", "hero13": "hi ro treiz", "black": "blak", "5.3k": "sank vir gul trwa ka", "27": "vin set",
           "mégapixels": "me ga pik sel", "hypersmooth": "hai per smouth", "étanche": "e tanch", "mètres": "metr", "boîtier": "bwa tie",
-          "support": "su por", "magnétique": "ma nye tik"}
+          "support": "su por", "magnétique": "ma nye tik",
+          "quest": "kwest", "512": "sank san duz", "go": "gi ga", "4k+": "katr ka plus", "réalité": "re a li te", "mixte": "mikst",
+          "pc": "pe se", "fils": "fil", "écran": "e kran"}
 ARABIC = "\\u0621-\\u063F\\u0641-\\u064A\\u0671-\\u06D3"  # Arabic letters (no punctuation, no tatweel)
 
 
