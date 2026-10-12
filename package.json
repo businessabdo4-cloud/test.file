@@ -70,7 +70,11 @@
     "tabs:cutout": "python3 reels/tabs/cutout.py",
     "tabs:audio": "REEL=tabs python3 scripts/process_vo_take.py && python3 reels/tabs/build_timeline.py && REEL=tabs python3 scripts/make_music.py && REEL=tabs python3 scripts/mix_audio.py",
     "tabs:render": "remotion render TabsReel9x16 out/tabs/reel_9x16_raw.mp4 --codec=h264 --crf=16 && remotion render TabsReel1x1 out/tabs/reel_1x1_raw.mp4 --codec=h264 --crf=16 && remotion still TabsCover out/tabs/cover_1080x1920.png",
-    "tabs:build": "npm run tabs:cutout && npm run tabs:audio && REEL=tabs node scripts/make_srt.mjs && npm run tabs:render && REEL=tabs bash scripts/finalize.sh && REEL=tabs bash scripts/verify.sh"
+    "tabs:build": "npm run tabs:cutout && npm run tabs:audio && REEL=tabs node scripts/make_srt.mjs && npm run tabs:render && REEL=tabs bash scripts/finalize.sh && REEL=tabs bash scripts/verify.sh",
+    "gopro:cutout": "python3 reels/gopro/cutout.py",
+    "gopro:audio": "REEL=gopro python3 scripts/process_vo_take.py && python3 reels/gopro/build_timeline.py && REEL=gopro python3 scripts/make_music.py && REEL=gopro python3 scripts/mix_audio.py",
+    "gopro:render": "remotion render GoproReel9x16 out/gopro/reel_9x16_raw.mp4 --codec=h264 --crf=16 && remotion render GoproReel1x1 out/gopro/reel_1x1_raw.mp4 --codec=h264 --crf=16 && remotion still GoproCover out/gopro/cover_1080x1920.png",
+    "gopro:build": "npm run gopro:cutout && npm run gopro:audio && REEL=gopro node scripts/make_srt.mjs && npm run gopro:render && REEL=gopro bash scripts/finalize.sh && REEL=gopro bash scripts/verify.sh"
   },
   "dependencies": {
     "@remotion/cli": "4.0.532",

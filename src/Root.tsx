@@ -42,6 +42,9 @@ import { ZTL } from "./reels/shokz/timeline";
 import { TabsReel } from "./reels/tabs/TabsReel";
 import { TabsCover } from "./reels/tabs/TabsCover";
 import { TTL } from "./reels/tabs/timeline";
+import { GoproReel } from "./reels/gopro/GoproReel";
+import { GoproCover } from "./reels/gopro/GoproCover";
+import { GTL as GOPRO_TL } from "./reels/gopro/timeline";
 
 // Hard length limit: never more than 900 frames (30.0 s).
 const DURATION = Math.min(TL.totalFrames, MAX_FRAMES);
@@ -92,6 +95,9 @@ export const RemotionRoot: React.FC = () => (
     <Composition id="TabsReel9x16" component={TabsReel} durationInFrames={TTL.totalFrames} fps={FPS} width={1080} height={1920} defaultProps={{ layout: LAYOUT_9x16 }} />
     <Composition id="TabsReel1x1" component={TabsReel} durationInFrames={TTL.totalFrames} fps={FPS} width={1080} height={1080} defaultProps={{ layout: LAYOUT_1x1 }} />
     <Still id="TabsCover" component={TabsCover} width={1080} height={1920} />
+    <Composition id="GoproReel9x16" component={GoproReel} durationInFrames={Math.min(GOPRO_TL.totalFrames, MAX_FRAMES)} fps={FPS} width={1080} height={1920} defaultProps={{ layout: LAYOUT_9x16 }} />
+    <Composition id="GoproReel1x1" component={GoproReel} durationInFrames={Math.min(GOPRO_TL.totalFrames, MAX_FRAMES)} fps={FPS} width={1080} height={1080} defaultProps={{ layout: LAYOUT_1x1 }} />
+    <Still id="GoproCover" component={GoproCover} width={1080} height={1920} />
     <Still id="CitybotSheet" component={CitybotSheet} width={1920} height={1080} />
   </>
 );

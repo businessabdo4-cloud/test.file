@@ -36,6 +36,7 @@ npm run studio                   # interactive preview
 | AirPods 5 (Darija, **40 s**, user-approved over 30 s) | `AirpodsReel9x16`, `AirpodsReel1x1`, `AirpodsCover` | `out/airpods/` | `npm run airpods:build` |
 | Shokz OpenRun Pro, 1st gen (Darija, **40 s**, user-approved over 30 s) | `ShokzReel9x16`, `ShokzReel1x1`, `ShokzCover` | `out/shokz/` | `npm run shokz:build` |
 | Tablets: Galaxy Tab A9+ 5G, Galaxy Tab A11, Lenovo Idea Tab Plus, Xiaomi Pad 8 (Darija, **42 s**, user-approved over 30 s) | `TabsReel9x16`, `TabsReel1x1`, `TabsCover` | `out/tabs/` | `npm run tabs:build` |
+| GoPro HERO13 Black (Darija, 30 s) | `GoproReel9x16`, `GoproReel1x1`, `GoproCover` | `out/gopro/` | `npm run gopro:build` |
 | Apple Watch Ultra 4 (Darija) | `WatchReel9x16`, `WatchReel1x1`, `WatchCover` | `out/watch/` | `npm run watch:build` |
 | Galaxy Watch8 Classic + Ultra2 (Darija) | `GalaxyReel9x16`, `GalaxyReel1x1`, `GalaxyCover` | `out/galaxy/` | `npm run galaxy:build` |
 | Sony WH-1000XM6 + XM5 (Darija) | `SonyReel9x16`, `SonyReel1x1`, `SonyCover` | `out/sony/` | `npm run sony:build` |
