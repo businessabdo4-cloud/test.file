@@ -1,7 +1,15 @@
-You are taking over a video-production project: short vertical promo reels for **City Store** (citystore.ma), a Moroccan electronics shop. Every reel so far was built in a single Remotion (React + TypeScript) project, and you must keep the exact same mascot, style and pipeline. Do not redesign anything. Reuse what exists.
+You are taking over a video-production project: short vertical promo reels for **City Store** (citystore.ma), a Moroccan electronics shop. Every reel so far was built by another Claude session in a single Remotion (React + TypeScript) project, which I'm giving you as a zip. You must keep the exact same mascot, style and pipeline. Do not redesign anything. Reuse what exists.
 
 ## 1. Get the project (do this first)
-- Repo: `https://github.com/businessabdo4-cloud/test.file`, branch `claude/youthful-faraday-k64h5z`. Clone it and work on that branch (or on a new branch made from it if I tell you to). Commit and push your work there.
+I'm attaching **`citystore-reels-kit.zip`**: the complete project (code, mascot, brand assets, fonts, logo, scripts and all previous reels as templates; finished videos and voice-over audio left out to keep it small). You have no other access to it, so everything you need is inside.
+- Unzip it into a new working folder (if you have a git repo, put it there and commit your work as you go).
+- Install the tools:
+  - **Node 18+:** `npm install`
+  - **Python 3:** `pip install numpy scipy pillow soundfile pyloudnorm`
+  - **System packages:** `ffmpeg` and `rubberband-cli` (pitch-kept speed-up)
+  - **Rhubarb Lip Sync** (Citybot's mouth): `bash scripts/setup_rhubarb.sh`
+  - **Remotion's Chromium:** if it can't download it, point `scripts/preview_stills.mjs` / `remotion render` at an existing Chromium with `--browser-executable`
+- Quick test that the install works: `node scripts/preview_stills.mjs TabsCover 0.4 0 out/preview` should render a cover PNG.
 - Read `README.md`: it has one table row per finished reel, with its compositions and its `npm run <id>:build` command.
 - Study one recent reel end to end before writing anything. Good references:
   - `disc` (PS5 Disc Drive, 30 s)
@@ -45,7 +53,7 @@ You are taking over a video-production project: short vertical promo reels for *
     | `preview_stills.mjs` + `contact_sheet.py` | preview frames |
 
 ## 2. What I send you for each reel
-A Darija voice-over (.wav), the script (Darija with French words), the product images, and usually the phrase "the same as always". Images I paste mid-message sometimes don't arrive as files. If an image is missing on disk, ask me to resend it.
+A Darija voice-over (.wav), the script (Darija with French words), the product images, and usually the phrase "the same as always". Images I paste mid-message sometimes don't arrive as files. If an image is missing on disk, ask me to resend it. The old reels' product images and audio are not in the zip, so you can read their code as a template but can't re-render them, and that's fine.
 
 ## 3. Rules (the same as always)
 **Deliverables**
@@ -104,7 +112,7 @@ A Darija voice-over (.wav), the script (Darija with French words), the product i
 6. Run `npm run <id>:render`, then `REEL=<id> bash scripts/finalize.sh` and `REEL=<id> bash scripts/verify.sh`.
 7. Check the loudness with ffmpeg ebur128.
 8. If the 9:16 file is over 30 MB, also make a `reel_9x16_upload.mp4` with `-crf 21`, same specs, and send that copy.
-9. Add a README row, commit and push.
+9. Add a README row (and commit if you have a repo).
 10. Send me the video + cover with a short summary covering:
     - what each scene shows,
     - which images you used, skipped or enhanced, and why,
