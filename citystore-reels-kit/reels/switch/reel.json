@@ -1,0 +1,11 @@
+{
+ "id": "switch",
+ "vo_mode": "take",
+ "take": "vo/vo_full_take.wav",
+ "takeBoundaries": [3.08, 7.40, 13.42, 18.35, 23.43, 26.95, 33.03],
+ "lead": 0.06,
+ "voEndBy": 28.9,
+ "maxPause": 0.09,
+ "sentPause": 0.12,
+ "silenceDb": -34.0
+}

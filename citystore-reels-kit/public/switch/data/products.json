@@ -1,0 +1,22 @@
+{
+ "neon_dock": {
+  "src": "switch/products/neon_dock.png",
+  "w": 447,
+  "h": 294
+ },
+ "white_dock": {
+  "src": "switch/products/white_dock.png",
+  "w": 1740,
+  "h": 1078
+ },
+ "white_handheld": {
+  "src": "switch/products/white_handheld.png",
+  "w": 1194,
+  "h": 504
+ },
+ "neon_tabletop": {
+  "src": "switch/products/neon_tabletop.png",
+  "w": 559,
+  "h": 264
+ }
+}

@@ -1,0 +1,12 @@
+{
+ "id": "iphones",
+ "vo_mode": "take",
+ "take": "vo/vo_full_take.wav",
+ "takeBoundaries": [4.98, 10.80, 19.0, 29.38, 31.97, 36.28],
+ "lead": 0.06,
+ "voEndBy": 999,
+ "maxPause": 0.14,
+ "sentPause": 0.24,
+ "maxSeconds": 60,
+ "note": "The user approved going over the usual 30 s limit for this reel (full VO kept, no speed-up)."
+}

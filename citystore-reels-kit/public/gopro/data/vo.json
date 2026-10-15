@@ -1,0 +1,1583 @@
+[
+ {
+  "id": "line_01",
+  "subtitle": "باغي تصوّر تحت الما، فوق الموطور ولا فالجبل؟ التيليفون ما يقدرش… GoPro يقدر!",
+  "source": "human-take",
+  "start": 0.06,
+  "duration": 5.09,
+  "speed": 1.0,
+  "words": [
+   {
+    "word": "باغي",
+    "start": 0.0,
+    "end": 0.34
+   },
+   {
+    "word": "تصوّر",
+    "start": 0.34,
+    "end": 0.68
+   },
+   {
+    "word": "تحت",
+    "start": 0.68,
+    "end": 0.86
+   },
+   {
+    "word": "الما،",
+    "start": 0.86,
+    "end": 1.18
+   },
+   {
+    "word": "فوق",
+    "start": 1.18,
+    "end": 1.5
+   },
+   {
+    "word": "الموطور",
+    "start": 1.5,
+    "end": 2.02
+   },
+   {
+    "word": "ولا",
+    "start": 2.02,
+    "end": 2.2
+   },
+   {
+    "word": "فالجبل؟",
+    "start": 2.2,
+    "end": 2.88
+   },
+   {
+    "word": "التيليفون",
+    "start": 2.88,
+    "end": 3.6
+   },
+   {
+    "word": "ما",
+    "start": 3.6,
+    "end": 3.76
+   },
+   {
+    "word": "يقدرش…",
+    "start": 3.76,
+    "end": 4.18
+   },
+   {
+    "word": "GoPro",
+    "start": 4.18,
+    "end": 4.56
+   },
+   {
+    "word": "يقدر!",
+    "start": 4.56,
+    "end": 5.06
+   }
+  ],
+  "mouthCues": [
+   {
+    "start": 0.0,
+    "end": 0.04,
+    "value": "A"
+   },
+   {
+    "start": 0.04,
+    "end": 0.14,
+    "value": "E"
+   },
+   {
+    "start": 0.14,
+    "end": 0.21,
+    "value": "F"
+   },
+   {
+    "start": 0.21,
+    "end": 0.28,
+    "value": "C"
+   },
+   {
+    "start": 0.28,
+    "end": 0.42,
+    "value": "B"
+   },
+   {
+    "start": 0.42,
+    "end": 0.49,
+    "value": "E"
+   },
+   {
+    "start": 0.49,
+    "end": 0.7,
+    "value": "F"
+   },
+   {
+    "start": 0.7,
+    "end": 0.84,
+    "value": "C"
+   },
+   {
+    "start": 0.84,
+    "end": 0.98,
+    "value": "B"
+   },
+   {
+    "start": 0.98,
+    "end": 1.07,
+    "value": "A"
+   },
+   {
+    "start": 1.07,
+    "end": 1.14,
+    "value": "D"
+   },
+   {
+    "start": 1.14,
+    "end": 1.21,
+    "value": "H"
+   },
+   {
+    "start": 1.21,
+    "end": 1.42,
+    "value": "G"
+   },
+   {
+    "start": 1.42,
+    "end": 1.56,
+    "value": "E"
+   },
+   {
+    "start": 1.56,
+    "end": 1.64,
+    "value": "A"
+   },
+   {
+    "start": 1.64,
+    "end": 1.72,
+    "value": "E"
+   },
+   {
+    "start": 1.72,
+    "end": 1.85,
+    "value": "A"
+   },
+   {
+    "start": 1.85,
+    "end": 1.97,
+    "value": "B"
+   },
+   {
+    "start": 1.97,
+    "end": 2.04,
+    "value": "F"
+   },
+   {
+    "start": 2.04,
+    "end": 2.18,
+    "value": "B"
+   },
+   {
+    "start": 2.18,
+    "end": 2.25,
+    "value": "G"
+   },
+   {
+    "start": 2.25,
+    "end": 2.32,
+    "value": "B"
+   },
+   {
+    "start": 2.32,
+    "end": 2.4,
+    "value": "A"
+   },
+   {
+    "start": 2.4,
+    "end": 2.47,
+    "value": "C"
+   },
+   {
+    "start": 2.47,
+    "end": 2.6,
+    "value": "B"
+   },
+   {
+    "start": 2.6,
+    "end": 2.71,
+    "value": "A"
+   },
+   {
+    "start": 2.71,
+    "end": 3.07,
+    "value": "B"
+   },
+   {
+    "start": 3.07,
+    "end": 3.14,
+    "value": "G"
+   },
+   {
+    "start": 3.14,
+    "end": 3.21,
+    "value": "E"
+   },
+   {
+    "start": 3.21,
+    "end": 3.28,
+    "value": "B"
+   },
+   {
+    "start": 3.28,
+    "end": 3.43,
+    "value": "A"
+   },
+   {
+    "start": 3.43,
+    "end": 3.48,
+    "value": "C"
+   },
+   {
+    "start": 3.48,
+    "end": 3.53,
+    "value": "B"
+   },
+   {
+    "start": 3.53,
+    "end": 3.61,
+    "value": "A"
+   },
+   {
+    "start": 3.61,
+    "end": 3.77,
+    "value": "C"
+   },
+   {
+    "start": 3.77,
+    "end": 3.91,
+    "value": "B"
+   },
+   {
+    "start": 3.91,
+    "end": 4.01,
+    "value": "A"
+   },
+   {
+    "start": 4.01,
+    "end": 4.21,
+    "value": "F"
+   },
+   {
+    "start": 4.21,
+    "end": 4.29,
+    "value": "A"
+   },
+   {
+    "start": 4.29,
+    "end": 4.55,
+    "value": "E"
+   },
+   {
+    "start": 4.55,
+    "end": 4.69,
+    "value": "F"
+   },
+   {
+    "start": 4.69,
+    "end": 4.83,
+    "value": "B"
+   },
+   {
+    "start": 4.83,
+    "end": 4.91,
+    "value": "A"
+   },
+   {
+    "start": 4.91,
+    "end": 5.01,
+    "value": "C"
+   },
+   {
+    "start": 5.01,
+    "end": 5.08,
+    "value": "E"
+   },
+   {
+    "start": 5.08,
+    "end": 5.09,
+    "value": "X"
+   }
+  ]
+ },
+ {
+  "id": "line_02",
+  "subtitle": "GoPro HERO13 Black، disponible دابا عندنا.",
+  "source": "human-take",
+  "start": 5.15,
+  "duration": 2.895,
+  "speed": 1.0,
+  "words": [
+   {
+    "word": "GoPro",
+    "start": 0.0,
+    "end": 0.52
+   },
+   {
+    "word": "HERO13",
+    "start": 0.52,
+    "end": 1.12
+   },
+   {
+    "word": "Black،",
+    "start": 1.12,
+    "end": 1.3
+   },
+   {
+    "word": "disponible",
+    "start": 1.3,
+    "end": 2.08
+   },
+   {
+    "word": "دابا",
+    "start": 2.08,
+    "end": 2.44
+   },
+   {
+    "word": "عندنا.",
+    "start": 2.44,
+    "end": 2.88
+   }
+  ],
+  "mouthCues": [
+   {
+    "start": 0.0,
+    "end": 0.09,
+    "value": "X"
+   },
+   {
+    "start": 0.09,
+    "end": 0.24,
+    "value": "F"
+   },
+   {
+    "start": 0.24,
+    "end": 0.32,
+    "value": "A"
+   },
+   {
+    "start": 0.32,
+    "end": 0.6,
+    "value": "E"
+   },
+   {
+    "start": 0.6,
+    "end": 0.67,
+    "value": "B"
+   },
+   {
+    "start": 0.67,
+    "end": 1.02,
+    "value": "F"
+   },
+   {
+    "start": 1.02,
+    "end": 1.09,
+    "value": "B"
+   },
+   {
+    "start": 1.09,
+    "end": 1.16,
+    "value": "C"
+   },
+   {
+    "start": 1.16,
+    "end": 1.23,
+    "value": "B"
+   },
+   {
+    "start": 1.23,
+    "end": 1.34,
+    "value": "A"
+   },
+   {
+    "start": 1.34,
+    "end": 1.4,
+    "value": "H"
+   },
+   {
+    "start": 1.4,
+    "end": 1.46,
+    "value": "D"
+   },
+   {
+    "start": 1.46,
+    "end": 1.81,
+    "value": "B"
+   },
+   {
+    "start": 1.81,
+    "end": 1.89,
+    "value": "A"
+   },
+   {
+    "start": 1.89,
+    "end": 2.02,
+    "value": "E"
+   },
+   {
+    "start": 2.02,
+    "end": 2.09,
+    "value": "C"
+   },
+   {
+    "start": 2.09,
+    "end": 2.17,
+    "value": "A"
+   },
+   {
+    "start": 2.17,
+    "end": 2.31,
+    "value": "B"
+   },
+   {
+    "start": 2.31,
+    "end": 2.38,
+    "value": "C"
+   },
+   {
+    "start": 2.38,
+    "end": 2.46,
+    "value": "A"
+   },
+   {
+    "start": 2.46,
+    "end": 2.59,
+    "value": "C"
+   },
+   {
+    "start": 2.59,
+    "end": 2.73,
+    "value": "B"
+   },
+   {
+    "start": 2.73,
+    "end": 2.81,
+    "value": "A"
+   },
+   {
+    "start": 2.81,
+    "end": 2.88,
+    "value": "D"
+   },
+   {
+    "start": 2.88,
+    "end": 2.89,
+    "value": "X"
+   }
+  ]
+ },
+ {
+  "id": "line_03",
+  "subtitle": "كتصوّر فيديو بـ 5.3K، وتصاور بـ 27 mégapixels.",
+  "source": "human-take",
+  "start": 8.045,
+  "duration": 3.875,
+  "speed": 1.0,
+  "words": [
+   {
+    "word": "كتصوّر",
+    "start": 0.0,
+    "end": 0.46
+   },
+   {
+    "word": "فيديو",
+    "start": 0.46,
+    "end": 0.8
+   },
+   {
+    "word": "بـ",
+    "start": 0.8,
+    "end": 1.0
+   },
+   {
+    "word": "5.3K،",
+    "start": 1.0,
+    "end": 1.96
+   },
+   {
+    "word": "وتصاور",
+    "start": 1.96,
+    "end": 2.6
+   },
+   {
+    "word": "بـ",
+    "start": 2.6,
+    "end": 2.76
+   },
+   {
+    "word": "27",
+    "start": 2.76,
+    "end": 3.16
+   },
+   {
+    "word": "mégapixels.",
+    "start": 3.16,
+    "end": 3.78
+   }
+  ],
+  "mouthCues": [
+   {
+    "start": 0.0,
+    "end": 0.1,
+    "value": "X"
+   },
+   {
+    "start": 0.1,
+    "end": 0.17,
+    "value": "C"
+   },
+   {
+    "start": 0.17,
+    "end": 0.3,
+    "value": "B"
+   },
+   {
+    "start": 0.3,
+    "end": 0.37,
+    "value": "E"
+   },
+   {
+    "start": 0.37,
+    "end": 0.51,
+    "value": "F"
+   },
+   {
+    "start": 0.51,
+    "end": 0.65,
+    "value": "G"
+   },
+   {
+    "start": 0.65,
+    "end": 0.86,
+    "value": "F"
+   },
+   {
+    "start": 0.86,
+    "end": 0.94,
+    "value": "A"
+   },
+   {
+    "start": 0.94,
+    "end": 1.3,
+    "value": "B"
+   },
+   {
+    "start": 1.3,
+    "end": 1.37,
+    "value": "G"
+   },
+   {
+    "start": 1.37,
+    "end": 1.77,
+    "value": "F"
+   },
+   {
+    "start": 1.77,
+    "end": 1.82,
+    "value": "E"
+   },
+   {
+    "start": 1.82,
+    "end": 2.0,
+    "value": "C"
+   },
+   {
+    "start": 2.0,
+    "end": 2.07,
+    "value": "E"
+   },
+   {
+    "start": 2.07,
+    "end": 2.14,
+    "value": "F"
+   },
+   {
+    "start": 2.14,
+    "end": 2.35,
+    "value": "B"
+   },
+   {
+    "start": 2.35,
+    "end": 2.42,
+    "value": "E"
+   },
+   {
+    "start": 2.42,
+    "end": 2.49,
+    "value": "F"
+   },
+   {
+    "start": 2.49,
+    "end": 2.56,
+    "value": "E"
+   },
+   {
+    "start": 2.56,
+    "end": 2.7,
+    "value": "B"
+   },
+   {
+    "start": 2.7,
+    "end": 2.77,
+    "value": "G"
+   },
+   {
+    "start": 2.77,
+    "end": 2.91,
+    "value": "C"
+   },
+   {
+    "start": 2.91,
+    "end": 3.12,
+    "value": "B"
+   },
+   {
+    "start": 3.12,
+    "end": 3.2,
+    "value": "A"
+   },
+   {
+    "start": 3.2,
+    "end": 3.33,
+    "value": "C"
+   },
+   {
+    "start": 3.33,
+    "end": 3.43,
+    "value": "A"
+   },
+   {
+    "start": 3.43,
+    "end": 3.63,
+    "value": "B"
+   },
+   {
+    "start": 3.63,
+    "end": 3.7,
+    "value": "C"
+   },
+   {
+    "start": 3.7,
+    "end": 3.84,
+    "value": "B"
+   },
+   {
+    "start": 3.84,
+    "end": 3.87,
+    "value": "X"
+   }
+  ]
+ },
+ {
+  "id": "line_04",
+  "subtitle": "HyperSmooth: الفيديو كيبقى ثابت واخا تجري، تنقز ولا تطيح.",
+  "source": "human-take",
+  "start": 11.92,
+  "duration": 3.63,
+  "speed": 1.0,
+  "words": [
+   {
+    "word": "HyperSmooth:",
+    "start": 0.08,
+    "end": 0.58
+   },
+   {
+    "word": "الفيديو",
+    "start": 0.58,
+    "end": 1.14
+   },
+   {
+    "word": "كيبقى",
+    "start": 1.14,
+    "end": 1.54
+   },
+   {
+    "word": "ثابت",
+    "start": 1.54,
+    "end": 1.86
+   },
+   {
+    "word": "واخا",
+    "start": 1.86,
+    "end": 2.18
+   },
+   {
+    "word": "تجري،",
+    "start": 2.18,
+    "end": 2.5
+   },
+   {
+    "word": "تنقز",
+    "start": 2.5,
+    "end": 2.98
+   },
+   {
+    "word": "ولا",
+    "start": 2.98,
+    "end": 3.14
+   },
+   {
+    "word": "تطيح.",
+    "start": 3.14,
+    "end": 3.54
+   }
+  ],
+  "mouthCues": [
+   {
+    "start": 0.0,
+    "end": 0.05,
+    "value": "X"
+   },
+   {
+    "start": 0.05,
+    "end": 0.11,
+    "value": "B"
+   },
+   {
+    "start": 0.11,
+    "end": 0.16,
+    "value": "C"
+   },
+   {
+    "start": 0.16,
+    "end": 0.23,
+    "value": "B"
+   },
+   {
+    "start": 0.23,
+    "end": 0.32,
+    "value": "A"
+   },
+   {
+    "start": 0.32,
+    "end": 0.47,
+    "value": "B"
+   },
+   {
+    "start": 0.47,
+    "end": 0.55,
+    "value": "A"
+   },
+   {
+    "start": 0.55,
+    "end": 0.64,
+    "value": "E"
+   },
+   {
+    "start": 0.64,
+    "end": 0.78,
+    "value": "G"
+   },
+   {
+    "start": 0.78,
+    "end": 0.99,
+    "value": "F"
+   },
+   {
+    "start": 0.99,
+    "end": 1.13,
+    "value": "B"
+   },
+   {
+    "start": 1.13,
+    "end": 1.27,
+    "value": "F"
+   },
+   {
+    "start": 1.27,
+    "end": 1.41,
+    "value": "B"
+   },
+   {
+    "start": 1.41,
+    "end": 1.49,
+    "value": "A"
+   },
+   {
+    "start": 1.49,
+    "end": 1.56,
+    "value": "C"
+   },
+   {
+    "start": 1.56,
+    "end": 1.69,
+    "value": "B"
+   },
+   {
+    "start": 1.69,
+    "end": 1.76,
+    "value": "C"
+   },
+   {
+    "start": 1.76,
+    "end": 2.25,
+    "value": "F"
+   },
+   {
+    "start": 2.25,
+    "end": 2.67,
+    "value": "B"
+   },
+   {
+    "start": 2.67,
+    "end": 2.74,
+    "value": "C"
+   },
+   {
+    "start": 2.74,
+    "end": 2.82,
+    "value": "A"
+   },
+   {
+    "start": 2.82,
+    "end": 2.97,
+    "value": "C"
+   },
+   {
+    "start": 2.97,
+    "end": 3.04,
+    "value": "F"
+   },
+   {
+    "start": 3.04,
+    "end": 3.1,
+    "value": "A"
+   },
+   {
+    "start": 3.1,
+    "end": 3.16,
+    "value": "F"
+   },
+   {
+    "start": 3.16,
+    "end": 3.22,
+    "value": "A"
+   },
+   {
+    "start": 3.22,
+    "end": 3.39,
+    "value": "C"
+   },
+   {
+    "start": 3.39,
+    "end": 3.6,
+    "value": "B"
+   },
+   {
+    "start": 3.6,
+    "end": 3.63,
+    "value": "X"
+   }
+  ]
+ },
+ {
+  "id": "line_05",
+  "subtitle": "étanche حتى لـ 10 mètres تحت الما بلا boîtier، وفيها GPS باش تسجّل السرعة والطريق.",
+  "source": "human-take",
+  "start": 15.55,
+  "duration": 4.57,
+  "speed": 1.0,
+  "words": [
+   {
+    "word": "étanche",
+    "start": 0.08,
+    "end": 0.28
+   },
+   {
+    "word": "حتى",
+    "start": 0.28,
+    "end": 0.44
+   },
+   {
+    "word": "لـ",
+    "start": 0.44,
+    "end": 0.66
+   },
+   {
+    "word": "10",
+    "start": 0.66,
+    "end": 0.98
+   },
+   {
+    "word": "mètres",
+    "start": 0.98,
+    "end": 1.12
+   },
+   {
+    "word": "تحت",
+    "start": 1.12,
+    "end": 1.32
+   },
+   {
+    "word": "الما",
+    "start": 1.32,
+    "end": 1.64
+   },
+   {
+    "word": "بلا",
+    "start": 1.64,
+    "end": 1.8
+   },
+   {
+    "word": "boîtier،",
+    "start": 1.8,
+    "end": 2.1
+   },
+   {
+    "word": "وفيها",
+    "start": 2.1,
+    "end": 2.48
+   },
+   {
+    "word": "GPS",
+    "start": 2.48,
+    "end": 2.98
+   },
+   {
+    "word": "باش",
+    "start": 2.98,
+    "end": 3.14
+   },
+   {
+    "word": "تسجّل",
+    "start": 3.14,
+    "end": 3.44
+   },
+   {
+    "word": "السرعة",
+    "start": 3.44,
+    "end": 3.94
+   },
+   {
+    "word": "والطريق.",
+    "start": 3.94,
+    "end": 4.5
+   }
+  ],
+  "mouthCues": [
+   {
+    "start": 0.0,
+    "end": 0.05,
+    "value": "X"
+   },
+   {
+    "start": 0.05,
+    "end": 0.1,
+    "value": "B"
+   },
+   {
+    "start": 0.1,
+    "end": 0.18,
+    "value": "A"
+   },
+   {
+    "start": 0.18,
+    "end": 0.33,
+    "value": "E"
+   },
+   {
+    "start": 0.33,
+    "end": 0.96,
+    "value": "B"
+   },
+   {
+    "start": 0.96,
+    "end": 1.04,
+    "value": "A"
+   },
+   {
+    "start": 1.04,
+    "end": 1.09,
+    "value": "C"
+   },
+   {
+    "start": 1.09,
+    "end": 1.13,
+    "value": "B"
+   },
+   {
+    "start": 1.13,
+    "end": 1.41,
+    "value": "C"
+   },
+   {
+    "start": 1.41,
+    "end": 1.48,
+    "value": "B"
+   },
+   {
+    "start": 1.48,
+    "end": 1.59,
+    "value": "A"
+   },
+   {
+    "start": 1.59,
+    "end": 1.67,
+    "value": "C"
+   },
+   {
+    "start": 1.67,
+    "end": 1.76,
+    "value": "A"
+   },
+   {
+    "start": 1.76,
+    "end": 1.83,
+    "value": "B"
+   },
+   {
+    "start": 1.83,
+    "end": 1.95,
+    "value": "A"
+   },
+   {
+    "start": 1.95,
+    "end": 2.45,
+    "value": "F"
+   },
+   {
+    "start": 2.45,
+    "end": 2.59,
+    "value": "B"
+   },
+   {
+    "start": 2.59,
+    "end": 2.73,
+    "value": "C"
+   },
+   {
+    "start": 2.73,
+    "end": 2.8,
+    "value": "B"
+   },
+   {
+    "start": 2.8,
+    "end": 2.88,
+    "value": "A"
+   },
+   {
+    "start": 2.88,
+    "end": 3.23,
+    "value": "B"
+   },
+   {
+    "start": 3.23,
+    "end": 3.34,
+    "value": "A"
+   },
+   {
+    "start": 3.34,
+    "end": 3.78,
+    "value": "B"
+   },
+   {
+    "start": 3.78,
+    "end": 3.85,
+    "value": "G"
+   },
+   {
+    "start": 3.85,
+    "end": 3.99,
+    "value": "B"
+   },
+   {
+    "start": 3.99,
+    "end": 4.06,
+    "value": "E"
+   },
+   {
+    "start": 4.06,
+    "end": 4.16,
+    "value": "D"
+   },
+   {
+    "start": 4.16,
+    "end": 4.2,
+    "value": "C"
+   },
+   {
+    "start": 4.2,
+    "end": 4.28,
+    "value": "A"
+   },
+   {
+    "start": 4.28,
+    "end": 4.56,
+    "value": "B"
+   },
+   {
+    "start": 4.56,
+    "end": 4.57,
+    "value": "X"
+   }
+  ]
+ },
+ {
+  "id": "line_06",
+  "subtitle": "Support magnétique: كتركبها وتحيدها فثانية.",
+  "source": "human-take",
+  "start": 20.12,
+  "duration": 2.775,
+  "speed": 1.0,
+  "words": [
+   {
+    "word": "Support",
+    "start": 0.04,
+    "end": 0.48
+   },
+   {
+    "word": "magnétique:",
+    "start": 0.48,
+    "end": 1.06
+   },
+   {
+    "word": "كتركبها",
+    "start": 1.06,
+    "end": 1.74
+   },
+   {
+    "word": "وتحيدها",
+    "start": 1.74,
+    "end": 2.22
+   },
+   {
+    "word": "فثانية.",
+    "start": 2.22,
+    "end": 2.76
+   }
+  ],
+  "mouthCues": [
+   {
+    "start": 0.0,
+    "end": 0.02,
+    "value": "X"
+   },
+   {
+    "start": 0.02,
+    "end": 0.12,
+    "value": "B"
+   },
+   {
+    "start": 0.12,
+    "end": 0.26,
+    "value": "F"
+   },
+   {
+    "start": 0.26,
+    "end": 0.34,
+    "value": "A"
+   },
+   {
+    "start": 0.34,
+    "end": 0.48,
+    "value": "E"
+   },
+   {
+    "start": 0.48,
+    "end": 0.55,
+    "value": "F"
+   },
+   {
+    "start": 0.55,
+    "end": 0.63,
+    "value": "A"
+   },
+   {
+    "start": 0.63,
+    "end": 0.8,
+    "value": "F"
+   },
+   {
+    "start": 0.8,
+    "end": 1.22,
+    "value": "B"
+   },
+   {
+    "start": 1.22,
+    "end": 1.43,
+    "value": "C"
+   },
+   {
+    "start": 1.43,
+    "end": 1.5,
+    "value": "B"
+   },
+   {
+    "start": 1.5,
+    "end": 1.58,
+    "value": "A"
+   },
+   {
+    "start": 1.58,
+    "end": 1.71,
+    "value": "C"
+   },
+   {
+    "start": 1.71,
+    "end": 1.78,
+    "value": "E"
+   },
+   {
+    "start": 1.78,
+    "end": 2.13,
+    "value": "B"
+   },
+   {
+    "start": 2.13,
+    "end": 2.27,
+    "value": "C"
+   },
+   {
+    "start": 2.27,
+    "end": 2.34,
+    "value": "G"
+   },
+   {
+    "start": 2.34,
+    "end": 2.76,
+    "value": "B"
+   },
+   {
+    "start": 2.76,
+    "end": 2.77,
+    "value": "X"
+   }
+  ]
+ },
+ {
+  "id": "line_07",
+  "subtitle": "Produits originaux, boîte fermée, jamais ouverts, jamais activés.",
+  "source": "human-take",
+  "start": 22.895,
+  "duration": 3.725,
+  "speed": 1.0,
+  "words": [
+   {
+    "word": "Produits",
+    "start": 0.0,
+    "end": 0.44
+   },
+   {
+    "word": "originaux,",
+    "start": 0.44,
+    "end": 1.32
+   },
+   {
+    "word": "boîte",
+    "start": 1.32,
+    "end": 1.54
+   },
+   {
+    "word": "fermée,",
+    "start": 1.54,
+    "end": 1.9
+   },
+   {
+    "word": "jamais",
+    "start": 1.9,
+    "end": 2.32
+   },
+   {
+    "word": "ouverts,",
+    "start": 2.32,
+    "end": 2.68
+   },
+   {
+    "word": "jamais",
+    "start": 2.68,
+    "end": 3.04
+   },
+   {
+    "word": "activés.",
+    "start": 3.04,
+    "end": 3.62
+   }
+  ],
+  "mouthCues": [
+   {
+    "start": 0.0,
+    "end": 0.04,
+    "value": "B"
+   },
+   {
+    "start": 0.04,
+    "end": 0.07,
+    "value": "A"
+   },
+   {
+    "start": 0.07,
+    "end": 0.36,
+    "value": "F"
+   },
+   {
+    "start": 0.36,
+    "end": 0.43,
+    "value": "B"
+   },
+   {
+    "start": 0.43,
+    "end": 0.55,
+    "value": "A"
+   },
+   {
+    "start": 0.55,
+    "end": 0.92,
+    "value": "B"
+   },
+   {
+    "start": 0.92,
+    "end": 1.06,
+    "value": "F"
+   },
+   {
+    "start": 1.06,
+    "end": 1.28,
+    "value": "A"
+   },
+   {
+    "start": 1.28,
+    "end": 1.33,
+    "value": "F"
+   },
+   {
+    "start": 1.33,
+    "end": 1.38,
+    "value": "C"
+   },
+   {
+    "start": 1.38,
+    "end": 1.52,
+    "value": "B"
+   },
+   {
+    "start": 1.52,
+    "end": 1.59,
+    "value": "G"
+   },
+   {
+    "start": 1.59,
+    "end": 1.66,
+    "value": "C"
+   },
+   {
+    "start": 1.66,
+    "end": 1.73,
+    "value": "B"
+   },
+   {
+    "start": 1.73,
+    "end": 1.81,
+    "value": "A"
+   },
+   {
+    "start": 1.81,
+    "end": 2.18,
+    "value": "B"
+   },
+   {
+    "start": 2.18,
+    "end": 2.25,
+    "value": "D"
+   },
+   {
+    "start": 2.25,
+    "end": 2.33,
+    "value": "A"
+   },
+   {
+    "start": 2.33,
+    "end": 2.38,
+    "value": "B"
+   },
+   {
+    "start": 2.38,
+    "end": 2.49,
+    "value": "E"
+   },
+   {
+    "start": 2.49,
+    "end": 2.63,
+    "value": "G"
+   },
+   {
+    "start": 2.63,
+    "end": 2.77,
+    "value": "C"
+   },
+   {
+    "start": 2.77,
+    "end": 2.84,
+    "value": "F"
+   },
+   {
+    "start": 2.84,
+    "end": 2.98,
+    "value": "B"
+   },
+   {
+    "start": 2.98,
+    "end": 3.05,
+    "value": "E"
+   },
+   {
+    "start": 3.05,
+    "end": 3.13,
+    "value": "A"
+   },
+   {
+    "start": 3.13,
+    "end": 3.19,
+    "value": "B"
+   },
+   {
+    "start": 3.19,
+    "end": 3.25,
+    "value": "C"
+   },
+   {
+    "start": 3.25,
+    "end": 3.46,
+    "value": "B"
+   },
+   {
+    "start": 3.46,
+    "end": 3.6,
+    "value": "G"
+   },
+   {
+    "start": 3.6,
+    "end": 3.67,
+    "value": "B"
+   },
+   {
+    "start": 3.67,
+    "end": 3.72,
+    "value": "X"
+   }
+  ]
+ },
+ {
+  "id": "line_08",
+  "subtitle": "إلا بغيتي تكوموندي، صيفط لينا ميساج.",
+  "source": "human-take",
+  "start": 26.62,
+  "duration": 1.97,
+  "speed": 1.0,
+  "words": [
+   {
+    "word": "إلا",
+    "start": 0.08,
+    "end": 0.2
+   },
+   {
+    "word": "بغيتي",
+    "start": 0.2,
+    "end": 0.46
+   },
+   {
+    "word": "تكوموندي،",
+    "start": 0.46,
+    "end": 1.12
+   },
+   {
+    "word": "صيفط",
+    "start": 1.12,
+    "end": 1.4
+   },
+   {
+    "word": "لينا",
+    "start": 1.4,
+    "end": 1.66
+   },
+   {
+    "word": "ميساج.",
+    "start": 1.66,
+    "end": 1.94
+   }
+  ],
+  "mouthCues": [
+   {
+    "start": 0.0,
+    "end": 0.08,
+    "value": "X"
+   },
+   {
+    "start": 0.08,
+    "end": 0.12,
+    "value": "B"
+   },
+   {
+    "start": 0.12,
+    "end": 0.2,
+    "value": "A"
+   },
+   {
+    "start": 0.2,
+    "end": 0.34,
+    "value": "B"
+   },
+   {
+    "start": 0.34,
+    "end": 0.48,
+    "value": "F"
+   },
+   {
+    "start": 0.48,
+    "end": 0.62,
+    "value": "E"
+   },
+   {
+    "start": 0.62,
+    "end": 0.7,
+    "value": "A"
+   },
+   {
+    "start": 0.7,
+    "end": 0.75,
+    "value": "E"
+   },
+   {
+    "start": 0.75,
+    "end": 1.43,
+    "value": "B"
+   },
+   {
+    "start": 1.43,
+    "end": 1.5,
+    "value": "C"
+   },
+   {
+    "start": 1.5,
+    "end": 1.58,
+    "value": "A"
+   },
+   {
+    "start": 1.58,
+    "end": 1.75,
+    "value": "B"
+   },
+   {
+    "start": 1.75,
+    "end": 1.82,
+    "value": "C"
+   },
+   {
+    "start": 1.82,
+    "end": 1.96,
+    "value": "B"
+   },
+   {
+    "start": 1.96,
+    "end": 1.97,
+    "value": "X"
+   }
+  ]
+ }
+]

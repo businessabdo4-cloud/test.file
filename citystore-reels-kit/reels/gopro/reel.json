@@ -1,0 +1,19 @@
+{
+ "id": "gopro",
+ "vo_mode": "take",
+ "take": "vo/vo_full_take.wav",
+ "takeBoundaries": [
+  5.9,
+  9.2,
+  13.55,
+  17.75,
+  22.95,
+  26.2,
+  30.3
+ ],
+ "lead": 0.06,
+ "voEndBy": 28.9,
+ "maxPause": 0.1,
+ "sentPause": 0.16,
+ "note": "Fits 30 s with pause trimming + a small speed-up (<=1.1x, pitch kept). Product = GoPro HERO13 Black (camera; the accessory-bundle photo is only used for a front view of the camera itself)."
+}

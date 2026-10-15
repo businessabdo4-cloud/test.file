@@ -1,0 +1,18 @@
+{
+ "id": "disc",
+ "vo_mode": "take",
+ "take": "vo/vo_full_take.wav",
+ "takeBoundaries": [
+  5.08,
+  8.07,
+  13.86,
+  18.05,
+  22.41,
+  26.76
+ ],
+ "lead": 0.06,
+ "voEndBy": 28.9,
+ "maxPause": 0.1,
+ "sentPause": 0.16,
+ "note": "Fits 30 s with pause trimming (<=1.1x if needed). Product = PlayStation Disc Drive (for PS5 Slim Digital / PS5 Pro). Deliverables: 9:16 + cover only (user request)."
+}

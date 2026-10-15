@@ -1,0 +1,22 @@
+{
+ "case_hero": {
+  "src": "micmini/products/case_hero.png",
+  "w": 851,
+  "h": 713
+ },
+ "kit": {
+  "src": "micmini/products/kit.jpg",
+  "w": 840,
+  "h": 570
+ },
+ "studio": {
+  "src": "micmini/products/studio.jpg",
+  "w": 790,
+  "h": 790
+ },
+ "osmo_direct": {
+  "src": "micmini/products/osmo_direct.jpg",
+  "w": 436,
+  "h": 617
+ }
+}

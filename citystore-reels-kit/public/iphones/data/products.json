@@ -1,0 +1,22 @@
+{
+ "p17_orange": {
+  "src": "iphones/products/p17_orange.png",
+  "w": 549,
+  "h": 679
+ },
+ "p17_silver": {
+  "src": "iphones/products/p17_silver.png",
+  "w": 352,
+  "h": 434
+ },
+ "p18_burgundy": {
+  "src": "iphones/products/p18_burgundy.png",
+  "w": 380,
+  "h": 458
+ },
+ "p18_front": {
+  "src": "iphones/products/p18_front.png",
+  "w": 224,
+  "h": 458
+ }
+}

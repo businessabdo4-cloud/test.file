@@ -1,0 +1,22 @@
+{
+ "hero": {
+  "src": "quest/products/hero.png",
+  "w": 1380,
+  "h": 860
+ },
+ "rear": {
+  "src": "quest/products/rear.png",
+  "w": 1312,
+  "h": 1076
+ },
+ "ctrlL": {
+  "src": "quest/products/ctrlL.png",
+  "w": 292,
+  "h": 272
+ },
+ "ctrlR": {
+  "src": "quest/products/ctrlR.png",
+  "w": 290,
+  "h": 272
+ }
+}

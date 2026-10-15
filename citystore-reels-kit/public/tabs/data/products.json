@@ -1,0 +1,22 @@
+{
+ "a9": {
+  "src": "tabs/products/a9.png",
+  "w": 1089,
+  "h": 770
+ },
+ "a11": {
+  "src": "tabs/products/a11.png",
+  "w": 931,
+  "h": 657
+ },
+ "lenovo": {
+  "src": "tabs/products/lenovo.png",
+  "w": 1410,
+  "h": 895
+ },
+ "xiaomi": {
+  "src": "tabs/products/xiaomi.png",
+  "w": 1010,
+  "h": 1168
+ }
+}

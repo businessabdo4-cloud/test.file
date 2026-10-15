@@ -1,0 +1,12 @@
+{
+ "id": "osmo",
+ "vo_mode": "take",
+ "take": "vo/vo_full_take.wav",
+ "takeBoundaries": [4.56, 10.98, 25.53, 30.80, 45.98, 52.57, 57.56],
+ "lead": 0.06,
+ "voEndBy": 999,
+ "maxPause": 0.14,
+ "sentPause": 0.24,
+ "maxSeconds": 60,
+ "note": "The user approved going over the usual 30 s limit for this reel (full VO kept, no speed-up)."
+}

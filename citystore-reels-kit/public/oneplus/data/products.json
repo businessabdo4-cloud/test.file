@@ -1,0 +1,22 @@
+{
+ "front": {
+  "src": "oneplus/products/front.png",
+  "w": 378,
+  "h": 594
+ },
+ "angle": {
+  "src": "oneplus/products/angle.png",
+  "w": 888,
+  "h": 995
+ },
+ "side": {
+  "src": "oneplus/products/side.png",
+  "w": 420,
+  "h": 212
+ },
+ "lifestyle": {
+  "src": "oneplus/products/lifestyle.jpg",
+  "w": 1851,
+  "h": 984
+ }
+}

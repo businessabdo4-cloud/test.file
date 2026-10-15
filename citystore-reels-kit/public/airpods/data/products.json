@@ -1,0 +1,17 @@
+{
+ "open_case": {
+  "src": "airpods/products/open_case.png",
+  "w": 625,
+  "h": 917
+ },
+ "buds": {
+  "src": "airpods/products/buds.png",
+  "w": 1364,
+  "h": 1287
+ },
+ "case": {
+  "src": "airpods/products/case.png",
+  "w": 991,
+  "h": 1051
+ }
+}

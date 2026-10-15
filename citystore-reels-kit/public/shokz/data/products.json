@@ -1,0 +1,18 @@
+{
+ "_standIn": false,
+ "hero": {
+  "src": "shokz/products/hero.png",
+  "w": 1717,
+  "h": 766
+ },
+ "front": {
+  "src": "shokz/products/front.png",
+  "w": 1499,
+  "h": 708
+ },
+ "ear": {
+  "src": "shokz/products/ear.jpg",
+  "w": 900,
+  "h": 930
+ }
+}

@@ -1,0 +1,22 @@
+{
+ "ultra2_front": {
+  "src": "galaxy/products/ultra2_front.png",
+  "w": 656,
+  "h": 1021
+ },
+ "ultra2_angle": {
+  "src": "galaxy/products/ultra2_angle.png",
+  "w": 347,
+  "h": 393
+ },
+ "classic_angle": {
+  "src": "galaxy/products/classic_angle.png",
+  "w": 469,
+  "h": 548
+ },
+ "classic_front": {
+  "src": "galaxy/products/classic_front.png",
+  "w": 437,
+  "h": 665
+ }
+}
