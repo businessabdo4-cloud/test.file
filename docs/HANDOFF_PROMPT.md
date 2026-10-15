@@ -1,8 +1,12 @@
-You are taking over a video-production project: short vertical promo reels for **City Store** (citystore.ma), a Moroccan electronics shop. Every reel so far was built by another Claude session in a single Remotion (React + TypeScript) project, which I'm giving you as a zip. You must keep the exact same mascot, style and pipeline. Do not redesign anything. Reuse what exists.
+You are taking over a video-production project: short vertical promo reels for **City Store** (citystore.ma), a Moroccan electronics shop. Every reel so far was built by another Claude session in a single Remotion (React + TypeScript) project, which you will copy from a public GitHub repository. You must keep the exact same mascot, style and pipeline. Do not redesign anything. Reuse what exists.
 
 ## 1. Get the project (do this first)
-I'm attaching **`citystore-reels-kit.zip`**: the complete project (code, mascot, brand assets, fonts, logo, scripts and all previous reels as templates; finished videos and voice-over audio left out to keep it small). You have no other access to it, so everything you need is inside.
-- Unzip it into a new working folder (if you have a git repo, put it there and commit your work as you go).
+The complete project (code, mascot, brand assets, fonts, logo, scripts and all previous reels as templates; finished videos and voice-over audio left out) is in the folder `citystore-reels-kit/` of the public repo `https://github.com/businessabdo4-cloud/test.file`, on branch `claude/youthful-faraday-k64h5z`. No login is needed. Download only that folder (~12 MB, the full repo is much bigger) with:
+```bash
+git clone --depth 1 --filter=blob:none --sparse -b claude/youthful-faraday-k64h5z https://github.com/businessabdo4-cloud/test.file kit-src
+cd kit-src && git sparse-checkout set citystore-reels-kit && cd ..
+```
+- Copy everything inside `kit-src/citystore-reels-kit/` into the root of the repository attached to this session (my `citystore-reels-kit` repo). Commit it as the starting point, push, and delete `kit-src`. Work and push in that repo from then on.
 - Install the tools:
   - **Node 18+:** `npm install`
   - **Python 3:** `pip install numpy scipy pillow soundfile pyloudnorm`
@@ -112,7 +116,7 @@ A Darija voice-over (.wav), the script (Darija with French words), the product i
 6. Run `npm run <id>:render`, then `REEL=<id> bash scripts/finalize.sh` and `REEL=<id> bash scripts/verify.sh`.
 7. Check the loudness with ffmpeg ebur128.
 8. If the 9:16 file is over 30 MB, also make a `reel_9x16_upload.mp4` with `-crf 21`, same specs, and send that copy.
-9. Add a README row (and commit if you have a repo).
+9. Add a README row, commit and push.
 10. Send me the video + cover with a short summary covering:
     - what each scene shows,
     - which images you used, skipped or enhanced, and why,
