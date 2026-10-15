@@ -78,7 +78,11 @@
     "quest:cutout": "python3 reels/quest/cutout.py",
     "quest:audio": "REEL=quest python3 scripts/process_vo_take.py && python3 reels/quest/build_timeline.py && REEL=quest python3 scripts/make_music.py && REEL=quest python3 scripts/mix_audio.py",
     "quest:render": "remotion render QuestReel9x16 out/quest/reel_9x16_raw.mp4 --codec=h264 --crf=16 && remotion still QuestCover out/quest/cover_1080x1920.png",
-    "quest:build": "npm run quest:cutout && npm run quest:audio && REEL=quest node scripts/make_srt.mjs && npm run quest:render && REEL=quest bash scripts/finalize.sh && REEL=quest bash scripts/verify.sh"
+    "quest:build": "npm run quest:cutout && npm run quest:audio && REEL=quest node scripts/make_srt.mjs && npm run quest:render && REEL=quest bash scripts/finalize.sh && REEL=quest bash scripts/verify.sh",
+    "disc:cutout": "python3 reels/disc/cutout.py",
+    "disc:audio": "REEL=disc python3 scripts/process_vo_take.py && python3 reels/disc/build_timeline.py && REEL=disc python3 scripts/make_music.py && REEL=disc python3 scripts/mix_audio.py",
+    "disc:render": "remotion render DiscReel9x16 out/disc/reel_9x16_raw.mp4 --codec=h264 --crf=16 && remotion still DiscCover out/disc/cover_1080x1920.png",
+    "disc:build": "npm run disc:cutout && npm run disc:audio && REEL=disc node scripts/make_srt.mjs && npm run disc:render && REEL=disc bash scripts/finalize.sh && REEL=disc bash scripts/verify.sh"
   },
   "dependencies": {
     "@remotion/cli": "4.0.532",

@@ -1,0 +1,22 @@
+{
+ "drive": {
+  "src": "disc/products/drive.png",
+  "w": 723,
+  "h": 1494
+ },
+ "console": {
+  "src": "disc/products/console.png",
+  "w": 375,
+  "h": 1116
+ },
+ "module": {
+  "src": "disc/products/module.png",
+  "w": 204,
+  "h": 486
+ },
+ "cover": {
+  "src": "disc/products/cover.png",
+  "w": 228,
+  "h": 708
+ }
+}

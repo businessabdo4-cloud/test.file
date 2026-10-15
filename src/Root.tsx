@@ -48,6 +48,9 @@ import { GTL as GOPRO_TL } from "./reels/gopro/timeline";
 import { QuestReel } from "./reels/quest/QuestReel";
 import { QuestCover } from "./reels/quest/QuestCover";
 import { QTL } from "./reels/quest/timeline";
+import { DiscReel } from "./reels/disc/DiscReel";
+import { DiscCover } from "./reels/disc/DiscCover";
+import { DTL } from "./reels/disc/timeline";
 
 // Hard length limit: never more than 900 frames (30.0 s).
 const DURATION = Math.min(TL.totalFrames, MAX_FRAMES);
@@ -104,6 +107,9 @@ export const RemotionRoot: React.FC = () => (
     {/* Meta Quest 3 512GB: over 30 s (standing approval), 9:16 + cover only (the user asked for no 1:1) */}
     <Composition id="QuestReel9x16" component={QuestReel} durationInFrames={QTL.totalFrames} fps={FPS} width={1080} height={1920} defaultProps={{ layout: LAYOUT_9x16 }} />
     <Still id="QuestCover" component={QuestCover} width={1080} height={1920} />
+    {/* PlayStation Disc Drive: 30 s, 9:16 + cover only (the user asked for no 1:1) */}
+    <Composition id="DiscReel9x16" component={DiscReel} durationInFrames={Math.min(DTL.totalFrames, MAX_FRAMES)} fps={FPS} width={1080} height={1920} defaultProps={{ layout: LAYOUT_9x16 }} />
+    <Still id="DiscCover" component={DiscCover} width={1080} height={1920} />
     <Still id="CitybotSheet" component={CitybotSheet} width={1920} height={1080} />
   </>
 );
