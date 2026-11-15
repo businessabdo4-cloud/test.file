@@ -51,6 +51,9 @@ import { QTL } from "./reels/quest/timeline";
 import { DiscReel } from "./reels/disc/DiscReel";
 import { DiscCover } from "./reels/disc/DiscCover";
 import { DTL } from "./reels/disc/timeline";
+import { DuoReel } from "./reels/duo/DuoReel";
+import { DuoCover } from "./reels/duo/DuoCover";
+import { ETL } from "./reels/duo/timeline";
 
 // Hard length limit: never more than 900 frames (30.0 s).
 const DURATION = Math.min(TL.totalFrames, MAX_FRAMES);
@@ -110,6 +113,9 @@ export const RemotionRoot: React.FC = () => (
     {/* PlayStation Disc Drive: 30 s, 9:16 + cover only (the user asked for no 1:1) */}
     <Composition id="DiscReel9x16" component={DiscReel} durationInFrames={Math.min(DTL.totalFrames, MAX_FRAMES)} fps={FPS} width={1080} height={1920} defaultProps={{ layout: LAYOUT_9x16 }} />
     <Still id="DiscCover" component={DiscCover} width={1080} height={1920} />
+    {/* Episode 2 sketch "الكورة قد النملة" (iPhone Duo, Hamza + Citybot): 26 s, 9:16 + cover only */}
+    <Composition id="DuoReel9x16" component={DuoReel} durationInFrames={Math.min(ETL.totalFrames, MAX_FRAMES)} fps={FPS} width={1080} height={1920} />
+    <Still id="DuoCover" component={DuoCover} width={1080} height={1920} />
     <Still id="CitybotSheet" component={CitybotSheet} width={1920} height={1080} />
   </>
 );

@@ -66,6 +66,10 @@ STYLES = {
     "shokz": dict(seed=141, dur=40.0, phase=1.0, drop=3.0, end_lift=36.5, stop=38.5,
                   chords=[[57, 60, 64], [53, 57, 60], [55, 59, 62], [52, 55, 59]], roots=[45, 41, 43, 40],
                   final=[57, 60, 64, 69], final_bass=33, arp=[0, 2, 1, 2, 0, 2, 1, 2]),
+    # Episode 2 sketch (iPhone Duo, Hamza + Citybot): light, playful G major; drop when Citybot bursts out
+    "duo": dict(seed=196, dur=26.0, phase=1.0, drop=5.0, end_lift=22.0, stop=24.5,
+                chords=[[67, 71, 74], [64, 67, 71], [60, 64, 67], [62, 66, 69]], roots=[43, 40, 36, 38],
+                final=[67, 71, 74, 79], final_bass=43, arp=[0, 2, 1, 2, 0, 1, 2, 1]),
     "disc": dict(seed=185, phase=1.0, drop=4.5, end_lift=27.0, stop=27.75,
                  chords=[[62, 65, 69], [58, 62, 65], [60, 64, 67], [57, 60, 64]], roots=[38, 34, 36, 33],
                  final=[62, 65, 69, 74], final_bass=38, arp=[0, 1, 2, 1, 0, 2, 1, 2]),
