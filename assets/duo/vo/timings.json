@@ -1,0 +1,1318 @@
+{
+ "source": "assets/duo/vo/voiceover.wav",
+ "sourceDuration": 23.611,
+ "wordTimingMethod": "syllable-proportional estimate (Whisper unavailable in this session)",
+ "lines": [
+  {
+   "id": "L1",
+   "speaker": "hamza",
+   "text": "كنتفرج فالماتش فالتيليفون… والكورة قد النملة!",
+   "start": 0.15,
+   "end": 4.71,
+   "duration": 4.56,
+   "words": [
+    {
+     "word": "كنتفرج",
+     "start": 0.21,
+     "end": 0.83
+    },
+    {
+     "word": "فالماتش",
+     "start": 0.83,
+     "end": 1.57
+    },
+    {
+     "word": "فالتيليفون…",
+     "start": 1.57,
+     "end": 3.07
+    },
+    {
+     "word": "والكورة",
+     "start": 3.07,
+     "end": 3.73
+    },
+    {
+     "word": "قد",
+     "start": 3.73,
+     "end": 3.99
+    },
+    {
+     "word": "النملة!",
+     "start": 3.99,
+     "end": 4.63
+    }
+   ],
+   "mouthCues": [
+    {
+     "start": 0.0,
+     "end": 0.02,
+     "value": "X"
+    },
+    {
+     "start": 0.02,
+     "end": 0.07,
+     "value": "B"
+    },
+    {
+     "start": 0.07,
+     "end": 0.12,
+     "value": "F"
+    },
+    {
+     "start": 0.12,
+     "end": 0.26,
+     "value": "B"
+    },
+    {
+     "start": 0.26,
+     "end": 0.33,
+     "value": "G"
+    },
+    {
+     "start": 0.33,
+     "end": 0.4,
+     "value": "F"
+    },
+    {
+     "start": 0.4,
+     "end": 0.54,
+     "value": "B"
+    },
+    {
+     "start": 0.54,
+     "end": 0.61,
+     "value": "G"
+    },
+    {
+     "start": 0.61,
+     "end": 0.68,
+     "value": "F"
+    },
+    {
+     "start": 0.68,
+     "end": 0.77,
+     "value": "A"
+    },
+    {
+     "start": 0.77,
+     "end": 0.95,
+     "value": "B"
+    },
+    {
+     "start": 0.95,
+     "end": 1.08,
+     "value": "G"
+    },
+    {
+     "start": 1.08,
+     "end": 1.3,
+     "value": "B"
+    },
+    {
+     "start": 1.3,
+     "end": 1.44,
+     "value": "G"
+    },
+    {
+     "start": 1.44,
+     "end": 1.58,
+     "value": "E"
+    },
+    {
+     "start": 1.58,
+     "end": 1.65,
+     "value": "F"
+    },
+    {
+     "start": 1.65,
+     "end": 1.93,
+     "value": "E"
+    },
+    {
+     "start": 1.93,
+     "end": 2.35,
+     "value": "B"
+    },
+    {
+     "start": 2.35,
+     "end": 2.43,
+     "value": "A"
+    },
+    {
+     "start": 2.43,
+     "end": 2.5,
+     "value": "B"
+    },
+    {
+     "start": 2.5,
+     "end": 2.7,
+     "value": "C"
+    },
+    {
+     "start": 2.7,
+     "end": 2.82,
+     "value": "X"
+    },
+    {
+     "start": 2.82,
+     "end": 2.9,
+     "value": "B"
+    },
+    {
+     "start": 2.9,
+     "end": 3.11,
+     "value": "A"
+    },
+    {
+     "start": 3.11,
+     "end": 3.17,
+     "value": "C"
+    },
+    {
+     "start": 3.17,
+     "end": 3.36,
+     "value": "B"
+    },
+    {
+     "start": 3.36,
+     "end": 3.55,
+     "value": "C"
+    },
+    {
+     "start": 3.55,
+     "end": 3.6,
+     "value": "E"
+    },
+    {
+     "start": 3.6,
+     "end": 3.85,
+     "value": "F"
+    },
+    {
+     "start": 3.85,
+     "end": 3.92,
+     "value": "G"
+    },
+    {
+     "start": 3.92,
+     "end": 3.99,
+     "value": "E"
+    },
+    {
+     "start": 3.99,
+     "end": 4.06,
+     "value": "B"
+    },
+    {
+     "start": 4.06,
+     "end": 4.2,
+     "value": "C"
+    },
+    {
+     "start": 4.2,
+     "end": 4.27,
+     "value": "B"
+    },
+    {
+     "start": 4.27,
+     "end": 4.41,
+     "value": "F"
+    },
+    {
+     "start": 4.41,
+     "end": 4.55,
+     "value": "C"
+    },
+    {
+     "start": 4.55,
+     "end": 4.56,
+     "value": "X"
+    }
+   ]
+  },
+  {
+   "id": "L2",
+   "speaker": "citybot",
+   "text": "ما تحتاجش تلفزة آ خويا! شوف هادا: iPhone Duo!",
+   "start": 4.83,
+   "end": 7.36,
+   "duration": 2.53,
+   "words": [
+    {
+     "word": "ما",
+     "start": 4.89,
+     "end": 4.99
+    },
+    {
+     "word": "تحتاجش",
+     "start": 4.99,
+     "end": 5.35
+    },
+    {
+     "word": "تلفزة",
+     "start": 5.35,
+     "end": 5.85
+    },
+    {
+     "word": "آ",
+     "start": 5.85,
+     "end": 5.97
+    },
+    {
+     "word": "خويا!",
+     "start": 5.97,
+     "end": 6.21
+    },
+    {
+     "word": "شوف",
+     "start": 6.21,
+     "end": 6.33
+    },
+    {
+     "word": "هادا:",
+     "start": 6.33,
+     "end": 6.93
+    },
+    {
+     "word": "iPhone",
+     "start": 6.93,
+     "end": 7.17
+    },
+    {
+     "word": "Duo!",
+     "start": 7.17,
+     "end": 7.29
+    }
+   ],
+   "mouthCues": [
+    {
+     "start": 0.0,
+     "end": 0.02,
+     "value": "X"
+    },
+    {
+     "start": 0.02,
+     "end": 0.22,
+     "value": "F"
+    },
+    {
+     "start": 0.22,
+     "end": 0.29,
+     "value": "G"
+    },
+    {
+     "start": 0.29,
+     "end": 0.43,
+     "value": "C"
+    },
+    {
+     "start": 0.43,
+     "end": 0.5,
+     "value": "B"
+    },
+    {
+     "start": 0.5,
+     "end": 0.82,
+     "value": "A"
+    },
+    {
+     "start": 0.82,
+     "end": 0.87,
+     "value": "B"
+    },
+    {
+     "start": 0.87,
+     "end": 0.92,
+     "value": "C"
+    },
+    {
+     "start": 0.92,
+     "end": 0.99,
+     "value": "B"
+    },
+    {
+     "start": 0.99,
+     "end": 1.13,
+     "value": "G"
+    },
+    {
+     "start": 1.13,
+     "end": 1.2,
+     "value": "E"
+    },
+    {
+     "start": 1.2,
+     "end": 1.69,
+     "value": "F"
+    },
+    {
+     "start": 1.69,
+     "end": 1.99,
+     "value": "X"
+    },
+    {
+     "start": 1.99,
+     "end": 2.04,
+     "value": "B"
+    },
+    {
+     "start": 2.04,
+     "end": 2.09,
+     "value": "C"
+    },
+    {
+     "start": 2.09,
+     "end": 2.16,
+     "value": "B"
+    },
+    {
+     "start": 2.16,
+     "end": 2.23,
+     "value": "C"
+    },
+    {
+     "start": 2.23,
+     "end": 2.31,
+     "value": "A"
+    },
+    {
+     "start": 2.31,
+     "end": 2.45,
+     "value": "C"
+    },
+    {
+     "start": 2.45,
+     "end": 2.52,
+     "value": "B"
+    },
+    {
+     "start": 2.52,
+     "end": 2.53,
+     "value": "X"
+    }
+   ]
+  },
+  {
+   "id": "L3",
+   "speaker": "hamza",
+   "text": "آش هادا؟ تيليفون ولا تابليت؟!",
+   "start": 7.4,
+   "end": 9.31,
+   "duration": 1.91,
+   "words": [
+    {
+     "word": "آش",
+     "start": 7.46,
+     "end": 7.68
+    },
+    {
+     "word": "هادا؟",
+     "start": 7.68,
+     "end": 7.96
+    },
+    {
+     "word": "تيليفون",
+     "start": 7.96,
+     "end": 8.44
+    },
+    {
+     "word": "ولا",
+     "start": 8.44,
+     "end": 8.8
+    },
+    {
+     "word": "تابليت؟!",
+     "start": 8.8,
+     "end": 9.24
+    }
+   ],
+   "mouthCues": [
+    {
+     "start": 0.0,
+     "end": 0.03,
+     "value": "X"
+    },
+    {
+     "start": 0.03,
+     "end": 0.32,
+     "value": "B"
+    },
+    {
+     "start": 0.32,
+     "end": 0.39,
+     "value": "G"
+    },
+    {
+     "start": 0.39,
+     "end": 0.46,
+     "value": "E"
+    },
+    {
+     "start": 0.46,
+     "end": 0.54,
+     "value": "A"
+    },
+    {
+     "start": 0.54,
+     "end": 0.6,
+     "value": "B"
+    },
+    {
+     "start": 0.6,
+     "end": 0.65,
+     "value": "H"
+    },
+    {
+     "start": 0.65,
+     "end": 0.73,
+     "value": "A"
+    },
+    {
+     "start": 0.73,
+     "end": 0.81,
+     "value": "D"
+    },
+    {
+     "start": 0.81,
+     "end": 0.9,
+     "value": "A"
+    },
+    {
+     "start": 0.9,
+     "end": 0.96,
+     "value": "B"
+    },
+    {
+     "start": 0.96,
+     "end": 1.01,
+     "value": "C"
+    },
+    {
+     "start": 1.01,
+     "end": 1.15,
+     "value": "B"
+    },
+    {
+     "start": 1.15,
+     "end": 1.41,
+     "value": "A"
+    },
+    {
+     "start": 1.41,
+     "end": 1.83,
+     "value": "F"
+    },
+    {
+     "start": 1.83,
+     "end": 1.9,
+     "value": "B"
+    },
+    {
+     "start": 1.9,
+     "end": 1.91,
+     "value": "X"
+    }
+   ]
+  },
+  {
+   "id": "L4",
+   "speaker": "citybot",
+   "text": "بجوج! مطوي iPhone عادي، ومحلول أكبر écran فتاريخ iPhone.",
+   "start": 9.35,
+   "end": 13.2,
+   "duration": 3.85,
+   "words": [
+    {
+     "word": "بجوج!",
+     "start": 9.39,
+     "end": 9.85
+    },
+    {
+     "word": "مطوي",
+     "start": 9.85,
+     "end": 10.17
+    },
+    {
+     "word": "iPhone",
+     "start": 10.17,
+     "end": 10.49
+    },
+    {
+     "word": "عادي،",
+     "start": 10.49,
+     "end": 10.97
+    },
+    {
+     "word": "ومحلول",
+     "start": 10.97,
+     "end": 11.65
+    },
+    {
+     "word": "أكبر",
+     "start": 11.65,
+     "end": 12.13
+    },
+    {
+     "word": "écran",
+     "start": 12.13,
+     "end": 12.29
+    },
+    {
+     "word": "فتاريخ",
+     "start": 12.29,
+     "end": 12.79
+    },
+    {
+     "word": "iPhone.",
+     "start": 12.79,
+     "end": 13.13
+    }
+   ],
+   "mouthCues": [
+    {
+     "start": 0.0,
+     "end": 0.01,
+     "value": "X"
+    },
+    {
+     "start": 0.01,
+     "end": 0.05,
+     "value": "B"
+    },
+    {
+     "start": 0.05,
+     "end": 0.06,
+     "value": "X"
+    },
+    {
+     "start": 0.06,
+     "end": 0.11,
+     "value": "A"
+    },
+    {
+     "start": 0.11,
+     "end": 0.16,
+     "value": "C"
+    },
+    {
+     "start": 0.16,
+     "end": 0.2,
+     "value": "B"
+    },
+    {
+     "start": 0.2,
+     "end": 0.27,
+     "value": "F"
+    },
+    {
+     "start": 0.27,
+     "end": 0.65,
+     "value": "B"
+    },
+    {
+     "start": 0.65,
+     "end": 0.72,
+     "value": "G"
+    },
+    {
+     "start": 0.72,
+     "end": 0.79,
+     "value": "B"
+    },
+    {
+     "start": 0.79,
+     "end": 0.87,
+     "value": "A"
+    },
+    {
+     "start": 0.87,
+     "end": 0.94,
+     "value": "C"
+    },
+    {
+     "start": 0.94,
+     "end": 1.22,
+     "value": "B"
+    },
+    {
+     "start": 1.22,
+     "end": 1.29,
+     "value": "C"
+    },
+    {
+     "start": 1.29,
+     "end": 1.43,
+     "value": "F"
+    },
+    {
+     "start": 1.43,
+     "end": 1.51,
+     "value": "A"
+    },
+    {
+     "start": 1.51,
+     "end": 1.76,
+     "value": "F"
+    },
+    {
+     "start": 1.76,
+     "end": 1.83,
+     "value": "E"
+    },
+    {
+     "start": 1.83,
+     "end": 2.07,
+     "value": "C"
+    },
+    {
+     "start": 2.07,
+     "end": 2.14,
+     "value": "B"
+    },
+    {
+     "start": 2.14,
+     "end": 2.22,
+     "value": "A"
+    },
+    {
+     "start": 2.22,
+     "end": 2.35,
+     "value": "F"
+    },
+    {
+     "start": 2.35,
+     "end": 2.56,
+     "value": "B"
+    },
+    {
+     "start": 2.56,
+     "end": 2.84,
+     "value": "E"
+    },
+    {
+     "start": 2.84,
+     "end": 2.91,
+     "value": "B"
+    },
+    {
+     "start": 2.91,
+     "end": 3.12,
+     "value": "C"
+    },
+    {
+     "start": 3.12,
+     "end": 3.54,
+     "value": "B"
+    },
+    {
+     "start": 3.54,
+     "end": 3.61,
+     "value": "G"
+    },
+    {
+     "start": 3.61,
+     "end": 3.68,
+     "value": "E"
+    },
+    {
+     "start": 3.68,
+     "end": 3.75,
+     "value": "C"
+    },
+    {
+     "start": 3.75,
+     "end": 3.84,
+     "value": "A"
+    },
+    {
+     "start": 3.84,
+     "end": 3.85,
+     "value": "X"
+    }
+   ]
+  },
+  {
+   "id": "L5",
+   "speaker": "hamza",
+   "text": "وواش أوريجينال؟",
+   "start": 13.36,
+   "end": 14.49,
+   "duration": 1.13,
+   "words": [
+    {
+     "word": "وواش",
+     "start": 13.4,
+     "end": 13.74
+    },
+    {
+     "word": "أوريجينال؟",
+     "start": 13.74,
+     "end": 14.42
+    }
+   ],
+   "mouthCues": [
+    {
+     "start": 0.0,
+     "end": 0.02,
+     "value": "X"
+    },
+    {
+     "start": 0.02,
+     "end": 0.06,
+     "value": "B"
+    },
+    {
+     "start": 0.06,
+     "end": 0.1,
+     "value": "F"
+    },
+    {
+     "start": 0.1,
+     "end": 0.31,
+     "value": "E"
+    },
+    {
+     "start": 0.31,
+     "end": 0.38,
+     "value": "F"
+    },
+    {
+     "start": 0.38,
+     "end": 0.52,
+     "value": "B"
+    },
+    {
+     "start": 0.52,
+     "end": 0.59,
+     "value": "E"
+    },
+    {
+     "start": 0.59,
+     "end": 0.8,
+     "value": "F"
+    },
+    {
+     "start": 0.8,
+     "end": 0.88,
+     "value": "A"
+    },
+    {
+     "start": 0.88,
+     "end": 0.93,
+     "value": "E"
+    },
+    {
+     "start": 0.93,
+     "end": 1.04,
+     "value": "D"
+    },
+    {
+     "start": 1.04,
+     "end": 1.11,
+     "value": "B"
+    },
+    {
+     "start": 1.11,
+     "end": 1.13,
+     "value": "X"
+    }
+   ]
+  },
+  {
+   "id": "L6",
+   "speaker": "citybot",
+   "text": "فـ City Store؟ ديما! boîte fermée، jamais ouvert، jamais activé.",
+   "start": 14.6,
+   "end": 19.01,
+   "duration": 4.41,
+   "words": [
+    {
+     "word": "فـ",
+     "start": 14.68,
+     "end": 14.88
+    },
+    {
+     "word": "City",
+     "start": 14.88,
+     "end": 15.32
+    },
+    {
+     "word": "Store؟",
+     "start": 15.32,
+     "end": 15.66
+    },
+    {
+     "word": "ديما!",
+     "start": 15.66,
+     "end": 16.2
+    },
+    {
+     "word": "boîte",
+     "start": 16.2,
+     "end": 16.4
+    },
+    {
+     "word": "fermée،",
+     "start": 16.4,
+     "end": 16.84
+    },
+    {
+     "word": "jamais",
+     "start": 16.84,
+     "end": 17.44
+    },
+    {
+     "word": "ouvert،",
+     "start": 17.44,
+     "end": 17.84
+    },
+    {
+     "word": "jamais",
+     "start": 17.84,
+     "end": 18.32
+    },
+    {
+     "word": "activé.",
+     "start": 18.32,
+     "end": 18.94
+    }
+   ],
+   "mouthCues": [
+    {
+     "start": 0.0,
+     "end": 0.01,
+     "value": "X"
+    },
+    {
+     "start": 0.01,
+     "end": 0.15,
+     "value": "B"
+    },
+    {
+     "start": 0.15,
+     "end": 0.22,
+     "value": "G"
+    },
+    {
+     "start": 0.22,
+     "end": 0.43,
+     "value": "F"
+    },
+    {
+     "start": 0.43,
+     "end": 0.51,
+     "value": "A"
+    },
+    {
+     "start": 0.51,
+     "end": 0.64,
+     "value": "D"
+    },
+    {
+     "start": 0.64,
+     "end": 0.71,
+     "value": "B"
+    },
+    {
+     "start": 0.71,
+     "end": 0.78,
+     "value": "E"
+    },
+    {
+     "start": 0.78,
+     "end": 1.25,
+     "value": "B"
+    },
+    {
+     "start": 1.25,
+     "end": 1.34,
+     "value": "A"
+    },
+    {
+     "start": 1.34,
+     "end": 1.4,
+     "value": "D"
+    },
+    {
+     "start": 1.4,
+     "end": 1.46,
+     "value": "B"
+    },
+    {
+     "start": 1.46,
+     "end": 1.69,
+     "value": "A"
+    },
+    {
+     "start": 1.69,
+     "end": 1.73,
+     "value": "F"
+    },
+    {
+     "start": 1.73,
+     "end": 1.77,
+     "value": "C"
+    },
+    {
+     "start": 1.77,
+     "end": 1.89,
+     "value": "A"
+    },
+    {
+     "start": 1.89,
+     "end": 1.98,
+     "value": "G"
+    },
+    {
+     "start": 1.98,
+     "end": 2.12,
+     "value": "B"
+    },
+    {
+     "start": 2.12,
+     "end": 2.2,
+     "value": "A"
+    },
+    {
+     "start": 2.2,
+     "end": 2.56,
+     "value": "C"
+    },
+    {
+     "start": 2.56,
+     "end": 2.7,
+     "value": "B"
+    },
+    {
+     "start": 2.7,
+     "end": 2.77,
+     "value": "C"
+    },
+    {
+     "start": 2.77,
+     "end": 2.85,
+     "value": "A"
+    },
+    {
+     "start": 2.85,
+     "end": 3.05,
+     "value": "F"
+    },
+    {
+     "start": 3.05,
+     "end": 3.12,
+     "value": "G"
+    },
+    {
+     "start": 3.12,
+     "end": 3.26,
+     "value": "C"
+    },
+    {
+     "start": 3.26,
+     "end": 3.4,
+     "value": "G"
+    },
+    {
+     "start": 3.4,
+     "end": 3.68,
+     "value": "B"
+    },
+    {
+     "start": 3.68,
+     "end": 3.75,
+     "value": "C"
+    },
+    {
+     "start": 3.75,
+     "end": 3.83,
+     "value": "A"
+    },
+    {
+     "start": 3.83,
+     "end": 4.18,
+     "value": "B"
+    },
+    {
+     "start": 4.18,
+     "end": 4.25,
+     "value": "G"
+    },
+    {
+     "start": 4.25,
+     "end": 4.39,
+     "value": "B"
+    },
+    {
+     "start": 4.39,
+     "end": 4.4,
+     "value": "X"
+    }
+   ]
+  },
+  {
+   "id": "L7",
+   "speaker": "citybot",
+   "text": "صيفط لينا ميساج، ولا دخل لـ citystore.ma.",
+   "start": 19.13,
+   "end": 21.76,
+   "duration": 2.63,
+   "words": [
+    {
+     "word": "صيفط",
+     "start": 19.19,
+     "end": 19.53
+    },
+    {
+     "word": "لينا",
+     "start": 19.53,
+     "end": 19.83
+    },
+    {
+     "word": "ميساج،",
+     "start": 19.83,
+     "end": 20.19
+    },
+    {
+     "word": "ولا",
+     "start": 20.19,
+     "end": 20.33
+    },
+    {
+     "word": "دخل",
+     "start": 20.33,
+     "end": 20.51
+    },
+    {
+     "word": "لـ",
+     "start": 20.51,
+     "end": 20.67
+    },
+    {
+     "word": "citystore.ma.",
+     "start": 20.67,
+     "end": 21.69
+    }
+   ],
+   "mouthCues": [
+    {
+     "start": 0.0,
+     "end": 0.02,
+     "value": "X"
+    },
+    {
+     "start": 0.02,
+     "end": 0.37,
+     "value": "B"
+    },
+    {
+     "start": 0.37,
+     "end": 0.45,
+     "value": "A"
+    },
+    {
+     "start": 0.45,
+     "end": 0.52,
+     "value": "B"
+    },
+    {
+     "start": 0.52,
+     "end": 0.59,
+     "value": "A"
+    },
+    {
+     "start": 0.59,
+     "end": 0.85,
+     "value": "B"
+    },
+    {
+     "start": 0.85,
+     "end": 0.92,
+     "value": "C"
+    },
+    {
+     "start": 0.92,
+     "end": 1.06,
+     "value": "B"
+    },
+    {
+     "start": 1.06,
+     "end": 1.13,
+     "value": "F"
+    },
+    {
+     "start": 1.13,
+     "end": 1.2,
+     "value": "B"
+    },
+    {
+     "start": 1.2,
+     "end": 1.31,
+     "value": "A"
+    },
+    {
+     "start": 1.31,
+     "end": 1.35,
+     "value": "B"
+    },
+    {
+     "start": 1.35,
+     "end": 1.46,
+     "value": "F"
+    },
+    {
+     "start": 1.46,
+     "end": 1.74,
+     "value": "B"
+    },
+    {
+     "start": 1.74,
+     "end": 1.95,
+     "value": "F"
+    },
+    {
+     "start": 1.95,
+     "end": 2.03,
+     "value": "A"
+    },
+    {
+     "start": 2.03,
+     "end": 2.2,
+     "value": "E"
+    },
+    {
+     "start": 2.2,
+     "end": 2.27,
+     "value": "B"
+    },
+    {
+     "start": 2.27,
+     "end": 2.34,
+     "value": "C"
+    },
+    {
+     "start": 2.34,
+     "end": 2.42,
+     "value": "A"
+    },
+    {
+     "start": 2.42,
+     "end": 2.54,
+     "value": "D"
+    },
+    {
+     "start": 2.54,
+     "end": 2.61,
+     "value": "E"
+    },
+    {
+     "start": 2.61,
+     "end": 2.62,
+     "value": "X"
+    }
+   ]
+  },
+  {
+   "id": "L8",
+   "speaker": "both",
+   "text": "City Store… الأصلي ديما!",
+   "start": 21.85,
+   "end": 23.611,
+   "duration": 1.761,
+   "words": [
+    {
+     "word": "City",
+     "start": 21.91,
+     "end": 22.27
+    },
+    {
+     "word": "Store…",
+     "start": 22.27,
+     "end": 22.49
+    },
+    {
+     "word": "الأصلي",
+     "start": 22.49,
+     "end": 23.11
+    },
+    {
+     "word": "ديما!",
+     "start": 23.11,
+     "end": 23.49
+    }
+   ],
+   "mouthCues": [
+    {
+     "start": 0.0,
+     "end": 0.02,
+     "value": "X"
+    },
+    {
+     "start": 0.02,
+     "end": 0.07,
+     "value": "B"
+    },
+    {
+     "start": 0.07,
+     "end": 0.18,
+     "value": "G"
+    },
+    {
+     "start": 0.18,
+     "end": 0.39,
+     "value": "B"
+    },
+    {
+     "start": 0.39,
+     "end": 0.47,
+     "value": "A"
+    },
+    {
+     "start": 0.47,
+     "end": 0.65,
+     "value": "E"
+    },
+    {
+     "start": 0.65,
+     "end": 0.93,
+     "value": "F"
+    },
+    {
+     "start": 0.93,
+     "end": 1.0,
+     "value": "D"
+    },
+    {
+     "start": 1.0,
+     "end": 1.08,
+     "value": "A"
+    },
+    {
+     "start": 1.08,
+     "end": 1.48,
+     "value": "B"
+    },
+    {
+     "start": 1.48,
+     "end": 1.53,
+     "value": "A"
+    },
+    {
+     "start": 1.53,
+     "end": 1.61,
+     "value": "D"
+    },
+    {
+     "start": 1.61,
+     "end": 1.7,
+     "value": "A"
+    },
+    {
+     "start": 1.7,
+     "end": 1.76,
+     "value": "X"
+    }
+   ]
+  }
+ ]
+}
